@@ -101,11 +101,12 @@ This repository provides specialized security and penetration testing tools for 
 ### ⚡ System Tools
 | Tool           | Description                          |
 |----------------|--------------------------------------|
-| alienkrishn    | custom theme and helper |
+| alienkrishn    | Termux Void helper |
 | enctool        | Script obfuscation utility |
 | ip-changer     | Automated IP rotation tool |
 | termux-desktop | Termux desktop environment |
 | termux-penv    | Chroot container for Termux |
+| termuxvoid-theme | theme, autosuggetionss beautiful terminal |
 
 ### 🎨 Text & Utilities
 

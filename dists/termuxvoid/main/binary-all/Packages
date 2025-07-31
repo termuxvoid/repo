@@ -28,17 +28,17 @@ SHA512: a7e7f059ec2d2b837a57fa65703e74e5937368320cccdff632d7b2bde418b0bac249bfd4
 
 Package: alienkrishn
 Architecture: all
-Version: 2.0.1
-Homepage: https://anon4you.github.io/alienkrishn/
-Depends: eza,fish,starship,curl,gnupg
+Version: 2.0.2
+Homepage: https://t.me/alienkrishn
+Depends: termux-tools
 Maintainer: Alienkrishn [Anon4You]
-Description: Alienkrishn theme and repo helper
+Description: TermudVoid repo helper
 Filename: dists/termuxvoid/main/binary-all/alienkrishn.deb
-Size: 899716
-MD5Sum: c351a87efdb5d384683cf689c97e375e
-SHA1: 1c4f8060b502fa0d0cf758ac7f056524af9f6915
-SHA256: c055741c4f86468a2fd556640d6a61e5431cda1870319a18ac5dc91d35f2a1ec
-SHA512: 3fc66cb5bfda66df873b93b0bcd9f84da3894ee0e46f293e076f8a24cb4b86636b349c74661de4fecf72aa6649274371d7b3df053383c09e7ba348e3596000b7
+Size: 1612
+MD5Sum: 6d48982480e2156e432cd115bffbb007
+SHA1: 37414a1cdcbfac1740e2ff678c4347853b15e533
+SHA256: ffa107508ef69bfb5516df8b8451d51560761524d2e32d83b78e41c55ce8cccd
+SHA512: ce61a5165a6f2c563df12f6cd9c4bb84f615dd3846dc2b4895ab6b6f6a5e6662d654bcf12217c3dd8f7ea2240b0189a87183f7bc6dc0fc39ba688b1ce4895045
 
 Package: androdos
 Version: 1.0.0
@@ -1175,6 +1175,25 @@ MD5Sum: eff620595be6e0112e40528b767bc6fc
 SHA1: 741149fe1c79e6c923a892ada5e2d6f39de398ed
 SHA256: bfa8f3c78186891bb534142ff323b4ffa5f83d7f87bb3102f5b4f6b59b02d2ff
 SHA512: 3afb131583981428c3ad78943e4c72ae6d8e5e44cf584118cbd19732a87bf836f6344ee681fbbb56e14d147d3c981dd658925ad3b3328d898e9471fead363e69
+
+Package: termuxvoid-theme
+Version: 3.2
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: fish, starship, git, jp2a, eza
+Description: Professional terminal customization for Termux
+ A complete theme package for Termux including:
+  - Fish shell configuration
+  - Starship prompt setup
+  - Custom banner support
+  - Color schemes and fonts
+Homepage: https://github.com/termuxvoid/TermuxVoid-Theme
+Filename: dists/termuxvoid/main/binary-all/termuxvoid-theme.deb
+Size: 2028
+MD5Sum: d7d6c6a53ae1b91d6a79ab266cc4e9f1
+SHA1: 8471ad31d8fda0b3a33b5640db6a74c90321f284
+SHA256: 095b00f627b872a8a93dbb70d6b03b3b9b5b8c9734e1cf03fd50e4242556ab65
+SHA512: 27c11b2434f2d0d93acae27348562e52723b08283775613d3c03b02edcb2650b82fd5493d54eff18996793454f6c3904af8434a39dd07d4ec806085148ab8a08
 
 Package: thc-hydra
 Version: 9.6
