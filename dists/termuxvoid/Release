@@ -1,0 +1,27 @@
+Codename: termux
+Version: 1
+Architectures: all
+Description: termuxvoid repository
+Suite: termuxvoid
+Date: Thu, 31 Jul 2025 05:33:20 UTC
+Components: main
+MD5Sum:
+ 14f82d5dde46cd90b2db777cc43f2d89 56623 main/binary-all/Packages
+ 780e12b1d16574b9712cbe80b8265b1c 20468 main/binary-all/Packages.xz
+ 2010b2ddde6c46b36f0a200187c9da31 3607143 main/Contents-all
+ 7c7446d70e152933106ef2ce19b5fa29 135068 main/Contents-all.xz
+SHA1:
+ cdbdc8052519a79abc04f5b7582d37e52c7c6a2a 56623 main/binary-all/Packages
+ 20793a569e9686ec12bb5f08bf92b2f54002c596 20468 main/binary-all/Packages.xz
+ 6d2a3583259e7304f6a3014fd71eaa757d888b5b 3607143 main/Contents-all
+ 71ba805703f565d9b9520afe29803cd6d3e0b160 135068 main/Contents-all.xz
+SHA256:
+ a2f4139e77d0b7b83785d07a3589543afcf83b24f1f421c55f5e70ff45b15ec8 56623 main/binary-all/Packages
+ d128021d33a5a7b5c0dac1dbc61ff077b5abd2b799d6a7a57368d1f749756310 20468 main/binary-all/Packages.xz
+ 2c238a71e4957c40e7317face5c4ddfb4e39876c320682270af4bf4c77c29216 3607143 main/Contents-all
+ 76a248d4dac6b926eae139ae7502c14d22b5661e9d94114644ec5f955c0e6ee3 135068 main/Contents-all.xz
+SHA512:
+ d91b4b8ca4648069382db9542cd8dacf68e343aa1c7929e9276e1c9c29bc3609ee9d8a3613e419910c660e72841dfa27c20fe0255567ec1d87c04cbe4da05a58 56623 main/binary-all/Packages
+ 38a3a4246d33a833dd3d29e99d52ae780550437db7381396c5181199c4e2db6b09d73f7644b15e5470b4b9ec7393992fa8b6924c78169142e79e8db662860620 20468 main/binary-all/Packages.xz
+ 872809dacf0fb2b2dea8b29f52303060dccf4a110f648bdc78a7e8fdf5d819630e4d9aa945141f334701a7701ed537759d140d24b76fbd6c03e6c1d0e89c3e99 3607143 main/Contents-all
+ db65ea86d8f2e085d1d7ca4c3fd1efff7fad6f83aea8b2b51434aa01bf0dfe32daf647b47491ec245d3578aa38d3437f1b38617e1d9e5ef357520bb76f06e719 135068 main/Contents-all.xz
