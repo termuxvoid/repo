@@ -1189,11 +1189,11 @@ Description: Professional terminal customization for Termux
   - Color schemes and fonts
 Homepage: https://github.com/termuxvoid/TermuxVoid-Theme
 Filename: dists/termuxvoid/main/binary-all/termuxvoid-theme.deb
-Size: 2028
-MD5Sum: d7d6c6a53ae1b91d6a79ab266cc4e9f1
-SHA1: 8471ad31d8fda0b3a33b5640db6a74c90321f284
-SHA256: 095b00f627b872a8a93dbb70d6b03b3b9b5b8c9734e1cf03fd50e4242556ab65
-SHA512: 27c11b2434f2d0d93acae27348562e52723b08283775613d3c03b02edcb2650b82fd5493d54eff18996793454f6c3904af8434a39dd07d4ec806085148ab8a08
+Size: 2184
+MD5Sum: 675da1ad93acca564a148b1e6a8c4b08
+SHA1: 76f1f947c9a0bed12cd52c70cbb78c653475c171
+SHA256: 9b293021ef86641c5870dba09c9cec946b3f3fdad03c08258f0c907fd76c5ec6
+SHA512: da8daaf5765cbe75e2dc6a8cbe0a342f8b6fe7c9ca89c5dac99ebc7cc7cc1a114ec0137d785db87f34715d82799e5d9ff9ba95e3d042060e8656c6bcb99c62c4
 
 Package: thc-hydra
 Version: 9.6
