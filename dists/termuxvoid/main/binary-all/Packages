@@ -34,11 +34,11 @@ Depends: termux-tools
 Maintainer: Alienkrishn [Anon4You]
 Description: TermudVoid repo helper
 Filename: dists/termuxvoid/main/binary-all/alienkrishn.deb
-Size: 1612
-MD5Sum: 6d48982480e2156e432cd115bffbb007
-SHA1: 37414a1cdcbfac1740e2ff678c4347853b15e533
-SHA256: ffa107508ef69bfb5516df8b8451d51560761524d2e32d83b78e41c55ce8cccd
-SHA512: ce61a5165a6f2c563df12f6cd9c4bb84f615dd3846dc2b4895ab6b6f6a5e6662d654bcf12217c3dd8f7ea2240b0189a87183f7bc6dc0fc39ba688b1ce4895045
+Size: 2192
+MD5Sum: 2eaaf564123924c6367170ac2e9e9a1e
+SHA1: 47f59ae9610293a7c874913d9c5af0ac7b40866d
+SHA256: a24f8677efa18386f4911eb891b3cade781971f51e030cbe18accadbf36ee040
+SHA512: 487adf060a63d3357cc5060d855fb66046f12e13df0d154eb327c0f8f759d9626810d0277f826de1c883b71f51f55ac8c8ba107a136b920137e455bb2ab6e03b
 
 Package: androdos
 Version: 1.0.0
