@@ -271,6 +271,25 @@ SHA1: f25274c73bbc38a8d582519f66a9aa83865f3188
 SHA256: 786a39ff3c64bab6f648d9472f57a6b3a279862532b0ef592656ff0706ed7523
 SHA512: d4a51d7ba0c7d913d64d06d070ef0d2ca79aa5fba86efcfc5cb62623ff3c8af2cafebaa072aaed669efbea90fb6ebcf57a6eec20e7c303a456f434881fc78784
 
+Package: cewl
+Version: 6.2.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, ruby, pkg-config, openssl, libxml2, libxslt, ruby-nokogiri, exiftool
+Section: utils
+Priority: optional
+Homepage: https://github.com/digininja/CeWL
+Description: Custom Word List generator (CeWL) for password cracking
+ CeWL (Custom Word List generator) is a Ruby tool that spiders a target website
+ to create a wordlist for password cracking tools like John the Ripper or Hashcat.
+ It supports depth crawling, metadata extraction, and more.
+Filename: dists/termuxvoid/main/binary-all/cewl.deb
+Size: 1496
+MD5Sum: 1c82be3ad6a60459201981943ca0c30c
+SHA1: 2423fd5daef76f57797ec8f751ea4c966f585355
+SHA256: 1e3d4fe7e1226c299ed28ab9a016b0ae137ee68ca2516fe5fd91629c547e2918
+SHA512: db99373d4e5c7baf9091ad9b2715d471447f52039575d75b236b99a4efdc0a0c107401f03aa4d2b29a612e7e4fa85c161636f318201fa3ebfd60882a6b4ba6b9
+
 Package: cloudflare-gui
 Version: 1.0
 Architecture: all
@@ -929,6 +948,24 @@ MD5Sum: 2892df59299560f0d5e9c74f1c3b5665
 SHA1: 6788c40ce065cc1730d1446fff4188df0111a098
 SHA256: 4fc5e04fe1ea234182b4afe960425d1e32e3c7bc54c2b494f426e88d959a4f50
 SHA512: bf4f29e1a9a984ccf777dfe3b978d68fb9bbff47b63250f9a6254b018fc21236fa11781f0b4315498d20187e874f5b2e7504c024ebf23e1a4598861200d30638
+
+Package: ruby-nokogiri
+Version: 1.18.9
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: ruby, pkg-config, libxml2, libxslt
+Section: libs
+Priority: optional
+Homepage: https://nokogiri.org/
+Description: Ruby gem for HTML/XML parsing (system libraries version)
+ Nokogiri is an HTML/XML parser for Ruby that uses system libraries.
+ This package ensures proper installation with Termux's libraries.
+Filename: dists/termuxvoid/main/binary-all/ruby-nokogiri.deb
+Size: 1184
+MD5Sum: 50a598310df73e526c0c861171acaf98
+SHA1: 5ee27e6fa6841fd9b7ad5da1fe129106c1cc19c1
+SHA256: c88c1600b2a6f629ac7c8bf2bb40efa46ce2230b203c6942b18987e5500ef8d3
+SHA512: 1d77f167dd3a096af106dde5ae70574e2dae53475fdeac467e216103cbf2feb7e8bd3ba936e087529401feb01561795d0e264670de58b9ea4b828b761d877fa2
 
 Package: setoolkit
 Version: 8.0.3

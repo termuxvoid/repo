@@ -47,6 +47,7 @@ This repository provides specialized security and penetration testing tools for 
 ### 🔐 Password Tools
 | Tool       | Description                          |
 |------------|--------------------------------------|
+| cewl | Custom wordlist generator from websites |
 | pdfcracker | PDF password recovery tool |
 | zipcracker | ZIP archive password recovery |
 | fuckyou    | Custom password list generator |
@@ -104,6 +105,7 @@ This repository provides specialized security and penetration testing tools for 
 | alienkrishn    | Termux Void helper |
 | enctool        | Script obfuscation utility |
 | ip-changer     | Automated IP rotation tool |
+| ruby-nokogiri | Powerful HTML/XML parser for Ruby     |
 | termux-desktop | Termux desktop environment |
 | termux-penv    | Chroot container for Termux |
 | termuxvoid-theme | theme, autosuggetionss beautiful terminal |
