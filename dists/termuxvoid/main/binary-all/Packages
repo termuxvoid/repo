@@ -672,18 +672,18 @@ SHA256: 06595bc12e85723596f9c1e027bed7a765211b95dbb5348a583a609a5e7e9c6b
 SHA512: d0f88ed660bade0ce4d614f77b4f27bb73073d69ab13a7a955225acab272a37f1c0eda7299b407faeb84fb66f76e1c3cb922e98c392236e0f80ecd3c05dc81dd
 
 Package: metasploit-framework
-Version: 6.4.63
+Version: 6.4.78
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: binutils, python, autoconf, bison, clang, coreutils, curl, findutils, apr, apr-util, postgresql, openssl, readline, libffi, libgmp, libpcap, libsqlite, libgrpc, libtool, libxml2, libxslt, ncurses, make, ncurses-utils, ncurses, git, wget, unzip, zip, tar, termux-tools, termux-elf-cleaner, pkg-config, git, ruby, apktool, apksigner
+Depends: binutils, python, autoconf, bison, clang, coreutils, curl, findutils, apr, apr-util, postgresql, openssl, readline, libffi, libgmp, libpcap, libsqlite, libgrpc, libtool, libxml2, libxslt, ncurses, make, ncurses-utils, ncurses, git, wget, unzip, zip, tar, termux-tools, termux-elf-cleaner, pkg-config, git, ruby, ruby-nokogiri, apktool, apksigner
 Homepage: https://www.metasploit.com/
 Description: The world’s most used penetration testing framework
 Filename: dists/termuxvoid/main/binary-all/metasploit-framework.deb
-Size: 1536
-MD5Sum: 007fc19fd7bf191b440dd431072cfbfc
-SHA1: 0a7dad15603bf33ddebfd474fa36dff16d0a7567
-SHA256: f2644ec8edeb701d2b4effc3d6c47e49ae1cacd0751bc6da1d079330ebf83a3c
-SHA512: ca640a16fff267916f629499addde93092f1e5a342268156b07da1a05683567731f3dfca3358601c6a4f01c5f6076b51e30c9e6300fecf02e4dd0626f5fd4ac9
+Size: 1352
+MD5Sum: 05a3e7af16083ff8d075744299c48dd8
+SHA1: 62041274655fe9ba2dc4fcb7015b7ad25d2bd853
+SHA256: 5bff2b0a23aa874c8f28a935e646e3410da2c939b5d1af53d70f230ab2504475
+SHA512: b7d4ccee1e5496e9712cc20ec76946496e7c93b42e0bf281d793af328fe9e4f79e052f98d4de11522b07e26f7070592dfd8259c7f4af33db5e11c534828abe72
 
 Package: naabu
 Version: 2.3.4
