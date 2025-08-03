@@ -87,7 +87,7 @@ SHA256: ac3b23a8dc3bd29d74c9a7af6cd17637da6f70023930a3b02bc8e3dd736b9efb
 SHA512: 7f5ed7cbdd55d7a04916d2941d03f49e72f045951f1f6a0678e8c3aee430b764a9a4a4d9edae0e79919ead5e2681b3c99b0e95079b063fbb95cf66e530358a87
 
 Package: apkeditor
-Version: 1.4.3
+Version: 1.4.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You] 
 Depends: openjdk-17, wget
@@ -99,10 +99,10 @@ Description: Lightweight APK modification tool
  Supports decompiling, resource editing, and APK rebuilding.
 Filename: dists/termuxvoid/main/binary-all/apkeditor.deb
 Size: 1364
-MD5Sum: 3ae8e9669b942424e5323a86b0f54b96
-SHA1: d0a630ff1b4c685a13d448eed33f0ad5e0c57690
-SHA256: 3804191a6a153d89e5ee2345ba53aec52265f6f9491f4c1e505f75cabc4e5ab7
-SHA512: 323b03b6bc94d269c2c2a7c53993d864f1959c5be59ed3296682abe9f86e97138353ea26d675944df8a4d7097a9b2dd3afd8759d4b60c56acbe3a0299082e150
+MD5Sum: b4bd26986482ffd517f04394cf3873a2
+SHA1: eaf81aa17f4e7c2e66e27b7e8a28fb63f3e7b45d
+SHA256: 572e9d28cfb750a3523a3668ada1083628120ba8387043b96247ac8df7a764b8
+SHA512: 88d2666c893babb99c7cb64b10facbf827d882e525dd0e7e6d37c5faf106e17424f4389dcbff07a1d57d5399d04ee1aff4903bdcaba0113524919c5ac1825349
 
 Package: apkpatcher
 Version: 1.0
