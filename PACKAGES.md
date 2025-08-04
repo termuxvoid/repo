@@ -120,6 +120,7 @@ This repository provides specialized security and penetration testing tools for 
 ### 🚨 Attack Tools
 | Tool               | Description                          |
 |--------------------|--------------------------------------|
+| blackbox-framework | A Penetration Testing Framework |
 | darksploit-framework | Penetration testing framework |
 | metasploit-framework | Comprehensive exploit framework |
 | powerdos          | Denial-of-service toolkit |

@@ -183,6 +183,24 @@ SHA1: 5c7a228df1006990b5f52148abe2c476aef77dc3
 SHA256: ad4856fecaf3c0d39611b46a83a973a586a5829ba1f671f132039fad30e19083
 SHA512: c6c3d3b6f59cff0bd92bfdf0c1d96002b79fb9bc7ce2f2635f2547a39a5236ff816837e226af21cdff9122ff67fac8ba8d9127bfc73b001efb8ebb7fa1f16f38
 
+Package: blackbox-framework
+Version: 2.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python2
+Section: utils
+Priority: optional
+Homepage: https://github.com/jothatron/blackbox
+Description: A Python-based network analysis and exploitation toolkit
+ Blackbox is a modular security tool for network scanning, exploitation,
+ and post-exploitation. It requires Python 2 and supports multiple attack vectors.
+Filename: dists/termuxvoid/main/binary-all/blackbox-framework.deb
+Size: 14164
+MD5Sum: c6cca05aff2a2ecb690e406d57cb157b
+SHA1: ead6ce7c1f905effbdb4103840673ed224ac3a03
+SHA256: f683da5dc46d901c233026ed707eae656fe9e287170b1824cb9ade4e223fc009
+SHA512: d5f156f2190378e52d42c3c4667a2ae49c31c21e1102894c7488181cc625ed86938fd1c12245cb857da50919c418a6e79973fab73cbe4c09acefa47708bc2f37
+
 Package: blackhat
 Version: 1.0
 Architecture: all

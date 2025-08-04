@@ -445,6 +445,7 @@ data/data/com.termux/files/usr/share/doc/LICENSE                                
 data/data/com.termux/files/usr/bin/beef                                          beef
 data/data/com.termux/files/usr/bin/bitb                                          bitb-framework
 data/data/com.termux/files/usr/bin/bitb-installer                                bitb-framework
+data/data/com.termux/files/usr/bin/blackboxpy                                    blackbox-framework
 data/data/com.termux/files/usr/bin/blackhat                                      blackhat
 data/data/com.termux/files/usr/lib/bh.jpeg                                       blackhat
 data/data/com.termux/files/usr/bin/blutter                                       blutter
