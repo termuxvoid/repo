@@ -5,6 +5,12 @@ This repository provides specialized security and penetration testing tools for 
 
 ## 📋 Tool List
 
+### ✨ Customization  
+| Tool        | Description                          |  
+|-------------|--------------------------------------|  
+| void-fonts  | Custom font collection for Termux    |  
+| termuxvoid-theme | Beautiful terminal theme/autosuggestions |  
+
 ### 🔍 Reconnaissance & Scanning
 | Tool       | Description                          |
 |------------|--------------------------------------|
@@ -108,7 +114,6 @@ This repository provides specialized security and penetration testing tools for 
 | ruby-nokogiri | Powerful HTML/XML parser for Ruby     |
 | termux-desktop | Termux desktop environment |
 | termux-penv    | Chroot container for Termux |
-| termuxvoid-theme | theme, autosuggetionss beautiful terminal |
 
 ### 🎨 Text & Utilities
 

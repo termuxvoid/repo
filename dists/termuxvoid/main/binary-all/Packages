@@ -1308,6 +1308,24 @@ SHA1: 8b4f16c8274efb9bb58345db37555e766fb051f6
 SHA256: dc7fc19114ad084580b8490be03ddfaaf1d026320ad64c7a25c40f21a754462f
 SHA512: d47cb46545ea33657e407be7448a2c7d3a73916d08adc2d51330b229eedd47a770c1a64f0b655ea43a1827fe74b3846e6bfb7b1eb0cd164a10937d40e1dc7871
 
+Package: void-fonts
+Version: 1.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, bash
+Section: misc
+Priority: optional
+Homepage: https://github.com/termuxvoid/Void-Fonts.git
+Description: Custom font collection for Termux
+ Void-Fonts provides a collection of custom fonts specially
+ curated for Termux users. Includes installation and management script.
+Filename: dists/termuxvoid/main/binary-all/void-fonts.deb
+Size: 1256
+MD5Sum: ba0fa5347d969bba5c4ddb409136a30c
+SHA1: f9c4f1d4e94d8a684a1e94805e3b7ab5c78f5f8d
+SHA256: b208c91b3c5466acb85ce6c9b5c72c24c5e022b22edeee91dc52ca4476fce3b0
+SHA512: 6456764b7c5b8d822cf228385a643f94c31354370558e01954349d3511613cb3b566beea15f3bb4d81d33a48e8908dacc2d17c0c02851b9e1f7e9aee56273b44
+
 Package: webinfo
 Version: 3.0
 Architecture: all
