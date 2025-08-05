@@ -28,17 +28,17 @@ SHA512: a7e7f059ec2d2b837a57fa65703e74e5937368320cccdff632d7b2bde418b0bac249bfd4
 
 Package: alienkrishn
 Architecture: all
-Version: 2.0.2
-Homepage: https://t.me/alienkrishn
-Depends: termux-tools
+Version: 2.0.3
+Homepage: https://t.me/nullxvoid
+Depends: termux-tools, curl
 Maintainer: Alienkrishn [Anon4You]
-Description: TermudVoid repo helper
+Description: TermudVoid Package manager
 Filename: dists/termuxvoid/main/binary-all/alienkrishn.deb
-Size: 2192
-MD5Sum: 48707b46e72dfb0fa877fb95d12b64f1
-SHA1: 79721d31e35ad6191544c1d1000e9ffec2fb1ccc
-SHA256: 4f0a76eea4df265bc85bf41073f4b1f7ba59fa394e5c1e43201ff87c42d86d3a
-SHA512: ef3c13e0007678cea3f329b900380c94c719d85f980ca29e7d4e2ff882c02e83ba374b596994a5e1b9c1b89a22ca3c531398e58c5c0e97604f1ea73cf1269175
+Size: 3372
+MD5Sum: ef52fa64b2568bc6adb42128184bf03f
+SHA1: b47b453747837eeb1a8de82f89ead96d6bd8b15f
+SHA256: 5317e8210c48be2671cfe9d170e75fe76ec7542aac28866ada54bf19996b66f9
+SHA512: ba1e470b466a69d807115d9e710ae2e09b59cc88ba194540ca0813744de1d694d430292e5dad5e56b6d03a86c310a31532bbde711fbf4983d5f48eda650f97bc
 
 Package: androdos
 Version: 1.0.0
