@@ -1386,6 +1386,20 @@ SHA1: e0f125a16df673be3ab1c8b3043c9b85914cc25d
 SHA256: de76bdf37d479180672fcd115a67697a5a3d34caf613eec11876fd2f75bd98d2
 SHA512: d99e0898957c8380e4dfa45f5018d47d5d587992bd96f1e8800302be88f0ae561b235882563680b9f36e63c81fc9f67e9fa89c22db65e5fba5d2f1eb48c8f3ad
 
+Package: wordlists
+Version: 1.1-0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: wget, git
+Description: Security wordlists collection (rockyou.txt + SecLists subset).
+ Uses faster GitHub mirror for rockyou.txt. For authorized security research only.
+Filename: dists/termuxvoid/main/binary-all/wordlists.deb
+Size: 1560
+MD5Sum: 2fc7527f5b680e4cb2d3371bbcbbcd73
+SHA1: 5e89624c7b7379a5a86e109c53439e95ad16a5de
+SHA256: ac67fe743dde100b51bfb3b10b6e5aeda6eb136dc787ce659948362ca8f85cec
+SHA512: 3abf72d3b682bb8764f297a0a7b42e5aa2c7c2729632039a15d1df0242f5d006daa9e76494b1f880fab8e510c5dcc1cf66a698926b4b1f1bb3d7efddf0e3d19c
+
 Package: zaproxy
 Version: 2.16.0
 Architecture: all

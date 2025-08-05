@@ -53,6 +53,7 @@ This repository provides specialized security and penetration testing tools for 
 ### 🔐 Password Tools
 | Tool       | Description                          |
 |------------|--------------------------------------|
+| wordlists   | Security wordlists collection        |
 | cewl | Custom wordlist generator from websites |
 | pdfcracker | PDF password recovery tool |
 | zipcracker | ZIP archive password recovery |
