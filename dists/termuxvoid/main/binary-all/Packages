@@ -600,19 +600,20 @@ SHA256: 91307b64c05bc5d13371cef15bb9aacd947d4c9817efda3bb98df29d13691030
 SHA512: 838808fb368810784fba04d0516ff351de215b424311dbe9b2ba1ee39f7662a7ede983dced89bcbd0c603398473998f7d9725396876e8814059bc5e0fe68e57a
 
 Package: john
-Version: 1.1
+Version: 1.9.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Installed-Size: 1
-Depends: git, make, clang, python, python-pip
-Homepage: https://github.com/openwall/john
-Description: Open Source password security auditing and password recovery tool.
+Depends: git, make, clang, openssl, zlib
+Section: security
+Priority: optional
+Homepage: https://www.openwall.com/john/
+Description: John the Ripper password cracker
 Filename: dists/termuxvoid/main/binary-all/john.deb
-Size: 1732
-MD5Sum: 34c714a8f725593bc0ee0e64cc6f7c35
-SHA1: f3a818e180fac7eba97a3be7f1025f11ebdc9fe6
-SHA256: 2016a3f249236f0ed2b57e5b61ccd1f9260b257c5f0bb909f82b229305535c16
-SHA512: 41e43278255e84ee1ff3fcb350a9c0029e5b6ccf78c8e71b4d2b654c6dde28bf84bd3ec5fcfe852d59274416e8fb3a52e89d3d78968569e6708839c1b3bddbf7
+Size: 1228
+MD5Sum: df2939a40165420c7df6b163b5731275
+SHA1: dd88328b62a09d29f4260845fc1f53c70f056047
+SHA256: 7e29f6329210464c759f44e3a451c75c69d10a1b3e2443b0b81901b63e813204
+SHA512: 062f6ac612ce49ff50bda8b18ac78f3678168c820da37f56e8acaf040840b268a765d2462cb6397d65c0faa8e8de36a68821f44c66d3a157fa59ac227bda61cb
 
 Package: katana
 Version: 1.1.2

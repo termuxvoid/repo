@@ -469,7 +469,6 @@ data/data/com.termux/files/usr/share/infect/key/infect.keystore                 
 data/data/com.termux/files/usr/bin/instajack                                     instajack
 data/data/com.termux/files/usr/bin/ipinfo                                        ipinfo
 data/data/com.termux/files/usr/bin/iplookup                                      iplookup
-data/data/com.termux/files/usr/bin/john                                          john
 data/data/com.termux/files/usr/bin/local2onion                                   local2onion
 data/data/com.termux/files/usr/bin/locateme                                      locateme
 data/data/com.termux/files/usr/share/locateme/index.html                         locateme
