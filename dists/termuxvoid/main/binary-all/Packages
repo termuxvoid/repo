@@ -444,18 +444,18 @@ SHA256: add0c2d5b2d878438c5fd17c920e062e25c882fb8dc1b6077835f2b46a1a7a81
 SHA512: 58a3bfd22123fe5036139a621c46d59bced70fb59b1d388941a740c7a1f7160e8a363497c404128d8d7f916ab5197e4f9209eb238feb5d8a9620cd87da2cae41
 
 Package: hashcat
-Version: 6.2.6-patch
+Version: 6.2.6
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Homepage: https://hashcat.net/hashcat/
-Depends: opencl-vendor-driver, libiconv, git, build-essential, clang
+Depends: opencl-vendor-driver, libiconv, wget, build-essential, clang, unzip
 Description: World's fastest and most advanced password recovery utility
 Filename: dists/termuxvoid/main/binary-all/hashcat.deb
-Size: 1892
-MD5Sum: 3cfa8fb447bd22ed3d24dc5c9d417e2b
-SHA1: 77a71ac9c8717476df4ec55ff62cbb5da50ec631
-SHA256: d8cef556685125d18d6c5d8d9016bf5be0d7477c1a3a9438b9a32fba77a34471
-SHA512: 482acd45059aa13d09f99493bdd8850cfc4b94790d3387728861809421983057c999f704c01c89a18a0032100b44d292aee16586489017f6b36c009dc3d9d3e8
+Size: 1832
+MD5Sum: c174c397606047a28c1c50b082409862
+SHA1: cb37f8fc57bc3d7bb7004b34c7935cef9b567c74
+SHA256: 84c2ca6e2989a23f5f68ce827baf23855508059ab7497996d4b7b7e8a24d6b39
+SHA512: 544d855759971f7b1d95001d9d927a7c34c83f23ccc95965f714ce3a9358984ba91c5bf257c7732d23f4bebe74212d8ee95108dfd28948df1ea0046c3c4b60e3
 
 Package: hatcloud
 Version: 1.0.0
