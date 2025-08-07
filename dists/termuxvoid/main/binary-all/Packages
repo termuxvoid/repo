@@ -1233,7 +1233,7 @@ SHA256: bfa8f3c78186891bb534142ff323b4ffa5f83d7f87bb3102f5b4f6b59b02d2ff
 SHA512: 3afb131583981428c3ad78943e4c72ae6d8e5e44cf584118cbd19732a87bf836f6344ee681fbbb56e14d147d3c981dd658925ad3b3328d898e9471fead363e69
 
 Package: termuxvoid-theme
-Version: 3.2
+Version: 3.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: fish, starship, git, jp2a, eza
@@ -1245,11 +1245,11 @@ Description: Professional terminal customization for Termux
   - Color schemes and fonts
 Homepage: https://github.com/termuxvoid/TermuxVoid-Theme
 Filename: dists/termuxvoid/main/binary-all/termuxvoid-theme.deb
-Size: 2184
-MD5Sum: 675da1ad93acca564a148b1e6a8c4b08
-SHA1: 76f1f947c9a0bed12cd52c70cbb78c653475c171
-SHA256: 9b293021ef86641c5870dba09c9cec946b3f3fdad03c08258f0c907fd76c5ec6
-SHA512: da8daaf5765cbe75e2dc6a8cbe0a342f8b6fe7c9ca89c5dac99ebc7cc7cc1a114ec0137d785db87f34715d82799e5d9ff9ba95e3d042060e8656c6bcb99c62c4
+Size: 2608
+MD5Sum: 8b79fde6aa134eb6998715c39b30296d
+SHA1: 027fe2dc7c49e6dbfb025eafde2a3e133428b507
+SHA256: 04af918054b38d746ddc545ce6766f16767d5cb6df2d5d0e6383454887218973
+SHA512: b06d0b80de1a5bd1a6c90b2b32f298182d6dda4294259266a29a09ec65e6bb3c19061543ea0bbab750ccd9a973d2631deeff32bcdfb4d80cf25e14309ebbd3ca
 
 Package: thc-hydra
 Version: 9.6
