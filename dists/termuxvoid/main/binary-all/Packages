@@ -528,7 +528,7 @@ SHA256: ba853367ae4042046b9698c47ed1b93e3cee66462e6f537333adc5e9662b96d8
 SHA512: ae5628da7b5d9f53dfc39933ace7e2cf6d25564abc4efc8d015ed411c54537d43e6fffbecb491245610989fdc21a4bc13ae69e433bbf1f25d3e76e2cc8ad9d8d
 
 Package: infect
-Version: 1.0
+Version: 1.03
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: apkeditor, apktool, metasploit-framework, apksigner, libxml2
@@ -537,11 +537,11 @@ Priority: optional
 Homepage: https://t.me/nullxvoid/
 Description: Android APK backdoor injector with Meterpreter support
 Filename: dists/termuxvoid/main/binary-all/infect.deb
-Size: 6924
-MD5Sum: b04433264dd9f2caca26fd86690411d2
-SHA1: 0c89f3546dcc12dc414be856af59b3c72fd5a515
-SHA256: c35a1a3a4ce30ffe34d0799fa9e82e8174bd3565f48672e26489d9cace804d13
-SHA512: 89a544d57cde8f27a705b544c7ae1ca94a421752deb2561879829968b86ec659531b0bd3783720a5b435973a6b61581150db84aae77b2841e456326bafa92540
+Size: 7504
+MD5Sum: fa930fd636db05d4a8f7b0848e937576
+SHA1: 0c20948f5f3e4fbafe2a37257359db483a905882
+SHA256: d8e17bf4a43b81291d15101387b75fefad4d77bb1eea1222f38c98b569cec3b9
+SHA512: 7af0c3018381c65b341ca546bf8532cf7b92c8fd35f89d9b41995f12ef447eec98ee53c90610bdd4f199517fb0b15bf13663d47344c2508eedf4811ad5784bcd
 
 Package: instajack
 Version: 1.0
