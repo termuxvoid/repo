@@ -357,6 +357,22 @@ SHA1: 7b443100faeb5571a770cf8d26e2e3de68d64b98
 SHA256: dccee9294d02a3872b44d457d1bbb4e079b19d8a6c97caac7c59cb62ea4a71f7
 SHA512: 9a0ce44ea2bfef96a3454fdbd82449c78dfb7c3441cf647172f3572e4c2f4934af1953454dadb56d6fd1f4e194a76edba4f65b2043b9daa80b3c430235fde094
 
+Package: drshell
+Version: 1.0.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python, openssh
+Section: net
+Priority: optional
+Homepage: https://github.com/DrDataYE/DrShell
+Description: Reverse Shell Session Manager
+Filename: dists/termuxvoid/main/binary-all/drshell.deb
+Size: 1280
+MD5Sum: 7a745918310980d6ff32e11e1aa70655
+SHA1: 8c332b4d12e86a15085f9504cf6294b2fd79f75a
+SHA256: 12d5b36a4813e931b07bddef8c114fb9495f219ebab5caaf3208dd9c8c7f5b13
+SHA512: 655673f367a9e6c3d29f631343d72ca542d1117a94aeea10c036c27c704257dd2b43038730a93bee2aacdad6e9ad17bdb805fb3d4dae7ff25be5f20811d6fedf
+
 Package: enctool
 Version: 1.0
 Architecture: all
