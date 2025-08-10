@@ -1206,18 +1206,18 @@ SHA256: e60cd79cd9c02be965bd2107f5adafd673c60f016a7218ebe002cfbcca75b70b
 SHA512: 2d3950f627f0ac42008fc733d9c43098dc67fbc62f9cd5d09191dc2cf5f7a407d1e0f09b218cf65464758c0a1277ded2a8c5163c98772a3a4dae19d65d3d1947
 
 Package: termux-desktop
-Version: 1.0.4-5
+Version: 1.0.5
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: termux-am,xfce4,xfce4-terminal,xwayland,xfce4-whiskermenu-plugin,firefox,neovim,termux-x11-nightly,dbus,termux-desktop-wallpapers
+Depends: termux-am,xfce4,xfce4-terminal,xwayland,xfce4-whiskermenu-plugin,firefox,neovim,termux-x11-nightly,dbus,termux-desktop-wallpapers,xfce4-goodies
 Installed-Size: 68792
 Description: termux xfce4 desktop gui with Hacker themes and icona
 Filename: dists/termuxvoid/main/binary-all/termux-desktop.deb
-Size: 8108880
-MD5Sum: 36ecebde2bc6762636bfb9a44cbe8df7
-SHA1: 8f5f19fb5ef8f743328b32a265d20d955e2adc26
-SHA256: 6c9101b6eb0016c964ce14d52e2c81410ef1f96204ba4fa276682211476403b2
-SHA512: 57de1bff772aa0606aa0a34c7e4f1827428399c01e87b854e358cfd7bc8cde2e963e1bf138cadd90e753d3ffdbdfc2dd60bbab8172563b2a80653e4b6423e1ee
+Size: 8109020
+MD5Sum: ccd4e981aff6452063d870e9bed8bdde
+SHA1: cc8f0b028ad1ce28a3bb9e98a9678ff1ae4a4e44
+SHA256: c4e3e1f9ff5734b6a46772bc52612bcd3b9387ed5bdb73bcbfb3ccf5aab04d33
+SHA512: 0d4236cd9d45bc82b2300fc2845eb65fb3e158ded820ce3678ea7f371369a2aa9b101d630cc3300ef7b206f73a9fb8fe26a8a7df1d04b5c587cd735b9daf94c2
 
 Package: termux-media-downloader
 Version: 2.1
