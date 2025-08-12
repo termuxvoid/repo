@@ -445,6 +445,23 @@ SHA1: f3e0cc1dcfedd9d87419f8dc45733e30a093dfad
 SHA256: d12f54059031b021bd82eb0c25078cd725c15363caa560b27952fa9ab123a916
 SHA512: 828cec6a54353d2f7b122c44dcea672df543774c19018cb2e63dc12bc400ad65834cdc1e1d2c2945ecf98bdbb3350eb8d105a1413a7f358a4595186f64225f30
 
+Package: ghidra
+Version: 11.4.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: openjdk-21, unzip, python,wget
+Section: utils
+Priority: optional
+Homepage: https://ghidra-sre.org/
+Description: NSA Reverse Engineering Framework
+ Advanced disassembly toolkit with GUI/CLI modes.
+Filename: dists/termuxvoid/main/binary-all/ghidra.deb
+Size: 131604
+MD5Sum: 06bf154db7c0e632c4df477e50ffab9f
+SHA1: 8412b3eb760ab80088856d163aa8d93309cc32d1
+SHA256: c0f1598a93309e64a69d8b0408a89d5b10264caf7dcfe5a870f22c51236a7e8c
+SHA512: 6993ce20115001eabcd444acdd4e0b31e21d5c48c30638f85ae6f65eb550b707a48b6087bb3e6c46f26efb9b02fcfda47edf56600b8d1ed9321def71ca54cd6b
+
 Package: gophish
 Version: 0.12.1-latest
 Architecture: all

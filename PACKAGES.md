@@ -80,7 +80,7 @@ This repository provides specialized security and penetration testing tools for 
 | ngrok       | Secure tunneling to expose localhost (HTTPS/TCP) |
 | cloudflare-gui | Graphical interface for Cloudflare tunnels (cloudflared) |
 
-### 📱 Mobile Security
+### 📱 Reverse engineering 
 | Tool       | Description                          |
 |------------|--------------------------------------|
 | androdos   | Android stress testing tool |
@@ -89,6 +89,7 @@ This repository provides specialized security and penetration testing tools for 
 | apktool    | APK reverse engineering framework |
 | apkpatcher | Advanced APK Modification Tool |
 | blutter    | Flutter app vulnerability analyzer |
+| ghidra     | NSA Reverse Engineering Framework    |
 | keysigner  | Keystore Management and APK Signing Tool |
 | rkpairip   | APK patching tool |
 | phonesploit-pro | All-in-one Android exploitation tool |

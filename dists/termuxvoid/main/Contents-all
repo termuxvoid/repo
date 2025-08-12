@@ -464,6 +464,7 @@ data/data/com.termux/files/usr/bin/cupp.cfg                                     
 data/data/com.termux/files/usr/bin/darksploit                                    darksploit-framework
 data/data/com.termux/files/usr/bin/enctool                                       enctool
 data/data/com.termux/files/usr/bin/fuckyou                                       fuckyou
+data/data/com.termux/files/usr/share/pixmaps/ghidra.png                          ghidra
 data/data/com.termux/files/usr/bin/infect                                        infect
 data/data/com.termux/files/usr/share/infect/key/infect.keystore                  infect
 data/data/com.termux/files/usr/bin/instajack                                     instajack
