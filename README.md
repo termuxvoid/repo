@@ -1,70 +1,114 @@
 <div align="center">
   <a href="https://termuxvoid.github.io/">
-    <img alt="TermuxVoid" height="200" src="assets/termuxvoid_logo.png">
+    <img alt="TermuxVoid" height="180" src="assets/termuxvoid_logo.png">
+    <h1>TermuxVoid APT Repository</h1>
   </a>
-  <h1>TermuxVoid APT Repository</h1>
-  <p>Where Termux Meets the Void - Advanced Tools Beyond Official Repos</p>
+  <p>Advanced Security Tools for Termux - Beyond Official Repositories</p>
+  
+  <div>
+    <a href="https://github.com/TermuxVoid/repo/stargazers">
+      <img src="https://img.shields.io/github/stars/TermuxVoid/repo?style=for-the-badge&logo=github&color=ffd700&labelColor=0d1117" alt="GitHub Stars">
+    </a>
+    <a href="https://github.com/TermuxVoid/repo/blob/main/LICENSE">
+      <img src="https://img.shields.io/badge/License-BSD_3--Clause-blue?style=for-the-badge&logo=opensourceinitiative" alt="License">
+    </a>
+  </div>
 </div>
 
-<p align="center">
-  <a href="https://youtube.com/@alienkrishnorg">
-    <img src="https://img.shields.io/badge/YouTube-@alienkrishnorg-FF0000?logo=youtube" alt="YouTube">
-  </a>
-  <a href="https://github.com/TermuxVoid/repo/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/License-BSD_3--Clause-blue" alt="License">
-  </a>
-  <a href="https://t.me/nullxvoid">
-    <img src="https://img.shields.io/badge/Telegram-Join_Channel-26A5E4?logo=telegram" alt="Telegram">
-  </a>
-  <a href="https://www.instagram.com/alienkrishn">
-    <img src="https://img.shields.io/badge/Instagram-@alienkrishn-E4405F?logo=instagram" alt="Instagram">
-  </a>
-</p>
+## 🔍 Project Overview
 
-## 🌠 About TermuxVoid
+**TermuxVoid** provides optimized security tools for Termux with enhanced performance and reliability.
 
-**TermuxVoid** is the evolution of Alienkrishn's repository, now offering:
+```mermaid
+graph TD
+    A[TermuxVoid] --> B[Metasploit]
+    A --> C[Burp Suite Pro]
+    A --> D[Ghidra]
+    A --> E[THC Hydra]
+    A --> F[SQLMap]
+    B --> G[Exploitation]
+    C --> H[Web Security]
+    D --> I[Reverse Engineering]
+    E --> J[Password Cracking]
+    F --> K[Database Security]
+```
 
-- **70+ Hacking/Security Tools** (same trusted sources)
-- **Enhanced Performance** builds for Termux
-- **Regular Maintenance** (weekly updates)
-- **Void-Tested** packages (stable yet cutting-edge)
+## ✨ Featured Tools
 
-## 🔥 Featured Packages
+<div align="center">
 
-Explore our tools collection:  
-[📦 Package List](https://github.com/TermuxVoid/repo/blob/main/PACKAGES.md)
+| Tool | Category | Description |
+|------|----------|-------------|
+| **Metasploit Framework** | Exploitation | Industry-standard penetration testing tool |
+| **Burp Suite** | Web Security | Professional web vulnerability scanner |
+|  **Ghidra** | Reverse Engineering | NSA's reverse engineering framework |
+| **THC Hydra** | Password Cracking | Network login cracker |
+| **SQLMap** | Web Security | Automated SQL injection tool |
 
-## ⚡ Installation
+</div>
 
-### Add Repository:
+## 🚀 Quick Start
+
+# Add repository
 ```bash
 curl -sL https://termuxvoid.github.io/repo/install.sh | bash
 ```
-
-### Install Packages:
+# Install tools
 ```bash
-pkg install <tool-name>
+pkg install <tool name>
 ```
 
-## ❓ FAQ (From Alienkrishn Legacy)
+## ❓ FAQ
 
-**Q: Is this safe to use?**  
-A: All packages are maintained by the same team behind Alienkrishn.
+<details>
+<summary><b>Are these tools legal to use?</b></summary>
+All tools are provided for <b>legal security research and ethical hacking purposes only</b>. Always obtain proper authorization before testing systems.
+</details>
 
-**Q: Update frequency?**  
-A: Weekly updates + urgent security patches.
+<details>
+<summary><b>How often are tools updated?</b></summary>
+We provide weekly updates with:
+<ul>
+  <li>Security patches within 24 hours</li>
+  <li>Version updates every Sunday</li>
+  <li>Emergency fixes as needed</li>
+</ul>
+</details>
 
-**Q: How to request tools?**  
-A: Message @nullxvoid on Telegram.
+<details>
+<summary><b>Can I request new tools?</b></summary>
+Yes! Submit requests via:
+<ul>
+  <li>GitHub Issues</li>
+  <li>Telegram @nullxvoid</li>
+  <li>Email: termuxvoid@proton.me</li>
+</ul>
+</details>
 
-## 💫 Support Our Work
+## 🌐 Support & Community
 
-Help us maintain TermuxVoid:
+<div align="center">
+  <a href="https://t.me/nullxvoid">
+    <img src="https://img.shields.io/badge/Telegram-Support_Group-2CA5E0?style=for-the-badge&logo=telegram" alt="Telegram">
+  </a>
+  <a href="https://youtube.com/@alienkrishnorg">
+    <img src="https://img.shields.io/badge/YouTube-Tutorials-FF0000?style=for-the-badge&logo=youtube" alt="YouTube">
+  </a>
+  <a href="https://github.com/TermuxVoid/repo/issues">
+    <img src="https://img.shields.io/badge/GitHub-Issues-181717?style=for-the-badge&logo=github" alt="GitHub Issues">
+  </a>
+</div>
+
+## 🛠️ Our Work
+
+Support the project:
 - ⭐ Star this repository
-- 📺 Subscribe to [YouTube](https://youtube.com/@alienkrishnorg)
-- 💬 Join [Telegram](https://t.me/nullxvoid)
-- 📸 Follow [Instagram](https://www.instagram.com/alienkrishn)
+- 🐛 Report issues responsibly
+- 📢 Share with security communities
+- 💰 Join us on Telegram @nullxvoid
 
-## 📜 License
-BSD 3-Clause (Same as Alienkrishn) - [View License](LICENSE)
+[View Complete Package List »](PACKAGES.md)
+
+<div align="center">
+  <sub>Built with ❤️ for security researchers | Termux-optimized builds</sub>
+</div>
