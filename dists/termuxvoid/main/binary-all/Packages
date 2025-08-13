@@ -1435,18 +1435,25 @@ SHA256: ac67fe743dde100b51bfb3b10b6e5aeda6eb136dc787ce659948362ca8f85cec
 SHA512: 3abf72d3b682bb8764f297a0a7b42e5aa2c7c2729632039a15d1df0242f5d006daa9e76494b1f880fab8e510c5dcc1cf66a698926b4b1f1bb3d7efddf0e3d19c
 
 Package: zaproxy
-Version: 2.16.0
+Version: 2.16.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
+Depends: openjdk-21, python, tar
+Section: security
+Priority: optional
 Homepage: https://www.zaproxy.org/
-Depends: tar, curl, openjdk-21
-Description: Integrated penetration testing tool for finding vulnerabilities in web applications
+Description: OWASP Zed Attack Proxy
+ Web application security scanner with:
+ - Automated scanning
+ - REST API
+ - Browser integration
+ - Plugins support
 Filename: dists/termuxvoid/main/binary-all/zaproxy.deb
-Size: 55636
-MD5Sum: 48a9079a2259e4a9fa835d0ed94d8146
-SHA1: 4d2673f456f73c677d16dd65073817119566b2db
-SHA256: 0e8c0a3cd8b45f23ccdb12604af0e09aed6977b15690211aa0cb3822b7cc94e5
-SHA512: c7ac7aaf8c50c55b35b6984aaf85fa0449572da6ec9b28b5f352723362ba819298f0772224107013c71e2b1c146d36d282429b1ee9720bab4f5fb4ea9e295a89
+Size: 55732
+MD5Sum: 0bea335abbc01487dea659f26ab486f2
+SHA1: eb32f0dd1e4e0b89f7f81bb7595b3a0bf678ef71
+SHA256: 06362980d6b98e51917c35f83f8e5c68f7ea32434d0424ee3f31889f38ec9ec1
+SHA512: 9b29bad30df6b383a3ef523f9489c259905ec97070c8561ee4716c33e9c1559b5a408fdc720fa9e81df37f8a42d609934af7b968891b2e08e42343d313cfa8ca
 
 Package: zipcracker
 Version: 1.0

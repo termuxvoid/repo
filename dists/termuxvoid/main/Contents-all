@@ -29568,6 +29568,5 @@ data/data/com.termux/files/usr/bin/webserver                                    
 data/data/com.termux/files/usr/bin/websploit-installer                           websploit
 data/data/com.termux/files/usr/bin/weeman                                        weeman
 data/data/com.termux/files/usr/bin/weeman-installer                              weeman
-data/data/com.termux/files/usr/share/applications/zap.desktop                    zaproxy
 data/data/com.termux/files/usr/share/pixmaps/zap.png                             zaproxy
 data/data/com.termux/files/usr/bin/zipcracker                                    zipcracker
