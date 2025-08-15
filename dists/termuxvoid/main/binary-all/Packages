@@ -490,6 +490,26 @@ SHA1: cb37f8fc57bc3d7bb7004b34c7935cef9b567c74
 SHA256: 84c2ca6e2989a23f5f68ce827baf23855508059ab7497996d4b7b7e8a24d6b39
 SHA512: 544d855759971f7b1d95001d9d927a7c34c83f23ccc95965f714ce3a9358984ba91c5bf257c7732d23f4bebe74212d8ee95108dfd28948df1ea0046c3c4b60e3
 
+Package: hashid
+Version: 3.1.4
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python, python-pip
+Section: security
+Priority: optional
+Homepage: https://github.com/psypanda/hashID
+Description: Advanced hash identifier
+ Identifies 300+ hash types including:
+ - Common cryptographic hashes
+ - Database passwords
+ - Application-specific hashes
+Filename: dists/termuxvoid/main/binary-all/hashid.deb
+Size: 1104
+MD5Sum: 7df2a9bcbe5c627fd9f9b56423c36410
+SHA1: 7b8e98950ed190791e8d94f274d3fa0db9f7b0cd
+SHA256: 5b34c9e6984a0fbfbb7dfe5fadeab4bacf206ba32afca06aa5b92986a552dc16
+SHA512: 9ac36a07b5498b92d0011047a4e6aa6fcf9fbdc3081689e8d9e661810bbdd06f9e7f4253973faa63bf8457772f2507b8754960abf8385ca4a3d3e3bb6c83a786
+
 Package: hatcloud
 Version: 1.0.0
 Architecture: all
@@ -757,18 +777,18 @@ SHA256: 1939636340e8ee5655d4fa5570ca7f9e41eb5de5809fab829d34e4ee5825c7f4
 SHA512: 27916c92a37ec09b3104a6c33af1e96a819905085aef076ccbbf6f26b66b78a7e91e0d9dcbdb6eba4493614b08947c5c81add8164fb8565e2c1352001c1def12
 
 Package: nethunter-cli
-Version: 2025.1
+Version: 2025.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: proot-distro
 Homepage: https://anon4you.github.io/kalilinux/
 Description: A simple Bash script to install Kali Linux on Termux
 Filename: dists/termuxvoid/main/binary-all/nethunter-cli.deb
-Size: 1480
-MD5Sum: 968f2b515d704c52d547f99743c45c3b
-SHA1: 4e0fbe9444355d032ee274c5cc14b2363a32176f
-SHA256: ec9239eeb2cd019a5ccb9b20dfdab85623deea0bc20f267a7f1f921af1ac844f
-SHA512: 479a61bf499f2490e010911d998190240303d4b705c1f5b6b0fdcc67d3dcb215519e771ae7f7173502890a6a8ef479892b1c21d77b435622f02d48c237649ab0
+Size: 1468
+MD5Sum: f176e41c2b958d4eadb89fceb83514e6
+SHA1: a8ebbe16ba4fae28c13a3ed2e2f25b45297b07d1
+SHA256: fb0e7d5c360d57748a17325a8c6d985d1e046c638d9d7a12830b655abdf41344
+SHA512: 69ea6fdb37abeba4aff82ac8fdaf2d46119338b18a6f92b5a0ae47b600533909c40a1fc91528c0bf6729b2457e5aa9c3a1eea3a245a21441ad16552265f4bd36
 
 Package: ngrok
 Version: 3.4.1
@@ -1223,18 +1243,18 @@ SHA256: e60cd79cd9c02be965bd2107f5adafd673c60f016a7218ebe002cfbcca75b70b
 SHA512: 2d3950f627f0ac42008fc733d9c43098dc67fbc62f9cd5d09191dc2cf5f7a407d1e0f09b218cf65464758c0a1277ded2a8c5163c98772a3a4dae19d65d3d1947
 
 Package: termux-desktop
-Version: 1.0.5
+Version: 1.0.6
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: termux-am,xfce4,xfce4-terminal,xwayland,xfce4-whiskermenu-plugin,firefox,neovim,termux-x11-nightly,dbus,termux-desktop-wallpapers,xfce4-goodies
-Installed-Size: 68792
+Installed-Size: 70785
 Description: termux xfce4 desktop gui with Hacker themes and icona
 Filename: dists/termuxvoid/main/binary-all/termux-desktop.deb
-Size: 8109020
-MD5Sum: ccd4e981aff6452063d870e9bed8bdde
-SHA1: cc8f0b028ad1ce28a3bb9e98a9678ff1ae4a4e44
-SHA256: c4e3e1f9ff5734b6a46772bc52612bcd3b9387ed5bdb73bcbfb3ccf5aab04d33
-SHA512: 0d4236cd9d45bc82b2300fc2845eb65fb3e158ded820ce3678ea7f371369a2aa9b101d630cc3300ef7b206f73a9fb8fe26a8a7df1d04b5c587cd735b9daf94c2
+Size: 9267668
+MD5Sum: 805ab3a7cd67b97d61494d586c1ff006
+SHA1: 841b3db516948c1a2d0b68072d40d3ef555f981d
+SHA256: 18cf66bb9238f3ae7419604bbfd8b0313b99b5c04761364b78e2f3f6cdc7f03c
+SHA512: 38aa914757f713116a9df74dc4f517871279034e9dd6023f798ec5989bd1cc1fa60d7c35b3aad0227660a98766cf06aff3139483c573f6cc1d3a019705417a3d
 
 Package: termux-media-downloader
 Version: 2.1
