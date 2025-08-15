@@ -1138,19 +1138,25 @@ SHA256: 6209b63fd9b2f07ddb115f0f5d322105e1521898ce282c5780890eefa9c4022a
 SHA512: a1f8727921c2d2856ebaf7694ec83d738144eec14ffe7573e5705a0c7a9bea70972128ecf02c1d677ed3cfdf60ca3b3c93fd5603fb1c7c50e6812d193f97d14f
 
 Package: sqlmap
-Version: 1.9
+Version: 1.9.8.5
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git,python
-Homepge: https://sqlmap.org/
-Installed-Size: 1
-Description: Automatic SQL injection and database takeover tool
+Depends: git, python
+Section: security
+Priority: optional
+Homepage: http://sqlmap.org/
+Description: Automatic SQL injection tool
+ Detects and exploits SQL injection vulnerabilities with:
+ - Database fingerprinting
+ - Data extraction
+ - Password cracking
+ - Automatic takeover of DB servers
 Filename: dists/termuxvoid/main/binary-all/sqlmap.deb
-Size: 1508
-MD5Sum: 5e904f7d010601c21a2072c22d719653
-SHA1: 3720c69f143315b2d6d030d66b22ae3695776c62
-SHA256: 61dac6162482b15e06962c588d7fee9f1085da9f695414ba31d3e9e2fcdd0410
-SHA512: 457b93637a6d1b4cf24ac341e5cc484416e207e0377fb2cb0d467b57097d23133e991c4c082eff44fa35013e691d994db53b23b5bb9ff92c864c2a4164ff37fd
+Size: 1200
+MD5Sum: 5dc227ddfad2f71907fcb3e1153ab8ca
+SHA1: 98597d070f4189ed5c3e2f012006e31eeefe04a5
+SHA256: 8863853fc4f20e547b77766a18b7a0151fe2f47f0228e5eb84a61a45f68f662c
+SHA512: 5b204d1bac5785226526b0336aa45a325094c0f7f66af43f1b386f8b76181aa9289d2d16b7484f6e580f63631fc5619db4efede90b36cbdb4a0dd8738963875a
 
 Package: sqlscan
 Version: 1

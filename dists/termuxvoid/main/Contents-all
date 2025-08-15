@@ -541,7 +541,6 @@ data/data/com.termux/files/usr/lib/spider/main.py                               
 data/data/com.termux/files/usr/lib/spider/report/report.py                       spider
 data/data/com.termux/files/usr/lib/spider/report/reporter.py                     spider
 data/data/com.termux/files/usr/lib/spider/report/requirements.txt                spider
-data/data/com.termux/files/usr/bin/sqlmap                                        sqlmap
 data/data/com.termux/files/usr/bin/term-helper                                   term-helper
 data/data/com.termux/files/usr/bin/tsfconsole                                    termsploit
 data/data/com.termux/files/usr/share/backgrounds/termux-desktop-wallpapers/demon_slayer.png termux-desktop-wallpapers
