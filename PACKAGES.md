@@ -59,6 +59,7 @@ This repository provides specialized security and penetration testing tools for 
 | zipcracker | ZIP archive password recovery |
 | fuckyou    | Custom password list generator |
 | cupp       | Targeted wordlist generator |
+| hashid     | Advanced hash identifier |
 | hashcat    | Advanced password recovery |
 | john       | John the Ripper password cracker |
 | thc-hydra  | Network login cracker |
@@ -83,6 +84,7 @@ This repository provides specialized security and penetration testing tools for 
 ### 📱 Reverse engineering 
 | Tool       | Description                          |
 |------------|--------------------------------------|
+| appshark   | Static analysis tool for Android apps |
 | androdos   | Android stress testing tool |
 | androvirus | Collection of Android test viruses |
 | apkeditor  | APK modification tool |
@@ -98,6 +100,7 @@ This repository provides specialized security and penetration testing tools for 
 ### 🎭 Social Engineering
 | Tool       | Description                          |
 |------------|--------------------------------------|
+| storm-breaker | Social Engineering Toolkit |
 | beef       | Browser Exploitation Framework |
 | instajack  | Instagram account toolkit |
 | setoolkit  | Social-Engineer Toolkit |

@@ -28,17 +28,17 @@ SHA512: a7e7f059ec2d2b837a57fa65703e74e5937368320cccdff632d7b2bde418b0bac249bfd4
 
 Package: alienkrishn
 Architecture: all
-Version: 2.0.3
+Version: 2.0.4
 Homepage: https://t.me/nullxvoid
 Depends: termux-tools, curl
 Maintainer: Alienkrishn [Anon4You]
 Description: TermudVoid Package manager
 Filename: dists/termuxvoid/main/binary-all/alienkrishn.deb
-Size: 3372
-MD5Sum: ef52fa64b2568bc6adb42128184bf03f
-SHA1: b47b453747837eeb1a8de82f89ead96d6bd8b15f
-SHA256: 5317e8210c48be2671cfe9d170e75fe76ec7542aac28866ada54bf19996b66f9
-SHA512: ba1e470b466a69d807115d9e710ae2e09b59cc88ba194540ca0813744de1d694d430292e5dad5e56b6d03a86c310a31532bbde711fbf4983d5f48eda650f97bc
+Size: 3356
+MD5Sum: 9d80c46a1f88b308453e0ada6fd64e75
+SHA1: b9265309442cac4c058016db4f24d34a405cb460
+SHA256: 45cd5d99a204a1b465791239a4f489c411e650382af906ed9b778291771409a7
+SHA512: 4837f2c09e8857fcf7665211283b8cbb3afefc9d6a339bf8d46d6842e12c1fa4e6f3233cebc85c2f23004d1314c0496f47ba929749529ec7dd6d50964c736c5e
 
 Package: androdos
 Version: 1.0.0
@@ -1171,6 +1171,26 @@ MD5Sum: 44d1809e60cc1d1fb2aeb37d74fe4d34
 SHA1: 56fa9152b73c716dd9405bdeabe5437fab03057d
 SHA256: fd52172f3aaa800f1fd0343aa6b18fc6b67d5d418271f21900c57d7705affbd0
 SHA512: e4ee7d0801afa22deb51da806df551ca876b33a31687ae1de0787a347ab7ea2e3c901deab834fc3f84184137c8f7dd17a1592321883d111d9cf7b61675322171
+
+Package: storm-breaker
+Version: 1.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python, php
+Section: security
+Priority: optional
+Homepage: https://github.com/ultrasecurity/Storm-Breaker
+Description: Social Engineering Toolkit
+ Advanced phishing tool with:
+ - Multiple attack vectors
+ - Credential harvesting
+ - Automated payload generation
+Filename: dists/termuxvoid/main/binary-all/storm-breaker.deb
+Size: 1312
+MD5Sum: 3eb5219efa0fc85f6c47b313aa435df0
+SHA1: d101f9cb52b5bbc4284e0eef3cc294b89fa6165c
+SHA256: a93d3ae38b78d02965d4924c2a917f2f362634bd14b67633815e942633001acb
+SHA512: 02ae01d044040918c5bef88d52367011f02ce756f986e605480a54b898a52907093f6f8773a3de62ab7ce5ca1a1758ec315a979a9d5b15afec13e9641f53495d
 
 Package: subfinder
 Version: 2.7.0
