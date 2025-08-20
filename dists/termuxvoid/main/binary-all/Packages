@@ -55,18 +55,25 @@ SHA256: 51e84baf09d610ef29ebe83d7f9aca9127b931f5b70562b729d2f12d89081732
 SHA512: 697cdf3bd16345f8177c63fdb08f124328d1af65bee59a50c1f17d5b757b14e9baceca51739f4611e076fde6b6acba59d96ef580dff059aebf5bc05e5bafe337
 
 Package: android-sdk
+Version: 35.0.0
 Architecture: all
-Version: 13114758-patch
-Maintainer: Alienkishn [Anon4You]
-Homepage: https://developer.android.com/tools 
-Depends: wget, openjdk-17, gradle, kotlin, aapt2
-Description: Official command line Integrated Development Environment (IDE) for Android app Development
+Maintainer: Alienkrishn [Anon4You]
+Depends: openjdk-21, p7zip, gradle, curl
+Section: development
+Priority: optional
+Homepage: https://github.com/Keyaru-code/android-sdk-termux
+Description: Android SDK and NDK for Termux
+ Complete Android development environment with:
+ - SDK tools and platform-tools
+ - Android NDK
+ - Java development kit
+ - Environment configuration
 Filename: dists/termuxvoid/main/binary-all/android-sdk.deb
-Size: 2092
-MD5Sum: 3b05f76b6ad017d5f3cb8db673b6ad76
-SHA1: ce614611caed7248e1dc9d3b492f0ad6786bdd77
-SHA256: d8211d39edceac19e3653b734a7fa3919a2e1be901fb2952139028dd6837548b
-SHA512: 5d2aa3ecab8ddf4db1d5e08c2f322524d5244ce4b91bceca8e0e0da534bce60d15006ad4ec2a1fc7b2e58930180b9b62c34eae5285b3fef56da6950eb4cd6471
+Size: 2848
+MD5Sum: f605a78b2ac783a11ec4e927dc6388bb
+SHA1: 9c4a0008ad247ead0cab363b175e1635c75d73c3
+SHA256: c3d9c96be707eceb32dedb349050a7641817f3c8f68940ba28df26655f5acc82
+SHA512: 81d0b4e0a408e75a661b4b1a40433230c6ba5548cf2790708418e8c7bddc1eca4ccb93a3d48616809e427b315a1ccc468c657dcc381eb275e28c0263a2d000af
 
 Package: androvirus
 Version: 3.0
