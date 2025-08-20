@@ -29569,6 +29569,14 @@ data/data/com.termux/files/usr/share/themes/Termux-Desktop-SweetDark/gtk-2.0/ass
 data/data/com.termux/files/usr/share/themes/Termux-Desktop-SweetDark/gtk-2.0/assets/radio-unchecked-hover.png termux-desktop
 data/data/com.termux/files/usr/share/themes/Termux-Desktop-SweetDark/gtk-2.0/assets/radio-unchecked-insensitive.png termux-desktop
 data/data/com.termux/files/usr/share/themes/Termux-Desktop-SweetDark/gtk-2.0/assets/radio-unchecked.png termux-desktop
+data/data/com.termux/files/usr/bin/termux-penv                                   termux-penv
+data/data/com.termux/files/usr/bin/tp                                            termux-penv
+data/data/com.termux/files/usr/share/termux-penv/termux32.sh                     termux-penv
+data/data/com.termux/files/usr/share/termux-penv/termux32login.sh                termux-penv
+data/data/com.termux/files/usr/share/termux-penv/termux32remove.sh               termux-penv
+data/data/com.termux/files/usr/share/termux-penv/termux64.sh                     termux-penv
+data/data/com.termux/files/usr/share/termux-penv/termux64login.sh                termux-penv
+data/data/com.termux/files/usr/share/termux-penv/termux64remove.sh               termux-penv
 data/data/com.termux/files/usr/bin/the-theif                                     the-theif
 data/data/com.termux/files/usr/share/the-theif/apks/fb.apk                       the-theif
 data/data/com.termux/files/usr/share/the-theif/apks/ig.apk                       the-theif
