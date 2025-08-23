@@ -62,6 +62,7 @@ This repository provides specialized security and penetration testing tools for 
 | hashid     | Advanced hash identifier |
 | hashcat    | Advanced password recovery |
 | john       | John the Ripper password cracker |
+| kerbrute   | Kerberos brute force and enumeration tool |
 | thc-hydra  | Network login cracker |
 
 ### 🌐 Web Security

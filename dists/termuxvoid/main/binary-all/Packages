@@ -694,6 +694,27 @@ SHA1: 607d60001e49ae5c6fba93157cc0a87fca46128b
 SHA256: e37fef1440ea59af8f62793718a3d8744dfeb341066dc0b74a0f15c077139b23
 SHA512: 33bcddd83872a46d36a5fbb52889558f848445d48c7e8af1524bf520a627119adb227fd17e7393e784a3f59b30ec8c0556c60eb8a566cbf4302f9d4533fc7b98
 
+Package: kerbrute
+Version: 1.0.3
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, golang, make
+Section: security
+Priority: optional
+Homepage: https://github.com/ropnop/kerbrute
+Description: Kerberos brute force and enumeration tool
+ Fast Kerberos pre-auth brute forcing with:
+ - User enumeration
+ - Password spraying
+ - AS-REP roasting
+ - Performance optimization
+Filename: dists/termuxvoid/main/binary-all/kerbrute.deb
+Size: 1520
+MD5Sum: bb3ee775626d73105d08ed1098c0416f
+SHA1: 6bab107618a5cb0478679998b47f53af5a3a98f5
+SHA256: 707bfdc3f38762e2e388992cd7e28b9dc322d179323b9cfe7b5d19832d43689c
+SHA512: 9cf51245565022642dd0a4f9ae945275ed08e0308008ad1975e620584dbc76145ab3de52488e70eedc30029dd9ab87bbbbfd3cc8f5ec322d3f279ecd4930f198
+
 Package: keysigner
 Version: 4.0
 Architecture: all
