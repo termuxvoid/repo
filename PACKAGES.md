@@ -28,6 +28,7 @@ This repository provides specialized security and penetration testing tools for 
 | vedic | World's first Sanskrit programming language |
 | android-sdk   | Complete Android development toolkit (ADB, Fastboot, etc) |
 | frida         | Dynamic instrumentation toolkit for app analysis |
+| flutter | Google's UI toolkit for building native apps |
 
 ### 🤖 AI & Productivity
 | Tool                   | Description                          |
