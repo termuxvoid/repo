@@ -67,36 +67,43 @@ clean_legacy_repo() {
     fi
 }
 
+# Check if x11-repo is installed and install if needed
+check_install_x11_repo() {
+    if [ -f "$PREFIX/etc/apt/sources.list.d/x11.list" ]; then
+        echo -e "${GREEN}${CHECK} X11 repository is already installed.${RESET}"
+    else
+        echo -e "${YELLOW}${INFO} X11 repository not found, installing...${RESET}"
+        if apt install x11-repo -y > /dev/null 2>&1; then
+            echo -e "${GREEN}${CHECK} X11 repository installed successfully!${RESET}"
+        else
+            echo -e "${YELLOW}${WARN} Failed to install X11 repository, but continuing...${RESET}"
+        fi
+    fi
+}
+
 # Main script execution
 clear
 display_logo
 echo -e "${INFO} This script will:"
 echo -e "  • Check for legacy repositories"
-echo -e "  • Install required dependencies"
+echo -e "  • Install X11 repository if needed"
 echo -e "  • Add the TermuxVoid repository"
+echo -e "  • Download and install the GPG key"
 echo -e "  • Configure package management"
 echo -e "  • Update your package list${RESET}"
 
 # Clean legacy repository first
 clean_legacy_repo
 
-# Install dependencies
-run_command "Installing dependencies" "apt install gnupg curl x11-repo -y"
+# Check and install x11-repo if needed
+check_install_x11_repo
 
 # Add TermuxVoid repository
 run_command "Creating repository directory" "mkdir -p \$PREFIX/etc/apt/sources.list.d"
 run_command "Adding TermuxVoid repository" "echo 'deb [trusted=yes arch=all] https://termuxvoid.github.io/repo termuxvoid main' > \$PREFIX/etc/apt/sources.list.d/termuxvoid.list"
 
-# Add repository key
-run_command "Adding GPG key" "curl -sL https://termuxvoid.github.io/repo/termuxvoid.key | apt-key add -"
-
-# Organize GPG keys
-echo -e "${YELLOW}${INFO} Organizing GPG keys...${RESET}"
-if mv $PREFIX/etc/apt/trusted.gpg $PREFIX/etc/apt/trusted.gpg.d/termuxvoid.gpg > /dev/null 2>&1; then
-    echo -e "${GREEN}${CHECK} GPG keys organized successfully!${RESET}"
-else
-    echo -e "${YELLOW}${WARN} GPG key organization not required, continuing...${RESET}"
-fi
+# Download and install GPG key directly
+run_command "Downloading GPG key" "curl -sL https://termuxvoid.github.io/repo/termuxvoid.gpg -o \$PREFIX/etc/apt/trusted.gpg.d/termuxvoid.gpg"
 
 # Update repositories
 run_command "Updating package repositories" "apt update -y"
