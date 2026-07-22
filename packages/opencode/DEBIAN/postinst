@@ -2,7 +2,7 @@
 set -e
  
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="1.18.3"
+VERSION="1.18.4"
 TARFILE="opencode-linux-arm64.tar.gz"
 DOWNLOAD_URL="https://github.com/anomalyco/opencode/releases/download/v${VERSION}/${TARFILE}"
 
@@ -25,54 +25,43 @@ fi
 mv "$SHARE_DIR/opencode" "$REAL_BIN"
 chmod +x "$REAL_BIN"
 
-# Write wrapper source
-cat > "$TMPDIR/opencode_helper.c" << 'EOF'
-#include <stdlib.h>
+# Write C++ wrapper source
+cat > "$TMPDIR/opencode_wrapper.cpp" << 'EOF'
 #include <unistd.h>
-#include <string.h>
-#include <libgen.h>
-#include <limits.h>
-#include <stdio.h>
+#include <cstdlib>
 
-int main(int argc, char** argv) {
-    unsetenv("LD_PRELOAD");
-    unsetenv("LD_LIBRARY_PATH");
+constexpr const char* REAL_BIN = "/data/data/com.termux/files/usr/share/opencode/opencode.real";
+constexpr const char* GLIBC_LIB = "/data/data/com.termux/files/usr/glibc/lib";
+constexpr const char* GLIBC_LD = "/data/data/com.termux/files/usr/glibc/lib/ld-linux-aarch64.so.1";
+constexpr const char* CERT_FILE = "/data/data/com.termux/files/usr/etc/tls/cert.pem";
 
+int main(int argc, char* argv[]) {
+    setenv("LD_LIBRARY_PATH", GLIBC_LIB, 1);
     setenv("GODEBUG", "netdns=cgo", 1);
-    setenv("SSL_CERT_FILE", "/data/data/com.termux/files/usr/etc/tls/cert.pem", 1);
+    setenv("SSL_CERT_FILE", CERT_FILE, 1);
 
-    char* loader = "/data/data/com.termux/files/usr/glibc/lib/ld-linux-aarch64.so.1";
-    char real_bin[] = "/data/data/com.termux/files/usr/share/opencode/opencode.real";
-    char lib_path[] = "/data/data/com.termux/files/usr/glibc/lib";
-
-    char** new_argv = malloc((argc + 4) * sizeof(char*));
-    if (!new_argv) {
-        return 1;
-    }
-
-    new_argv[0] = loader;
+    const char* new_argv[argc + 4];
+    new_argv[0] = GLIBC_LD;
     new_argv[1] = "--library-path";
-    new_argv[2] = lib_path;
-    new_argv[3] = real_bin;
-
-    for (int i = 1; i < argc; i++) {
+    new_argv[2] = GLIBC_LIB;
+    new_argv[3] = REAL_BIN;
+    for (int i = 1; i < argc; ++i) {
         new_argv[i + 3] = argv[i];
     }
-    new_argv[argc + 3] = NULL;
+    new_argv[argc + 3] = nullptr;
 
-    execv(loader, new_argv);
-    perror("execv");
-    free(new_argv);
+    execv(GLIBC_LD, const_cast<char* const*>(new_argv));
+    perror("execv failed");
     return 1;
 }
 EOF
 
-# Compile wrapper
-clang -O2 -o "$BIN_DIR/opencode" "$TMPDIR/opencode_helper.c"
+# Compile C++ wrapper
+clang++ -O2 -o "$BIN_DIR/opencode" "$TMPDIR/opencode_wrapper.cpp"
 chmod +x "$BIN_DIR/opencode"
 
 # Clean up temporary source
-rm -f "$TMPDIR/opencode_helper.c"
+rm -f "$TMPDIR/opencode_wrapper.cpp"
 
 echo "OpenCode $VERSION installed successfully."
 echo "Run 'opencode' to start."

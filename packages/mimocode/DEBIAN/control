@@ -9,4 +9,4 @@ Homepage: https://github.com/XiaomiMiMo/MiMo-Code
 Description: AI‑powered coding assistant (glibc wrapper for Termux)
  MiMo‑Code is an intelligent code completion and generation tool.
  This package downloads the official Linux ARM64 or x86_64 binary
- and runs it inside the Termux glibc environment.
+ and runs it inside the Termux glibc environment. Wrapper improved by @ykrishhh.

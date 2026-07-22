@@ -39,54 +39,42 @@ fi
 mv "$SHARE_DIR/mimo" "$REAL_BIN"
 chmod +x "$REAL_BIN"
 
-# Write wrapper C source (same as opencode, with dynamic loader)
-cat > "$TMPDIR/mimocode_helper.c" << 'EOF'
-#include <stdlib.h>
+# Write C++ wrapper source
+cat > "$TMPDIR/mimocode_wrapper.cpp" << EOF
 #include <unistd.h>
-#include <string.h>
-#include <stdio.h>
+#include <cstdlib>
 
-int main(int argc, char** argv) {
-    unsetenv("LD_PRELOAD");
-    unsetenv("LD_LIBRARY_PATH");
+constexpr const char* REAL_BIN = "$REAL_BIN";
+constexpr const char* GLIBC_LIB = "$LIB_PATH";
+constexpr const char* GLIBC_LD = "$LOADER";
+constexpr const char* CERT_FILE = "/data/data/com.termux/files/usr/etc/tls/cert.pem";
 
+int main(int argc, char* argv[]) {
+    setenv("LD_LIBRARY_PATH", GLIBC_LIB, 1);
     setenv("GODEBUG", "netdns=cgo", 1);
-    setenv("SSL_CERT_FILE", "/data/data/com.termux/files/usr/etc/tls/cert.pem", 1);
+    setenv("SSL_CERT_FILE", CERT_FILE, 1);
 
-    char* loader = LOADER_PLACEHOLDER;
-    char real_bin[] = "/data/data/com.termux/files/usr/share/mimocode/mimo.real";
-    char lib_path[] = "/data/data/com.termux/files/usr/glibc/lib";
-
-    char** new_argv = malloc((argc + 4) * sizeof(char*));
-    if (!new_argv) {
-        return 1;
-    }
-
-    new_argv[0] = loader;
+    const char* new_argv[argc + 4];
+    new_argv[0] = GLIBC_LD;
     new_argv[1] = "--library-path";
-    new_argv[2] = lib_path;
-    new_argv[3] = real_bin;
-
-    for (int i = 1; i < argc; i++) {
+    new_argv[2] = GLIBC_LIB;
+    new_argv[3] = REAL_BIN;
+    for (int i = 1; i < argc; ++i) {
         new_argv[i + 3] = argv[i];
     }
-    new_argv[argc + 3] = NULL;
+    new_argv[argc + 3] = nullptr;
 
-    execv(loader, new_argv);
-    perror("execv");
-    free(new_argv);
+    execv(GLIBC_LD, const_cast<char* const*>(new_argv));
+    perror("execv failed");
     return 1;
 }
 EOF
 
-# Replace placeholder with actual loader path
-sed -i "s|LOADER_PLACEHOLDER|\"$LOADER\"|g" "$TMPDIR/mimocode_helper.c"
-
-# Compile wrapper
-clang -O2 -o "$BIN_DIR/mimo" "$TMPDIR/mimocode_helper.c"
+# Compile C++ wrapper
+clang++ -O2 -o "$BIN_DIR/mimo" "$TMPDIR/mimocode_wrapper.cpp"
 chmod +x "$BIN_DIR/mimo"
 
-rm -f "$TMPDIR/mimocode_helper.c"
+rm -f "$TMPDIR/mimocode_wrapper.cpp"
 
 echo "MiMo‑Code $VERSION installed successfully."
 echo "Run 'mimo' to start."

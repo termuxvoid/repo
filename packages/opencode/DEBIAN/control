@@ -1,5 +1,5 @@
 Package: opencode
-Version: 1.18.3
+Version: 1.18.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, python, curl, tar
@@ -8,5 +8,5 @@ Priority: optional
 Homepage: https://opencode.ai/
 Description: AI‑powered coding assistant (glibc version)
  OpenCode provides real‑time code completions and AI assistance.
- This package uses the glibc build and includes a wrapper to run
- inside Termux’s glibc environment.
+ This package uses the glibc build and includes a C++ wrapper to run
+ inside Termux’s glibc environment. Wrapper improved by @ykrishhh.
