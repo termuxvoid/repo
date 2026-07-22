@@ -1,0 +1,11 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# OpenCode prerm - cleanup on uninstall
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+
+echo "Removing OpenCode files..."
+rm -f "$PREFIX/bin/opencode"
+rm -rf "$PREFIX/share/opencode"
+
+echo "OpenCode removed."
+exit 0

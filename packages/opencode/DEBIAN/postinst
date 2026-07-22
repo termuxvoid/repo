@@ -1,42 +1,81 @@
 #!/data/data/com.termux/files/usr/bin/bash
-set -e
- 
+set -euo pipefail
+
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
 VERSION="1.18.4"
+SHA256="$(curl -fsSL "https://github.com/anomalyco/opencode/releases/download/v${VERSION}/SHA256SUMS" 2>/dev/null | grep "opencode-linux-arm64.tar.gz" | cut -d' ' -f1 || echo "")"
 TARFILE="opencode-linux-arm64.tar.gz"
 DOWNLOAD_URL="https://github.com/anomalyco/opencode/releases/download/v${VERSION}/${TARFILE}"
 
 SHARE_DIR="$PREFIX/share/opencode"
 BIN_DIR="$PREFIX/bin"
-LOADER="$PREFIX/glibc/lib/ld-linux-aarch64.so.1"
 REAL_BIN="$SHARE_DIR/opencode.real"
 LIB_PATH="$PREFIX/glibc/lib"
+LOADER="$LIB_PATH/ld-linux-aarch64.so.1"
+VERSION_FILE="$SHARE_DIR/VERSION"
 
-# Create directories
+# Skip if already installed
+if [ -f "$VERSION_FILE" ] && [ "$(cat "$VERSION_FILE")" = "$VERSION" ]; then
+    echo "OpenCode $VERSION already installed."
+    exit 0
+fi
+
 mkdir -p "$SHARE_DIR" "$BIN_DIR"
 
-# Download and extract
+# Download and verify
 echo "Downloading opencode ${VERSION}..."
-curl -fsSL "$DOWNLOAD_URL" | tar -xz -C "$SHARE_DIR"
+TMP_TAR="$TMPDIR/${TARFILE}"
+curl -fsSL -o "$TMP_TAR" "$DOWNLOAD_URL"
+
+# Verify checksum if available
+if [ -n "$SHA256" ]; then
+    ACTUAL_SHA256=$(sha256sum "$TMP_TAR" | cut -d' ' -f1)
+    if [ "$ACTUAL_SHA256" != "$SHA256" ]; then
+        echo "Error: checksum mismatch for $TARFILE" >&2
+        echo "Expected: $SHA256" >&2
+        echo "Got: $ACTUAL_SHA256" >&2
+        rm -f "$TMP_TAR"
+        exit 1
+    fi
+fi
+
+# Backup old binary
+[ -f "$REAL_BIN" ] && mv "$REAL_BIN" "${REAL_BIN}.bak"
+
+# Extract
+tar -xzf "$TMP_TAR" -C "$SHARE_DIR"
 if [ ! -f "$SHARE_DIR/opencode" ]; then
     echo "Error: opencode binary not found after extraction." >&2
+    rm -f "$TMP_TAR"
     exit 1
 fi
 mv "$SHARE_DIR/opencode" "$REAL_BIN"
 chmod +x "$REAL_BIN"
+rm -f "$TMP_TAR"
 
-# Write C++ wrapper source
-cat > "$TMPDIR/opencode_wrapper.cpp" << 'EOF'
+# Write version
+echo "$VERSION" > "$VERSION_FILE"
+
+# Write C++ wrapper source (internal binary)
+cat > "$TMPDIR/opencode_wrapper.cpp" << WRAPPER_EOF
 #include <unistd.h>
 #include <cstdlib>
+#include <cstdio>
+#include <cerrno>
+#include <cstring>
 
-constexpr const char* REAL_BIN = "/data/data/com.termux/files/usr/share/opencode/opencode.real";
-constexpr const char* GLIBC_LIB = "/data/data/com.termux/files/usr/glibc/lib";
-constexpr const char* GLIBC_LD = "/data/data/com.termux/files/usr/glibc/lib/ld-linux-aarch64.so.1";
+constexpr const char* REAL_BIN = "${REAL_BIN}";
+constexpr const char* GLIBC_LIB = "${LIB_PATH}";
+constexpr const char* GLIBC_LD = "${LOADER}";
 constexpr const char* CERT_FILE = "/data/data/com.termux/files/usr/etc/tls/cert.pem";
 
 int main(int argc, char* argv[]) {
-    setenv("LD_LIBRARY_PATH", GLIBC_LIB, 1);
+    if (argc > 10000) {
+        fprintf(stderr, "opencode: too many arguments\n");
+        return 1;
+    }
+    // ponytail: unset LD_LIBRARY_PATH, --library-path provides correct path
+    unsetenv("LD_LIBRARY_PATH");
     setenv("GODEBUG", "netdns=cgo", 1);
     setenv("SSL_CERT_FILE", CERT_FILE, 1);
 
@@ -45,23 +84,56 @@ int main(int argc, char* argv[]) {
     new_argv[1] = "--library-path";
     new_argv[2] = GLIBC_LIB;
     new_argv[3] = REAL_BIN;
-    for (int i = 1; i < argc; ++i) {
+    for (int i = 1; i < argc; ++i)
         new_argv[i + 3] = argv[i];
-    }
     new_argv[argc + 3] = nullptr;
 
     execv(GLIBC_LD, const_cast<char* const*>(new_argv));
-    perror("execv failed");
-    return 1;
+    int saved = errno;
+    fprintf(stderr, "opencode: execv %s failed: %s\\n", GLIBC_LD, strerror(saved));
+    fprintf(stderr, "Hint: is glibc installed? Run 'pkg install glibc'\\n");
+    return 126;
 }
-EOF
+WRAPPER_EOF
 
-# Compile C++ wrapper
-clang++ -O2 -o "$BIN_DIR/opencode" "$TMPDIR/opencode_wrapper.cpp"
-chmod +x "$BIN_DIR/opencode"
-
-# Clean up temporary source
+# Compile C++ wrapper as internal binary
+clang++ -O2 -o "$SHARE_DIR/opencode.bin" "$TMPDIR/opencode_wrapper.cpp"
+chmod +x "$SHARE_DIR/opencode.bin"
 rm -f "$TMPDIR/opencode_wrapper.cpp"
+
+# Create enhanced shell wrapper with banner
+cat > "$BIN_DIR/opencode" << 'BANNER_EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+# OpenCode with enhanced TUI banner
+# Credits: @ykrishhh for wrapper improvements
+
+VERSION_FILE="/data/data/com.termux/files/usr/share/opencode/VERSION"
+REAL_BIN="/data/data/com.termux/files/usr/share/opencode/opencode.bin"
+
+# Show banner only for interactive TUI (no args or --help)
+if [ $# -eq 0 ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    if [ -t 1 ]; then
+        # Terminal detected - show banner
+        echo ""
+        echo -e "\e[1;36m╔══════════════════════════════════════════════════════════╗\e[0m"
+        echo -e "\e[1;36m║\e[0m\e[1;37m                  ██╗  ██╗ ██████╗ ███████╗\e[0m\e[1;36m               ║\e[0m"
+        echo -e "\e[1;36m║\e[0m\e[1;37m                  ██║  ██║██╔═══██╗██╔════╝\e[0m\e[1;36m               ║\e[0m"
+        echo -e "\e[1;36m║\e[0m\e[1;37m                  ███████║██║   ██║███████╗\e[0m\e[1;36m               ║\e[0m"
+        echo -e "\e[1;36m║\e[0m\e[1;37m                  ██╔══██║██║   ██║╚════██║\e[0m\e[1;36m               ║\e[0m"
+        echo -e "\e[1;36m║\e[0m\e[1;37m                  ██║  ██║╚██████╔╝███████║\e[0m\e[1;36m               ║\e[0m"
+        echo -e "\e[1;36m║\e[0m\e[1;37m                  ╚═╝  ╚═╝ ╚═════╝ ╚══════╝\e[0m\e[1;36m               ║\e[0m"
+        echo -e "\e[1;36m║\e[0m                                                                \e[1;36m║\e[0m"
+        echo -e "\e[1;36m║\e[0m\e[1;33m  🤖 AI-Powered Coding Assistant for Termux\e[0m\e[1;36m                    ║\e[0m"
+        echo -e "\e[1;36m║\e[0m\e[0;37m  Version: $(cat "$VERSION_FILE" 2>/dev/null || echo "unknown") | Platform: Termux/ARM64\e[0m\e[1;36m          ║\e[0m"
+        echo -e "\e[1;36m║\e[0m\e[0;37m  Enhanced wrapper by @ykrishhh | TermuxVoid Repo\e[0m\e[1;36m            ║\e[0m"
+        echo -e "\e[1;36m╚══════════════════════════════════════════════════════════╝\e[0m"
+        echo ""
+    fi
+fi
+
+exec "$REAL_BIN" "$@"
+BANNER_EOF
+chmod +x "$BIN_DIR/opencode"
 
 echo "OpenCode $VERSION installed successfully."
 echo "Run 'opencode' to start."

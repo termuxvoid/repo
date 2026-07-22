@@ -1,0 +1,11 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# MiMo-Code prerm - cleanup on uninstall
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+
+echo "Removing MiMo-Code files..."
+rm -f "$PREFIX/bin/mimo"
+rm -rf "$PREFIX/share/mimocode"
+
+echo "MiMo-Code removed."
+exit 0
