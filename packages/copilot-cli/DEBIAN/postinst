@@ -2,7 +2,7 @@
 set -e
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="1.0.71"
+VERSION="1.0.73"
 TARFILE="copilot-linux-arm64.tar.gz"
 DOWNLOAD_URL="https://github.com/github/copilot-cli/releases/download/v${VERSION}/${TARFILE}"
 
