@@ -2,7 +2,7 @@
 set -e
  
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="1.18.4"
+VERSION="1.18.5"
 TARFILE="opencode-linux-arm64.tar.gz"
 DOWNLOAD_URL="https://github.com/anomalyco/opencode/releases/download/v${VERSION}/${TARFILE}"
 
