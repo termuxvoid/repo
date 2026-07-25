@@ -1,31 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
-LAUNCHER="$PREFIX/bin/brutespray"
-BRUTESPRAY_BIN="$HOME/go/bin/brutespray"
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
-
-echo -e "${GREEN}Installing brutespray...${NC}"
-go install -v github.com/x90skysn3k/brutespray@latest || {
-    echo -e "${RED}Error: Failed to install brutespray. Ensure Go is installed and internet is available.${NC}"
-    exit 1
-}
-
-echo -e "${GREEN}Creating launcher at $LAUNCHER...${NC}"
-cat > "$LAUNCHER" <<- EOF
-#!/data/data/com.termux/files/usr/bin/bash
-$BRUTESPRAY_BIN "\$@"
-EOF
-
-chmod +x "$LAUNCHER" || {
-    echo -e "${RED}Error: Failed to set executable permissions for $LAUNCHER.${NC}"
-    exit 1
-}
-
-if [ -x "$BRUTESPRAY_BIN" ]; then
-    echo -e "${GREEN}brutespray installed successfully. Run 'brutespray -h' to verify.${NC}"
-else
-    echo -e "${RED}Error: brutespray binary not found at $BRUTESPRAY_BIN.${NC}"
-    exit 1
+set -e
+go install -trimpath -ldflags "-w -s" github.com/x90skysn3k/brutespray/v2@v2.6.3
+if [ ! -f "$PREFIX/bin/brutespray" ] && [ -f "$HOME/go/bin/brutespray" ]; then
+    ln -sf "$HOME/go/bin/brutespray" "$PREFIX/bin/brutespray"
 fi
+exit 0

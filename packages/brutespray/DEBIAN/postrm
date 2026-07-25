@@ -1,25 +1,3 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
-LAUNCHER="$PREFIX/bin/brutespray"
-BRUTESPRAY_BIN="$HOME/go/bin/brutespray"
-GO_DIR="$HOME/go"
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
-NC='\033[0m'
-
-echo -e "${GREEN}Uninstalling brutespray...${NC}"
-
-[ -d "$GO_DIR" ] && chmod 751 -R "$GO_DIR"
-
-if [ -f "$LAUNCHER" ]; then
-    rm -f "$LAUNCHER" && echo -e "${GREEN}✓ Removed launcher${NC}" || \
-    echo -e "${RED}✗ Failed to remove launcher${NC}"
-fi
-
-if [ -f "$BRUTESPRAY_BIN" ]; then
-    rm -f "$BRUTESPRAY_BIN" && echo -e "${GREEN}✓ Removed binary${NC}" || \
-    echo -e "${RED}✗ Failed to remove binary (try: rm -f $BRUTESPRAY_BIN)${NC}"
-fi
-
-echo -e "${GREEN}Uninstallation complete${NC}"
+rm -f "$HOME/go/bin/brutespray" "$PREFIX/bin/brutespray"
+exit 0

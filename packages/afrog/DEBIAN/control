@@ -1,5 +1,5 @@
 Package: afrog
-Version: 3.5.3
+Version: 3.5.6
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, golang

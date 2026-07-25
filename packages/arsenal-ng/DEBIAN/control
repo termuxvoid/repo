@@ -1,5 +1,5 @@
 Package: arsenal-ng
-Version: 1.4
+Version: 1.5
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, golang, make
