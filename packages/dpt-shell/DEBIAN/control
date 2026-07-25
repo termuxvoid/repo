@@ -1,5 +1,5 @@
 Package: dpt-shell
-Version: 2.12.0
+Version: 2.15.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, openjdk-21
