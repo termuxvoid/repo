@@ -245,6 +245,7 @@ This repository provides specialized security and penetration testing tools for 
 |------|-------------|
 | [9router](https://termuxvoid.github.io/tool.html?name=9router) | Smart gateway between your tools and 60+ AI providers |
 | [antigravity-cli](https://termuxvoid.github.io/tool.html?name=antigravity-cli) | AI‑powered coding assistant (glibc wrapper for Termux) |
+| [claude-code](https://termuxvoid.github.io/tool.html?name=claude-code) | AI‑powered coding assistant by Anthropic for agentic coding tasks |
 | [copilot-cli](https://termuxvoid.github.io/tool.html?name=copilot-cli) | GitHub Copilot CLI – AI‑powered assistance in your terminal |
 | [hermes-agent](https://termuxvoid.github.io/tool.html?name=hermes-agent) | AI-powered coding assistant and workflow automation tool |\n| [mimocode](https://termuxvoid.github.io/tool.html?name=mimocode) | Autonomous AI engineer that creates, modifies, tests, and deploys code with real file system and shell command execution |
 | [opencode](https://termuxvoid.github.io/tool.html?name=opencode) | AI‑powered coding assistant (glibc version) |

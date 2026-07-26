@@ -128,6 +128,7 @@ graph TD
 | Tool | Description |
 | :--- | :--- |
 | **opencode** | AI-powered coding assistant |
+| **claude-code** | AI-powered coding assistant by Anthropic |
 | **antigravity-cli** | AI coding assistant (glibc wrapper) |
 | **copilot-cli** | GitHub Copilot CLI — AI-powered assistance in your terminal |
 | **mimocode** | Autonomous AI engineer — creates, modifies, tests, deploys code |

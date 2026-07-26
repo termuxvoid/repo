@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+rm -f "$PREFIX/bin/claude"
+rm -rf "$PREFIX/share/claude-code"
+echo "Claude Code completely removed."
+exit 0

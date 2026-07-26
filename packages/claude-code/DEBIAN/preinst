@@ -1,0 +1,10 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+ARCH=$(uname -m)
+if [ "$ARCH" != "aarch64" ]; then
+    echo "Error: claude-code is only available for aarch64 (ARM64) architecture." >&2
+    echo "Your architecture: $ARCH" >&2
+    exit 1
+fi
+
+exit 0

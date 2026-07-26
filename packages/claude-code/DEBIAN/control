@@ -1,0 +1,12 @@
+Package: claude-code
+Version: 2.1.220
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: glibc, clang, curl, tar
+Section: devel
+Priority: optional
+Homepage: https://github.com/anthropics/claude-code
+Description: Claude Code - AI coding assistant by Anthropic
+ Claude Code is an AI-powered coding assistant from Anthropic.
+ This package downloads and installs the official binary release
+ with a glibc wrapper for Termux compatibility.

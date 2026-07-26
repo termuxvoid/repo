@@ -1,0 +1,82 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="2.1.220"
+TARFILE="claude-linux-arm64.tar.gz"
+DOWNLOAD_URL="https://github.com/anthropics/claude-code/releases/download/v${VERSION}/${TARFILE}"
+
+SHARE_DIR="$PREFIX/share/claude-code"
+BIN_DIR="$PREFIX/bin"
+STAGING_DIR="$TMPDIR/claude-staging"
+
+rm -rf "$STAGING_DIR" 2>/dev/null || true
+rm -rf "$SHARE_DIR" 2>/dev/null || true
+mkdir -p "$SHARE_DIR" "$BIN_DIR" "$STAGING_DIR"
+
+echo "Downloading Claude Code ${VERSION}..."
+curl -fsSL -o "$STAGING_DIR/claude.tar.gz" "$DOWNLOAD_URL"
+tar -xzf "$STAGING_DIR/claude.tar.gz" -C "$STAGING_DIR"
+
+if [ ! -f "$STAGING_DIR/claude" ]; then
+    echo "Error: binary not found." >&2
+    exit 1
+fi
+
+mv -f "$STAGING_DIR/claude" "$SHARE_DIR/claude.real"
+chmod +x "$SHARE_DIR/claude.real"
+
+# Write DNS preload script (fixes ETIMEOUT by setting DNS servers)
+DNS_JS="$SHARE_DIR/setdns.js"
+cat > "$DNS_JS" << 'EOF'
+try {
+  require("dns").setServers(["8.8.8.8", "8.8.4.4"]);
+} catch (e) {}
+EOF
+chmod 644 "$DNS_JS"
+
+cat > "$TMPDIR/claude_wrapper.c" << 'EOF'
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
+
+int main(int argc, char** argv) {
+    unsetenv("LD_PRELOAD");
+    unsetenv("LD_LIBRARY_PATH");
+
+    setenv("SSL_CERT_FILE", "/data/data/com.termux/files/usr/etc/tls/cert.pem", 1);
+    setenv("GODEBUG", "netdns=cgo", 1);
+    setenv("GRPC_DNS_RESOLVER", "native", 1);
+    setenv("NODE_OPTIONS", "--dns-result-order=ipv4first", 1);
+    setenv("BUN_GETADDRINFO", "1", 1);
+    setenv("DISABLE_TELEMETRY", "1", 1);
+    setenv("BUN_OPTIONS", "--preload /data/data/com.termux/files/usr/share/claude-code/setdns.js", 1);
+
+    char* loader = "/data/data/com.termux/files/usr/glibc/lib/ld-linux-aarch64.so.1";
+    char real_bin[] = "/data/data/com.termux/files/usr/share/claude-code/claude.real";
+    char lib_path[] = "/data/data/com.termux/files/usr/glibc/lib";
+
+    char** new_argv = malloc((argc + 4) * sizeof(char*));
+    if (!new_argv) return 1;
+    new_argv[0] = loader;
+    new_argv[1] = "--library-path";
+    new_argv[2] = lib_path;
+    new_argv[3] = real_bin;
+    for (int i = 1; i < argc; i++) new_argv[i + 3] = argv[i];
+    new_argv[argc + 3] = NULL;
+
+    execv(loader, new_argv);
+    perror("execv");
+    free(new_argv);
+    return 1;
+}
+EOF
+
+clang -O2 -o "$BIN_DIR/claude" "$TMPDIR/claude_wrapper.c"
+chmod +x "$BIN_DIR/claude"
+
+rm -rf "$STAGING_DIR" "$TMPDIR/claude_wrapper.c"
+
+echo "Claude Code ${VERSION} installed successfully."
+echo "Run 'claude' to start."
+exit 0
