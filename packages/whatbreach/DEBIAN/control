@@ -1,0 +1,12 @@
+Package: whatbreach
+Version: 0.3.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python, python-pip
+Section: recon
+Priority: optional
+Homepage: https://github.com/Ekultek/WhatBreach
+Description: OSINT tool to discover email breaches
+ WhatBreach simplifies discovering which breaches an email address
+ has been found in. It can download databases, pastes, and search
+ domains for further investigation.

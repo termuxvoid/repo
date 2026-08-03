@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+rm -f "$PREFIX/bin/whatbreach"
+rm -rf "$PREFIX/share/whatbreach"
+
+echo "WhatBreach completely removed."
+exit 0

@@ -67,6 +67,7 @@ This repository provides specialized security and penetration testing tools for 
 | [tookie-osint](https://termuxvoid.github.io/tool.html?name=tookie-osint) | OSINT username search tool – scan 400+ social platforms |
 | [user-scanner](https://termuxvoid.github.io/tool.html?name=user-scanner) | 2‑in‑1 Email & Username OSINT suite – 100+ email, 105+ username vectors |
 | [webinfo](https://termuxvoid.github.io/tool.html?name=webinfo) | Website information gathering |
+| [whatbreach](https://termuxvoid.github.io/tool.html?name=whatbreach) | Breach lookup tool – check compromised emails and passwords |
 
 ### 🦠 Malware Analysis
 | Tool | Description |
