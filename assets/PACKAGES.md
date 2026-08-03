@@ -205,6 +205,7 @@ This repository provides specialized security and penetration testing tools for 
 | [instajack](https://termuxvoid.github.io/tool.html?name=instajack) | Instagram old account jacker |
 | [phishmailer](https://termuxvoid.github.io/tool.html?name=phishmailer) | Professional Phishing Email Generation Tool |
 | [setoolkit](https://termuxvoid.github.io/tool.html?name=setoolkit) | Social Engineering Toolkit |
+| [shark](https://termuxvoid.github.io/tool.html?name=shark) | Future of Phishing with less delay – fast phishing toolkit with various templates |
 | [sms-stealer](https://termuxvoid.github.io/tool.html?name=sms-stealer) | Silent SMS interceptor via Telegram bot |
 | [snatcher](https://termuxvoid.github.io/tool.html?name=snatcher) | Capture images from victim's camera |
 | [storm-breaker](https://termuxvoid.github.io/tool.html?name=storm-breaker) | Social Engineering Toolkit |

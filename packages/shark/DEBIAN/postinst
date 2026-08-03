@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/E343IO/shark.git"
+INSTALL_DIR="$PREFIX/share/shark"
+BIN_DIR="$PREFIX/bin"
+
+rm -rf "$INSTALL_DIR" 2>/dev/null || true
+
+git clone --depth 1 "$REPO" "$INSTALL_DIR"
+
+if [ -f "$INSTALL_DIR/shark" ]; then
+    chmod +x "$INSTALL_DIR/shark"
+    ln -sf "$INSTALL_DIR/shark" "$BIN_DIR/shark"
+    echo "shark installed successfully."
+    echo "Usage: shark"
+else
+    echo "Error: shark binary not found after clone." >&2
+    exit 1
+fi
+
+exit 0

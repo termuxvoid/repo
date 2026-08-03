@@ -2,7 +2,7 @@ Package: android-sdk
 Version: 36.0.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: openjdk-21, p7zip, axel
+Depends: openjdk-21, 7zip, axel
 Suggests: cmake, ninja-build
 Section: development
 Priority: optional

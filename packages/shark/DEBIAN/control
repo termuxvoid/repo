@@ -1,0 +1,12 @@
+Package: shark
+Version: 2.5.1.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, curl, wget, php, unzip, 7zip, ncurses-utils, proot, resolv-conf, sox, ffmpeg, dialog
+Section: web
+Priority: optional
+Homepage: https://github.com/E343IO/shark
+Description: Future of Phishing with less delay
+ Shark is a phishing toolkit designed for fast and efficient phishing
+ campaigns with minimal delay. Includes various templates and tools
+ for social engineering and security testing.

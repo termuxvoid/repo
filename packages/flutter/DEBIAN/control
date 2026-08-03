@@ -3,7 +3,7 @@ Version: 3.41.9
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Pre-Depends: x11-repo
-Depends: git, axel, which, p7zip, android-sdk
+Depends: git, axel, which, 7zip, android-sdk
 Section: development
 Priority: optional
 Homepage: https://flutter.dev
