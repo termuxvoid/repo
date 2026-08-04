@@ -1,0 +1,11 @@
+Package: superfile
+Version: 1.6.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, golang
+Section: utils
+Priority: optional
+Homepage: https://github.com/yorukot/superfile
+Description: Terminal file manager with modern features
+ Superfile is a fast and feature-rich terminal file manager
+ with customizable keybindings, previews, and themes.

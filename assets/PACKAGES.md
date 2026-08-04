@@ -103,6 +103,7 @@ This repository provides specialized security and penetration testing tools for 
 | [parrot-cli](https://termuxvoid.github.io/tool.html?name=parrot-cli) | Parrot Security OS 6.3 (Lorikeet) for Termux |
 | [spider](https://termuxvoid.github.io/tool.html?name=spider) | Telegram auto‑report script |
 | [sploitscan](https://termuxvoid.github.io/tool.html?name=sploitscan) | Exploit intelligence gathering and analysis |
+| [superfile](https://termuxvoid.github.io/tool.html?name=superfile) | Fast terminal file manager with customizable keybindings, previews, and themes |
 | [term-helper](https://termuxvoid.github.io/tool.html?name=term-helper) | Terminal command helper and cheatsheet tool |
 | [termux-desktop](https://termuxvoid.github.io/tool.html?name=termux-desktop) | Termux XFCE4 desktop GUI with hacker themes |
 | [termux-desktop-wallpapers](https://termuxvoid.github.io/tool.html?name=termux-desktop-wallpapers) | Wallpapers for termux-desktop |

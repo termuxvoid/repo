@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/yorukot/superfile.git"
+TMP_DIR="$TMPDIR/superfile-build"
+BIN_DIR="$PREFIX/bin"
+
+rm -rf "$TMP_DIR" 2>/dev/null || true
+
+git clone --depth 1 "$REPO" "$TMP_DIR"
+cd "$TMP_DIR"
+
+go build -trimpath -ldflags "-w -s" -o superfile
+
+install -Dm755 superfile "$BIN_DIR/superfile"
+
+cd /
+rm -rf "$TMP_DIR"
+
+echo "superfile installed successfully."
+echo "Run 'superfile' to start."
+exit 0
