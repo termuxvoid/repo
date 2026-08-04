@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+npm uninstall -g @moonshot-ai/kimi-code 2>/dev/null || true
+
+echo "kimi-code completely removed."
+exit 0

@@ -1,0 +1,11 @@
+Package: kimi-code
+Version: 0.32.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, npm, ripgrep
+Section: devel
+Priority: optional
+Homepage: https://github.com/MoonshotAI/kimi-code
+Description: AI-powered coding assistant for the terminal
+ Kimi Code provides intelligent code completions and AI assistance
+ directly in your terminal, leveraging Moonshot AI's language models.

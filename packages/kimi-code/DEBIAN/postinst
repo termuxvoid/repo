@@ -1,0 +1,8 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+npm install -g @moonshot-ai/kimi-code@0.32.0
+
+echo "kimi-code installed successfully."
+echo "Run 'kimi' to start."
+exit 0
