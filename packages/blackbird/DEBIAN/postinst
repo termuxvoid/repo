@@ -1,0 +1,34 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/p1ngul1n0/blackbird.git"
+INSTALL_DIR="$PREFIX/share/blackbird"
+LAUNCHER="$PREFIX/bin/blackbird"
+
+rm -rf "$INSTALL_DIR" 2>/dev/null || true
+
+git clone --depth 1 "$REPO" "$INSTALL_DIR"
+
+cd "$INSTALL_DIR"
+
+# Remove pillow and requests from requirements.txt (already installed as dependencies)
+sed -i '/pillow/d' requirements.txt
+sed -i '/requests/d' requirements.txt
+
+# Install requests separately (as per user request)
+pip install requests
+
+# Install remaining requirements
+pip install -r requirements.txt
+
+cat > "$LAUNCHER" << 'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$PREFIX/share/blackbird"
+exec python blackbird.py "$@"
+EOF
+
+chmod +x "$LAUNCHER"
+
+echo "blackbird installed successfully."
+echo "Run 'blackbird' to start."
+exit 0

@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+rm -f "$PREFIX/bin/blackbird"
+rm -rf "$PREFIX/share/blackbird"
+
+echo "blackbird completely removed."
+exit 0

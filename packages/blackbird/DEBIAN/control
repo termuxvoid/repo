@@ -1,0 +1,12 @@
+Package: blackbird
+Version: 1.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python, python-pip, sed, python-pillow
+Section: recon
+Priority: optional
+Homepage: https://github.com/p1ngul1n0/blackbird
+Description: OSINT tool for username and email searches across 600+ platforms
+ Blackbird is a powerful OSINT tool that combines fast username and email
+ searches with free AI-powered profiling. It includes smart filters,
+ PDF/CSV exports, and fully automated analysis from a single CLI.

@@ -42,6 +42,7 @@ This repository provides specialized security and penetration testing tools for 
 ### 🔍 Information Gathering
 | Tool | Description |
 |------|-------------|
+| [blackbird](https://termuxvoid.github.io/tool.html?name=blackbird) | OSINT tool for username and email searches across 600+ platforms |
 | [byakugan](https://termuxvoid.github.io/tool.html?name=byakugan) | Advanced footprinting tool for Termux |
 | [darkcrawler](https://termuxvoid.github.io/tool.html?name=darkcrawler) | Crawl .onion sites through Tor and generate threat reports |
 | [dorks-eye](https://termuxvoid.github.io/tool.html?name=dorks-eye) | Google Hacking Dork Scraping and Searching Tool |
@@ -58,6 +59,7 @@ This repository provides specialized security and penetration testing tools for 
 | [onionsearch](https://termuxvoid.github.io/tool.html?name=onionsearch) | Scrape .onion URLs from various Tor search engines |
 | [phoneinfo](https://termuxvoid.github.io/tool.html?name=phoneinfo) | Phone number lookup tool |
 | [phoneinfoga](https://termuxvoid.github.io/tool.html?name=phoneinfoga) | Advanced phone number OSINT framework for information gathering and vulnerability scanning |
+| [phoneintel](https://termuxvoid.github.io/tool.html?name=phoneintel) | Phone number intelligence and validation tool |
 | [publiceye](https://termuxvoid.github.io/tool.html?name=publiceye) | Comprehensive OSINT tool for information lookup |
 | [redhawk](https://termuxvoid.github.io/tool.html?name=redhawk) | All‑in‑one information gathering, vulnerability scanning and crawling |
 | [sherlock](https://termuxvoid.github.io/tool.html?name=sherlock) | Hunt down social media accounts by username |

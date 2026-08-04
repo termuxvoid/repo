@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+pip uninstall -y phoneintel 2>/dev/null || true
+
+echo "phoneintel completely removed."
+exit 0

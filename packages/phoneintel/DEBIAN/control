@@ -1,0 +1,12 @@
+Package: phoneintel
+Version: 1.1.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python, python-pip
+Section: utils
+Priority: optional
+Homepage: https://phoneintel.github.io
+Description: Phone number intelligence and validation tool
+ phoneintel is a Python library for validating and gathering
+ information about phone numbers, including carrier, location,
+ and line type detection.

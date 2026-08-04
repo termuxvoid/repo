@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+pip install phoneintel==1.1.1
+
+echo "phoneintel installed successfully."
+exit 0
