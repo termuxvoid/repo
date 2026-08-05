@@ -1,14 +1,15 @@
-# Termux Void Repo Packages
+# TermuxVoid Package Catalog
 
-## 📋 Overview
-This repository provides specialized security and penetration testing tools for Termux users. Below is the complete catalog of available packages with direct links and descriptions.
+## Overview
+
+The complete catalog of packages available from the TermuxVoid repository. Each tool is listed with a link to its documentation page and a short description. All packages build from source on your device at install time.
 
 > [!NOTE]
 > All tools are regularly updated and tested for compatibility with the latest Termux environment.
 
-## 📋 Tool List
+## Tool List
 
-### 🚨 Attack Tools
+### Attack Tools
 | Tool | Description |
 |------|-------------|
 | [aircrack-ng](https://termuxvoid.github.io/tool.html?name=aircrack-ng) | Suite of tools for auditing wireless networks – monitor, attack, test, and crack WiFi |
@@ -28,7 +29,7 @@ This repository provides specialized security and penetration testing tools for 
 | [termsploit](https://termuxvoid.github.io/tool.html?name=termsploit) | Pentesting framework for Termux |
 | [wipwn](https://termuxvoid.github.io/tool.html?name=wipwn) | Fast automated WiFi WPS PIN cracking tool with Pixie Dust and brute-force attacks |
 
-### 🛡️ Defensive Tools
+### Defensive Tools
 | Tool | Description |
 |------|-------------|
 | [5luser](https://termuxvoid.github.io/tool.html?name=5luser) | Get unlimited 5‑letter Instagram unused usernames |
@@ -39,7 +40,7 @@ This repository provides specialized security and penetration testing tools for 
 | [maskme](https://termuxvoid.github.io/tool.html?name=maskme) | Give a mask to phishing URLs like a pro |
 | [shorturl](https://termuxvoid.github.io/tool.html?name=shorturl) | URL shortener for Termux |
 
-### 🔍 Information Gathering
+### Information Gathering
 | Tool | Description |
 |------|-------------|
 | [blackbird](https://termuxvoid.github.io/tool.html?name=blackbird) | OSINT tool for username and email searches across 600+ platforms |
@@ -71,12 +72,12 @@ This repository provides specialized security and penetration testing tools for 
 | [webinfo](https://termuxvoid.github.io/tool.html?name=webinfo) | Website information gathering |
 | [whatbreach](https://termuxvoid.github.io/tool.html?name=whatbreach) | Breach lookup tool – check compromised emails and passwords |
 
-### 🦠 Malware Analysis
+### Malware Analysis
 | Tool | Description |
 |------|-------------|
 | [thezoo](https://termuxvoid.github.io/tool.html?name=thezoo) | Repository of live malware samples |
 
-### 📱 Mobile Development
+### Mobile Development
 | Tool | Description |
 |------|-------------|
 | [android-sdk](https://termuxvoid.github.io/tool.html?name=android-sdk) | Complete Android development toolkit (ADB, Fastboot, etc.) |
@@ -86,7 +87,7 @@ This repository provides specialized security and penetration testing tools for 
 | [vedic](https://termuxvoid.github.io/tool.html?name=vedic) | World's first Sanskrit programming language |
 | [zen-c](https://termuxvoid.github.io/tool.html?name=zen-c) | High‑level systems programming language compiling to C |
 
-### 🖥️ Miscellaneous Utilities
+### Miscellaneous Utilities
 | Tool | Description |
 |------|-------------|
 | [alienkrishn](https://termuxvoid.github.io/tool.html?name=alienkrishn) | TermuxVoid package manager and system helper |
@@ -112,7 +113,7 @@ This repository provides specialized security and penetration testing tools for 
 | [webserver](https://termuxvoid.github.io/tool.html?name=webserver) | Simple web server for Termux |
 | [whatsapp-cli](https://termuxvoid.github.io/tool.html?name=whatsapp-cli) | Standalone CLI for WhatsApp using multidevice protocol |
 
-### 🔐 Password Tools
+### Password Tools
 | Tool | Description |
 |------|-------------|
 | [brutespray](https://termuxvoid.github.io/tool.html?name=brutespray) | Brute‑force attacks from Nmap output |
@@ -132,14 +133,14 @@ This repository provides specialized security and penetration testing tools for 
 | [wordlists](https://termuxvoid.github.io/tool.html?name=wordlists) | Security wordlists collection (rockyou.txt + SecLists subset) |
 | [zipcracker](https://termuxvoid.github.io/tool.html?name=zipcracker) | ZIP archive password recovery tool |
 
-### 📊 Data Analysis
+### Data Analysis
 | Tool | Description |
 |------|-------------|
 | [gron](https://termuxvoid.github.io/tool.html?name=gron) | Make JSON greppable – transform JSON into discrete assignments |
 | [pip-basic-depends](https://termuxvoid.github.io/tool.html?name=pip-basic-depends) | Essential build dependencies for Python packages |
 | [python-pandas](https://termuxvoid.github.io/tool.html?name=python-pandas) | Powerhouse data analysis toolkit |
 
-### 🔍 Reconnaissance & Scanning
+### Reconnaissance & Scanning
 | Tool | Description |
 |------|-------------|
 | [amass](https://termuxvoid.github.io/tool.html?name=amass) | In‑depth Attack Surface Mapping and asset discovery |
@@ -180,7 +181,7 @@ This repository provides specialized security and penetration testing tools for 
 | [waymap](https://termuxvoid.github.io/tool.html?name=waymap) | Fast web vulnerability scanner and security testing toolkit |
 | [xsstrike](https://termuxvoid.github.io/tool.html?name=xsstrike) | Advanced XSS detection and exploitation suite |
 
-### 📱 Reverse Engineering
+### Reverse Engineering
 | Tool | Description |
 |------|-------------|
 | [androdos](https://termuxvoid.github.io/tool.html?name=androdos) | Denials of service (DoS) attack tool |
@@ -204,7 +205,7 @@ This repository provides specialized security and penetration testing tools for 
 | [ransomux](https://termuxvoid.github.io/tool.html?name=ransomux) | Ransomware making tool |
 | [rkpairip](https://termuxvoid.github.io/tool.html?name=rkpairip) | Remove Pairip protection and rebuild APKs |
 
-### 🎭 Social Engineering
+### Social Engineering
 | Tool | Description |
 |------|-------------|
 | [beef](https://termuxvoid.github.io/tool.html?name=beef) | Browser Exploitation Framework |
@@ -224,7 +225,7 @@ This repository provides specialized security and penetration testing tools for 
 | [venom](https://termuxvoid.github.io/tool.html?name=venom) | Automated phishing tool for beginners |
 | [weeman](https://termuxvoid.github.io/tool.html?name=weeman) | HTTP server for phishing in Python2 |
 
-### ⚡ System Tools
+### System Tools
 | Tool | Description |
 |------|-------------|
 | [arsenal-ng](https://termuxvoid.github.io/tool.html?name=arsenal-ng) | Fast command launcher with 200+ cybersecurity cheat-sheets |
@@ -239,20 +240,20 @@ This repository provides specialized security and penetration testing tools for 
 | [termuxfetch](https://termuxvoid.github.io/tool.html?name=termuxfetch) | Neofetch‑like system information tool for Termux |
 | [tte](https://termuxvoid.github.io/tool.html?name=tte) | Terminal Text Effects and Animation Library |
 
-### 🎨 Text & Utilities
+### Text & Utilities
 | Tool | Description |
 |------|-------------|
 | [asciibanner](https://termuxvoid.github.io/tool.html?name=asciibanner) | Feature‑rich FIGlet‑compatible ASCII art generator with color support |
 | [catsay](https://termuxvoid.github.io/tool.html?name=catsay) | Terminal‑based feline messenger inspired by cowsay |
 | [random-banner](https://termuxvoid.github.io/tool.html?name=random-banner) | Random banner and quote generator |
 
-### ✨ Customization
+### Customization
 | Tool | Description |
 |------|-------------|
 | [termuxvoid-theme](https://termuxvoid.github.io/tool.html?name=termuxvoid-theme) | Professional terminal customization for Termux |
 | [void-fonts](https://termuxvoid.github.io/tool.html?name=void-fonts) | Custom font collection for Termux |
 
-### 🤖 AI & Productivity
+### AI & Productivity
 | Tool | Description |
 |------|-------------|
 | [9router](https://termuxvoid.github.io/tool.html?name=9router) | Smart gateway between your tools and 60+ AI providers |
@@ -267,7 +268,7 @@ This repository provides specialized security and penetration testing tools for 
 | [termux-ai](https://termuxvoid.github.io/tool.html?name=termux-ai) | Interactive AI assistant for Termux |
 | [termux-media-downloader](https://termuxvoid.github.io/tool.html?name=termux-media-downloader) | High‑performance media downloader |
 
-### 🌐 Web Security & Tunneling
+### Web Security & Tunneling
 | Tool | Description |
 |------|-------------|
 | [afrog](https://termuxvoid.github.io/tool.html?name=afrog) | Fast Vulnerability Scanner with PoC Support |
@@ -297,15 +298,13 @@ This repository provides specialized security and penetration testing tools for 
 
 ---
 
-> [!TIP]
-> Stay updated with new tools and announcements via our official channels.
+## Updates & Support
 
-## 🔄 Updates & Support
 - Telegram: [@nullxvoid](https://telegram.me/nullxvoid)
 - YouTube: [@alienkrishnorg](https://youtube.com/@alienkrishnorg)
 
-> [!WARNING]
-> These tools are provided for educational and security research purposes only. Unauthorized use against systems you do not own or have explicit permission to test is illegal. The repository maintainers are not responsible for any misuse.
+The catalog is updated regularly. Check the README or the main repository for the latest release notes and new tools.
 
-## ⚠️ Disclaimer
-For educational and security research purposes only.
+## Legal & Disclaimer
+
+These tools are provided for educational and authorized security research only. Unauthorized use against systems you do not own or lack explicit permission to test is illegal. You are responsible for complying with all applicable laws. The repository maintainers assume no responsibility for any misuse.

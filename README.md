@@ -3,7 +3,7 @@
     <img alt="TermuxVoid" height="180" src="img/termuxvoid_logo.png">
     <h1>TermuxVoid APT Repository</h1>
   </a>
-  <p><b>🔓 Unofficial APT Repository: 192+ Ethical Hacking & Pentesting Packages</b></p>
+  <p><b>Unofficial APT Repository: 220+ Ethical Hacking & Pentesting Packages</b></p>
 
   <div>
     <a href="https://github.com/TermuxVoid/repo/stargazers">
@@ -44,16 +44,29 @@ Before using TermuxVoid, ensure your environment meets these requirements:
 
 ## 🔍 Project Overview
 
-**TermuxVoid** is an **unofficial custom APT repository** that bridges the gap between mobile convenience and professional security auditing. We host **192+ advanced security tools** that are not available in the official Termux repositories. Packages build natively **on your device** during installation, ensuring optimal compatibility with your exact Termux environment and Android architecture.
+**TermuxVoid** is an **unofficial custom APT repository** that bridges the gap between mobile convenience and professional security auditing. We host **220+ advanced security tools** that are not available in the official Termux repositories. Packages build natively **on your device** during installation, ensuring optimal compatibility with your exact Termux environment and Android architecture.
 
 Whether you are a professional penetration tester or an ethical hacking enthusiast, TermuxVoid turns your Android device into a portable powerhouse.
 
 > [!NOTE]
 > This repository contains tools that are often excluded from official sources due to complexity or licensing. Packages are built from source **on your device** when you install them, so every tool is tuned for your specific Termux environment.<br>
 
-## 🔍 Why Open Source?
+## Security & Transparency
 
-So you see exactly what runs on your device before it runs. Packages build on your device at install time — nothing is hidden or pre-built. No TermuxVoid package touches `$PATH`, `$HOME`, or any Termux environment variable. We use **symlinks** instead of env mutations; uninstall leaves zero trace. Don't trust — verify.
+Every package builds from source **on your device** at install time — no pre-built binaries are shipped. This makes everything auditable before it runs. Each package lives in `packages/<name>/` and ships a standard Debian layout under `DEBIAN/`:
+
+- `control` — metadata (name, version, dependencies, description)
+- `preinst` — pre-install checks (e.g. architecture validation)
+- `postinst` — builds and installs the tool, then links it into `$PREFIX/bin`
+- `postrm` — removes everything created during install
+
+**Package guarantees:**
+
+- No package modifies `$PATH`, `$HOME`, `$PREFIX`, or any other Termux environment variable.
+- No package alters your existing Termux configuration.
+- Tools are exposed via **symlinks** instead of environment mutation, so uninstalling leaves zero trace.
+
+Don't trust — verify. Read `DEBIAN/postinst` before you `pkg install`. See [CONTRIBUTING.md](CONTRIBUTING.md) for how packages are built.
 
 ## 🚀 Quick Installation
 
@@ -119,7 +132,7 @@ graph TD
 
 <div align="center">
   <a href="assets/PACKAGES.md">
-    <img src="https://img.shields.io/badge/📦-Browse_All_192%2B_Packages-2ea44f?style=for-the-badge" alt="Browse All Packages">
+    <img src="https://img.shields.io/badge/📦-Browse_All_220%2B_Packages-2ea44f?style=for-the-badge" alt="Browse All Packages">
   </a>
 </div>
 
@@ -136,10 +149,9 @@ graph TD
 | **hermes-agent** | AI-powered coding assistant and workflow automation tool |
 | **kimi-code** | AI-powered coding assistant for the terminal by Moonshot AI |
 
-## ⚠️ Legal & Disclaimer
+## Legal & Disclaimer
 
-> [!WARNING]
-> Educational purpose only. Do not use your knowledge for illegal things. I won't take any responsibility about your doing — you do illegal shit you end up in jail yourself. Know your laws, stay ethical, and don't be a criminal.
+These tools are provided for **educational and authorized security research only**. You are responsible for ensuring your use complies with all applicable laws and regulations. Unauthorized access to systems you do not own or lack explicit permission to test is illegal. The maintainers assume no responsibility for any misuse.
 
 ## ❓ Frequently Asked Questions
 
