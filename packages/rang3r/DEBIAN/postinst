@@ -1,0 +1,23 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/floriankunushevci/rang3r.git"
+INSTALL_DIR="$PREFIX/share/rang3r"
+LAUNCHER="$PREFIX/bin/rang3r"
+
+rm -rf "$INSTALL_DIR" 2>/dev/null || true
+
+git clone --depth 1 "$REPO" "$INSTALL_DIR"
+
+pip2 install termcolor
+
+cat > "$LAUNCHER" << 'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$PREFIX/share/rang3r"
+exec python2 rang3r.py "$@"
+EOF
+
+chmod +x "$LAUNCHER"
+
+echo "rang3r installed. Run 'rang3r'"
+exit 0

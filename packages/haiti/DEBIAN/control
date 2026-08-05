@@ -1,0 +1,13 @@
+Package: haiti
+Version: 4.0.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: ruby
+Section: utils
+Priority: optional
+Homepage: https://github.com/noraj/haiti
+Description: Hash type identifier (CLI tool)
+ haiti (Hash Type Identifier) is a command-line tool that identifies
+ the type of a given hash using a large database of hash formats.
+ It supports over 500 hash types and can also identify multiple
+ hash formats from a single input.

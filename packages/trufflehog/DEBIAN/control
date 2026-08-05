@@ -1,0 +1,12 @@
+Package: trufflehog
+Version: 3.96.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, golang
+Section: security
+Priority: optional
+Homepage: https://github.com/trufflesecurity/trufflehog
+Description: Find leaked credentials and secrets in code and data
+ TruffleHog scans Git repositories, file systems, and other sources
+ to detect accidentally exposed secrets, API keys, passwords, and
+ other sensitive data using entropy analysis and regex patterns.

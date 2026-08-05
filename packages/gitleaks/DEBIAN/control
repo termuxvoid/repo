@@ -1,0 +1,11 @@
+Package: gitleaks
+Version: 8.30.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, golang
+Section: security
+Priority: optional
+Homepage: https://github.com/gitleaks/gitleaks
+Description: Detect hard-coded secrets and sensitive data in Git repositories
+ Gitleaks is a SAST tool for detecting and preventing hardcoded secrets
+ like passwords, API keys, and tokens in Git repositories.

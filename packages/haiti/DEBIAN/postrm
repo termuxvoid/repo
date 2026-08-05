@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+gem uninstall haiti-hash -v 4.0.0 -x --force 2>/dev/null || true
+
+echo "haiti removed."
+exit 0

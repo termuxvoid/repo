@@ -1,0 +1,11 @@
+Package: rang3r
+Version: 1.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python2
+Section: net
+Priority: optional
+Homepage: https://github.com/floriankunushevci/rang3r
+Description: Multi-threaded IP + port scanner
+ rang3r is a fast, multi‑threaded IP and port scanner written in Python 2.
+ It supports various scanning techniques and output formats.

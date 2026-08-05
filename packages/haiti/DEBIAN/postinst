@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+gem install haiti-hash -v 4.0.0
+
+echo "haiti installed. Run 'haiti'"
+exit 0

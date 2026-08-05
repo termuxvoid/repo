@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/trufflesecurity/trufflehog.git"
+TAG="v3.96.0"
+TMP_DIR="$TMPDIR/trufflehog-build"
+BIN_DIR="$PREFIX/bin"
+
+rm -rf "$TMP_DIR" 2>/dev/null || true
+
+git clone --depth 1 --branch "$TAG" -q "$REPO" "$TMP_DIR"
+cd "$TMP_DIR"
+
+go build -trimpath -ldflags "-w -s" -o trufflehog
+
+install -Dm755 trufflehog "$BIN_DIR/trufflehog"
+
+cd /
+rm -rf "$TMP_DIR"
+
+echo "trufflehog installed. Run 'trufflehog'"
+exit 0

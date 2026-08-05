@@ -44,16 +44,16 @@ Before using TermuxVoid, ensure your environment meets these requirements:
 
 ## 🔍 Project Overview
 
-**TermuxVoid** is an **unofficial custom APT repository** that bridges the gap between mobile convenience and professional security auditing. We host **192+ advanced security tools** that are not available in the official Termux repositories, specifically compiled and optimized for Android architecture.
+**TermuxVoid** is an **unofficial custom APT repository** that bridges the gap between mobile convenience and professional security auditing. We host **192+ advanced security tools** that are not available in the official Termux repositories. Packages build natively **on your device** during installation, ensuring optimal compatibility with your exact Termux environment and Android architecture.
 
 Whether you are a professional penetration tester or an ethical hacking enthusiast, TermuxVoid turns your Android device into a portable powerhouse.
 
 > [!NOTE]
-> This repository contains tools that are often excluded from official sources due to complexity or licensing. All packages are compiled natively for Termux.<br>
+> This repository contains tools that are often excluded from official sources due to complexity or licensing. Packages are built from source **on your device** when you install them, so every tool is tuned for your specific Termux environment.<br>
 
 ## 🔍 Why Open Source?
 
-So you see exactly what runs on your device before it runs. Every package is built from source — nothing is hidden. No TermuxVoid package touches `$PATH`, `$HOME`, or any Termux environment variable. We use **symlinks** instead of env mutations; uninstall leaves zero trace. Don't trust — verify.
+So you see exactly what runs on your device before it runs. Packages build on your device at install time — nothing is hidden or pre-built. No TermuxVoid package touches `$PATH`, `$HOME`, or any Termux environment variable. We use **symlinks** instead of env mutations; uninstall leaves zero trace. Don't trust — verify.
 
 ## 🚀 Quick Installation
 
@@ -146,7 +146,7 @@ graph TD
 <details>
 <summary><b>Are these tools safe to use on a personal device?</b></summary>
 <br>
-Yes, all packages are compiled from source or verified binaries. However, these are powerful security tools; ensure you understand what a tool does before executing it to avoid unintended system modifications.
+Yes, all packages are built from source directly on your device during installation. This means no pre-compiled binaries are shipped — each tool is compiled and installed for your specific Termux environment. However, these are powerful security tools; ensure you understand what a tool does before executing it to avoid unintended system modifications.
 </details>
 
 <details>
@@ -241,6 +241,6 @@ Support the project to help us keep the packages updated and add more tools:
 [View Complete Package List »](assets/PACKAGES.md)
 
 <div align="center">
-  <sub>Built with ❤️ for security researchers by <a href="https://github.com/Anon4You">Alienkrishn</a> | Termux-optimized builds</sub>
+  <sub>Built with ❤️ for security researchers by <a href="https://github.com/Anon4You">Alienkrishn</a> | Built on-device for best compatibility</sub>
 </div>
 

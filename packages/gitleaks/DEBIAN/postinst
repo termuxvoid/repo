@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/gitleaks/gitleaks.git"
+TAG="v8.30.1"
+TMP_DIR="$TMPDIR/gitleaks-build"
+BIN_DIR="$PREFIX/bin"
+
+rm -rf "$TMP_DIR" 2>/dev/null || true
+
+git clone --depth 1 --branch "$TAG" -q "$REPO" "$TMP_DIR"
+cd "$TMP_DIR"
+
+go build -trimpath -ldflags "-w -s" -o gitleaks
+
+install -Dm755 gitleaks "$BIN_DIR/gitleaks"
+
+cd /
+rm -rf "$TMP_DIR"
+
+echo "gitleaks installed. Run 'gitleaks'"
+exit 0

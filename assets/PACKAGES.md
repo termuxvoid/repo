@@ -120,6 +120,7 @@ This repository provides specialized security and penetration testing tools for 
 | [cupp](https://termuxvoid.github.io/tool.html?name=cupp) | Common User Passwords Profiler (CUPP) |
 | [elpscrk](https://termuxvoid.github.io/tool.html?name=elpscrk) | Password profiling tool inspired by the Mr. Robot series |
 | [fuckyou](https://termuxvoid.github.io/tool.html?name=fuckyou) | Powerful and customizable password list generator |
+| [haiti](https://termuxvoid.github.io/tool.html?name=haiti) | Hash type identifier (CLI tool) |
 | [hashcat](https://termuxvoid.github.io/tool.html?name=hashcat) | World's fastest password recovery utility |
 | [hashid](https://termuxvoid.github.io/tool.html?name=hashid) | Advanced hash identifier (300+ types) |
 | [john](https://termuxvoid.github.io/tool.html?name=john) | John the Ripper password cracker |
@@ -142,6 +143,7 @@ This repository provides specialized security and penetration testing tools for 
 | Tool | Description |
 |------|-------------|
 | [amass](https://termuxvoid.github.io/tool.html?name=amass) | In‑depth Attack Surface Mapping and asset discovery |
+| [breacher](https://termuxvoid.github.io/tool.html?name=breacher) | Multi‑threaded URL brute‑forcer for hidden paths |
 | [cdxsummary](https://termuxvoid.github.io/tool.html?name=cdxsummary) | CDX summary and analysis tool for Wayback Machine archives |
 | [dalfox](https://termuxvoid.github.io/tool.html?name=dalfox) | Parameter analysis and XSS scanning tool |
 | [dnsx](https://termuxvoid.github.io/tool.html?name=dnsx) | Fast DNS toolkit for reconnaissance |
@@ -150,7 +152,9 @@ This repository provides specialized security and penetration testing tools for 
 | [fscan](https://termuxvoid.github.io/tool.html?name=fscan) | Comprehensive intranet scanning tool |
 | [gau](https://termuxvoid.github.io/tool.html?name=gau) | Fetch known URLs from AlienVault, Wayback Machine, and CommonCrawl |
 | [ghosttrack](https://termuxvoid.github.io/tool.html?name=ghosttrack) | Advanced tracking and reconnaissance tool |
+| [gitleaks](https://termuxvoid.github.io/tool.html?name=gitleaks) | Detect hard‑coded secrets and sensitive data in Git repositories |
 | [gobuster](https://termuxvoid.github.io/tool.html?name=gobuster) | Directory/file & DNS busting tool written in Go |
+| [gowitness](https://termuxvoid.github.io/tool.html?name=gowitness) | Web screenshot utility using headless Chrome |
 | [httpx](https://termuxvoid.github.io/tool.html?name=httpx) | Fast and multi‑purpose HTTP toolkit |
 | [katana](https://termuxvoid.github.io/tool.html?name=katana) | Next‑generation crawling and spidering framework |
 | [mantra](https://termuxvoid.github.io/tool.html?name=mantra) | API key hunter for JS files and web pages |
@@ -162,10 +166,13 @@ This repository provides specialized security and penetration testing tools for 
 | [photon](https://termuxvoid.github.io/tool.html?name=photon) | Lightweight web crawler for OSINT and reconnaissance |
 | [pywhat](https://termuxvoid.github.io/tool.html?name=pywhat) | Identify anything – text analysis tool |
 | [qsreplace](https://termuxvoid.github.io/tool.html?name=qsreplace) | Replace query strings in URLs – useful for URL manipulation |
+| [rang3r](https://termuxvoid.github.io/tool.html?name=rang3r) | Multi‑threaded IP and port scanner |
+| [secretfinder](https://termuxvoid.github.io/tool.html?name=secretfinder) | Discover sensitive data (API keys, access tokens, JWT, etc.) in JavaScript files |
 | [subcat](https://termuxvoid.github.io/tool.html?name=subcat) | Lightning‑fast passive subdomain discovery tool |
 | [subfinder](https://termuxvoid.github.io/tool.html?name=subfinder) | Advanced subdomain discovery tool |
 | [subjack](https://termuxvoid.github.io/tool.html?name=subjack) | Subdomain takeover tool written in Go |
 | [subzy](https://termuxvoid.github.io/tool.html?name=subzy) | Subdomain takeover vulnerability scanner |
+| [trufflehog](https://termuxvoid.github.io/tool.html?name=trufflehog) | Find leaked credentials and secrets in code and data |
 | [unfurl](https://termuxvoid.github.io/tool.html?name=unfurl) | Extract and manipulate URLs, domains, and paths with ease |
 | [vulnx](https://termuxvoid.github.io/tool.html?name=vulnx) | Intelligent vulnerability scanner for CMS |
 | [wafw00f](https://termuxvoid.github.io/tool.html?name=wafw00f) | Web Application Firewall detection tool |

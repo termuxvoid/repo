@@ -1,0 +1,11 @@
+Package: breacher
+Version: 1.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python, python-pip
+Section: web
+Priority: optional
+Homepage: https://github.com/s0md3v/Breacher
+Description: Multi-threaded URL brute-forcer for hidden paths
+ Breacher is a fast, multi-threaded tool for brute-forcing hidden
+ directories and files on web servers using custom wordlists.

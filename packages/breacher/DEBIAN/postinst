@@ -1,0 +1,23 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/s0md3v/Breacher.git"
+INSTALL_DIR="$PREFIX/share/breacher"
+LAUNCHER="$PREFIX/bin/breacher"
+
+rm -rf "$INSTALL_DIR" 2>/dev/null || true
+
+git clone --depth 1 "$REPO" "$INSTALL_DIR"
+
+pip install requests
+
+cat > "$LAUNCHER" << 'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$PREFIX/share/breacher"
+exec python -W ignore breacher.py "$@"
+EOF
+
+chmod +x "$LAUNCHER"
+
+echo "Breacher installed. Run 'breacher'"
+exit 0

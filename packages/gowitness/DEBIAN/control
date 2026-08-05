@@ -1,0 +1,12 @@
+Package: gowitness
+Version: 3.1.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, golang
+Section: web
+Priority: optional
+Homepage: https://github.com/sensepost/gowitness
+Description: Web screenshot utility using headless Chrome
+ gowitness is a web screenshot tool that captures screenshots of
+ websites using headless Chrome, with support for multiple input
+ formats and output options.

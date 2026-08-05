@@ -1,0 +1,10 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+curl -sL -o "$PREFIX/bin/secretfinder" "https://raw.githubusercontent.com/m4ll0k/SecretFinder/master/SecretFinder.py"
+termux-fix-shebang "$PREFIX/bin/secretfinder"
+chmod +x "$PREFIX/bin/secretfinder"
+pip install requests_file requests jsbeautifier
+
+echo "SecretFinder installed. Run 'secretfinder'"
+exit 0
