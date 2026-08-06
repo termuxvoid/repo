@@ -1,14 +1,11 @@
 Package: ffuf
-Version: 2.1.0
+Version: 2.2.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: golang, git
-Section: security
+Depends: git, golang
+Section: web
 Priority: optional
 Homepage: https://github.com/ffuf/ffuf
 Description: Fast web fuzzer written in Go
- High-performance fuzzing tool featuring:
- - Directory/file fuzzing
- - Parameter discovery
- - VHost enumeration
- - Multi-threaded performance
+ ffuf is a fast web fuzzer that allows flexible and efficient
+ directory and parameter brute‑forcing with various input methods.

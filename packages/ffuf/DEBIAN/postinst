@@ -1,31 +1,22 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
-LAUNCHER="$PREFIX/bin/ffuf"
-FFUF_BIN="$HOME/go/bin/ffuf"
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
+REPO="https://github.com/ffuf/ffuf.git"
+TAG="v2.2.1"
+TMP_DIR="$TMPDIR/ffuf-build"
+BIN_DIR="$PREFIX/bin"
 
-echo -e "${GREEN}Installing ffuf...${NC}"
-go install -v github.com/ffuf/ffuf/v2@latest || {
-    echo -e "${RED}Error: Failed to install ffuf. Ensure Go is installed and internet is available.${NC}"
-    exit 1
-}
+rm -rf "$TMP_DIR" 2>/dev/null || true
 
-echo -e "${GREEN}Creating launcher at $LAUNCHER...${NC}"
-cat > "$LAUNCHER" <<- EOF
-#!/data/data/com.termux/files/usr/bin/bash
-$FFUF_BIN "\$@"
-EOF
+git clone --depth 1 --branch "$TAG" -q "$REPO" "$TMP_DIR"
+cd "$TMP_DIR"
 
-chmod +x "$LAUNCHER" || {
-    echo -e "${RED}Error: Failed to set executable permissions for $LAUNCHER.${NC}"
-    exit 1
-}
+go build -trimpath -ldflags "-w -s" -o ffuf
 
-if [ -x "$FFUF_BIN" ]; then
-    echo -e "${GREEN}ffuf installed successfully. Run 'ffuf -h' to verify.${NC}"
-else
-    echo -e "${RED}Error: ffuf binary not found at $FFUF_BIN.${NC}"
-    exit 1
-fi
+install -Dm755 ffuf "$BIN_DIR/ffuf"
+
+cd /
+rm -rf "$TMP_DIR"
+
+echo "ffuf installed. Run 'ffuf'"
+exit 0

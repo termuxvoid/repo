@@ -1,25 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
-LAUNCHER="$PREFIX/bin/ffuf"
-FFUF_BIN="$HOME/go/bin/ffuf"
-GO_DIR="$HOME/go"
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
-NC='\033[0m'
-
-echo -e "${GREEN}Uninstalling ffuf...${NC}"
-
-[ -d "$GO_DIR" ] && chmod 751 -R "$GO_DIR"
-
-if [ -f "$LAUNCHER" ]; then
-    rm -f "$LAUNCHER" && echo -e "${GREEN}✓ Removed launcher${NC}" || \
-    echo -e "${RED}✗ Failed to remove launcher${NC}"
-fi
-
-if [ -f "$FFUF_BIN" ]; then
-    rm -f "$FFUF_BIN" && echo -e "${GREEN}✓ Removed binary${NC}" || \
-    echo -e "${RED}✗ Failed to remove binary (try: rm -f $FFUF_BIN)${NC}"
-fi
-
-echo -e "${GREEN}Uninstallation complete${NC}"
+rm -f "$PREFIX/bin/ffuf"
+echo "ffuf removed."
+exit 0

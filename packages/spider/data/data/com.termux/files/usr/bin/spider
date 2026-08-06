@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-python $PREFIX/lib/spider/main.py
+exec python -W ignore $PREFIX/lib/spider/main.py "$@"
