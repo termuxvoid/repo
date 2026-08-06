@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+rm -f "$PREFIX/bin/ddos"
+rm -rf "$PREFIX/share/ddos"
+
+pip uninstall -y urllib3 cfscrape 2>/dev/null || true
+
+echo "ddos removed."
+exit 0

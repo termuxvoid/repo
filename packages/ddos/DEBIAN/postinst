@@ -1,0 +1,26 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/the-deepnet/ddos.git"
+INSTALL_DIR="$PREFIX/share/ddos"
+LAUNCHER="$PREFIX/bin/ddos"
+
+rm -rf "$INSTALL_DIR" 2>/dev/null || true
+
+git clone --depth 1 -q "$REPO" "$INSTALL_DIR"
+
+cd "$INSTALL_DIR"
+
+pip install 'urllib3<2.0'
+pip install -r requirements.txt
+
+cat > "$LAUNCHER" << 'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$PREFIX/share/ddos"
+exec python ddos "$@"
+EOF
+
+chmod +x "$LAUNCHER"
+
+echo "ddos installed. Run 'ddos'"
+exit 0

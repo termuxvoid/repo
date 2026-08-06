@@ -1,0 +1,12 @@
+Package: ddos
+Version: 1.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python, python-pip
+Section: net
+Priority: optional
+Homepage: https://github.com/the-deepnet/ddos
+Description: DDoS attack script with 36+ attack methods
+ A powerful DDoS (Distributed Denial of Service) attack tool with
+ 36+ attack methods for network stress testing and security research.
+ Designed for educational and authorized testing purposes only.

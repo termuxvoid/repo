@@ -1,0 +1,11 @@
+Package: dirsearch
+Version: 0.5.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python, python-pip, git, rust
+Section: web
+Priority: optional
+Homepage: https://github.com/maurosoria/dirsearch
+Description: Web path scanner
+ dirsearch is a command-line tool designed to brute force directories
+ and files in web servers using a dictionary attack.

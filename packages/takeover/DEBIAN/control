@@ -1,0 +1,12 @@
+Package: takeover
+Version: 0.2
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python, python-pip
+Section: recon
+Priority: optional
+Homepage: https://github.com/edoardottt/takeover
+Description: Subdomain takeover detection tool
+ takeover is a subdomain takeover vulnerability scanner that detects
+ if domains are vulnerable to takeover by checking for known
+ unclaimed services and cloud providers.

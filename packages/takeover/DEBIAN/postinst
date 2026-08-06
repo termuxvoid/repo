@@ -1,0 +1,17 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/edoardottt/takeover.git"
+TMP_DIR="$TMPDIR/takeover-build"
+
+rm -rf "$TMP_DIR" 2>/dev/null || true
+
+git clone --depth 1 "$REPO" "$TMP_DIR"
+cd "$TMP_DIR"
+python setup.py install
+
+cd /
+rm -rf "$TMP_DIR"
+
+echo "takeover installed. Run 'takeover'"
+exit 0

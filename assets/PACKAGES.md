@@ -17,6 +17,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [blackbox-framework](https://termuxvoid.github.io/tool.html?name=blackbox-framework) | Python‑based network analysis and exploitation toolkit |
 | [darksploit-framework](https://termuxvoid.github.io/tool.html?name=darksploit-framework) | Tool to run and create exploits |
 | [darkterm](https://termuxvoid.github.io/tool.html?name=darkterm) | Advanced Ethical Hacking Framework with 60+ tools across 9 modules |
+| [ddos](https://termuxvoid.github.io/tool.html?name=ddos) | DDoS attack script with 36+ attack methods for network stress testing |
 | [drshell](https://termuxvoid.github.io/tool.html?name=drshell) | Reverse Shell Session Manager |
 | [haxrat](https://termuxvoid.github.io/tool.html?name=haxrat) | Cloud‑based remote Android management suite |
 | [hunner-framework](https://termuxvoid.github.io/tool.html?name=hunner-framework) | Open Source Penetration Testing Framework |
@@ -148,6 +149,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [cdxsummary](https://termuxvoid.github.io/tool.html?name=cdxsummary) | CDX summary and analysis tool for Wayback Machine archives |
 | [dalfox](https://termuxvoid.github.io/tool.html?name=dalfox) | Parameter analysis and XSS scanning tool |
 | [dnsx](https://termuxvoid.github.io/tool.html?name=dnsx) | Fast DNS toolkit for reconnaissance |
+| [dirsearch](https://termuxvoid.github.io/tool.html?name=dirsearch) | Web path scanner – brute force directories and files in web servers |
 | [ffuf](https://termuxvoid.github.io/tool.html?name=ffuf) | Fast web fuzzer written in Go |
 | [findomain](https://termuxvoid.github.io/tool.html?name=findomain) | Fastest and complete solution for domain recognition |
 | [fscan](https://termuxvoid.github.io/tool.html?name=fscan) | Comprehensive intranet scanning tool |
@@ -173,6 +175,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [subfinder](https://termuxvoid.github.io/tool.html?name=subfinder) | Advanced subdomain discovery tool |
 | [subjack](https://termuxvoid.github.io/tool.html?name=subjack) | Subdomain takeover tool written in Go |
 | [subzy](https://termuxvoid.github.io/tool.html?name=subzy) | Subdomain takeover vulnerability scanner |
+| [takeover](https://termuxvoid.github.io/tool.html?name=takeover) | Subdomain takeover detection tool for unclaimed services and cloud providers |
 | [trufflehog](https://termuxvoid.github.io/tool.html?name=trufflehog) | Find leaked credentials and secrets in code and data |
 | [unfurl](https://termuxvoid.github.io/tool.html?name=unfurl) | Extract and manipulate URLs, domains, and paths with ease |
 | [vulnx](https://termuxvoid.github.io/tool.html?name=vulnx) | Intelligent vulnerability scanner for CMS |
