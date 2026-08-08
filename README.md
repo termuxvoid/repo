@@ -148,6 +148,7 @@ graph TD
 | **openclaude** | Open-source coding-agent CLI for cloud & local LLMs |
 | **hermes-agent** | AI-powered coding assistant and workflow automation tool |
 | **kimi-code** | AI-powered coding assistant for the terminal by Moonshot AI |
+| **mmx-cli** | CLI tool for MiniMax AI – chat, completion, and image generation from the terminal |
 
 ## Legal & Disclaimer
 
