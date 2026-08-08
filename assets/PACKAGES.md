@@ -266,6 +266,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [hermes-agent](https://termuxvoid.github.io/tool.html?name=hermes-agent) | AI-powered coding assistant and workflow automation tool |
 | [kimi-code](https://termuxvoid.github.io/tool.html?name=kimi-code) | AI‑powered coding assistant for the terminal, powered by Moonshot AI |
 | [mimocode](https://termuxvoid.github.io/tool.html?name=mimocode) | Autonomous AI engineer that creates, modifies, tests, and deploys code with real file system and shell command execution |
+| [mmx-cli](https://termuxvoid.github.io/tool.html?name=mmx-cli) | CLI tool for MiniMax AI – chat, completion, and image generation from the terminal |
 | [opencode](https://termuxvoid.github.io/tool.html?name=opencode) | AI‑powered coding assistant (glibc version) |
 | [openclaude](https://termuxvoid.github.io/tool.html?name=openclaude) | Open‑source coding‑agent CLI for cloud and local LLMs |
 | [termux-ai](https://termuxvoid.github.io/tool.html?name=termux-ai) | Interactive AI assistant for Termux |

@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+npm uninstall -g mmx-cli 2>/dev/null || true
+
+echo "mmx-cli removed."
+exit 0

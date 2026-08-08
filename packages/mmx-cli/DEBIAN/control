@@ -1,0 +1,11 @@
+Package: mmx-cli
+Version: 1.0.19
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: npm
+Section: devel
+Priority: optional
+Homepage: https://github.com/MiniMax-AI/cli
+Description: CLI tool for MiniMax AI
+ Command-line interface for interacting with MiniMax AI models,
+ including chat, completion, and image generation features.
