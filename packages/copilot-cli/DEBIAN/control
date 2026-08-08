@@ -1,5 +1,5 @@
 Package: copilot-cli
-Version: 1.0.75
+Version: 1.0.78
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, gh, glibc, clang, python, curl, tar

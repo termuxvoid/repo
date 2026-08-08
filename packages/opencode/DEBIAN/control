@@ -1,5 +1,5 @@
 Package: opencode
-Version: 1.18.11
+Version: 1.18.15
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, python, curl, tar
