@@ -182,6 +182,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [wafw00f](https://termuxvoid.github.io/tool.html?name=wafw00f) | Web Application Firewall detection tool |
 | [waybackurls](https://termuxvoid.github.io/tool.html?name=waybackurls) | Fetch known URLs from Wayback Machine archives |
 | [waymap](https://termuxvoid.github.io/tool.html?name=waymap) | Fast web vulnerability scanner and security testing toolkit |
+| [xss-loader](https://termuxvoid.github.io/tool.html?name=xss-loader) | Advanced XSS scanner and vulnerability loader |
 | [xsstrike](https://termuxvoid.github.io/tool.html?name=xsstrike) | Advanced XSS detection and exploitation suite |
 
 ### Reverse Engineering

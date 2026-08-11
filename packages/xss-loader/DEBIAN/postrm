@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+rm -f "$PREFIX/bin/xss-loader"
+rm -rf "$PREFIX/share/xss-loader"
+echo "xss-loader removed."
+exit 0

@@ -1,0 +1,11 @@
+Package: xss-loader
+Version: 1.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, sed, python, python-pip, python-lxml
+Section: web
+Priority: optional
+Homepage: https://github.com/capture0x/XSS-LOADER
+Description: XSS payload generator and loader tool
+ XSS-LOADER is a tool for generating and testing XSS payloads
+ with various encoding and obfuscation techniques.
