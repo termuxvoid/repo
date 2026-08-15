@@ -1,5 +1,5 @@
 Package: mimocode
-Version: 0.1.10
+Version: 0.1.12
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, clang, glibc, tar
