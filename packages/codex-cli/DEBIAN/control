@@ -1,0 +1,11 @@
+Package: codex-cli
+Version: 0.147.3
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: npm
+Section: devel
+Priority: optional
+Homepage: https://github.com/DioNanos/codex-termux
+Description: Codex CLI for Termux (npm version)
+ Codex is a lightweight coding agent that runs in your terminal.
+ This package installs the Termux‑compatible npm version.

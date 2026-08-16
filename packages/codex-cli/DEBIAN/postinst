@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+npm install -g @mmmbuto/codex-cli-termux@0.147.3
+echo "codex-cli installed. Run 'codex' to start."
+exit 0

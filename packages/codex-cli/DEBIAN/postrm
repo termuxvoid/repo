@@ -1,0 +1,4 @@
+#!/data/data/com.termux/files/usr/bin/bash
+npm uninstall -g @mmmbuto/codex-cli-termux 2>/dev/null || true
+echo "codex-cli removed."
+exit 0

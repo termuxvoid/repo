@@ -263,6 +263,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [9router](https://termuxvoid.github.io/tool.html?name=9router) | Smart gateway between your tools and 60+ AI providers |
 | [antigravity-cli](https://termuxvoid.github.io/tool.html?name=antigravity-cli) | AI‑powered coding assistant (glibc wrapper for Termux) |
 | [claude-code](https://termuxvoid.github.io/tool.html?name=claude-code) | AI‑powered coding assistant by Anthropic for agentic coding tasks |
+| [codex-cli](https://termuxvoid.github.io/tool.html?name=codex-cli) | Codex CLI – lightweight AI‑powered coding agent that runs in your terminal |
 | [copilot-cli](https://termuxvoid.github.io/tool.html?name=copilot-cli) | GitHub Copilot CLI – AI‑powered assistance in your terminal |
 | [hermes-agent](https://termuxvoid.github.io/tool.html?name=hermes-agent) | AI-powered coding assistant and workflow automation tool |
 | [kimi-code](https://termuxvoid.github.io/tool.html?name=kimi-code) | AI‑powered coding assistant for the terminal, powered by Moonshot AI |
