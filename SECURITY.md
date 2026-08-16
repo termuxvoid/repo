@@ -7,16 +7,30 @@ This repo is open source so you can **read the code before you run `pkg install`
 **What to check before installing:**
 
 1. `DEBIAN/postinst` — runs on install. Read it.
-2. `DEBIAN/prerm` — runs on uninstall.
+2. `DEBIAN/postrm` and `DEBIAN/prerm` (where present) — run during removal.
 3. Files under `data/data/com.termux/files/usr/` — the actual scripts/binaries.
 
 Don't understand the postinst? Copy it, ask an AI "what does this do and is it safe?" Don't install blindly.
 
-## What TermuxVoid Packages **Never** Do
+## Package Behavior and Configuration
 
 - No package modifies `$PATH`, `$HOME`, `$PREFIX`, or any Termux env var.
-- No package touches your existing Termux config.
-- We use **symlinks** instead of env mutations — uninstall leaves zero trace.
+- Ordinary tool packages do not alter your existing Termux configuration.
+- Packages whose stated purpose is shell styling, themes, desktop environments, or similar customization may create or change relevant configuration files. Inspect their lifecycle scripts before installation and removal, and keep backups of personal configuration.
+- Where appropriate, commands are exposed through **symlinks** instead of environment mutations.
+- Uninstall scripts are intended to remove files created by the package. Packages cannot restore user changes made after installation, so review cleanup behavior before installing a customization package.
+
+## Verify a Package Before Installing
+
+Do not install a package solely because it is available in this repository. Before installing, review its `DEBIAN/control`, `preinst`, `postinst`, and `postrm` files (where present).
+
+Check the following:
+
+1. **Upstream source:** Confirm the project URL and license are the ones you expect.
+2. **Version and integrity:** Prefer a pinned release, tag, or commit. When an upstream checksum or signature is available, verify it.
+3. **Network activity:** Identify every URL, Git repository, or upstream package-manager command used during installation.
+4. **Local changes:** Identify files created, commands linked, configuration files changed, and what removal does.
+5. **Authorization:** Security tools may be dual-use. Use them only on systems and data you own or are explicitly authorized to test.
 
 ## Report a Vulnerability
 

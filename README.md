@@ -44,29 +44,45 @@ Before using TermuxVoid, ensure your environment meets these requirements:
 
 ## 🔍 Project Overview
 
-**TermuxVoid** is an **unofficial custom APT repository** that bridges the gap between mobile convenience and professional security auditing. We host **220+ advanced security tools** that are not available in the official Termux repositories. Packages build natively **on your device** during installation, ensuring optimal compatibility with your exact Termux environment and Android architecture.
+**TermuxVoid** is an **unofficial custom APT repository** that bridges the gap between mobile convenience and professional security auditing. We host **220+ advanced security tools** that are not available in the official Termux repositories. Package installation happens on your device: depending on the tool, the package may build from source, install an upstream dependency, or download an upstream release.
 
 Whether you are a professional penetration tester or an ethical hacking enthusiast, TermuxVoid turns your Android device into a portable powerhouse.
 
 > [!NOTE]
-> This repository contains tools that are often excluded from official sources due to complexity or licensing. Packages are built from source **on your device** when you install them, so every tool is tuned for your specific Termux environment.<br>
+> This repository contains tools that are often excluded from official sources due to complexity, licensing, or security sensitivity. Read a package's installation script and its upstream source before installing it.<br>
 
 ## Security & Transparency
 
-Every package builds from source **on your device** at install time — no pre-built binaries are shipped. This makes everything auditable before it runs. Each package lives in `packages/<name>/` and ships a standard Debian layout under `DEBIAN/`:
+TermuxVoid is an unofficial, community-maintained repository. Package definitions and lifecycle scripts are published here so you can inspect what runs on installation and removal. A package may build from source on your device, install through an upstream package manager, or download an upstream release; the package script is the source of truth.
+
+Each package lives in `packages/<name>/` and normally ships a standard Debian layout under `DEBIAN/`:
 
 - `control` — metadata (name, version, dependencies, description)
 - `preinst` — pre-install checks (e.g. architecture validation)
-- `postinst` — builds and installs the tool, then links it into `$PREFIX/bin`
-- `postrm` — removes everything created during install
+- `postinst` — performs installation (such as building, downloading, or linking the tool)
+- `postrm` — removes files created by the package when possible
 
-**Package guarantees:**
+### What packages do—and do not—change
 
 - No package modifies `$PATH`, `$HOME`, `$PREFIX`, or any other Termux environment variable.
-- No package alters your existing Termux configuration.
-- Tools are exposed via **symlinks** instead of environment mutation, so uninstalling leaves zero trace.
+- Most tool packages do not alter existing Termux configuration and expose commands through **symlinks** or package-manager-installed commands instead of environment mutation.
+- Packages whose stated purpose is shell styling, themes, desktop environments, or similar customization may create or change relevant configuration files. Read their scripts carefully before installation and removal.
+- Uninstall scripts are intended to remove files created by the package. Preserve your own configuration backups, especially before installing customization packages.
 
-Don't trust — verify. Read `DEBIAN/postinst` before you `pkg install`. See [CONTRIBUTING.md](CONTRIBUTING.md) for how packages are built.
+### Before you install
+
+Security tools are powerful and many have dual-use capabilities. Use them only on systems and data you own or are explicitly authorized to test. Do not install a package solely because it is listed here.
+
+1. Read `packages/<name>/DEBIAN/control`, `preinst`, `postinst`, and `postrm` (where present).
+2. Check every download URL, Git repository, package-manager command, and configuration change in those scripts.
+3. Review the upstream tool and its license, then install it in a test environment first if it is unfamiliar.
+4. Keep backups of personal configuration before installing shell, theme, or desktop packages.
+
+Don't trust — verify. See [CONTRIBUTING.md](CONTRIBUTING.md) for the package layout and [SECURITY.md](SECURITY.md) for the security policy.
+
+### Package-source expectations
+
+When a package obtains software from upstream, its scripts should make the source auditable. Contributors should provide the upstream project URL, use a pinned release, tag, or commit where practical, and verify an upstream checksum or signature when one is available. Review every network download, upstream package-manager command, file/configuration change, exposed command, and uninstall action before installing.
 
 ## 🚀 Quick Installation
 
@@ -76,6 +92,9 @@ Getting started is seamless. Run the following one-liner in your Termux terminal
 # Add repository
 curl -sL https://github.com/termuxvoid/repo/raw/main/install.sh | bash
 ```
+
+> [!WARNING]
+> Piping a remote script directly to `bash` executes it immediately. For maximum transparency, download and inspect `install.sh` first, then run it locally.
 
 Once the repository is added, you can install any tool using `pkg install`:
 
@@ -89,6 +108,9 @@ pkg install metasploit-framework
 
 > [!TIP]
 > After installation, run `pkg update` to refresh your local package database. You can search for tools using `pkg search <tool-name>`.
+
+> [!NOTE]
+> Removing the TermuxVoid repository later does not remove packages you already installed. Use the package manager to remove individual packages; see the [uninstall instructions](#how-do-i-uninstall-the-termuxvoid-repository) to remove only the repository source and key.
 
 ## ✨ Featured Tools
 
@@ -205,12 +227,10 @@ Open an issue on **[GitHub](https://github.com/TermuxVoid/repo/issues)** with th
 To remove the repository from your Termux environment:
 
 ```bash
-rm $PREFIX/etc/apt/sources.list.d/termuxvoid.list
-rm $PREFIX/etc/apt/trusted.gpg.d/termuxvoid.gpg
-apt update
+curl -sL https://github.com/termuxvoid/repo/raw/main/uninstall.sh | bash
 ```
 
-This removes the repository source and its GPG key without affecting already-installed packages.
+This removes the repository source and its GPG key, refreshes APT, and does not remove packages you have already installed.
 </details>
 
 <details>
@@ -257,4 +277,3 @@ Support the project to help us keep the packages updated and add more tools:
 <div align="center">
   <sub>Built with ❤️ for security researchers by <a href="https://github.com/Anon4You">Alienkrishn</a> | Built on-device for best compatibility</sub>
 </div>
-
