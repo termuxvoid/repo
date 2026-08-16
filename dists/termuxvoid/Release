@@ -3,25 +3,25 @@ Version: 1
 Architectures: all
 Description: termuxvoid repository
 Suite: termuxvoid
-Date: Sat, 15 Aug 2026 07:21:05 UTC
+Date: Sun, 16 Aug 2026 12:04:29 UTC
 Components: main
 MD5Sum:
- dcdde621120c37d8bd3aa30eee4eb06f 177725 main/binary-all/Packages
- 1d3cdbfacad0c1002e3a1412cfb345fb 58660 main/binary-all/Packages.xz
+ ff8d425ffdcad649c5cbe2015f935bbc 178464 main/binary-all/Packages
+ 1ee8dcf38407ecce576ddef539fa62d6 58904 main/binary-all/Packages.xz
  1c3da0be25fa296f2d760929a4a95315 135244 main/Contents-all.xz
  7cb63fda178e5e239be3169c55126680 3607398 main/Contents-all
 SHA1:
- 529489815cef91d8bde23d17b65a838662447570 177725 main/binary-all/Packages
- bbb51ca7354589f3655bc654eb87bbc21dc9f2e0 58660 main/binary-all/Packages.xz
+ f2cc74e60360666526b2e2ea38ef1f4c39c4c2f4 178464 main/binary-all/Packages
+ c69306fbb33cc93344ce9d1f3eeb0788d73d1f06 58904 main/binary-all/Packages.xz
  64da46232875cb252d5393aceecf5671f6de9900 135244 main/Contents-all.xz
  d6146c9ba1e9a8e0a08e63f366ff0459f3a84891 3607398 main/Contents-all
 SHA256:
- 78cf7843d0b5c0359e96b195cea55d1a467d336461adc44b9d4bcb7be1f07d3f 177725 main/binary-all/Packages
- 912573db898f1c6c84d756dab57ecf08790ca091ecd4eb5ab7a6334e13c4a1bb 58660 main/binary-all/Packages.xz
+ 102aa668fbb9d49013af823e458da73b38b5e4d577bcad193ca6d20f9912a9c4 178464 main/binary-all/Packages
+ df601e4d373147346bbadfd258c4efcd8a57fa5667a332735b8ddd833379ee27 58904 main/binary-all/Packages.xz
  bb5db144de225aa14a783824630cace26fbbfa7c1f736667f636d0db667f68f6 135244 main/Contents-all.xz
  2b093b335f1ebec18cec95e5590d871011fb9b3a5a62bae6b7736a3d0a2baeb2 3607398 main/Contents-all
 SHA512:
- 87aaea4c46b647e426b070fef7dd61f0e46d60c51ede2b792aa283891db3dae5351d6f0904e2c632a91a337d66fd8821d6cd0e1d2d9a5b2fe04a079deb858088 177725 main/binary-all/Packages
- 4f7f49ee83466841e745c32768487077015f38de9d1f4b8769f9fbace407988d62cb97a6a28dfbfac40d3c1c6c9847a25965430df1f38358bfa4ffc50b31669d 58660 main/binary-all/Packages.xz
+ c716a460167052c813018338323dff9e858b733eadc4550046e78b86c3c5244130cc4b852a232e6752f408487e181f14b5216733606479d7fd14f7e2158f409c 178464 main/binary-all/Packages
+ ee01336badfc3783a7b46ea042ccecbcb6ec7ad75978b7c788d6c1916c215e128dc1c7464a3a1632be447d4eeaf59b7e6c434fc40083688adb92c0c6eb669f30 58904 main/binary-all/Packages.xz
  7cb5d9c1e7aa5ea395b75ae4c84433258b0e0e32613153a365687c9237be85f93b03adf172a031d7eeb34c8e51b8db3a1d02368ed912b54e93a84fb77ac0d6f7 135244 main/Contents-all.xz
  a87fac01b4ce39e9b42897352e68042cb1ce1c59689b1a982bc2ba9a4b33ed1002b2e8792f4f9cef3472ecb5fabbd76d549ccb14654513dab186a19c64874f7d 3607398 main/Contents-all
