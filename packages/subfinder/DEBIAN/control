@@ -1,5 +1,5 @@
 Package: subfinder
-Version: 2.14.0
+Version: 2.15.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, golang

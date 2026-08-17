@@ -1,5 +1,5 @@
 Package: maigret
-Version: 0.6.2
+Version: 0.6.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-lxml, python-pillow, python-psutil, rust, make, pkg-config, cmake

@@ -1,5 +1,5 @@
 Package: vulnx
-Version: 2.0.1
+Version: 2.0.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, golang

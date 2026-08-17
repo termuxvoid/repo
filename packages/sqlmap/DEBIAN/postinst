@@ -7,7 +7,7 @@ NC='\033[0m'
 
 
 # Install sqlmap using pip
-pip install sqlmap==1.10.7 || {
+pip install sqlmap==1.10.8 || {
     echo -e "${RED}Error: Failed to install sqlmap.${NC}"
     echo -e "${YELLOW}Make sure dependencies (python, python-pip) are installed.${NC}"
     exit 1

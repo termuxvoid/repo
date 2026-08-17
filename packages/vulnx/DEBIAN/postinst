@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
-go install -trimpath -ldflags "-w -s" github.com/projectdiscovery/vulnx/v2/cmd/vulnx@v2.0.1
+go install -trimpath -ldflags "-w -s" github.com/projectdiscovery/vulnx/v2/cmd/vulnx@v2.0.2
 if [ ! -f "$PREFIX/bin/vulnx" ] && [ -f "$HOME/go/bin/vulnx" ]; then
     ln -sf "$HOME/go/bin/vulnx" "$PREFIX/bin/vulnx"
 fi

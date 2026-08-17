@@ -4,7 +4,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-echo -e "${GREEN}Installing knockpy 7.0.2...${NC}"
+echo -e "${GREEN}Installing knockpy 9.0.0...${NC}"
 pip install knock-subdomains || {
     echo -e "${RED}Error: Failed to install knock-subdomains. Ensure pip is available.${NC}"
     exit 1

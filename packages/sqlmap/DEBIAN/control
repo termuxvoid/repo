@@ -1,5 +1,5 @@
 Package: sqlmap
-Version: 1.10.7
+Version: 1.10.8
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip

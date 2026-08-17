@@ -3,6 +3,6 @@
 set -e
 
 echo "Installing user-scanner..."
-pip install user-scanner==1.3.6.6
+pip install user-scanner==1.5.0
 echo "user-scanner installed successfully."
 exit 0

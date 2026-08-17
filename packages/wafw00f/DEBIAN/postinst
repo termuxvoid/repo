@@ -4,8 +4,8 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-echo -e "${GREEN}Installing wafw00f 2.3.1...${NC}"
-pip3 install wafw00f==2.3.1 || {
+echo -e "${GREEN}Installing wafw00f 2.4.2...${NC}"
+pip3 install wafw00f==2.4.2 || {
     echo -e "${RED}Error: Failed to install wafw00f. Ensure Python and pip are available.${NC}"
     exit 1
 }

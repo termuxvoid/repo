@@ -2,7 +2,7 @@
 set -e
 
 REPO_DIR="$TMPDIR/fscan"
-git clone --depth 1 --branch v2.1.3 https://github.com/shadow1ng/fscan.git "$REPO_DIR"
+git clone --depth 1 --branch v2.2.0 https://github.com/shadow1ng/fscan.git "$REPO_DIR"
 cd "$REPO_DIR"
 go build -trimpath -ldflags "-w -s" -o fscan .
 install -Dm700 -t "$PREFIX/bin" fscan

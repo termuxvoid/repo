@@ -8,7 +8,7 @@ NC='\033[0m'
 echo -e "${GREEN}Installing rkpairip...${NC}"
 
 echo -e "${YELLOW}Installing pairip via pip...${NC}"
-pip install Pairip==5.2 || {
+pip install Pairip==5.3 || {
     echo -e "${RED}Error: Failed to install pairip.${NC}"
     exit 1
 }

@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="3.2.0"
+VERSION="3.2.1"
 BUILD_DIR="$TMPDIR/dalfox-build"
 
 mkdir -p "$BUILD_DIR"

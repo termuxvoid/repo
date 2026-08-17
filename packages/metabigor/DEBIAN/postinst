@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="2.1.0"
+VERSION="2.2.0"
 TARBALL_URL="https://github.com/j3ssie/metabigor/archive/refs/tags/v${VERSION}.tar.gz"
 TMP_DIR="$TMPDIR/metabigor-build"
 BIN_DIR="$PREFIX/bin"

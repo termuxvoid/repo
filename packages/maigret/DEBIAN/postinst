@@ -2,7 +2,7 @@
 set -e
 
 pip install --no-binary curl_cffi curl_cffi --force-reinstall
-pip install maigret==0.6.2
+pip install maigret==0.6.4
 
 echo "maigret installed successfully."
 echo ""

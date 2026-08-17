@@ -1,5 +1,5 @@
 Package: httpx
-Version: 1.9.0
+Version: 1.10.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, golang

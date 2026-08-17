@@ -5,10 +5,10 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-echo -e "${GREEN}Installing tte 0.14.2...${NC}"
+echo -e "${GREEN}Installing tte 0.15.0...${NC}"
 
 echo -e "${YELLOW}Installing terminaltexteffects via pip...${NC}"
-pip install terminaltexteffects==0.14.2 || {
+pip install terminaltexteffects==0.15.0 || {
     echo -e "${RED}Error: Failed to install terminaltexteffects.${NC}"
     exit 1
 }

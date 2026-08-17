@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
-go install -trimpath -ldflags "-w -s" github.com/projectdiscovery/nuclei/v3/cmd/nuclei@v3.11.0
+go install -trimpath -ldflags "-w -s" github.com/projectdiscovery/nuclei/v3/cmd/nuclei@v3.11.1
 if [ ! -f "$PREFIX/bin/nuclei" ] && [ -f "$HOME/go/bin/nuclei" ]; then
     ln -sf "$HOME/go/bin/nuclei" "$PREFIX/bin/nuclei"
 fi
