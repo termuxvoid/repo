@@ -3,7 +3,7 @@ set -e
 
 ZAP_DIR="$PREFIX/share/zaproxy"
 DESKTOP_DIR="$PREFIX/share/applications"
-DOWNLOAD_URL="https://github.com/zaproxy/zaproxy/releases/download/w2026-03-02/ZAP_WEEKLY_D-2026-03-02.zip"
+DOWNLOAD_URL="https://github.com/zaproxy/zaproxy/releases/download/w2026-08-11/ZAP_WEEKLY_D-2026-08-11.zip"
 
 echo "[*] Downloading OWASP ZAP Weekly..."
 mkdir -p "$TMPDIR"
@@ -13,9 +13,9 @@ wget --show-progress -q --progress=bar:force:noscroll \
 echo "[*] Installing to $ZAP_DIR..."
 [ -d "$ZAP_DIR" ] && rm -rf "$ZAP_DIR"
 
-# Extract and move the specific folder (ZAP_D-2026-03-02) to ZAP_DIR
+# Extract and move the specific folder (ZAP_D-2026-08-11) to ZAP_DIR
 unzip -q "$TMPDIR/zap.zip" -d "$TMPDIR"
-mv "$TMPDIR/ZAP_D-2026-03-02" "$ZAP_DIR"
+mv "$TMPDIR/ZAP_D-2026-08-11" "$ZAP_DIR"
 
 echo "[*] Creating launcher..."
 cat > "$PREFIX/bin/zaproxy" <<EOF

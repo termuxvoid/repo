@@ -3,8 +3,8 @@
 # jSQL Injection installer for Termux
 
 JSQL_DIR="$PREFIX/share/jsql"
-JAR_NAME="jsql-injection-v0.114.jar"
-JAR_URL="https://github.com/ron190/jsql-injection/releases/download/v0.114/$JAR_NAME"
+JAR_NAME="jsql-injection-v0.115.jar"
+JAR_URL="https://github.com/ron190/jsql-injection/releases/download/v0.115/$JAR_NAME"
 LAUNCHER="$PREFIX/bin/jsql"
 
 # Colors
