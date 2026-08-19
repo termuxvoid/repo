@@ -1,0 +1,12 @@
+Package: nosqli
+Version: 0.5.4
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, golang
+Section: web
+Priority: optional
+Homepage: https://github.com/Charlie-belmer/nosqli
+Description: NoSQL injection detection and exploitation tool
+ nosqli is a fast NoSQL injection scanner and injector written in Go.
+ It supports error‑based, boolean‑blind, and timing‑based detection
+ for MongoDB and other NoSQL databases.

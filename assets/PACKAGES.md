@@ -292,6 +292,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [jwt-hack](https://termuxvoid.github.io/tool.html?name=jwt-hack) | JWT security testing and exploitation tool – signing, forging, algorithm confusion, kid injection and more |
 | [ngrok](https://termuxvoid.github.io/tool.html?name=ngrok) | Secure tunneling to localhost |
 | [nikto](https://termuxvoid.github.io/tool.html?name=nikto) | Comprehensive web server scanner |
+| [nosqli](https://termuxvoid.github.io/tool.html?name=nosqli) | Fast NoSQL injection scanner and injector – error‑based, boolean‑blind, and timing‑based detection |
 | [playit](https://termuxvoid.github.io/tool.html?name=playit) | Global proxy for server hosting without port forwarding |
 | [scanqli](https://termuxvoid.github.io/tool.html?name=scanqli) | A simple SQL injection scanner to detect classic, blind, and time‑based vulnerabilities |
 | [sqlmap](https://termuxvoid.github.io/tool.html?name=sqlmap) | Automatic SQL injection and database takeover tool |

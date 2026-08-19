@@ -1,0 +1,14 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="v0.5.4"
+REPO="github.com/Charlie-belmer/nosqli"
+
+go install -trimpath -ldflags "-w -s" "${REPO}@${VERSION}"
+
+if [ ! -f "$PREFIX/bin/nosqli" ] && [ -f "$HOME/go/bin/nosqli" ]; then
+    ln -sf "$HOME/go/bin/nosqli" "$PREFIX/bin/nosqli"
+fi
+
+echo "nosqli installed. Run 'nosqli'"
+exit 0
