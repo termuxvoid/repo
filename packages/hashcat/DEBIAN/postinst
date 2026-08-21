@@ -1,47 +1,106 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
+
 HASHCAT_DIR="$PREFIX/opt/hashcat"
+BUILD="$TMPDIR/hashcat-build"
+VERSION="7.1.2"
+ARCHIVE="hashcat-${VERSION}.tar.gz"
+URL="https://github.com/hashcat/hashcat/archive/refs/tags/v${VERSION}.tar.gz"
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
+print_status() { echo -e "[*] $1"; }
+print_error() { echo -e "[!] Error: $1"; exit 1; }
 
-print_status() { echo -e "${GREEN}[*] $1${NC}"; }
-print_error() { echo -e "${RED}[!] Error: $1${NC}"; exit 1; }
+# --- Download & extract source ---
+rm -rf "$BUILD"
+mkdir -p "$BUILD"
 
-[ -d "$HASHCAT_DIR" ] && { rm -rf "$HASHCAT_DIR" || print_error "Failed to remove existing directory"; }
+print_status "Downloading hashcat ${VERSION} source..."
+curl -sL -o "$TMPDIR/$ARCHIVE" "$URL" || print_error "Download failed"
 
-wget --show-progress -q --progress=bar:force:noscroll -O "$TMPDIR/hashcat-7.1.2.zip" \
-https://github.com/hashcat/hashcat/archive/refs/tags/v7.1.2.zip || print_error "Download failed"
+tar xzf "$TMPDIR/$ARCHIVE" -C "$BUILD" --strip-components=1 || print_error "Extraction failed"
+cd "$BUILD"
 
-unzip -q "$TMPDIR/hashcat-7.1.2.zip" -d "$TMPDIR" || print_error "Extraction failed"
-mv "$TMPDIR/hashcat-7.1.2" "$HASHCAT_DIR" || print_error "Move failed"
-cd "$HASHCAT_DIR" || print_error "Could not enter $HASHCAT_DIR"
 
-line=$(grep -n "\$(LDFLAGS)" src/Makefile | awk -F ":" '{print $1}')
-[ -n "$line" ] && {
-    let ln=$line-1
-    sed -i "${ln}a LDFLAGS += -liconv" src/Makefile || print_error "Failed to modify src/Makefile"
-    print_status "Updated LDFLAGS with -liconv"
-} || print_error "Could not find LDFLAGS in src/Makefile"
+# 1) types.h: rename 'struct user' tag (conflicts with bionic <sys/user.h>)
+sed -i 's/^typedef struct user$/typedef struct user_hashcat/' include/types.h
 
-line=$(grep -n "affinity.h" src/affinity.c | awk -F ":" '{print $1}' | head -n 1)
-[ -n "$line" ] && {
-    let ln=$line+1
-    sed -i "${ln}a#ifdef __ANDROID__\nint pthread_setaffinity_np(pthread_t thread, size_t cpusetsize, const cpu_set_t *cpuset) {\n    return 0;\n}\n#endif" src/affinity.c || print_error "Failed to modify src/affinity.c"
-    print_status "Added stub for pthread_setaffinity_np"
-} || print_error "Could not find affinity.h in src/affinity.c"
+# 2) include/ext_lzma.h: fix LZMA include paths
+sed -i \
+ -e 's|#include <LzmaDec.h>|#include "../deps/LZMA-SDK/C/LzmaDec.h"|' \
+ -e 's|#include <Lzma2Dec.h>|#include "../deps/LZMA-SDK/C/Lzma2Dec.h"|' \
+ -e 's|#include "minizip/unzip.h"|#include "../deps/zlib/contrib/minizip/unzip.h"|' \
+ include/ext_lzma.h
 
-make -j$(nproc --all) 
-ln -srf "$HASHCAT_DIR/hashcat" "$PREFIX/bin/"
+# 3) src/filehandling.c: fix LZMA include paths
+sed -i \
+ -e 's|#include <Alloc.h>|#include "../deps/LZMA-SDK/C/Alloc.h"|' \
+ -e 's|#include <7zCrc.h>|#include "../deps/LZMA-SDK/C/7zCrc.h"|' \
+ -e 's|#include <7zFile.h>|#include "../deps/LZMA-SDK/C/7zFile.h"|' \
+ -e 's|#include <Xz.h>|#include "../deps/LZMA-SDK/C/Xz.h"|' \
+ -e 's|#include <XzCrc64.h>|#include "../deps/LZMA-SDK/C/XzCrc64.h"|' \
+ src/filehandling.c
 
-# Create user directory
-mkdir -p $HOME/.local/share/hashcat/
+# 4) deps/unrar/os.hpp: do not use lutimes on Android
+sed -i 's@#if defined(__linux) || defined(__FreeBSD__)@#if (defined(__linux) \&\& !defined(__ANDROID__)) || defined(__FreeBSD__)@' deps/unrar/os.hpp
 
-echo -e "${GREEN}Hashcat installation process completed!${NC}"
-if [ -f "$PREFIX/bin/hashcat" ]; then
-    echo -e "${YELLOW}Usage:${NC}"
-    echo "  hashcat -b                    # Benchmark"
-    echo "  hashcat -m 0 hash.txt wordlist.txt  # MD5 cracking"
-    echo "  hashcat -I                    # List OpenCL devices"
-fi 
+# 5) src/affinity.c: provide bionic implementations of pthread_{get,set}affinity_np
+if ! grep -q "__BIONIC__" src/affinity.c; then
+python3 - <<'PY'
+p='src/affinity.c'
+s=open(p).read()
+block=('''
+#include <assert.h>
+#include <sched.h>
+#include <pthread.h>
+#if defined(__BIONIC__)
+static inline int pthread_setaffinity_np(pthread_t thread, size_t cpusetsize,
+                                         cpu_set_t *cpuset) {
+  return sched_setaffinity(pthread_gettid_np(thread), cpusetsize, cpuset);
+}
 
+static inline int pthread_getaffinity_np(pthread_t thread, size_t cpusetsize,
+                                         cpu_set_t *cpuset) {
+  return sched_getaffinity(pthread_gettid_np(thread), cpusetsize, cpuset);
+}
+#endif
+''')
+s=s.replace('#include "affinity.h"\n', '#include "affinity.h"\n'+block, 1)
+open(p,'w').write(s)
+print("affinity.c patched")
+PY
+fi
+
+# --- Build ---
+print_status "Building hashcat (this may take several minutes)..."
+make CC=clang CXX=clang++ LDFLAGS="-liconv" \
+     PREFIX="$PREFIX" \
+     SHARED_FOLDER="$HASHCAT_DIR/share/hashcat" \
+     INSTALL_FOLDER="$HASHCAT_DIR/bin" \
+     -j"$(nproc --all)" hashcat modules || print_error "Build failed"
+
+# --- Install into $PREFIX/opt/hashcat ---
+print_status "Installing hashcat..."
+rm -rf "$HASHCAT_DIR"
+make CC=clang CXX=clang++ LDFLAGS="-liconv" \
+     PREFIX="$PREFIX" \
+     SHARED_FOLDER="$HASHCAT_DIR/share/hashcat" \
+     INSTALL_FOLDER="$HASHCAT_DIR/bin" \
+     install_hashcat install_shared install_kernels install_modules install_tunings install_tools || print_error "Install failed"
+
+[ -x "$HASHCAT_DIR/bin/hashcat" ] || print_error "hashcat binary not found after install"
+
+# --- Launcher ---
+cat > "$PREFIX/bin/hashcat" <<EOF
+#!/data/data/com.termux/files/usr/bin/bash
+LD_LIBRARY_PATH="$PREFIX/opt/vendor/lib:$PREFIX/lib" exec "$HASHCAT_DIR/bin/hashcat" "\$@"
+EOF
+chmod 755 "$PREFIX/bin/hashcat"
+
+# --- Runtime data directory ---
+mkdir -p "$HOME/.local/share/hashcat/"
+
+# --- Cleanup build tree ---
+rm -rf "$BUILD" "$TMPDIR/$ARCHIVE"
+
+echo -e "[*] Hashcat ${VERSION} installed successfully."
+echo -e "[*] Usage: hashcat -b   (benchmark) / hashcat -I   (list OpenCL devices)"
