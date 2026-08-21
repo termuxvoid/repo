@@ -1,0 +1,24 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/robertdavidgraham/masscan.git"
+TMP_DIR="$TMPDIR/masscan-build"
+BIN_DIR="$PREFIX/bin"
+
+rm -rf "$TMP_DIR" 2>/dev/null || true
+
+git clone --depth 1 -q "$REPO" "$TMP_DIR"
+cd "$TMP_DIR"
+
+# Android patch: skip pthread_setschedprio on Android (function not available)
+# This wraps the call with #ifndef __ANDROID__ ... #endif
+sed -i 's/^[[:space:]]*pthread_setschedprio(thread, max_prio_for_policy);/#ifndef __ANDROID__\n    pthread_setschedprio(thread, max_prio_for_policy);\n#endif/' src/pixie-threads.c
+
+make -j$(nproc)
+make install
+
+cd /
+rm -rf "$TMP_DIR"
+
+echo "masscan installed. Run 'masscan'"
+exit 0

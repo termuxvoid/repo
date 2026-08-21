@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+rm -f "$PREFIX/bin/masscan"
+
+echo "masscan removed."
+exit 0

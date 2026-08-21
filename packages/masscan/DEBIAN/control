@@ -1,0 +1,12 @@
+Package: masscan
+Version: 1.3.2
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, make, clang, libpcap, sed
+Section: net
+Priority: optional
+Homepage: https://github.com/robertdavidgraham/masscan
+Description: High-speed TCP port scanner
+ Masscan is an Internet-scale port scanner. It can scan the entire
+ Internet in under 5 minutes, transmitting 10 million packets per
+ second, from a single machine. Usage and output are similar to nmap.
