@@ -1,0 +1,12 @@
+Package: sliver-c2
+Version: 1.7.3
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: golang, make, build-essential, zig, sed, python, curl, tar
+Section: net
+Priority: optional
+Homepage: https://github.com/BishopFox/sliver
+Description: Open‑source cross‑platform adversary emulation framework
+ Sliver is a modern C2 framework by BishopFox for red‑team operations.
+ It supports mTLS, WireGuard, HTTP(S) and DNS C2, with dynamically
+ compiled implants and per‑binary encryption keys.

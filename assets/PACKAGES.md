@@ -26,6 +26,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [powerdos](https://termuxvoid.github.io/tool.html?name=powerdos) | Multi‑threaded Denial of Service tool in Python |
 | [reaver](https://termuxvoid.github.io/tool.html?name=reaver) | Brute‑force attack tool against WPS (Wi‑Fi Protected Setup) PINs |
 | [slowhttptest](https://termuxvoid.github.io/tool.html?name=slowhttptest) | Application Layer DoS attack simulator |
+| [sliver-c2](https://termuxvoid.github.io/tool.html?name=sliver-c2) | Open-source cross-platform adversary emulation framework |
 | [spurt](https://termuxvoid.github.io/tool.html?name=spurt) | HTTP stress testing tool to overload web servers |
 | [termsploit](https://termuxvoid.github.io/tool.html?name=termsploit) | Pentesting framework for Termux |
 | [wipwn](https://termuxvoid.github.io/tool.html?name=wipwn) | Fast automated WiFi WPS PIN cracking tool with Pixie Dust and brute-force attacks |
