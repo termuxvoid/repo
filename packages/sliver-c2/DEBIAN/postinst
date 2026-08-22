@@ -14,68 +14,91 @@ curl -fsSL "$ARCHIVE_URL" -o "$TMP_DIR/sliver.tar.gz"
 tar -xzf "$TMP_DIR/sliver.tar.gz" -C "$TMP_DIR" --strip-components=1
 cd "$TMP_DIR"
 
-cat > "$TMP_DIR/patch_assets.py" << 'PYEOF'
-import os, subprocess
+# Termux/Android constraints:
+#  * GOOS=linux binaries are rejected by Android's bionic loader (TLS alignment),
+#    so the server MUST be built natively (android/arm64) to run at all.
+#  * Go publishes no android/arm64 toolchain for Sliver to embed, so the embedded
+#    Go toolchain can never be installed on Android.
+#  * The upstream asset generator downloads linux/amd64+arm64 Go/Zig toolchains and
+#    embeds them; the linux archives cannot run on Android and bloat the binary, so
+#    we do NOT run it. Instead we create placeholder embedded assets (the runtime
+#    is patched to use the SYSTEM Go toolchain, so the embedded ones are never read)
+#    and we patch Sliver to compile implants with the system `golang` dependency.
+#    A missing `garble` degrades gracefully to a non-obfuscated build.
+
+# Patch Sliver to use the system Go toolchain on Android.
+cat > "$TMP_DIR/patch_gogo.py" << 'PYEOF'
+import os
 base = os.environ["SLIVER_DIR"]
 
-def rewrite_slice(path, marker, new_block):
-    with open(path) as f: lines = f.read().split("\n")
-    out, i, done = [], 0, False
-    while i < len(lines):
-        if lines[i].strip() == marker and not done:
-            out.append(lines[i]); out.extend(new_block.split("\n")); i += 1
-            while i < len(lines) and lines[i].strip() != "}": i += 1
-            i += 1; done = True
-        else: out.append(lines[i]); i += 1
-    open(path, "w").write("\n".join(out))
+# --- server/gogo/go.go ---
+p = base + "/server/gogo/go.go"
+s = open(p).read()
+s = s.replace('\t"os/exec"\n', '\t"os/exec"\n\t"runtime"\n', 1)
 
-rewrite_slice(base + "/util/assets/go.go", "platforms := []goPlatform{", '''
-\t\t{
-\t\t\tos:         "linux",
-\t\t\tarch:       "amd64",
-\t\t\tarchiveExt: "tar.gz",
-\t\t\ttoolRemoves: []string{
-\t\t\t\t"pkg/tool/linux_amd64/doc",
-\t\t\t\t"pkg/tool/linux_amd64/tour",
-\t\t\t\t"pkg/tool/linux_amd64/test2json",
-\t\t\t},
-\t\t},
-\t\t{
-\t\t\tos:         "linux",
-\t\t\tarch:       "arm64",
-\t\t\tarchiveExt: "tar.gz",
-\t\t\tincludeSrc: true,
-\t\t\ttoolRemoves: []string{
-\t\t\t\t"pkg/tool/linux_arm64/doc",
-\t\t\t\t"pkg/tool/linux_arm64/tour",
-\t\t\t\t"pkg/tool/linux_arm64/test2json",
-\t\t\t},
-\t\t},
-\t}''')
+old = '''func GetGoRootDir(appDir string) string {
+\treturn filepath.Join(appDir, goDirName)
+}'''
+new = '''func GetGoRootDir(appDir string) string {
+\tif runtime.GOOS == "android" {
+\t\tif r := os.Getenv("SLIVER_GO_ROOT"); r != "" {
+\t\t\treturn r
+\t\t}
+\t\ttermux := "/data/data/com.termux/files/usr/lib/go"
+\t\tif _, err := os.Stat(termux + "/bin/go"); err == nil {
+\t\t\treturn termux
+\t\t}
+\t}
+\treturn filepath.Join(appDir, goDirName)
+}'''
+assert old in s, "GetGoRootDir not found"
+s = s.replace(old, new)
 
-rewrite_slice(base + "/util/assets/garble.go", "platforms := []garblePlatform{", '''
-\t\t{
-\t\t\tos:       "linux",
-\t\t\tarch:     "amd64",
-\t\t\tfilename: "garble",
-\t\t\turl:      fmt.Sprintf("https://github.com/moloch--/garble/releases/download/v%s/garble_linux-amd64", garbleVersion),
-\t\t},
-\t\t{
-\t\t\tos:       "linux",
-\t\t\tarch:     "arm64",
-\t\t\tfilename: "garble",
-\t\t\turl:      fmt.Sprintf("https://github.com/moloch--/garble/releases/download/v%s/garble_linux-arm64", garbleVersion),
-\t\t},
-\t}''')
+oldc = 'func GetGoCache(appDir string) string {\n\tcachePath := filepath.Join(GetGoRootDir(appDir), "cache")\n\tos.MkdirAll(cachePath, 0700)\n\treturn cachePath\n}'
+newc = 'func GetGoCache(appDir string) string {\n\tcachePath := filepath.Join(appDir, "gocache")\n\tos.MkdirAll(cachePath, 0700)\n\treturn cachePath\n}'
+assert oldc in s, "GetGoCache not found"
+s = s.replace(oldc, newc)
 
-subprocess.run(["sed", "-i", "/remoteName:/d", base + "/util/assets/zig.go"], check=True)
-for f in ["server/assets/assets_darwin_amd64.go", "server/assets/assets_darwin_arm64.go",
-          "server/assets/assets_windows_amd64.go", "server/assets/assets_windows_arm64.go"]:
-    if os.path.exists(base + "/" + f): os.remove(base + "/" + f)
+oldm = 'func GetGoModCache(appDir string) string {\n\tcachePath := filepath.Join(GetGoRootDir(appDir), "modcache")\n\tos.MkdirAll(cachePath, 0700)\n\treturn cachePath\n}'
+newm = 'func GetGoModCache(appDir string) string {\n\tcachePath := filepath.Join(appDir, "gomodcache")\n\tos.MkdirAll(cachePath, 0700)\n\treturn cachePath\n}'
+assert oldm in s, "GetGoModCache not found"
+s = s.replace(oldm, newm)
+
+oldg = 'garbleBinPath := filepath.Join(config.GOROOT, "bin", "garble")\n\tgarbleFlags'
+newg = 'garbleBinPath := filepath.Join(config.GOROOT, "bin", "garble")\n\tif _, err := os.Stat(garbleBinPath); err != nil {\n\t\tgogoLog.Warnf("garble not found at %s, falling back to non-obfuscated build", garbleBinPath)\n\t\treturn GoCmd(config, cwd, command)\n\t}\n\tgarbleFlags'
+assert oldg in s, "garbleBinPath not found"
+s = s.replace(oldg, newg)
+open(p, "w").write(s)
+
+# --- server/assets/assets-helpers.go ---
+ap = base + "/server/assets/assets-helpers.go"
+a = open(ap).read()
+olda = 'func setupGo(appDir string) error {\n\tsetupLog.Infof("Unpacking to \'%s\'", appDir)'
+newa = 'func setupGo(appDir string) error {\n\tif os.Getenv("SLIVER_GO_ROOT") != "" || runtime.GOOS == "android" {\n\t\tsetupLog.Infof("Using external Go toolchain, skipping embedded extraction")\n\t\treturn nil\n\t}\n\tsetupLog.Infof("Unpacking to \'%s\'", appDir)'
+assert olda in a, "setupGo not found"
+a = a.replace(olda, newa)
+# bring in the "runtime" import used by the patched setupGo
+if '"runtime"' not in a:
+    a = a.replace('\t"os"\n', '\t"os"\n\t"runtime"\n', 1)
+open(ap, "w").write(a)
 PYEOF
-SLIVER_DIR="$TMP_DIR" python3 "$TMP_DIR/patch_assets.py"
+SLIVER_DIR="$TMP_DIR" python3 "$TMP_DIR/patch_gogo.py"
 
-go run -mod=vendor ./util/cmd/assets
+# Create placeholder embedded assets so the server binary compiles.
+# NOTE: embed ignores files starting with '.' or '_', so use plain names.
+mkdir -p "$TMP_DIR/server/assets/fs/linux/amd64" "$TMP_DIR/server/assets/fs/linux/arm64"
+: > "$TMP_DIR/server/assets/fs/linux/amd64/keep"
+: > "$TMP_DIR/server/assets/fs/linux/arm64/keep"
+: > "$TMP_DIR/server/assets/fs/placeholder.zip"
+
+# Remove the platform-specific asset files that reference darwin/windows
+# embedded directories we do not generate (they would break the build).
+rm -f "$TMP_DIR/server/assets/assets_darwin_amd64.go" \
+      "$TMP_DIR/server/assets/assets_darwin_arm64.go" \
+      "$TMP_DIR/server/assets/assets_windows_amd64.go" \
+      "$TMP_DIR/server/assets/assets_windows_arm64.go"
+
+# Build natively for android/arm64 (runs on bionic's loader).
 go build -mod=vendor -trimpath -tags go_sqlite,server -ldflags "$LDFLAGS" -p $(nproc) -o sliver-server ./server
 CGO_ENABLED=0 go build -mod=vendor -trimpath -tags go_sqlite,client -ldflags "$LDFLAGS" -p $(nproc) -o sliver-client ./client
 
