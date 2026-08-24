@@ -1,5 +1,5 @@
 Package: kimi-code
-Version: 0.36.1
+Version: 0.38.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, npm, ripgrep

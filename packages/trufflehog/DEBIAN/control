@@ -1,5 +1,5 @@
 Package: trufflehog
-Version: 3.97.0
+Version: 3.97.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, golang

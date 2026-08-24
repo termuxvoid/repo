@@ -2,7 +2,7 @@
 set -e
 
 REPO="https://github.com/trufflesecurity/trufflehog.git"
-TAG="v3.97.0"
+TAG="v3.97.1"
 TMP_DIR="$TMPDIR/trufflehog-build"
 BIN_DIR="$PREFIX/bin"
 

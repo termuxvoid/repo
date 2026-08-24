@@ -1,5 +1,5 @@
 Package: waymap
-Version: 7.2.0
+Version: 8.1.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python

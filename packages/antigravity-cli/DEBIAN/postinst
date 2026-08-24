@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
-VERSION="1.1.13"
+VERSION="1.1.19"
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
 DOWNLOAD_URL="https://github.com/google-antigravity/antigravity-cli/releases/download/${VERSION}/agy_cli_linux_arm64.tar.gz"
 SHARE_DIR="$PREFIX/share/antigravity-cli"

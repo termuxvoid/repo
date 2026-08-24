@@ -1,12 +1,12 @@
 Package: bun
-Version: 1.3.14
+Version: 1.4.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: curl, unzip, clang, glibc
+Depends: npm
 Section: devel
 Priority: optional
 Homepage: https://bun.sh
-Description: Incredibly fast JavaScript runtime (glibc wrapper for Termux)
+Description: Incredibly fast JavaScript runtime, bundler, test runner and package manager
  Bun is an all‑in‑one JavaScript/TypeScript toolkit. This package
- downloads the official Linux ARM64 or x86_64 binary and runs it
- inside the Termux glibc environment.
+ installs the official native Android build through npm, so no
+ glibc wrapper or manual binary patching is required.

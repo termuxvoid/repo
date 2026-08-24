@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-npm install -g mmx-cli@1.0.19
+npm install -g mmx-cli@1.0.22
 
 echo "mmx-cli installed. Run 'mmx'"
 exit 0

@@ -1,0 +1,16 @@
+Package: laudacode
+Version: 0.4.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl, rust, tar
+Section: devel
+Priority: optional
+Homepage: https://github.com/Anon4You/Laudacode
+Description: Fast, lightweight AI coding agent for your terminal
+ LaudaCode is a pure Rust AI agent that lives in your terminal.
+ It reads your project, edits files, runs commands and fetches
+ web docs using any OpenAI-compatible API (OpenAI, OpenRouter,
+ Groq, DeepSeek, Together, Ollama, LM Studio, and more).
+ Supports approval modes, image input, streaming responses,
+ 12 color themes, ambient effects, session persistence, and
+ slash commands.

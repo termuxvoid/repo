@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
-go install -trimpath -ldflags "-w -s" github.com/projectdiscovery/subfinder/v2/cmd/subfinder@v2.15.0
+go install -trimpath -ldflags "-w -s" github.com/projectdiscovery/subfinder/v2/cmd/subfinder@v2.16.0
 if [ ! -f "$PREFIX/bin/subfinder" ] && [ -f "$HOME/go/bin/subfinder" ]; then
     ln -sf "$HOME/go/bin/subfinder" "$PREFIX/bin/subfinder"
 fi

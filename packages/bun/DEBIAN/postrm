@@ -1,5 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
-PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-rm -f "$PREFIX/bin/bun"
-rm -rf "$PREFIX/share/bun"
+
+npm uninstall -g bun 2>/dev/null || true
+
+echo "bun removed."
 exit 0
