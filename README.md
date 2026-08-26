@@ -23,6 +23,7 @@
 - [Project Overview](#-project-overview)
 - [Prerequisites](#-prerequisites)
 - [Quick Installation](#-quick-installation)
+- [Pacman Users](#-pacman-users)
 - [Featured Tools](#-featured-tools)
 - [Legal & Disclaimer](#-legal--disclaimer)
 - [Frequently Asked Questions](#-frequently-asked-questions)
@@ -111,6 +112,18 @@ pkg install metasploit-framework
 
 > [!NOTE]
 > Removing the TermuxVoid repository later does not remove packages you already installed. Use the package manager to remove individual packages; see the [uninstall instructions](#how-do-i-uninstall-the-termuxvoid-repository) to remove only the repository source and key.
+
+## 🐧 Pacman Users
+
+Running a **pacman-based Termux** (switched pacman bootstrap or `termux-penv`)? The very same tools are also shipped as pacman packages through our dedicated pacman repository — signed database, `arch=('any')` builds, `pacman -S <tool>` workflow.
+
+**Pacman repository:** [github.com/termuxvoid/pacman-repo](https://github.com/termuxvoid/pacman-repo)
+
+```bash
+curl -sL https://github.com/termuxvoid/pacman-repo/raw/main/install-repo.sh | bash
+```
+
+If you are on standard apt/dpkg Termux, stay right here — this repository is for you.
 
 ## ✨ Featured Tools
 
