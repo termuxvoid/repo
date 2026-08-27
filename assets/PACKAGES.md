@@ -96,6 +96,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [bun](https://termuxvoid.github.io/tool.html?name=bun) | Incredibly fast JavaScript runtime, bundler, test runner and package manager |
 | [cronitor-cli](https://termuxvoid.github.io/tool.html?name=cronitor-cli) | CLI for managing and monitoring cron jobs |
 | [ffmpegp](https://termuxvoid.github.io/tool.html?name=ffmpegp) | Python utility for simplified ffprobe and ffmpeg media operations |
+| [freebuff](https://termuxvoid.github.io/tool.html?name=freebuff) | Free, subscription-less AI coding agent that edits your code from the terminal |
 | [ia-get](https://termuxvoid.github.io/tool.html?name=ia-get) | Internet Archive Downloader Tool |
 | [lazyvim](https://termuxvoid.github.io/tool.html?name=lazyvim) | Modern Neovim configuration framework |
 | [lunarvim](https://termuxvoid.github.io/tool.html?name=lunarvim) | An IDE layer for Neovim with sane defaults |

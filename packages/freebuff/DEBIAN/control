@@ -1,0 +1,12 @@
+Package: freebuff
+Version: 0.0.126
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: npm, ripgrep
+Section: utils
+Priority: optional
+Homepage: https://www.npmjs.com/package/@nyxur/freebuff
+Description: Free, subscription-less AI coding agent for the terminal
+ freebuff is a free AI coding agent that runs in your terminal — describe
+ what you want and it edits your code, with no subscription or configuration
+ required. Built on the Codebuff platform and adapted for Termux/Android.

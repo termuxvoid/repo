@@ -1,0 +1,4 @@
+#!/data/data/com.termux/files/usr/bin/bash
+npm uninstall -g @nyxur/freebuff 2>/dev/null || true
+echo "freebuff removed."
+exit 0

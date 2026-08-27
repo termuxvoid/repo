@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+npm install -g @nyxur/freebuff@0.0.126
+echo "freebuff installed. Run 'freebuff'"
+exit 0
