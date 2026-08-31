@@ -1,5 +1,89 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
-npm install -g @nyxur/freebuff@0.0.126
-echo "freebuff installed. Run 'freebuff'"
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+VERSION="0.0.162"
+ARCH=$(uname -m)
+
+case "$ARCH" in
+    aarch64)
+        ARCH_TARGET="arm64"
+        LD_SO="ld-linux-aarch64.so.1"
+        ;;
+    x86_64)
+        ARCH_TARGET="x86-64"
+        LD_SO="ld-linux-x86-64.so.2"
+        ;;
+    *)
+        echo "Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+
+TARFILE="freebuff-linux-${ARCH_TARGET}.tar.gz"
+DOWNLOAD_URL="https://codebuff.com/api/releases/download/${VERSION}/${TARFILE}"
+SHARE_DIR="$PREFIX/share/freebuff"
+BIN_DIR="$PREFIX/bin"
+LOADER="$PREFIX/glibc/lib/${LD_SO}"
+REAL_BIN="$SHARE_DIR/freebuff.real"
+LIB_PATH="$PREFIX/glibc/lib"
+
+mkdir -p "$SHARE_DIR" "$BIN_DIR"
+
+echo "Downloading freebuff ${VERSION}..."
+curl -fsSL "$DOWNLOAD_URL" | tar -xz -C "$SHARE_DIR"
+if [ ! -f "$SHARE_DIR/freebuff" ]; then
+    echo "Error: freebuff binary not found after extraction." >&2
+    exit 1
+fi
+mv "$SHARE_DIR/freebuff" "$REAL_BIN"
+chmod +x "$REAL_BIN"
+
+cat > "$TMPDIR/freebuff_helper.c" << 'EOF'
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
+
+int main(int argc, char** argv) {
+    unsetenv("LD_PRELOAD");
+    unsetenv("LD_LIBRARY_PATH");
+
+    setenv("SSL_CERT_FILE", "/data/data/com.termux/files/usr/etc/tls/cert.pem", 1);
+
+    char* loader = LOADER_PLACEHOLDER;
+    char real_bin[] = "/data/data/com.termux/files/usr/share/freebuff/freebuff.real";
+    char lib_path[] = "/data/data/com.termux/files/usr/glibc/lib";
+
+    char** new_argv = malloc((argc + 4) * sizeof(char*));
+    if (!new_argv) {
+        return 1;
+    }
+
+    new_argv[0] = loader;
+    new_argv[1] = "--library-path";
+    new_argv[2] = lib_path;
+    new_argv[3] = real_bin;
+
+    for (int i = 1; i < argc; i++) {
+        new_argv[i + 3] = argv[i];
+    }
+    new_argv[argc + 3] = NULL;
+
+    execv(loader, new_argv);
+    perror("execv");
+    free(new_argv);
+    return 1;
+}
+EOF
+
+sed -i "s|LOADER_PLACEHOLDER|\"$LOADER\"|g" "$TMPDIR/freebuff_helper.c"
+
+clang -O2 -o "$BIN_DIR/freebuff" "$TMPDIR/freebuff_helper.c"
+chmod +x "$BIN_DIR/freebuff"
+
+rm -f "$TMPDIR/freebuff_helper.c"
+
+echo "freebuff $VERSION installed successfully."
+echo "Run 'freebuff' to start."
 exit 0

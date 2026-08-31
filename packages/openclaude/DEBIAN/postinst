@@ -3,6 +3,6 @@
 set -e
 
 echo "Installing OpenClaude..."
-npm install -g @gitlawb/openclaude@0.29.1 || exit 1
+npm install -g @gitlawb/openclaude@0.30.0 || exit 1
 echo "OpenClaude installed successfully."
 exit 0

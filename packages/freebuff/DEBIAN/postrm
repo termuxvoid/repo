@@ -1,4 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
-npm uninstall -g @nyxur/freebuff 2>/dev/null || true
-echo "freebuff removed."
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+
+rm -f "$PREFIX/bin/freebuff"
+rm -rf "$PREFIX/share/freebuff"
+
 exit 0
