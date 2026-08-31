@@ -491,7 +491,6 @@ data/data/com.termux/files/usr/bin/maskme                                       
 data/data/com.termux/files/usr/bin/mkwebapp                                      mkwebapp
 data/data/com.termux/files/usr/bin/mtcr-apply                                    mtcr-apply
 data/data/com.termux/files/usr/share/mtcr-apply/mtcr-apply.jar                   mtcr-apply
-data/data/com.termux/files/usr/bin/claude                                        openclaude
 data/data/com.termux/files/usr/bin/pairip                                        pairip
 data/data/com.termux/files/usr/share/pairip/Pairip.jar                           pairip
 data/data/com.termux/files/usr/bin/pdfcracker                                    pdfcracker
