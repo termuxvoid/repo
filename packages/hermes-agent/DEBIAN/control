@@ -1,8 +1,8 @@
 Package: hermes-agent
-Version: 0.19.0
+Version: 0.19.0-1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: npm, uv, git, python, clang, rust, make, pkg-config, libffi, openssl, nodejs, ripgrep, ffmpeg, python-psutil, python-pillow, python-cryptography
+Depends: python, curl, clang, rust, make, pkg-config, libffi, openssl, python-psutil, python-pillow, python-cryptography, file, termux-tools
 Section: devel
 Priority: optional
 Homepage: https://github.com/NousResearch/hermes-agent
