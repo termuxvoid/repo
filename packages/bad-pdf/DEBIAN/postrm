@@ -1,0 +1,4 @@
+#!/data/data/com.termux/files/usr/bin/bash
+rm -f "$PREFIX/bin/bad-pdf"
+echo "bad-pdf removed."
+exit 0

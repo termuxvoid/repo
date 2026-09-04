@@ -13,6 +13,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | Tool | Description |
 |------|-------------|
 | [aircrack-ng](https://termuxvoid.github.io/tool.html?name=aircrack-ng) | Suite of tools for auditing wireless networks – monitor, attack, test, and crack WiFi |
+| [bad-pdf](https://termuxvoid.github.io/tool.html?name=bad-pdf) | Create malicious PDFs to steal NTLM hashes from Windows |
 | [bettercap](https://termuxvoid.github.io/tool.html?name=bettercap) | Swiss Army knife for WiFi, BLE, HID, CAN-bus, IPv4/IPv6 reconnaissance and MITM attacks |
 | [blackbox-framework](https://termuxvoid.github.io/tool.html?name=blackbox-framework) | Python‑based network analysis and exploitation toolkit |
 | [darksploit-framework](https://termuxvoid.github.io/tool.html?name=darksploit-framework) | Tool to run and create exploits |

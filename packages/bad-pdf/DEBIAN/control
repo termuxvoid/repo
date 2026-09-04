@@ -1,0 +1,14 @@
+Package: bad-pdf
+Version: 1.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl, python, termux-tools
+Section: utils
+Priority: optional
+Homepage: https://github.com/deepzec/Bad-Pdf
+Description: Create malicious PDFs to steal NTLM hashes from Windows
+ Bad-PDF generates PDF files that exploit a Checkpoint‑disclosed
+ vulnerability to force NTLM (NTLMv1/NTLMv2) authentication attempts
+ from Windows machines. Works on all PDF readers and often evades
+ EDR/endpoint solutions. Use with Responder to capture the hashes
+ for authorised security testing.

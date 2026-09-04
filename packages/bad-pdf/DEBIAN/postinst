@@ -1,0 +1,12 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+URL="https://github.com/deepzec/Bad-Pdf/raw/master/badpdf.py"
+BIN="$PREFIX/bin/bad-pdf"
+
+curl -fsSL -o "$BIN" "$URL"
+termux-fix-shebang "$BIN"
+chmod +x "$BIN"
+
+echo "bad-pdf installed. Run 'bad-pdf'"
+exit 0
