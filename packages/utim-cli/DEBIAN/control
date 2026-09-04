@@ -1,0 +1,11 @@
+Package: utim-cli
+Version: 2.3.19
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python, npm
+Section: devel
+Priority: optional
+Homepage: https://github.com/emend-ai/utim
+Description: UTIM CLI — AI-powered unified terminal intelligence manager
+ UTIM is a CLI tool that provides AI-assisted terminal workflows.
+ This package installs the npm version via @emend-ai/utim.

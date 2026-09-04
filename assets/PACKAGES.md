@@ -277,6 +277,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [openclaude](https://termuxvoid.github.io/tool.html?name=openclaude) | Open‑source coding‑agent CLI for cloud and local LLMs |
 | [termux-ai](https://termuxvoid.github.io/tool.html?name=termux-ai) | Interactive AI assistant for Termux |
 | [termux-media-downloader](https://termuxvoid.github.io/tool.html?name=termux-media-downloader) | High‑performance media downloader |
+| [utim-cli](https://termuxvoid.github.io/tool.html?name=utim-cli) | UTIM CLI – AI‑powered unified terminal intelligence manager |
 
 ### Web Security & Tunneling
 | Tool | Description |

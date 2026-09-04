@@ -1,0 +1,4 @@
+#!/data/data/com.termux/files/usr/bin/bash
+npm uninstall -g @emend-ai/utim 2>/dev/null || true
+echo "utim-cli removed."
+exit 0
