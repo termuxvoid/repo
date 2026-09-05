@@ -1,5 +1,5 @@
 Package: hermes-agent
-Version: 0.19.0-1
+Version: 0.19.0-2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, curl, clang, rust, make, pkg-config, libffi, openssl, python-psutil, python-pillow, python-cryptography, file, termux-tools

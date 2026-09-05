@@ -25,6 +25,8 @@ mkdir -p "$INSTALL_DIR"
 tar -xzf "$TMPDIR/hermes-agent.tar.gz" -C "$INSTALL_DIR" --strip-components=1
 rm -f "$TMPDIR/hermes-agent.tar.gz"
 
+cd "$INSTALL_DIR"
+
 pip install setuptools wheel
 
 export ANDROID_API_LEVEL="$(getprop ro.build.version.sdk)"
