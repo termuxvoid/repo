@@ -1,0 +1,25 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="1.25"
+URL="https://github.com/ColumPaget/Hashrat/archive/refs/tags/v${VERSION}.tar.gz"
+TMP_DIR="$TMPDIR/hashrat-build"
+
+rm -rf "$TMP_DIR" 2>/dev/null || true
+mkdir -p "$TMP_DIR"
+cd "$TMP_DIR"
+
+curl -fsSL -o source.tar.gz "$URL"
+tar -xzf source.tar.gz --strip-components=1
+
+API_LEVEL=$(getprop ro.build.version.sdk 2>/dev/null || echo 28)
+export CFLAGS="-g -O2 -D__ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__ -DBYTE_ORDER=1234 -DLITTLE_ENDIAN=1234 -DBIG_ENDIAN=4321 -DSHA2_USE_INTTYPES_H -D__ANDROID_API__=$API_LEVEL"
+
+./configure --prefix="$PREFIX"
+make -j$(nproc --all)
+make install
+
+cd / && rm -rf "$TMP_DIR"
+
+echo "hashrat installed. Run 'hashrat'"
+exit 0

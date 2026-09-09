@@ -1,0 +1,12 @@
+Package: acccheck
+Version: 0.2.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: perl, samba, curl, sed
+Section: net
+Priority: optional
+Homepage: https://labs.portcullis.co.uk/tools/acccheck/
+Description: SMB account enumeration and password guessing tool
+ acccheck is a Perl script that attempts to enumerate SMB user
+ accounts and test passwords against them using the SMB protocol.
+ Useful for security audits and penetration testing.

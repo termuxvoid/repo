@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+gem uninstall adassault -v 0.0.4 -x --force 2>/dev/null || true
+
+echo "ADAssault removed."
+exit 0

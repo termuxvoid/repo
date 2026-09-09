@@ -1,0 +1,13 @@
+Package: hulk
+Version: 1.0.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, golang
+Section: net
+Priority: optional
+Homepage: https://github.com/grafov/hulk
+Description: Web server DoS testing tool (Golang port)
+ HULK is a web server denial-of-service tool that generates volumes
+ of unique and obfuscated traffic, bypassing caching engines and
+ hitting the server’s direct resource pool. This version is ported
+ to Go from the original Python utility.

@@ -21,6 +21,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [ddos](https://termuxvoid.github.io/tool.html?name=ddos) | DDoS attack script with 36+ attack methods for network stress testing |
 | [drshell](https://termuxvoid.github.io/tool.html?name=drshell) | Reverse Shell Session Manager |
 | [haxrat](https://termuxvoid.github.io/tool.html?name=haxrat) | Cloud‑based remote Android management suite |
+| [hulk](https://termuxvoid.github.io/tool.html?name=hulk) | Web server DoS testing tool (Golang port) |
 | [hunner-framework](https://termuxvoid.github.io/tool.html?name=hunner-framework) | Open Source Penetration Testing Framework |
 | [knockpy](https://termuxvoid.github.io/tool.html?name=knockpy) | Subdomain enumeration and reconnaissance tool |
 | [metasploit-framework](https://termuxvoid.github.io/tool.html?name=metasploit-framework) | World’s most used penetration testing framework |
@@ -129,6 +130,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [haiti](https://termuxvoid.github.io/tool.html?name=haiti) | Hash type identifier (CLI tool) |
 | [hashcat](https://termuxvoid.github.io/tool.html?name=hashcat) | World's fastest password recovery utility |
 | [hashid](https://termuxvoid.github.io/tool.html?name=hashid) | Advanced hash identifier (300+ types) |
+| [hashrat](https://termuxvoid.github.io/tool.html?name=hashrat) | Cryptographic hash-generation command-line utility |
 | [john](https://termuxvoid.github.io/tool.html?name=john) | John the Ripper password cracker |
 | [kerbrute](https://termuxvoid.github.io/tool.html?name=kerbrute) | Kerberos brute force and enumeration tool |
 | [medusa](https://termuxvoid.github.io/tool.html?name=medusa) | Fast, parallel network login auditor |
@@ -148,6 +150,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 ### Reconnaissance & Scanning
 | Tool | Description |
 |------|-------------|
+| [acccheck](https://termuxvoid.github.io/tool.html?name=acccheck) | SMB account enumeration and password guessing tool |
 | [amass](https://termuxvoid.github.io/tool.html?name=amass) | In‑depth Attack Surface Mapping and asset discovery |
 | [breacher](https://termuxvoid.github.io/tool.html?name=breacher) | Multi‑threaded URL brute‑forcer for hidden paths |
 | [cdxsummary](https://termuxvoid.github.io/tool.html?name=cdxsummary) | CDX summary and analysis tool for Wayback Machine archives |

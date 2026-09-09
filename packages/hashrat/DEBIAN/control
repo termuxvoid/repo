@@ -1,0 +1,13 @@
+Package: hashrat
+Version: 1.25
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: build-essential, make, openssl, zlib, findutils
+Section: utils
+Priority: optional
+Homepage: https://github.com/ColumPaget/Hashrat
+Description: Cryptographics hash-generation command-line utility
+ Hashrat supports md5, sha1, sha256, sha512, whirlpool, jh and
+ hmac versions of these hashes. It includes recursive file hashing,
+ directory tree hashing, and output in several formats including
+ plain text, JSON, and CSV.

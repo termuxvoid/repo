@@ -1,0 +1,13 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+URL="https://github.com/qashqao/acccheck/raw/master/acccheck.pl"
+BIN="$PREFIX/bin/acccheck"
+
+curl -sL -o "$BIN" "$URL"
+termux-fix-shebang "$BIN"
+sed -i 's/acccheck\.pl/acccheck/g' "$BIN"
+chmod +x "$BIN"
+
+echo "acccheck installed. Run 'acccheck'"
+exit 0

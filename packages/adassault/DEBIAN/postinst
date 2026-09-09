@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+gem install adassault -v 0.0.4
+
+echo "ADAssault installed. Run 'adassault'"
+exit 0
