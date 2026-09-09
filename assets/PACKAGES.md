@@ -51,6 +51,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [darkcrawler](https://termuxvoid.github.io/tool.html?name=darkcrawler) | Crawl .onion sites through Tor and generate threat reports |
 | [dorks-eye](https://termuxvoid.github.io/tool.html?name=dorks-eye) | Google Hacking Dork Scraping and Searching Tool |
 | [emailcrawl](https://termuxvoid.github.io/tool.html?name=emailcrawl) | Professional‑grade OSINT email extraction tool |
+| [gh-dork](https://termuxvoid.github.io/tool.html?name=gh-dork) | GitHub dorking tool – search repositories using dorks with user, org, and repo filtering |
 | [holehe](https://termuxvoid.github.io/tool.html?name=holehe) | Email OSINT tool – check accounts on 120+ platforms |
 | [hound](https://termuxvoid.github.io/tool.html?name=hound) | Lightweight info gathering and GPS coordinate capture |
 | [instaghost](https://termuxvoid.github.io/tool.html?name=instaghost) | Professional Instagram OSINT tool |
@@ -157,6 +158,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [findomain](https://termuxvoid.github.io/tool.html?name=findomain) | Fastest and complete solution for domain recognition |
 | [fscan](https://termuxvoid.github.io/tool.html?name=fscan) | Comprehensive intranet scanning tool |
 | [gau](https://termuxvoid.github.io/tool.html?name=gau) | Fetch known URLs from AlienVault, Wayback Machine, and CommonCrawl |
+| [getsploit](https://termuxvoid.github.io/tool.html?name=getsploit) | Command‑line search tool for exploits and vulnerabilities using the Vulners database |
 | [ghosttrack](https://termuxvoid.github.io/tool.html?name=ghosttrack) | Advanced tracking and reconnaissance tool |
 | [gitleaks](https://termuxvoid.github.io/tool.html?name=gitleaks) | Detect hard‑coded secrets and sensitive data in Git repositories |
 | [gobuster](https://termuxvoid.github.io/tool.html?name=gobuster) | Directory/file & DNS busting tool written in Go |

@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# Uninstall the manually installed packages (optional, but cleans up)
+pip uninstall -y getsploit vulners h2 hpack hyperframe ijson httpx \
+    pydantic pydantic-core brotli zstandard pycryptodome \
+    stream-inflate stream-unzip orjson 2>/dev/null || true
+
+echo "getsploit removed."
+exit 0

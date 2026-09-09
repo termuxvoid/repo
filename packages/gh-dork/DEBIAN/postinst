@@ -1,0 +1,26 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk)
+
+REPO="https://github.com/molly/gh-dork.git"
+INSTALL_DIR="$PREFIX/share/gh-dork"
+LAUNCHER="$PREFIX/bin/gh-dork"
+
+rm -rf "$INSTALL_DIR" 2>/dev/null || true
+
+git clone --depth 1 -q "$REPO" "$INSTALL_DIR"
+
+cd "$INSTALL_DIR"
+pip install -r requirements.txt
+
+cat > "$LAUNCHER" << 'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$PREFIX/share/gh-dork"
+exec python gh-dork.py "$@"
+EOF
+
+chmod +x "$LAUNCHER"
+
+echo "gh-dork installed. Run 'gh-dork'"
+exit 0

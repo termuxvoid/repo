@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+rm -f "$PREFIX/bin/gh-dork"
+rm -rf "$PREFIX/share/gh-dork"
+echo "gh-dork removed."
+exit 0

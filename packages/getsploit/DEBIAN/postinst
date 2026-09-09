@@ -1,0 +1,15 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk)
+
+# Install getsploit and vulners without dependencies (avoid isal build issues)
+pip install getsploit==3.0.1 --no-deps
+pip install vulners --no-deps
+
+# Install remaining dependencies manually
+pip install h2 hpack hyperframe ijson httpx pydantic pydantic-core \
+    brotli zstandard pycryptodome stream-inflate stream-unzip orjson
+
+echo "getsploit installed. Run 'getsploit'"
+exit 0

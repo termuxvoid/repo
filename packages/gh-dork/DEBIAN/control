@@ -1,0 +1,12 @@
+Package: gh-dork
+Version: 1.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python, python-pip, rust, make, openssl, pkg-config, python-cryptography
+Section: recon
+Priority: optional
+Homepage: https://github.com/molly/gh-dork
+Description: GitHub dorking tool
+ gh-dork is a command-line tool for searching GitHub repositories
+ using dorks. Supports user, organization, and repository filtering,
+ with output to files and optional authentication via GitHub token.

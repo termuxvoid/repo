@@ -1,0 +1,12 @@
+Package: getsploit
+Version: 3.0.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python, python-pip, rust, make, pkg-config
+Section: utils
+Priority: optional
+Homepage: https://github.com/vulnersCom/getsploit
+Description: Command-line search tool for exploits and vulnerabilities
+ getsploit is a CLI utility that searches for exploits, vulnerabilities,
+ and public exploits using the Vulners database. Fast, flexible, and
+ scriptable.
