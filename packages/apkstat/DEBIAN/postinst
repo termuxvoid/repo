@@ -1,0 +1,15 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+URL="https://github.com/hexabin/APKStat/raw/master/apkstat.py"
+BIN="$PREFIX/bin/apkstat"
+
+curl -sL -o "$BIN" "$URL"
+
+# Fix shebang to use Termux's Python
+sed -i '1s|^#!.*|#!/data/data/com.termux/files/usr/bin/python|' "$BIN"
+
+chmod +x "$BIN"
+
+echo "apkstat installed. Run 'apkstat'"
+exit 0

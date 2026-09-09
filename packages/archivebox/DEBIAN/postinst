@@ -1,0 +1,55 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk)
+
+SP="${PREFIX:-/data/data/com.termux/files/usr}/lib/python3.14/site-packages"
+uv_ver=0.12.12
+psycopg_ver=3.3.5
+
+# Termux pip only accepts android_arm64_v8a platform wheels, so PyPI binary
+# packages must already be present as termux packages (see Depends). The
+# packages below are declared as dependencies by archivebox but intentionally
+# provided by the termux `uv` binary / the pure-Python `psycopg` wheel.
+# Create their dist-info stubs so pip skips the (impossible) source builds.
+
+mkdir -p "$SP/uv-$uv_ver.dist-info"
+cat > "$SP/uv-$uv_ver.dist-info/METADATA" <<EOF
+Metadata-Version: 2.1
+Name: uv
+Version: $uv_ver
+Summary: uv bindings stub - the uv binary is provided by the termux uv package
+EOF
+cat > "$SP/uv-$uv_ver.dist-info/WHEEL" <<EOF
+Wheel-Version: 1.0
+Generator: termux-archivebox
+Root-Is-Purelib: false
+EOF
+: > "$SP/uv-$uv_ver.dist-info/RECORD"
+cat > "$SP/uv.py" <<'EOF'
+__version__ = "0.12.12"
+EOF
+
+pip install "psycopg==$psycopg_ver"
+
+mkdir -p "$SP/psycopg_binary-$psycopg_ver.dist-info"
+cat > "$SP/psycopg_binary-$psycopg_ver.dist-info/METADATA" <<EOF
+Metadata-Version: 2.1
+Name: psycopg-binary
+Version: $psycopg_ver
+Summary: psycopg-binary stub - psycopg will use its pure-Python implementation
+EOF
+cat > "$SP/psycopg_binary-$psycopg_ver.dist-info/WHEEL" <<EOF
+Wheel-Version: 1.0
+Generator: termux-archivebox
+Root-Is-Purelib: false
+EOF
+: > "$SP/psycopg_binary-$psycopg_ver.dist-info/RECORD"
+mkdir -p "$SP/psycopg_binary"
+: > "$SP/psycopg_binary/__init__.py"
+
+pip install archivebox==0.9.35rc437
+
+echo "archivebox installed. Run 'archivebox' to start."
+echo "For initial setup: archivebox init"
+exit 0

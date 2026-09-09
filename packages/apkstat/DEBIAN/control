@@ -1,0 +1,11 @@
+Package: apkstat
+Version: 81cdad3
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python, apktool, curl, sed
+Section: utils
+Priority: optional
+Homepage: https://github.com/hexabin/APKStat
+Description: APK file statistics and analysis tool
+ APKStat analyses Android APK files and extracts metadata,
+ permissions, activities, services, and other components.

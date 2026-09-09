@@ -96,6 +96,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | Tool | Description |
 |------|-------------|
 | [alienkrishn](https://termuxvoid.github.io/tool.html?name=alienkrishn) | TermuxVoid package manager and system helper |
+| [archivebox](https://termuxvoid.github.io/tool.html?name=archivebox) | Open-source self-hosted web archiving system |
 | [bun](https://termuxvoid.github.io/tool.html?name=bun) | Incredibly fast JavaScript runtime, bundler, test runner and package manager |
 | [cronitor-cli](https://termuxvoid.github.io/tool.html?name=cronitor-cli) | CLI for managing and monitoring cron jobs |
 | [ffmpegp](https://termuxvoid.github.io/tool.html?name=ffmpegp) | Python utility for simplified ffprobe and ffmpeg media operations |
@@ -152,6 +153,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 |------|-------------|
 | [acccheck](https://termuxvoid.github.io/tool.html?name=acccheck) | SMB account enumeration and password guessing tool |
 | [amass](https://termuxvoid.github.io/tool.html?name=amass) | In‑depth Attack Surface Mapping and asset discovery |
+| [anubis](https://termuxvoid.github.io/tool.html?name=anubis) | Subdomain enumeration and information gathering tool |
 | [breacher](https://termuxvoid.github.io/tool.html?name=breacher) | Multi‑threaded URL brute‑forcer for hidden paths |
 | [cdxsummary](https://termuxvoid.github.io/tool.html?name=cdxsummary) | CDX summary and analysis tool for Wayback Machine archives |
 | [dalfox](https://termuxvoid.github.io/tool.html?name=dalfox) | Parameter analysis and XSS scanning tool |
@@ -204,6 +206,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [apkpatcher](https://termuxvoid.github.io/tool.html?name=apkpatcher) | Advanced APK Modification Tool |
 | [apkleaks](https://termuxvoid.github.io/tool.html?name=apkleaks) | Scanning APK file for URIs, endpoints & secrets |
 | [apksearch](https://termuxvoid.github.io/tool.html?name=apksearch) | APK Search Tool for Multiple APK Websites |
+| [apkstat](https://termuxvoid.github.io/tool.html?name=apkstat) | APK file statistics and analysis tool |
 | [qdl](https://termuxvoid.github.io/tool.html?name=qdl) | Qualcomm Download Tool (QDL) for EDL flashing – flash Qualcomm devices in EDL 9008 mode |
 | [blutter](https://termuxvoid.github.io/tool.html?name=blutter) | Flutter/Dart Binary Analysis and Reverse Engineering |
 | [dpt-shell](https://termuxvoid.github.io/tool.html?name=dpt-shell) | Android Dex protection shell implementation |

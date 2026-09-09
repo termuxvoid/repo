@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+pip uninstall -y archivebox 2>/dev/null || true
+
+echo "archivebox removed."
+exit 0

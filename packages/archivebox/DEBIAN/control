@@ -1,0 +1,13 @@
+Package: archivebox
+Version: 0.9.35rc437
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python, python-pip, python-yt-dlp, wget, chromium, python-psutil, python-bcrypt, python-lxml, python-pillow, python-greenlet, libpq, uv, rust, make, cmake, pkg-config, python-cryptography
+Section: utils
+Priority: optional
+Homepage: https://github.com/pirate/ArchiveBox
+Description: Open-source self-hosted web archiving system
+ ArchiveBox is a powerful, self-hosted archiving system that
+ saves web pages, videos, audio, and other content for offline
+ viewing. It supports multiple methods like wget, youtube-dl,
+ and chromium headless for full webpage capture.
