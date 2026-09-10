@@ -1,0 +1,3 @@
+#!/data/data/com.termux/files/usr/bin/bash
+rm -f "$PREFIX/bin/git-hound"
+exit 0

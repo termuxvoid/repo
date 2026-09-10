@@ -1,0 +1,13 @@
+Package: git-hound
+Version: 3.2
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, golang
+Section: recon
+Priority: optional
+Homepage: https://github.com/tillson/git-hound
+Description: A pattern-matching, patch-attacking, batch-catching secret snatcher
+ GitHound hunts down exposed API keys, secrets, and credentials across GitHub
+ by pairing GitHub dorks with pattern matching, contextual detection, and
+ commit-history analysis. It scans files and repos matching a GitHub dork
+ using GitHub's Code Search API and supports commit-history digging.

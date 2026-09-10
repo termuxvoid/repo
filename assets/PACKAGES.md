@@ -53,6 +53,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [dorks-eye](https://termuxvoid.github.io/tool.html?name=dorks-eye) | Google Hacking Dork Scraping and Searching Tool |
 | [emailcrawl](https://termuxvoid.github.io/tool.html?name=emailcrawl) | Professional‑grade OSINT email extraction tool |
 | [gh-dork](https://termuxvoid.github.io/tool.html?name=gh-dork) | GitHub dorking tool – search repositories using dorks with user, org, and repo filtering |
+| [git-hound](https://termuxvoid.github.io/tool.html?name=git-hound) | Fast GitHub recon – hunt leaked secrets and API keys across all of GitHub using dorks |
 | [holehe](https://termuxvoid.github.io/tool.html?name=holehe) | Email OSINT tool – check accounts on 120+ platforms |
 | [hound](https://termuxvoid.github.io/tool.html?name=hound) | Lightweight info gathering and GPS coordinate capture |
 | [instaghost](https://termuxvoid.github.io/tool.html?name=instaghost) | Professional Instagram OSINT tool |
