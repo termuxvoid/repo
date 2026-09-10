@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f "$PREFIX/bin/metagoofil"
+rm -rf "$PREFIX/share/metagoofil"

@@ -1,0 +1,14 @@
+Package: metagoofil
+Version: 1.4.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python, python-pip, git
+Section: recon
+Priority: optional
+Homepage: https://github.com/opsdisk/metagoofil
+Description: Search Google and download specific file types
+ metagoofil is a Python tool that searches Google for specific types of
+ files publicly hosted on a website and optionally downloads them to the
+ local machine. Useful for OSINT gathering and penetration tests to
+ determine what files an organization is leaking to search indexers.
+ It defers metadata analysis to tools like exiftool.

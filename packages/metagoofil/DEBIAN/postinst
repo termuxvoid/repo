@@ -1,0 +1,17 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+SHARE_DIR="$PREFIX/share/metagoofil"
+LAUNCHER="$PREFIX/bin/metagoofil"
+
+rm -rf "$SHARE_DIR" 2>/dev/null || true
+git clone -q --depth 1 --branch v1.4.0 --config advice.detachedHead=false "https://github.com/opsdisk/metagoofil.git" "$SHARE_DIR"
+pip install -r "$SHARE_DIR/requirements.txt"
+
+cat > "$LAUNCHER" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$PREFIX/share/metagoofil" && exec python metagoofil.py "$@"
+EOF
+chmod +x "$LAUNCHER"
+
+[ -x "$LAUNCHER" ]
