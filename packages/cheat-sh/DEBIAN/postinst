@@ -1,0 +1,12 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+URL="https://cht.sh/:cht.sh"
+BIN="$PREFIX/bin/cheat-sh"
+
+curl -sL -o "$BIN" "$URL"
+termux-fix-shebang "$BIN"
+chmod +x "$BIN"
+
+echo "cheat-sh installed. Run 'cheat-sh'"
+exit 0

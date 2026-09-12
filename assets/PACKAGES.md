@@ -100,6 +100,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [alienkrishn](https://termuxvoid.github.io/tool.html?name=alienkrishn) | TermuxVoid package manager and system helper |
 | [archivebox](https://termuxvoid.github.io/tool.html?name=archivebox) | Open-source self-hosted web archiving system |
 | [bun](https://termuxvoid.github.io/tool.html?name=bun) | Incredibly fast JavaScript runtime, bundler, test runner and package manager |
+| [cheat-sh](https://termuxvoid.github.io/tool.html?name=cheat-sh) | Command-line client for cheat.sh – cheat sheets for programming languages and tools |
 | [cronitor-cli](https://termuxvoid.github.io/tool.html?name=cronitor-cli) | CLI for managing and monitoring cron jobs |
 | [ffmpegp](https://termuxvoid.github.io/tool.html?name=ffmpegp) | Python utility for simplified ffprobe and ffmpeg media operations |
 | [freebuff](https://termuxvoid.github.io/tool.html?name=freebuff) | Free, subscription-less AI coding agent that edits your code from the terminal |
