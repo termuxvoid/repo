@@ -107,6 +107,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [lazyvim](https://termuxvoid.github.io/tool.html?name=lazyvim) | Modern Neovim configuration framework |
 | [lunarvim](https://termuxvoid.github.io/tool.html?name=lunarvim) | An IDE layer for Neovim with sane defaults |
 | [mkwebapp](https://termuxvoid.github.io/tool.html?name=mkwebapp) | Tool to create Termux .deb packages for websites |
+| [moviebox-tui](https://termuxvoid.github.io/tool.html?name=moviebox-tui) | Terminal UI for browsing and streaming movies from MovieBox |
 | [nethunter-cli](https://termuxvoid.github.io/tool.html?name=nethunter-cli) | Kali NetHunter Rootless Edition CLI |
 | [nvchad](https://termuxvoid.github.io/tool.html?name=nvchad) | Neovim configuration framework |
 | [openbullet2](https://termuxvoid.github.io/tool.html?name=openbullet2) | Web Application Security Testing Suite |

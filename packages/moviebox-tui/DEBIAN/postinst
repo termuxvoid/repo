@@ -1,0 +1,23 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="0.1.18"
+URL="https://github.com/mesamirh/MovieBox-Tui/archive/refs/tags/v${VERSION}.tar.gz"
+TMP_DIR="$TMPDIR/moviebox-tui-build"
+BIN_DIR="$PREFIX/bin"
+
+rm -rf "$TMP_DIR" 2>/dev/null || true
+mkdir -p "$TMP_DIR"
+cd "$TMP_DIR"
+
+curl -fsSL -o source.tar.gz "$URL"
+tar -xzf source.tar.gz --strip-components=1
+
+RUSTFLAGS="-C opt-level=z" cargo build --release -j$(nproc --all)
+
+install -Dm755 target/release/moviebox-tui "$BIN_DIR/moviebox-tui"
+
+cd / && rm -rf "$TMP_DIR"
+
+echo "moviebox-tui installed. Run 'moviebox-tui'"
+exit 0
