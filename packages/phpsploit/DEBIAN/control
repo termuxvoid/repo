@@ -1,0 +1,14 @@
+Package: phpsploit
+Version: 3.2-aea961d
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python, python-pip
+Section: web
+Priority: optional
+Homepage: https://github.com/nil0x42/phpsploit
+Description: Stealth post-exploitation C2 framework for web servers
+ PhpSploit is a remote control framework that provides a stealth
+ interactive shell-like connection over HTTP between client and
+ web server. It uses a polymorphic PHP backdoor, hides traffic in
+ HTTP headers, and includes 20+ plugins for privilege escalation,
+ file management, SQL console, and reverse TCP shells.

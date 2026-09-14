@@ -1,0 +1,18 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+SHARE_DIR="$PREFIX/share/phpsploit"
+LAUNCHER="$PREFIX/bin/phpsploit"
+
+rm -rf "$SHARE_DIR" 2>/dev/null || true
+git clone -q --depth 1 "https://github.com/nil0x42/phpsploit.git" "$SHARE_DIR"
+pip install -r "$SHARE_DIR/requirements.txt"
+
+cat > "$LAUNCHER" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$PREFIX/share/phpsploit" && exec python phpsploit "$@"
+EOF
+chmod +x "$LAUNCHER"
+
+echo "phpsploit installed. Run 'phpsploit'"
+exit 0

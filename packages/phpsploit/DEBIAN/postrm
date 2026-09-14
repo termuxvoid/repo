@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+rm -f "$PREFIX/bin/phpsploit"
+rm -rf "$PREFIX/share/phpsploit"
+echo "phpsploit removed."
+exit 0

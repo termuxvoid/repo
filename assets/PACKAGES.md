@@ -26,6 +26,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [knockpy](https://termuxvoid.github.io/tool.html?name=knockpy) | Subdomain enumeration and reconnaissance tool |
 | [metasploit-framework](https://termuxvoid.github.io/tool.html?name=metasploit-framework) | World’s most used penetration testing framework |
 | [powerdos](https://termuxvoid.github.io/tool.html?name=powerdos) | Multi‑threaded Denial of Service tool in Python |
+| [phpsploit](https://termuxvoid.github.io/tool.html?name=phpsploit) | Stealth post‑exploitation C2 framework – remote reverse TCP shell over HTTP with a polymorphic PHP backdoor |
 | [reaver](https://termuxvoid.github.io/tool.html?name=reaver) | Brute‑force attack tool against WPS (Wi‑Fi Protected Setup) PINs |
 | [slowhttptest](https://termuxvoid.github.io/tool.html?name=slowhttptest) | Application Layer DoS attack simulator |
 | [sliver-c2](https://termuxvoid.github.io/tool.html?name=sliver-c2) | Open-source cross-platform adversary emulation framework |
