@@ -1,0 +1,87 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="3.8.0"
+ARCHIVE="ophcrack-${VERSION}.tar.bz2"
+URL="https://downloads.sourceforge.net/project/ophcrack/ophcrack/${VERSION}/${ARCHIVE}"
+BUILD="$TMPDIR/ophcrack-build"
+
+print_status() { echo -e "[*] $1"; }
+print_error() { echo -e "[!] Error: $1"; exit 1; }
+
+# --- Download & extract source ---
+rm -rf "$BUILD"
+mkdir -p "$BUILD"
+
+print_status "Downloading ophcrack ${VERSION} source..."
+curl -sL -o "$TMPDIR/$ARCHIVE" "$URL" || print_error "Download failed"
+
+tar xjf "$TMPDIR/$ARCHIVE" -C "$BUILD" --strip-components=1 || print_error "Extraction failed"
+cd "$BUILD"
+
+# --- Patches for Termux (bionic has no pthread cancellation) ---
+
+# ophcrack.c: disable the pthread cancel configuration calls.
+sed -i \
+  -e '/pthread_setcancelstate(PTHREAD_CANCEL_ENABLE/i #ifndef __ANDROID__' \
+  -e '/pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED/a #endif' \
+  src/core/ophcrack.c
+
+# ophcrack.c: exit the worker loop cooperatively when the scheduler stops.
+sed -i \
+  -e 's/^    ophtask_t \*task = scheduler_get(sched, myid);$/&\n\n    \/* The scheduler asks us to stop. *\/\n\n    if (task == 0) break;/' \
+  src/core/ophcrack.c
+
+# scheduler.h: add a cooperative-stop flag.
+sed -i 's/^  int pause;$/  int pause;\n  int stop;/' src/core/scheduler.h
+
+# scheduler.c: initialise the stop flag.
+sed -i '/^  sched->ntasks = 0;$/a\  sched->stop = 0;' src/core/scheduler.c
+
+# scheduler.c: scheduler_start() error cleanup on Android.
+sed -i \
+  -e 's/^  if (i < nthreads)$/  if (i < nthreads) {/' \
+  -e '/    for (j=0; j<i; ++j) pthread_cancel(thread\[j\]);/i #ifndef __ANDROID__' \
+  -e 's/^    for (j=0; j<i; ++j) pthread_cancel(thread\[j\]);$/&\n#else\n    scheduler_stop(sched);\n#endif\n  }/' \
+  src/core/scheduler.c
+
+# scheduler.c: scheduler_stop() cooperative shutdown on Android.
+sed -i \
+  -e '/^void scheduler_stop(scheduler_t \*sched) {$/a #ifndef __ANDROID__' \
+  -e 's/pthread_cancel(thread\[i\]);/&\n#else\n  pthread_mutex_t *mutex = sched->mutex;\n  int i, nthreads = sched->nthreads;\n\n  pthread_mutex_lock(mutex);\n  sched->stop = 1;\n  pthread_mutex_unlock(mutex);\n\n  for (i=0; i<nthreads; ++i)\n    sem_post(sched->sem);\n\n  pthread_cond_broadcast(sched->cond);\n#endif/' \
+  src/core/scheduler.c
+
+# scheduler.c: scheduler_get() returns 0 so threads can exit.
+sed -i -e '
+/^    sem_wait(sched->sem);$/{
+  N
+  s/\n    pthread_mutex_lock(mutex);/&\n\n    \/* If we are stopping, then we return no task so that the threads\n       can exit gracefully. *\/\n\n    if (sched->stop) {\n      pthread_mutex_unlock(mutex);\n      return 0;\n    }/
+}
+' src/core/scheduler.c
+
+# --- Configure & build ---
+print_status "Configuring ophcrack..."
+MACHINE="$(uname -m)"
+
+./configure \
+  --prefix="$PREFIX" \
+  --build="${MACHINE}-unknown-linux-gnu" \
+  --host="${MACHINE}-unknown-linux-gnu" \
+  --disable-gui \
+  --with-libexpat="$PREFIX" \
+  --with-libssl="$PREFIX" || print_error "Configure failed"
+
+print_status "Building ophcrack..."
+make -j"$(nproc --all)" || print_error "Build failed"
+
+print_status "Installing ophcrack..."
+make install || print_error "Install failed"
+
+[ -x "$PREFIX/bin/ophcrack" ] || print_error "ophcrack binary not found after install"
+
+# --- Cleanup build tree ---
+rm -rf "$BUILD" "$TMPDIR/$ARCHIVE"
+
+echo -e "[*] Ophcrack ${VERSION} installed successfully."
+echo -e "[*] Usage: ophcrack -f hashes.txt -d /path/to/tables"
+echo -e "[*]        (tables can be downloaded from the ophcrack website)"

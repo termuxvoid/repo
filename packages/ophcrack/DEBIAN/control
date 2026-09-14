@@ -1,0 +1,13 @@
+Package: ophcrack
+Version: 3.8.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: clang, make, pkg-config, openssl, build-essential, sed, curl, tar, bzip2
+Section: security
+Priority: optional
+Homepage: https://ophcrack.sourceforge.io/
+Description: NTLM/LM hash cracker using rainbow tables
+ Ophcrack is a free Windows password cracker based on the faster
+ time-memory trade-off using rainbow tables. It cracks NTLM and LM
+ hashes found in Windows SAM databases, works with pwdump format input
+ files and supports brute force as well as rainbow table attacks.

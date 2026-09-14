@@ -140,6 +140,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [john](https://termuxvoid.github.io/tool.html?name=john) | John the Ripper password cracker |
 | [kerbrute](https://termuxvoid.github.io/tool.html?name=kerbrute) | Kerberos brute force and enumeration tool |
 | [medusa](https://termuxvoid.github.io/tool.html?name=medusa) | Fast, parallel network login auditor |
+| [ophcrack](https://termuxvoid.github.io/tool.html?name=ophcrack) | NTLM/LM hash cracker using rainbow tables – cracks Windows SAM hashes |
 | [openbullet](https://termuxvoid.github.io/tool.html?name=openbullet) | Tool for running OpenBullet configurations |
 | [pdfcracker](https://termuxvoid.github.io/tool.html?name=pdfcracker) | PDF password recovery tool |
 | [thc-hydra](https://termuxvoid.github.io/tool.html?name=thc-hydra) | Parallelized login cracker supporting many protocols |
