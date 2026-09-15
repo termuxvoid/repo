@@ -1,0 +1,14 @@
+Package: zgrab2
+Version: 1.0.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl, tar, make, git, golang
+Section: security
+Priority: optional
+Homepage: https://github.com/zmap/zgrab2
+Description: Fast modular L7 application-layer scanner
+ zgrab2 is a fast, modular application-layer network scanner. It is
+ commonly used with tools like ZMap which identify potential services
+ on a given IP and port, which are then fed into zgrab2 to confirm and
+ provide details of the service. It supports a number of protocols
+ including SSH, HTTP, FTP, Telnet and more.

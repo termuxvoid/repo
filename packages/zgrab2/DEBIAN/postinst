@@ -1,0 +1,31 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="1.0.0"
+BUILD_DIR="$TMPDIR/zgrab2-build"
+ARCHIVE="$TMPDIR/zgrab2-${VERSION}.tar.gz"
+CONFDIR="$HOME/.config/zgrab2"
+
+rm -rf "$BUILD_DIR"
+mkdir -p "$BUILD_DIR"
+
+echo "Installing zgrab2..."
+
+curl -sL -o "$ARCHIVE" "https://github.com/zmap/zgrab2/archive/refs/tags/v${VERSION}.tar.gz"
+tar xzf "$ARCHIVE" -C "$BUILD_DIR" --strip-components=1
+
+cd "$BUILD_DIR"
+
+export CGO_ENABLED=0
+go build -trimpath -ldflags "-w -s" -o zgrab2 ./cmd/zgrab2 || exit 1
+
+install -Dm755 -t "$PREFIX/bin" zgrab2 || exit 1
+
+cd /
+rm -rf "$BUILD_DIR" "$ARCHIVE"
+
+mkdir -p "$CONFDIR"
+touch "$CONFDIR/blocklist.conf"
+
+echo "zgrab2 installed successfully. Run 'zgrab2 -h' to verify."
+exit 0

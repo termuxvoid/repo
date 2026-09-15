@@ -201,6 +201,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [waymap](https://termuxvoid.github.io/tool.html?name=waymap) | Fast web vulnerability scanner and security testing toolkit |
 | [xss-loader](https://termuxvoid.github.io/tool.html?name=xss-loader) | Advanced XSS scanner and vulnerability loader |
 | [xsstrike](https://termuxvoid.github.io/tool.html?name=xsstrike) | Advanced XSS detection and exploitation suite |
+| [zgrab2](https://termuxvoid.github.io/tool.html?name=zgrab2) | Fast modular L7 application-layer scanner |
 
 ### Reverse Engineering
 | Tool | Description |
