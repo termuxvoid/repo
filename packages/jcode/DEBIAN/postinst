@@ -1,0 +1,60 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="0.84.0"
+ARCH=$(uname -m)
+
+case "$ARCH" in
+    aarch64)
+        ASSET="jcode-linux-aarch64.tar.gz"
+        LD_SO="ld-linux-aarch64.so.1"
+        ;;
+    x86_64)
+        ASSET="jcode-linux-x86_64.tar.gz"
+        LD_SO="ld-linux-x86-64.so.2"
+        ;;
+    *)
+        echo "Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+
+SHARE_DIR="$PREFIX/share/jcode"
+BIN_DIR="$PREFIX/bin"
+TMP_DIR="$TMPDIR/jcode-build"
+
+rm -rf "$SHARE_DIR" 2>/dev/null || true
+rm -rf "$TMP_DIR" 2>/dev/null || true
+mkdir -p "$SHARE_DIR" "$TMP_DIR"
+
+URL="https://github.com/1jehuang/jcode/releases/download/v${VERSION}/${ASSET}"
+
+echo "Downloading jcode ${VERSION} for ${ARCH}..."
+curl -fsSL -o "$TMP_DIR/jcode.tar.gz" "$URL"
+
+echo "Extracting..."
+tar -xzf "$TMP_DIR/jcode.tar.gz" -C "$TMP_DIR"
+
+ORIG_BIN=$(find "$TMP_DIR" -maxdepth 2 -type f -executable | head -n1)
+if [ -z "$ORIG_BIN" ]; then
+    echo "Error: binary not found after extraction." >&2
+    exit 1
+fi
+
+mv "$ORIG_BIN" "$SHARE_DIR/jcode-bin"
+chmod +x "$SHARE_DIR/jcode-bin"
+
+patchelf --set-interpreter "$PREFIX/glibc/lib/${LD_SO}" "$SHARE_DIR/jcode-bin"
+
+cat > "$BIN_DIR/jcode" << 'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+unset LD_PRELOAD
+exec "$PREFIX/share/jcode/jcode-bin" "$@"
+EOF
+
+chmod +x "$BIN_DIR/jcode"
+
+rm -rf "$TMP_DIR"
+
+echo "jcode installed. Run 'jcode'"
+exit 0

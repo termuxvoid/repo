@@ -1,11 +1,11 @@
 Package: freebuff
-Version: 0.0.162
+Version: 0.0.175
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, curl, tar
 Section: utils
 Priority: optional
-Homepage: https://codebuff.com
+Homepage: https://freebuff.com
 Description: Free, subscription-less AI coding agent for the terminal
  freebuff is a free AI coding agent that runs in your terminal — describe
  what you want and it edits your code, with no subscription or configuration

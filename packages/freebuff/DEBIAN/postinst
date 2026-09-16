@@ -2,7 +2,7 @@
 set -e
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="0.0.162"
+VERSION="0.0.175"
 ARCH=$(uname -m)
 
 case "$ARCH" in

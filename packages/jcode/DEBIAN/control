@@ -1,0 +1,14 @@
+Package: jcode
+Version: 0.84.0
+Architecture: all
+Pre-Depends: glibc-repo
+Maintainer: Alienkrishn [Anon4You]
+Depends: glibc, curl, tar, patchelf, findutils
+Section: devel
+Priority: optional
+Homepage: https://github.com/1jehuang/jcode
+Description: Terminal coding agent harness
+ jcode is a multi‑session coding agent harness with a fast local TUI,
+ persistent memory, and MCP support. This package downloads the
+ official Linux binary and patches it to run inside Termux's glibc
+ environment.

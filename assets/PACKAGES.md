@@ -285,6 +285,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [codex-cli](https://termuxvoid.github.io/tool.html?name=codex-cli) | Codex CLI – lightweight AI‑powered coding agent that runs in your terminal |
 | [copilot-cli](https://termuxvoid.github.io/tool.html?name=copilot-cli) | GitHub Copilot CLI – AI‑powered assistance in your terminal |
 | [hermes-agent](https://termuxvoid.github.io/tool.html?name=hermes-agent) | AI-powered coding assistant and workflow automation tool |
+| [jcode](https://termuxvoid.github.io/tool.html?name=jcode) | Terminal coding agent harness with a fast local TUI, persistent memory, and MCP support |
 | [kimi-code](https://termuxvoid.github.io/tool.html?name=kimi-code) | AI‑powered coding assistant for the terminal, powered by Moonshot AI |
 | [laudacode](https://termuxvoid.github.io/tool.html?name=laudacode) | Fast, lightweight Rust‑based AI coding agent for your terminal – works with any OpenAI‑compatible API |
 | [mimocode](https://termuxvoid.github.io/tool.html?name=mimocode) | Autonomous AI engineer that creates, modifies, tests, and deploys code with real file system and shell command execution |
