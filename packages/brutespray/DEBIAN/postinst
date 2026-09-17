@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
-go install -trimpath -ldflags "-w -s" github.com/x90skysn3k/brutespray/v2@v2.6.3
+go install -trimpath -ldflags "-w -s" github.com/x90skysn3k/brutespray/v2@v2.7.2
 if [ ! -f "$PREFIX/bin/brutespray" ] && [ -f "$HOME/go/bin/brutespray" ]; then
     ln -sf "$HOME/go/bin/brutespray" "$PREFIX/bin/brutespray"
 fi

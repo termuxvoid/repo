@@ -2,7 +2,7 @@
 set -e
 
 REPO="https://github.com/ffuf/ffuf.git"
-TAG="v2.2.1"
+TAG="v2.3.0"
 TMP_DIR="$TMPDIR/ffuf-build"
 BIN_DIR="$PREFIX/bin"
 

@@ -1,5 +1,5 @@
 Package: brutespray
-Version: 2.6.3
+Version: 2.7.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: golang, git

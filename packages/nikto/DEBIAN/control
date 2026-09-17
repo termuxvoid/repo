@@ -1,5 +1,5 @@
 Package: nikto
-Version: 2.6.0
+Version: 2.6.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: perl, git, openssl, openssl-tool, clang, make, cmake, curl, pkg-config
