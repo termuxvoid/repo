@@ -1,20 +1,39 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="0.6.0"
-URL="https://github.com/Anon4You/Laudacode/archive/refs/tags/v${VERSION}.tar.gz"
+VERSION="0.7.0"
+ARCH=$(uname -m)
+
+case "$ARCH" in
+    aarch64)
+        TARGET="aarch64-linux-android"
+        ;;
+    armv7l|armv8l)
+        TARGET="armv7-linux-androideabi"
+        ;;
+    i686)
+        TARGET="i686-linux-android"
+        ;;
+    x86_64)
+        TARGET="x86_64-linux-android"
+        ;;
+    *)
+        echo "Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+
+DEST="$PREFIX/bin/laudacode"
 TMP_DIR="$TMPDIR/laudacode-build"
-BIN_DIR="$PREFIX/bin"
+ARCHIVE="laudacode-v${VERSION}-${TARGET}.tar.gz"
 
 rm -rf "$TMP_DIR" 2>/dev/null || true
 mkdir -p "$TMP_DIR"
-cd "$TMP_DIR"
 
-curl -fsSL -o source.tar.gz "$URL"
-tar -xzf source.tar.gz --strip-components=1
+curl -fsSL -o "$TMP_DIR/$ARCHIVE" "https://github.com/Anon4You/Laudacode/releases/download/v${VERSION}/${ARCHIVE}"
+tar -xzf "$TMP_DIR/$ARCHIVE" -C "$TMP_DIR"
 
-cargo build --release
-install -Dm755 target/release/laudacode "$BIN_DIR/laudacode"
+install -Dm755 "$TMP_DIR/laudacode" "$DEST"
 
 cd / && rm -rf "$TMP_DIR"
 

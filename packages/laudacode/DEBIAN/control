@@ -1,8 +1,8 @@
 Package: laudacode
-Version: 0.6.0
+Version: 0.7.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: curl, rust, tar
+Depends: curl, tar
 Section: devel
 Priority: optional
 Homepage: https://github.com/Anon4You/Laudacode
