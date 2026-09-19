@@ -33,6 +33,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [spurt](https://termuxvoid.github.io/tool.html?name=spurt) | HTTP stress testing tool to overload web servers |
 | [termsploit](https://termuxvoid.github.io/tool.html?name=termsploit) | Pentesting framework for Termux |
 | [wipwn](https://termuxvoid.github.io/tool.html?name=wipwn) | Fast automated WiFi WPS PIN cracking tool with Pixie Dust and brute-force attacks |
+| [zackattack](https://termuxvoid.github.io/tool.html?name=zackattack) | NTLM authentication relaying toolkit with rogue HTTP/SMB servers, LDAP and EWS relay |
 
 ### Defensive Tools
 | Tool | Description |
@@ -143,6 +144,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [ophcrack](https://termuxvoid.github.io/tool.html?name=ophcrack) | NTLM/LM hash cracker using rainbow tables – cracks Windows SAM hashes |
 | [openbullet](https://termuxvoid.github.io/tool.html?name=openbullet) | Tool for running OpenBullet configurations |
 | [pdfcracker](https://termuxvoid.github.io/tool.html?name=pdfcracker) | PDF password recovery tool |
+| [pipal](https://termuxvoid.github.io/tool.html?name=pipal) | Password analyser – generate statistics from password lists |
 | [thc-hydra](https://termuxvoid.github.io/tool.html?name=thc-hydra) | Parallelized login cracker supporting many protocols |
 | [wordlists](https://termuxvoid.github.io/tool.html?name=wordlists) | Security wordlists collection (rockyou.txt + SecLists subset) |
 | [zipcracker](https://termuxvoid.github.io/tool.html?name=zipcracker) | ZIP archive password recovery tool |
@@ -168,6 +170,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [ffuf](https://termuxvoid.github.io/tool.html?name=ffuf) | Fast web fuzzer written in Go |
 | [findomain](https://termuxvoid.github.io/tool.html?name=findomain) | Fastest and complete solution for domain recognition |
 | [fscan](https://termuxvoid.github.io/tool.html?name=fscan) | Comprehensive intranet scanning tool |
+| [fierce](https://termuxvoid.github.io/tool.html?name=fierce) | DNS reconnaissance – locate targets and non-contiguous IP space |
 | [gau](https://termuxvoid.github.io/tool.html?name=gau) | Fetch known URLs from AlienVault, Wayback Machine, and CommonCrawl |
 | [getsploit](https://termuxvoid.github.io/tool.html?name=getsploit) | Command‑line search tool for exploits and vulnerabilities using the Vulners database |
 | [ghosttrack](https://termuxvoid.github.io/tool.html?name=ghosttrack) | Advanced tracking and reconnaissance tool |
@@ -175,6 +178,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [gobuster](https://termuxvoid.github.io/tool.html?name=gobuster) | Directory/file & DNS busting tool written in Go |
 | [gowitness](https://termuxvoid.github.io/tool.html?name=gowitness) | Web screenshot utility using headless Chrome |
 | [httpx](https://termuxvoid.github.io/tool.html?name=httpx) | Fast and multi‑purpose HTTP toolkit |
+| [interlace](https://termuxvoid.github.io/tool.html?name=interlace) | Multi‑thread a single‑threaded CLI command across many targets (CIDR/glob) |
 | [katana](https://termuxvoid.github.io/tool.html?name=katana) | Next‑generation crawling and spidering framework |
 | [mantra](https://termuxvoid.github.io/tool.html?name=mantra) | API key hunter for JS files and web pages |
 | [masscan](https://termuxvoid.github.io/tool.html?name=masscan) | High‑speed TCP port scanner – Internet‑scale SYN scanning |
@@ -228,6 +232,11 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [ransomux](https://termuxvoid.github.io/tool.html?name=ransomux) | Ransomware making tool |
 | [rkpairip](https://termuxvoid.github.io/tool.html?name=rkpairip) | Remove Pairip protection and rebuild APKs |
 
+### Steganography & Forensics
+| Tool | Description |
+|------|-------------|
+| [snow](https://termuxvoid.github.io/tool.html?name=snow) | Hide secret messages in plain text files using invisible whitespace, with optional compression and encryption |
+
 ### Social Engineering
 | Tool | Description |
 |------|-------------|
@@ -255,6 +264,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [blesh](https://termuxvoid.github.io/tool.html?name=blesh) | Bash Line Editor (ble.sh) – interactive command line editing |
 | [enctool](https://termuxvoid.github.io/tool.html?name=enctool) | Encrypt or decrypt bash files and marshal Python scripts |
 | [ip-changer](https://termuxvoid.github.io/tool.html?name=ip-changer) | Change your IP address automatically |
+| [linux-exploit-suggester](https://termuxvoid.github.io/tool.html?name=linux-exploit-suggester) | Suggest kernel exploits based on the running kernel version |
 | [morphshell](https://termuxvoid.github.io/tool.html?name=morphshell) | Sleek Termux shell environment with dynamic themes |
 | [ruby-curb](https://termuxvoid.github.io/tool.html?name=ruby-curb) | Curb provides Ruby bindings for the libcurl HTTP client library |
 | [ruby-ethon](https://termuxvoid.github.io/tool.html?name=ruby-ethon) | Ruby libcurl wrapper using FFI for HTTP client functionality |
@@ -306,6 +316,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [cloudflare-gui](https://termuxvoid.github.io/tool.html?name=cloudflare-gui) | Stylish GUI for Cloudflare Tunnels |
 | [commix](https://termuxvoid.github.io/tool.html?name=commix) | Automated All‑in‑One OS Command Injection and Exploitation Tool |
 | [d-tect](https://termuxvoid.github.io/tool.html?name=d-tect) | D‑TECT – Pentest the Modern Web |
+| [droopescan](https://termuxvoid.github.io/tool.html?name=droopescan) | CMS scanner for Drupal, WordPress, Silverstripe and Joomla |
 | [ghauri](https://termuxvoid.github.io/tool.html?name=ghauri) | Advanced Cross‑Platform SQL Injection Scanner |
 | [gophish](https://termuxvoid.github.io/tool.html?name=gophish) | Open‑Source Phishing Toolkit |
 | [goshs](https://termuxvoid.github.io/tool.html?name=goshs) | Feature-rich single-binary file server for red teamers and developers |
@@ -313,6 +324,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [jsql](https://termuxvoid.github.io/tool.html?name=jsql) | Lightweight SQL injection detection and exploitation tool |
 | [jwt-hack](https://termuxvoid.github.io/tool.html?name=jwt-hack) | JWT security testing and exploitation tool – signing, forging, algorithm confusion, kid injection and more |
 | [ngrok](https://termuxvoid.github.io/tool.html?name=ngrok) | Secure tunneling to localhost |
+| [stowaway](https://termuxvoid.github.io/tool.html?name=stowaway) | Multi-hop proxy tool – build chained tunnels through compromised hosts |
 | [nikto](https://termuxvoid.github.io/tool.html?name=nikto) | Comprehensive web server scanner |
 | [nosqli](https://termuxvoid.github.io/tool.html?name=nosqli) | Fast NoSQL injection scanner and injector – error‑based, boolean‑blind, and timing‑based detection |
 | [playit](https://termuxvoid.github.io/tool.html?name=playit) | Global proxy for server hosting without port forwarding |

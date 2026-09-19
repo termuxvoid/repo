@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+rm -f "$PREFIX/bin/pipal"
+rm -rf "$PREFIX/share/pipal"
+
+echo "pipal removed."
+exit 0

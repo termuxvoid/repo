@@ -1,0 +1,16 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/mschwager/fierce.git"
+DEST="$PREFIX/share/fierce"
+
+pip install dnspython
+
+rm -rf "$DEST" 2>/dev/null || true
+git clone --depth 1 "$REPO" "$DEST"
+
+python -m pip install --no-deps "$DEST"
+
+echo "fierce installed. Run 'fierce'"
+echo "Example: fierce --domain example.com --dns-servers 8.8.8.8"
+exit 0

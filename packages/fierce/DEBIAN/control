@@ -1,0 +1,13 @@
+Package: fierce
+Version: 1.6.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python
+Section: net
+Priority: optional
+Homepage: https://github.com/mschwager/fierce
+Description: DNS reconnaissance tool for locating targets and non-contiguous IP space
+ fierce scans DNS servers to enumerate in-scope hosts, uncover wildcard
+ entries, and spot non-contiguous IP blocks. Useful during the
+ reconnaissance phase to find hidden hosts and adjacent address space
+ for a given domain.

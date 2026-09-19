@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+rm -f "$PREFIX/bin/zackattack"
+rm -rf "$PREFIX/share/zackattack"
+
+echo "zackattack removed."
+exit 0

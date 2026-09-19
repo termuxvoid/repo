@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+DEST="$PREFIX/share/pipal"
+LAUNCHER="$PREFIX/bin/pipal"
+
+rm -rf "$DEST" 2>/dev/null || true
+git clone --depth 1 https://github.com/digininja/pipal.git "$DEST"
+
+# Ruby 4.x no longer auto-activates the 'benchmark' bundled gem,
+# so activate it explicitly before it is required.
+sed -i "s/^require 'benchmark'/require 'rubygems'\ngem 'benchmark'\nrequire 'benchmark'/" "$DEST/pipal.rb"
+
+cat > "$LAUNCHER" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+exec ruby "$PREFIX/share/pipal/pipal.rb" "$@"
+EOF
+chmod +x "$LAUNCHER"
+
+echo "pipal installed. Run 'pipal'"
+echo "Example: pipal --top=10 wordlist.txt"
+exit 0

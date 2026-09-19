@@ -1,0 +1,34 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+SHARE_DIR="$PREFIX/share/zackattack"
+BIN_DIR="$PREFIX/bin"
+
+rm -rf "$SHARE_DIR" 2>/dev/null || true
+mkdir -p "$SHARE_DIR" "$BIN_DIR"
+
+echo "Cloning ZackAttack..."
+git clone --depth 1 https://github.com/urbanesec/ZackAttack "$SHARE_DIR"
+
+echo "Patching for modern Ruby..."
+sed -i "s/gem 'sqlite3', '1.3.6'/gem 'sqlite3'/" "$SHARE_DIR/lib/zfdb.rb"
+sed -i "s/File::exists?/File.exist?/g; s/File\.exists?/File.exist?/g" "$SHARE_DIR/lib/zfdb.rb" "$SHARE_DIR/lib/zfadmingui.rb"
+sed -i '/puts "Starting smbd server"/a\      return if @server.nil?' "$SHARE_DIR/lib/zfsmbd.rb"
+sed -i '/puts "Starting httpd server"/a\      return if @server.nil?' "$SHARE_DIR/lib/zfhttpd.rb"
+
+echo "Installing Ruby dependencies..."
+gem install --no-document webrick
+gem install --no-document sqlite3 -- --enable-system-libraries
+
+cat > "$BIN_DIR/zackattack" << 'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$PREFIX/share/zackattack"
+exec ruby zackattack.rb "$@"
+EOF
+
+chmod +x "$BIN_DIR/zackattack"
+
+echo "zackattack installed. Run 'zackattack'"
+echo "Note: SMB (445) and HTTP (80) relay servers need root to bind;"
+echo "the admin GUI and SOCKS proxy work without it."
+exit 0

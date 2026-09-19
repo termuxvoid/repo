@@ -1,0 +1,14 @@
+Package: droopescan
+Version: 1.45.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python
+Section: net
+Priority: optional
+Homepage: https://github.com/droope/droopescan
+Description: CMS scanner for Drupal, WordPress, Silverstripe and Joomla
+ droopescan performs automated fingerprinting and vulnerability checks
+ against Content Management Systems (Drupal, WordPress, Silverstripe
+ and Joomla) with zero false-positive reporting. It checks for
+ enumerable users, plugins, themes, modules, and known CVEs based on
+ version fingerprinting.

@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+pip uninstall -y fierce 2>/dev/null || true
+rm -rf "$PREFIX/share/fierce"
+
+echo "fierce removed."
+exit 0

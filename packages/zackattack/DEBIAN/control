@@ -1,0 +1,15 @@
+Package: zackattack
+Version: 0.1.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, ruby, libsqlite, pkg-config, build-essential
+Section: security
+Priority: optional
+Homepage: https://github.com/urbanesec/ZackAttack
+Description: NTLM authentication relaying toolkit
+ ZackAttack is a toolset for relaying NTLM authentication, unveiled at
+ DEF CON 20. Supports NTLMv2, custom rogue HTTP and SMB servers, relay
+ to LDAP and Exchange Web Services, a SOCKS proxy, rule-based actions,
+ and guided payloads to trigger auto-authentication.
+ Note: the SMB (445) and HTTP (80) relay servers need root to bind
+ privileged ports; the admin GUI and SOCKS proxy work without it.

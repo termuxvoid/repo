@@ -1,0 +1,24 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="20130616"
+URL="https://darkside.com.au/snow/snow-${VERSION}.tar.gz"
+TMP_DIR="$TMPDIR/snow-build"
+
+rm -rf "$TMP_DIR" 2>/dev/null || true
+mkdir -p "$TMP_DIR"
+cd "$TMP_DIR"
+
+curl -fsSL -o snow.tar.gz "$URL"
+tar -xzf snow.tar.gz
+cd "snow-${VERSION}"
+
+make
+
+install -Dm755 snow "$PREFIX/bin/snow"
+
+cd / && rm -rf "$TMP_DIR"
+
+echo "snow installed. Run 'snow'"
+echo "Example: snow -C -m 'secret' notes.txt out.txt"
+exit 0

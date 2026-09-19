@@ -1,0 +1,13 @@
+Package: pipal
+Version: 3.4.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, ruby
+Section: utils
+Priority: optional
+Homepage: https://github.com/digininja/pipal
+Description: Password analyser and statistics generator
+ pipal helps analyse password lists, extracting statistics such as
+ character counts, digit positions, the most common patterns, and
+ passwords that instantly fail typical password policies. Great for
+ building realistic wordlists or auditing password dumps.

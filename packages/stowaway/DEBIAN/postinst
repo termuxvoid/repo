@@ -1,0 +1,18 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/ph4ntonn/Stowaway.git"
+DEST="$PREFIX/share/stowaway"
+
+rm -rf "$DEST" 2>/dev/null || true
+git clone --depth 1 "$REPO" "$DEST"
+
+cd "$DEST"
+go build -trimpath -ldflags "-w -s" -o "$PREFIX/bin/stowaway-admin" admin/admin.go
+go build -trimpath -ldflags "-w -s" -o "$PREFIX/bin/stowaway-agent" agent/agent.go
+cd /
+
+echo "stowaway installed. Binaries: stowaway-admin, stowaway-agent"
+echo "To build a chain: run 'stowaway-admin -l <port> -s <secret>' on this host,"
+echo "then on other hosts: 'stowaway-agent -c <ip>:<port> -s <secret>'"
+exit 0

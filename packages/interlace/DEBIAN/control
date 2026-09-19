@@ -1,0 +1,13 @@
+Package: interlace
+Version: 1.9.8
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python
+Section: net
+Priority: optional
+Homepage: https://github.com/codingo/Interlace
+Description: Turn single-threaded CLI tools into fast multi-threaded engines
+ interlace runs a given command across a list of targets (comma,
+ CIDR or glob notation), adding threading, exclusions, timeouts and
+ port replication. Ideal for batch-scanning many hosts with nmap,
+ nuclei or any one-shot CLI scanner without rewriting them.

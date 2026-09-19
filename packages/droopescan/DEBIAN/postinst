@@ -1,0 +1,41 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/droope/droopescan.git"
+DEST="$PREFIX/share/droopescan"
+
+pip install 'cement>=2.6,<2.6.99' pystache requests
+
+rm -rf "$DEST" 2>/dev/null || true
+git clone --depth 1 "$REPO" "$DEST"
+
+python -m pip install --no-deps "$DEST"
+
+# cement 2.6.x still uses the 'imp' module removed in Python 3.12;
+# patch the installed library to use importlib instead.
+CEMENT=$(python -c "import os,cement;print(os.path.dirname(cement.__file__))" 2>/dev/null || true)
+if [ -n "$CEMENT" ]; then
+    sed -i 's/from imp import reload/from importlib import reload/' \
+        "$CEMENT/core/extension.py" "$CEMENT/core/foundation.py"
+    sed -i 's/^import imp$/import importlib/' "$CEMENT/ext/ext_plugin.py"
+    python - "$CEMENT/ext/ext_plugin.py" <<'PYEOF'
+import sys
+path = sys.argv[1]
+src = open(path).read()
+old = """        f, path, desc = imp.find_module(plugin_name, [plugin_dir])
+        mod = imp.load_module(plugin_name, f, path, desc)
+"""
+new = """        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            plugin_name, os.path.join(plugin_dir, "%s.py" % plugin_name))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+"""
+if old in src:
+    open(path, "w").write(src.replace(old, new, 1))
+PYEOF
+fi
+
+echo "droopescan installed. Run 'droopescan'"
+echo "Example: droopescan scan drupal -u https://example.com"
+exit 0

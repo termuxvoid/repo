@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+rm -f "$PREFIX/bin/stowaway-admin" "$PREFIX/bin/stowaway-agent"
+rm -rf "$PREFIX/share/stowaway"
+
+echo "stowaway removed."
+exit 0

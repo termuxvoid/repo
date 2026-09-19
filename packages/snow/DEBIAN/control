@@ -1,0 +1,13 @@
+Package: snow
+Version: 20130616
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: build-essential
+Section: net
+Priority: optional
+Homepage: https://darkside.com.au/snow/index.html
+Description: Steganography tool to conceal messages in text files
+ snow is a whitespace steganography program. It hides messages by
+ exploiting the invisible trailing whitespace and tab characters at
+ the end of lines in a text file. Supports optional compression and
+ password-based encryption of the hidden payload.

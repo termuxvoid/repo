@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+pip uninstall -y droopescan 2>/dev/null || true
+rm -rf "$PREFIX/share/droopescan"
+
+echo "droopescan removed."
+exit 0
