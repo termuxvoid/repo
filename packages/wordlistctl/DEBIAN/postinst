@@ -13,6 +13,19 @@ if [ ! -f wordlistctl.py ]; then
         https://raw.githubusercontent.com/BlackArch/wordlistctl/v0.9.4/repo.json
 fi
 
+python - << 'PYEOF'
+import pathlib, os
+f = pathlib.Path(os.environ["PREFIX"]) / "share/wordlistctl/wordlistctl.py"
+s = f.read_text()
+old = 'WORDLIST_PATH: str = "/usr/share/wordlists"'
+new = 'WORDLIST_PATH: str = os.environ.get("PREFIX", "") + "/share/wordlists"'
+if old in s:
+    f.write_text(s.replace(old, new, 1))
+    print("termux wordlist path patch applied")
+else:
+    print("wordlist path already patched")
+PYEOF
+
 cat > $PREFIX/bin/wordlistctl << 'EOF'
 #!/data/data/com.termux/files/usr/bin/bash
 cd "$PREFIX/share/wordlistctl"

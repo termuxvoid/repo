@@ -1,5 +1,5 @@
 Package: wordlistctl
-Version: 0.9.4
+Version: 0.9.4-1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, curl
