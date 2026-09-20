@@ -2,7 +2,7 @@ Package: meg
 Version: 0.3.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, golang
+Depends: curl, golang
 Section: recon
 Priority: optional
 Homepage: https://github.com/tomnomnom/meg

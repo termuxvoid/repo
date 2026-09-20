@@ -2,7 +2,7 @@ Package: outguess
 Version: 0.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: curl, make, clang, gcc, libjpeg-turbo
+Depends: git, autoconf, automake, libtool, make, clang, gcc, libjpeg-turbo
 Section: crypto
 Priority: optional
 Homepage: https://github.com/resurrecting-open-source-projects/outguess

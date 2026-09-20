@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-python -m pip install --quiet termcolor || pip install termcolor
+python -m pip install --quiet termcolor requests || pip install termcolor requests
 
 mkdir -p $PREFIX/share/wordlistctl
 cd $PREFIX/share/wordlistctl
