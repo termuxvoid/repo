@@ -1,5 +1,5 @@
 Package: tvpkg
-Version: 0.1.0
+Version: 0.1.0-1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, tar, gzip, coreutils, grep

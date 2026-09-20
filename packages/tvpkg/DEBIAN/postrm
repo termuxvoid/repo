@@ -1,0 +1,11 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+# Remove the installed binary and its alias symlink on uninstall.
+# Skip during upgrades (postinst re-installs them). Under pacman's
+# post_remove() there is no "$1", so the check falls through to removal.
+if [ "${1:-}" != "upgrade" ]; then
+    rm -f "$PREFIX/bin/tvpkg" "$PREFIX/bin/tvp"
+fi
+
+exit 0
