@@ -1,0 +1,13 @@
+Package: peass
+Version: 20260919.fca1e2b0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl
+Section: scanner
+Priority: optional
+Homepage: https://github.com/carlospolop/PEASS-ng
+Description: Privilege Escalation Awesome Scripts SUITE (with colors)
+ PEASS-ng provides well-crafted privilege-escalation enumeration
+ scripts for Linux (linpeas) and Windows (winPEAS). linpeas.sh scans
+ the target for vulnerable services, misconfigurations, credentials and
+ more; winPEAS.bat does the same for Windows hosts.

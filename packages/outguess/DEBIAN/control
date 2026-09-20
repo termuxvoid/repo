@@ -1,0 +1,12 @@
+Package: outguess
+Version: 0.4
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl, make, clang, gcc, libjpeg-turbo
+Section: crypto
+Priority: optional
+Homepage: https://github.com/resurrecting-open-source-projects/outguess
+Description: Universal steganographic tool for inserting hidden data into images
+ outguess lets you hide information inside the redundant bits of data files,
+ most commonly images (JPEG). It employs a robust data-hiding system that
+ survives recompression and other transformations.

@@ -1,0 +1,49 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+pip install dnspython netaddr packaging
+
+mkdir -p $PREFIX/share/dnscan
+cd $PREFIX/share/dnscan
+if [ ! -d dnscan ]; then
+    git clone --filter=blob:none --no-checkout https://github.com/rbsec/dnscan.git dnscan
+fi
+cd dnscan
+git checkout -q 281721e84f18512a574da0a4917a2eff1ec9549d
+
+python - "$PREFIX/share/dnscan/dnscan/dnscan.py" << 'PYEOF'
+import sys
+f = sys.argv[1]
+s = open(f).read()
+patched = s.find("Resolver(configure=False)") != -1
+if not patched:
+    old = "    resolver = dns.resolver.Resolver()\n"
+    new = "    resolver = dns.resolver.Resolver(configure=False)\n"
+    assert old in s
+    s = s.replace(old, new, 1)
+old2 = """    elif args.resolvers:
+        resolver.nameservers = args.resolvers.split(",")
+"""
+new2 = old2 + """    else:
+        resolver.nameservers = ["8.8.8.8", "1.1.1.1"]
+"""
+if old2 in s:
+    s = s.replace(old2, new2, 1)
+open(f, "w").write(s)
+print("termux resolv.conf patch applied" if not patched else "already patched")
+PYEOF
+
+cat > $PREFIX/bin/dnscan << 'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$PREFIX/share/dnscan/dnscan"
+exec python dnscan.py "$@"
+EOF
+chmod +x $PREFIX/bin/dnscan
+
+echo "dnscan installed successfully."
+echo ""
+echo "Usage examples:"
+echo "  dnscan -d example.com -w subdomains.txt"
+echo "  dnscan -d example.com -t 1000"
+
+exit 0

@@ -1,0 +1,19 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+mkdir -p $PREFIX/share/wpprobe
+cd $PREFIX/share/wpprobe
+if [ ! -d wpprobe ]; then
+    git clone --filter=blob:none --no-checkout https://github.com/Chocapikk/wpprobe.git wpprobe
+fi
+cd wpprobe
+git checkout -q b5aa2b07c30fdfdeb16afc75ec7bf50673989d06
+go build -trimpath -ldflags "-w -s" -o $PREFIX/bin/wpprobe ./
+
+echo "wpprobe installed successfully."
+echo ""
+echo "Usage examples:"
+echo "  wpprobe -u https://example.com"
+echo "  wpprobe -l targets.txt -o results.txt"
+
+exit 0

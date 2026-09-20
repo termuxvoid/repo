@@ -1,0 +1,12 @@
+Package: meg
+Version: 89.5cc1d34
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, golang
+Section: recon
+Priority: optional
+Homepage: https://github.com/tomnomnom/meg
+Description: Fetch many paths for many hosts - without killing the hosts
+ meg is a Go tool for fetching many paths for many hosts in parallel.
+ It can check a large list of hosts against a large wordlist of paths
+ without flooding the targets.

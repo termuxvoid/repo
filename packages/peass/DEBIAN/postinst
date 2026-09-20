@@ -1,0 +1,29 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+BASE="https://github.com/peass-ng/PEASS-ng/releases/download/20260919-fca1e2b0"
+
+mkdir -p $PREFIX/share/peass/linPEAS $PREFIX/share/peass/winPEAS
+
+curl -fsSL -o $PREFIX/share/peass/linPEAS/linpeas.sh \
+    "$BASE/linpeas.sh"
+curl -fsSL -o $PREFIX/share/peass/linPEAS/linpeas_fat.sh \
+    "$BASE/linpeas_fat.sh"
+curl -fsSL -o $PREFIX/share/peass/winPEAS/winPEAS.bat \
+    "$BASE/winPEAS.bat"
+
+chmod 0755 $PREFIX/share/peass/linPEAS/linpeas.sh \
+    $PREFIX/share/peass/linPEAS/linpeas_fat.sh
+
+ln -sf $PREFIX/share/peass/linPEAS/linpeas.sh $PREFIX/bin/linpeas
+ln -sf $PREFIX/share/peass/linPEAS/linpeas_fat.sh $PREFIX/bin/linpeas_fat
+
+echo "peass installed successfully."
+echo ""
+echo "Usage examples:"
+echo "  linpeas                       (full system enumeration)"
+echo "  linpeas -a                    (all system checks, slow)"
+echo "  linpeas_fat                   (enumerates checks requiring more tools)"
+echo "  winPEAS.bat is saved in \$PREFIX/share/peass/winPEAS/"
+
+exit 0

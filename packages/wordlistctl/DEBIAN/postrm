@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f $PREFIX/bin/wordlistctl
+rm -rf $PREFIX/share/wordlistctl
+
+echo "wordlistctl completely removed."
+
+exit 0

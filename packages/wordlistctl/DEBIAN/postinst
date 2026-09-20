@@ -1,0 +1,30 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+python -m pip install --quiet termcolor || pip install termcolor
+
+mkdir -p $PREFIX/share/wordlistctl
+cd $PREFIX/share/wordlistctl
+
+if [ ! -f wordlistctl.py ]; then
+    curl -fsSL -o wordlistctl.py \
+        https://raw.githubusercontent.com/BlackArch/wordlistctl/v0.9.4/wordlistctl.py
+    curl -fsSL -o repo.json \
+        https://raw.githubusercontent.com/BlackArch/wordlistctl/v0.9.4/repo.json
+fi
+
+cat > $PREFIX/bin/wordlistctl << 'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$PREFIX/share/wordlistctl"
+exec python wordlistctl.py "$@"
+EOF
+chmod +x $PREFIX/bin/wordlistctl
+
+echo "wordlistctl installed successfully."
+echo ""
+echo "Usage examples:"
+echo "  wordlistctl search rockyou"
+echo "  wordlistctl list -g web"
+echo "  wordlistctl fetch -l rockyou.txt"
+
+exit 0

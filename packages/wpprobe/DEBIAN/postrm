@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f $PREFIX/bin/wpprobe
+rm -rf $PREFIX/share/wpprobe
+
+echo "wpprobe completely removed."
+
+exit 0

@@ -1,0 +1,46 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+mkdir -p $PREFIX/share/outguess
+cd $PREFIX/share/outguess
+
+if [ ! -d outguess-0.4 ]; then
+    curl -fsSL -o outguess.tar.gz \
+        https://github.com/resurrecting-open-source-projects/outguess/archive/refs/tags/0.4.tar.gz
+    tar xzf outguess.tar.gz
+fi
+
+cd outguess-0.4
+./autogen.sh
+./configure --prefix=$PREFIX --with-generic-jconfig
+
+python - << 'PYEOF'
+import io, os
+base = os.environ["PREFIX"] + "/share/outguess/outguess-0.4/src"
+f1 = base + "/arc.c"
+f2 = base + "/md5.c"
+for f, old, new in [
+  (f1,
+   "u_int32_t\narc4_getword(as)\n\tstruct arc4_stream *as;\n{",
+   "u_int32_t\narc4_getword(struct arc4_stream *as)\n{"),
+  (f2,
+   "void\nMD5Init(ctx)\n     struct MD5Context *ctx;\n{",
+   "void\nMD5Init(struct MD5Context *ctx)\n{"),
+]:
+    s = io.open(f, encoding="utf-8").read()
+    if old in s:
+        io.open(f, "w", encoding="utf-8").write(s.replace(old, new, 1))
+print("K&R function definitions converted")
+PYEOF
+
+make CC="gcc -std=gnu11" -j$(nproc 2>/dev/null || echo 2)
+make install
+
+echo "outguess installed successfully."
+echo ""
+echo "Usage examples:"
+echo "  outguess -k secretkey -d hidden.txt -k key.jpeg out.jpeg"
+echo "  outguess -k secretkey -r out.jpeg message.txt"
+echo "  outguess -k secretkey -k key.jpeg original.jpeg out.jpeg"
+
+exit 0

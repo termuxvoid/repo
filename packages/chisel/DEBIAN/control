@@ -1,0 +1,13 @@
+Package: chisel
+Version: 261.3c00f04
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, golang
+Section: tunnel
+Priority: optional
+Homepage: https://github.com/jpillora/chisel
+Description: Fast TCP/UDP tunnel transported over HTTP, secured via SSH
+ chisel creates a fast TCP/UDP tunnel that is transported over HTTP
+ and secured via an SSH-like encryption layer. A single executable
+ acts as both client and server, supporting port forwarding, reverse
+ tunnels and outbound authenticated connections.

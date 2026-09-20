@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f $PREFIX/bin/meg
+rm -rf $PREFIX/share/meg
+
+echo "meg completely removed."
+
+exit 0

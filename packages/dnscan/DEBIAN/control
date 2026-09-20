@@ -1,0 +1,12 @@
+Package: dnscan
+Version: 209.281721e
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python, python-cryptography
+Section: recon
+Priority: optional
+Homepage: https://github.com/rbsec/dnscan
+Description: A python wordlist-based DNS subdomain scanner
+ dnscan uses a wordlist to brute-force subdomains for a given domain.
+ It supports TCP/UDP DNS, zone-transfer attempts, TLD expansion and
+ virtual-host checking.

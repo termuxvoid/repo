@@ -1,0 +1,12 @@
+Package: wordlistctl
+Version: 0.9.4
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python, curl
+Section: misc
+Priority: optional
+Homepage: https://github.com/BlackArch/wordlistctl
+Description: Fetch, install and search wordlist archives from wordlists and repositories
+ wordlistctl searches, fetches and installs wordlist archives from the
+ command line. It can search and download wordlists from online
+ repositories, install them locally, and keep them updated from repo.json.

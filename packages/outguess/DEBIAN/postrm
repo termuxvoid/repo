@@ -1,0 +1,10 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f $PREFIX/bin/outguess
+rm -f $PREFIX/man/man1/outguess.1
+rm -rf $PREFIX/share/outguess
+
+echo "outguess completely removed."
+
+exit 0

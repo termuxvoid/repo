@@ -146,6 +146,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [pdfcracker](https://termuxvoid.github.io/tool.html?name=pdfcracker) | PDF password recovery tool |
 | [pipal](https://termuxvoid.github.io/tool.html?name=pipal) | Password analyser – generate statistics from password lists |
 | [thc-hydra](https://termuxvoid.github.io/tool.html?name=thc-hydra) | Parallelized login cracker supporting many protocols |
+| [wordlistctl](https://termuxvoid.github.io/tool.html?name=wordlistctl) | Fetch, install and search wordlist archives |
 | [wordlists](https://termuxvoid.github.io/tool.html?name=wordlists) | Security wordlists collection (rockyou.txt + SecLists subset) |
 | [zipcracker](https://termuxvoid.github.io/tool.html?name=zipcracker) | ZIP archive password recovery tool |
 
@@ -167,6 +168,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [dalfox](https://termuxvoid.github.io/tool.html?name=dalfox) | Parameter analysis and XSS scanning tool |
 | [dnsx](https://termuxvoid.github.io/tool.html?name=dnsx) | Fast DNS toolkit for reconnaissance |
 | [dirsearch](https://termuxvoid.github.io/tool.html?name=dirsearch) | Web path scanner – brute force directories and files in web servers |
+| [dnscan](https://termuxvoid.github.io/tool.html?name=dnscan) | Python wordlist‑based DNS subdomain scanner with zone‑transfer and TLD checks |
 | [ffuf](https://termuxvoid.github.io/tool.html?name=ffuf) | Fast web fuzzer written in Go |
 | [findomain](https://termuxvoid.github.io/tool.html?name=findomain) | Fastest and complete solution for domain recognition |
 | [fscan](https://termuxvoid.github.io/tool.html?name=fscan) | Comprehensive intranet scanning tool |
@@ -182,6 +184,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [katana](https://termuxvoid.github.io/tool.html?name=katana) | Next‑generation crawling and spidering framework |
 | [mantra](https://termuxvoid.github.io/tool.html?name=mantra) | API key hunter for JS files and web pages |
 | [masscan](https://termuxvoid.github.io/tool.html?name=masscan) | High‑speed TCP port scanner – Internet‑scale SYN scanning |
+| [meg](https://termuxvoid.github.io/tool.html?name=meg) | Fetch many paths for many hosts – bulk HTTP reconnaissance without flooding targets |
 | [metabigor](https://termuxvoid.github.io/tool.html?name=metabigor) | OSINT tool without API keys – network discovery, ASN/IP lookups, and search engine queries |
 | [naabu](https://termuxvoid.github.io/tool.html?name=naabu) | Fast port scanning tool with SYN/CONNECT modes |
 | [nuclei](https://termuxvoid.github.io/tool.html?name=nuclei) | Advanced template‑based vulnerability scanner |
@@ -235,6 +238,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 ### Steganography & Forensics
 | Tool | Description |
 |------|-------------|
+| [outguess](https://termuxvoid.github.io/tool.html?name=outguess) | Universal steganographic tool – hide secrets inside JPEG images |
 | [snow](https://termuxvoid.github.io/tool.html?name=snow) | Hide secret messages in plain text files using invisible whitespace, with optional compression and encryption |
 
 ### Social Engineering
@@ -266,6 +270,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [ip-changer](https://termuxvoid.github.io/tool.html?name=ip-changer) | Change your IP address automatically |
 | [linux-exploit-suggester](https://termuxvoid.github.io/tool.html?name=linux-exploit-suggester) | Suggest kernel exploits based on the running kernel version |
 | [morphshell](https://termuxvoid.github.io/tool.html?name=morphshell) | Sleek Termux shell environment with dynamic themes |
+| [peass](https://termuxvoid.github.io/tool.html?name=peass) | Privilege Escalation Awesome Scripts SUITE – linpeas/linPEAS and winPEAS with colors |
 | [ruby-curb](https://termuxvoid.github.io/tool.html?name=ruby-curb) | Curb provides Ruby bindings for the libcurl HTTP client library |
 | [ruby-ethon](https://termuxvoid.github.io/tool.html?name=ruby-ethon) | Ruby libcurl wrapper using FFI for HTTP client functionality |
 | [ruby-nokogiri](https://termuxvoid.github.io/tool.html?name=ruby-nokogiri) | Ruby gem for HTML/XML parsing (system libraries) |
@@ -313,6 +318,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [arjun](https://termuxvoid.github.io/tool.html?name=arjun) | HTTP parameter discovery suite supporting GET/POST methods with threading |
 | [burpsuite](https://termuxvoid.github.io/tool.html?name=burpsuite) | Web security testing platform (community edition) |
 | [burpsuite-pro](https://termuxvoid.github.io/tool.html?name=burpsuite-pro) | Web security testing platform (professional edition) |
+| [chisel](https://termuxvoid.github.io/tool.html?name=chisel) | Fast TCP/UDP tunnel over HTTP secured via SSH – client and server in one binary |
 | [cloudflare-gui](https://termuxvoid.github.io/tool.html?name=cloudflare-gui) | Stylish GUI for Cloudflare Tunnels |
 | [commix](https://termuxvoid.github.io/tool.html?name=commix) | Automated All‑in‑One OS Command Injection and Exploitation Tool |
 | [d-tect](https://termuxvoid.github.io/tool.html?name=d-tect) | D‑TECT – Pentest the Modern Web |
@@ -333,6 +339,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [sqlscan](https://termuxvoid.github.io/tool.html?name=sqlscan) | Efficient tool to find SQL injection vulnerabilities |
 | [webhost](https://termuxvoid.github.io/tool.html?name=webhost) | Easily serve any local web project to the internet — instantly |
 | [websploit](https://termuxvoid.github.io/tool.html?name=websploit) | Advanced MITM framework |
+| [wpprobe](https://termuxvoid.github.io/tool.html?name=wpprobe) | Stealthy WordPress plugin and theme scanner with CVE checks |
 | [wpscan](https://termuxvoid.github.io/tool.html?name=wpscan) | WordPress security scanner |
 | [xbomber](https://termuxvoid.github.io/tool.html?name=xbomber) | High‑performance SMS bombing tool for educational testing |
 | [zaproxy](https://termuxvoid.github.io/tool.html?name=zaproxy) | OWASP Zed Attack Proxy |

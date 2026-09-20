@@ -1,0 +1,12 @@
+Package: wpprobe
+Version: 174.b5aa2b0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, golang
+Section: web
+Priority: optional
+Homepage: https://github.com/Chocapikk/wpprobe
+Description: Fast tool to fingerprint and enumerate WordPress plugins and themes
+ wpprobe downloads a WordPress page and fingerprints installed plugins
+ and themes, then brute-forces them against the official WordPress
+ plugin and theme repositories to detect active components.

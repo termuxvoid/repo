@@ -11,6 +11,42 @@ git clone --depth 1 "$REPO" "$DEST"
 
 python -m pip install --no-deps "$DEST"
 
+python - << 'PYEOF'
+import site, pathlib
+f = None
+for sp in site.getsitepackages():
+    cand = pathlib.Path(sp) / "fierce" / "fierce.py"
+    if cand.exists():
+        f = cand
+        break
+assert f is not None, "fierce.py not found in site-packages"
+s = f.read_text()
+changed = False
+if "Resolver(configure=False)" not in s:
+    old = "def fierce(**kwargs):\n    resolver = dns.resolver.Resolver()\n"
+    new = "def fierce(**kwargs):\n    resolver = dns.resolver.Resolver(configure=False)\n"
+    if old in s:
+        s = s.replace(old, new, 1)
+        changed = True
+old2 = """    else:
+        # Use original nameservers
+        pass
+
+    return resolver
+"""
+new2 = """    else:
+        resolver.nameservers = ["8.8.8.8", "1.1.1.1"]
+
+    return resolver
+"""
+if old2 in s:
+    s = s.replace(old2, new2, 1)
+    changed = True
+if changed:
+    f.write_text(s)
+print("termux resolv.conf patch applied" if changed else "already patched")
+PYEOF
+
 echo "fierce installed. Run 'fierce'"
 echo "Example: fierce --domain example.com --dns-servers 8.8.8.8"
 exit 0

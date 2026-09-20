@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-npm install -g bun@1.4.0
+npm install -g bun@1.4.2
 
 echo "bun installed successfully. Run 'bun' to start."
 exit 0
