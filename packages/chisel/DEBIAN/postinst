@@ -1,20 +1,23 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-mkdir -p $PREFIX/share/chisel
-cd $PREFIX/share/chisel
-if [ ! -d chisel ]; then
-    git clone --filter=blob:none --no-checkout https://github.com/jpillora/chisel.git chisel
-fi
-cd chisel
-git checkout -q 3c00f04ca15472cf6e308227ec24c88c8f5d4ab3
-go build -trimpath -ldflags "-w -s" -o $PREFIX/bin/chisel ./
+REPO="https://github.com/jpillora/chisel/archive/refs/tags/v1.12.1.tar.gz"
+TMP_DIR="$TMPDIR/chisel-build"
+BIN_DIR="$PREFIX/bin"
 
-echo "chisel installed successfully."
-echo ""
-echo "Usage examples:"
-echo "  chisel server --reverse --port 8080"
-echo "  chisel client SERVER_IP:8080 R:8888:localhost:80"
-echo "  chisel client SERVER_IP:8080 9999:localhost:3306"
+rm -rf "$TMP_DIR" 2>/dev/null || true
+mkdir -p "$TMP_DIR"
 
+curl -fsSL -o "$TMP_DIR/chisel.tar.gz" "$REPO"
+tar xzf "$TMP_DIR/chisel.tar.gz" -C "$TMP_DIR"
+cd "$TMP_DIR/chisel-1.12.1"
+
+go build -trimpath -ldflags "-w -s -X github.com/jpillora/chisel/share.BuildVersion=v1.12.1" -o chisel ./
+
+install -Dm755 chisel "$BIN_DIR/chisel"
+
+cd / && rm -rf "$TMP_DIR"
+
+echo "chisel installed. Run 'chisel'"
+echo "Example: chisel server --reverse --port 8080"
 exit 0

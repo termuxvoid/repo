@@ -1,5 +1,5 @@
 Package: meg
-Version: 89.5cc1d34
+Version: 0.3.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, golang

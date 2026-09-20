@@ -1,19 +1,23 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-mkdir -p $PREFIX/share/wpprobe
-cd $PREFIX/share/wpprobe
-if [ ! -d wpprobe ]; then
-    git clone --filter=blob:none --no-checkout https://github.com/Chocapikk/wpprobe.git wpprobe
-fi
-cd wpprobe
-git checkout -q b5aa2b07c30fdfdeb16afc75ec7bf50673989d06
-go build -trimpath -ldflags "-w -s" -o $PREFIX/bin/wpprobe ./
+REPO="https://github.com/Chocapikk/wpprobe/archive/refs/tags/v0.12.11.tar.gz"
+TMP_DIR="$TMPDIR/wpprobe-build"
+BIN_DIR="$PREFIX/bin"
 
-echo "wpprobe installed successfully."
-echo ""
-echo "Usage examples:"
-echo "  wpprobe -u https://example.com"
-echo "  wpprobe -l targets.txt -o results.txt"
+rm -rf "$TMP_DIR" 2>/dev/null || true
+mkdir -p "$TMP_DIR"
 
+curl -fsSL -o "$TMP_DIR/wpprobe.tar.gz" "$REPO"
+tar xzf "$TMP_DIR/wpprobe.tar.gz" -C "$TMP_DIR"
+cd "$TMP_DIR/wpprobe-0.12.11"
+
+go build -trimpath -ldflags "-w -s" -o wpprobe ./
+
+install -Dm755 wpprobe "$BIN_DIR/wpprobe"
+
+cd / && rm -rf "$TMP_DIR"
+
+echo "wpprobe installed. Run 'wpprobe'"
+echo "Example: wpprobe scan -u https://example.com"
 exit 0

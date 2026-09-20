@@ -1,5 +1,5 @@
 Package: wpprobe
-Version: 174.b5aa2b0
+Version: 0.12.11
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, golang

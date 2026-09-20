@@ -1,22 +1,22 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-mkdir -p $PREFIX/share/outguess
-cd $PREFIX/share/outguess
+REPO="https://github.com/resurrecting-open-source-projects/outguess.git"
+TMP_DIR="$TMPDIR/outguess-build"
+TAG="0.4"
 
-if [ ! -d outguess-0.4 ]; then
-    curl -fsSL -o outguess.tar.gz \
-        https://github.com/resurrecting-open-source-projects/outguess/archive/refs/tags/0.4.tar.gz
-    tar xzf outguess.tar.gz
-fi
+rm -rf "$TMP_DIR" 2>/dev/null || true
 
-cd outguess-0.4
+git clone --depth 1 --branch "$TAG" -q "$REPO" "$TMP_DIR"
+cd "$TMP_DIR"
+
 ./autogen.sh
-./configure --prefix=$PREFIX --with-generic-jconfig
+./configure --prefix="$PREFIX" --with-generic-jconfig
 
 python - << 'PYEOF'
-import io, os
-base = os.environ["PREFIX"] + "/share/outguess/outguess-0.4/src"
+import io
+import os
+base = os.environ.get("TMPDIR", "/data/data/com.termux/files/usr/tmp") + "/outguess-build/src"
 f1 = base + "/arc.c"
 f2 = base + "/md5.c"
 for f, old, new in [
@@ -36,11 +36,8 @@ PYEOF
 make CC="gcc -std=gnu11" -j$(nproc 2>/dev/null || echo 2)
 make install
 
-echo "outguess installed successfully."
-echo ""
-echo "Usage examples:"
-echo "  outguess -k secretkey -d hidden.txt -k key.jpeg out.jpeg"
-echo "  outguess -k secretkey -r out.jpeg message.txt"
-echo "  outguess -k secretkey -k key.jpeg original.jpeg out.jpeg"
+cd / && rm -rf "$TMP_DIR"
 
+echo "outguess installed. Run 'outguess'"
+echo "Example: outguess -k key -d secret.txt in.jpg out.jpg"
 exit 0

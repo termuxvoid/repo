@@ -1,20 +1,23 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-mkdir -p $PREFIX/share/meg
-cd $PREFIX/share/meg
-if [ ! -d meg ]; then
-    git clone --filter=blob:none --no-checkout https://github.com/tomnomnom/meg.git meg
-fi
-cd meg
-git checkout -q 5cc1d344ce2c29f8c88f183dd70072a17f3d759a
-go build -trimpath -ldflags "-w -s" -o $PREFIX/bin/meg ./
+REPO="https://github.com/tomnomnom/meg/archive/refs/tags/v0.3.0.tar.gz"
+TMP_DIR="$TMPDIR/meg-build"
+BIN_DIR="$PREFIX/bin"
 
-echo "meg installed successfully."
-echo ""
-echo "Usage examples:"
-echo "  meg /robots.txt https://example.com"
-echo "  meg -c 20 paths.txt hosts.txt"
-echo "  cat hosts.txt | meg /admin"
+rm -rf "$TMP_DIR" 2>/dev/null || true
+mkdir -p "$TMP_DIR"
 
+curl -fsSL -o "$TMP_DIR/meg.tar.gz" "$REPO"
+tar xzf "$TMP_DIR/meg.tar.gz" -C "$TMP_DIR"
+cd "$TMP_DIR/meg-0.3.0"
+
+go build -trimpath -ldflags "-w -s" -o meg ./
+
+install -Dm755 meg "$BIN_DIR/meg"
+
+cd / && rm -rf "$TMP_DIR"
+
+echo "meg installed. Run 'meg'"
+echo "Example: meg /robots.txt https://example.com"
 exit 0

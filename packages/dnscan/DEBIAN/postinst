@@ -1,17 +1,16 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
+REPO="https://github.com/rbsec/dnscan.git"
+DEST="$PREFIX/share/dnscan"
+LAUNCHER="$PREFIX/bin/dnscan"
+
 pip install dnspython netaddr packaging
 
-mkdir -p $PREFIX/share/dnscan
-cd $PREFIX/share/dnscan
-if [ ! -d dnscan ]; then
-    git clone --filter=blob:none --no-checkout https://github.com/rbsec/dnscan.git dnscan
-fi
-cd dnscan
-git checkout -q 281721e84f18512a574da0a4917a2eff1ec9549d
+rm -rf "$DEST" 2>/dev/null || true
+git clone --depth 1 "$REPO" "$DEST"
 
-python - "$PREFIX/share/dnscan/dnscan/dnscan.py" << 'PYEOF'
+python - "$DEST/dnscan.py" << 'PYEOF'
 import sys
 f = sys.argv[1]
 s = open(f).read()
@@ -33,17 +32,13 @@ open(f, "w").write(s)
 print("termux resolv.conf patch applied" if not patched else "already patched")
 PYEOF
 
-cat > $PREFIX/bin/dnscan << 'EOF'
+cat > "$LAUNCHER" <<'EOF'
 #!/data/data/com.termux/files/usr/bin/bash
-cd "$PREFIX/share/dnscan/dnscan"
+cd "$PREFIX/share/dnscan"
 exec python dnscan.py "$@"
 EOF
-chmod +x $PREFIX/bin/dnscan
+chmod +x "$LAUNCHER"
 
-echo "dnscan installed successfully."
-echo ""
-echo "Usage examples:"
-echo "  dnscan -d example.com -w subdomains.txt"
-echo "  dnscan -d example.com -t 1000"
-
+echo "dnscan installed. Run 'dnscan'"
+echo "Example: dnscan -d example.com -R 8.8.8.8"
 exit 0
