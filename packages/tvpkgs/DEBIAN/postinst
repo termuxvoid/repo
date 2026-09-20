@@ -1,0 +1,34 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VER="0.1.0"
+BASE="https://github.com/termuxvoid/tvpkg/releases/download/v${VER}"
+TMP_DIR="$TMPDIR/tvpkgs-install"
+BIN_DIR="$PREFIX/bin"
+
+case "$(uname -m)" in
+    aarch64) ARCH=aarch64 ;;
+    armv8l|armv7l|armv6l|arm) ARCH=arm ;;
+    x86_64) ARCH=x86_64 ;;
+    i686|i386) ARCH=i686 ;;
+    *) echo "tvpkgs: unsupported architecture: $(uname -m)" >&2; exit 1 ;;
+esac
+
+rm -rf "$TMP_DIR"
+mkdir -p "$TMP_DIR"
+cd "$TMP_DIR"
+
+TGZ="tvpkg-${VER}-${ARCH}.tar.gz"
+curl -fsSL -o "$TGZ" "$BASE/$TGZ"
+curl -fsSL -o SHA256SUMS "$BASE/SHA256SUMS"
+grep -F "  $TGZ" SHA256SUMS > tvpkg.sha
+sha256sum -c tvpkg.sha
+
+tar -xzf "$TGZ"
+install -Dm755 tvpkg "$BIN_DIR/tvpkg"
+ln -sf tvpkg "$BIN_DIR/tvp"
+
+cd / && rm -rf "$TMP_DIR"
+
+echo "tvpkgs installed: '$BIN_DIR/tvpkg' (alias 'tvp'). Run 'tvpkg' to start."
+exit 0

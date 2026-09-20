@@ -11,7 +11,7 @@ git clone --depth 1 --branch "$TAG" -q "$REPO" "$TMP_DIR"
 cd "$TMP_DIR"
 
 ./autogen.sh
-./configure --prefix="$PREFIX" --with-generic-jconfig
+./configure CC=clang --prefix="$PREFIX" --with-generic-jconfig
 
 python - << 'PYEOF'
 import io
@@ -33,7 +33,7 @@ for f, old, new in [
 print("K&R function definitions converted")
 PYEOF
 
-make CC="gcc -std=gnu11" -j$(nproc 2>/dev/null || echo 2)
+make CC="clang -std=gnu11" -j$(nproc 2>/dev/null || echo 2)
 make install
 
 cd / && rm -rf "$TMP_DIR"

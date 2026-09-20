@@ -1,0 +1,14 @@
+Package: tvpkgs
+Version: 0.1.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl, tar, gzip, coreutils, grep
+Section: utils
+Priority: optional
+Homepage: https://github.com/termuxvoid/tvpkg
+Description: TermuxVoid package manager with a fuzzy TUI
+ tvpkg (also available as tvp) is a wrapper around Termux's package
+ manager, supporting APT and Pacman, with an interactive TUI and a
+ fast command-line interface.
+ This package installs the prebuilt binary from the termuxvoid/tvpkg
+ GitHub release for the device architecture (no toolchain needed).
