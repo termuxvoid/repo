@@ -112,7 +112,8 @@ if [ "$SILENT_MODE" = false ]; then
     echo -e "  • Add the TermuxVoid repository"
     echo -e "  • Download and install the GPG key"
     echo -e "  • Configure package management"
-    echo -e "  • Update your package list${RESET}"
+    echo -e "  • Update your package list"
+    echo -e "  • Install tvpkgs (TermuxVoid package manager)${RESET}"
 fi
 
 check_install_x11_repo
@@ -125,8 +126,14 @@ run_command "Downloading GPG key" "curl -sL https://github.com/termuxvoid/repo/r
 
 run_command "Updating package repositories" "apt update -y"
 
+run_command "Installing tvpkgs (TermuxVoid package manager)" "apt install tvpkgs -y"
+
 print_header "${GREEN}🎉 TermuxVoid Repository Setup Complete! 🎉${RESET}"
 echo -e "${INFO} You can now install packages from the TermuxVoid repository."
+echo -e "${INFO} Launch the TermuxVoid package manager anytime with:${RESET}"
+echo -e "${CYAN}  tvpkg     # interactive TUI${RESET}"
+echo -e "${CYAN}  tvp       # alias for tvpkg${RESET}"
+echo -e "${INFO} Install tools with:  pkg install <tool-name>${RESET}"
 echo -e "${INFO} Join our Telegram channel for updates and new tools:"
 echo -e "${BLUE}https://telegram.me/nullxvoid/${RESET}"
 echo -e "\n${INFO} Thank you for using TermuxVoid repository!${RESET}"
