@@ -108,7 +108,7 @@ pkg install metasploit-framework
 ```
 
 > [!TIP]
-> The installer also automatically sets up **tvpkgs**, the TermuxVoid package manager. Launch it anytime with **`tvpkg`** (alias **`tvp`**) for an interactive TUI — browse, filter, install and remove TermuxVoid tools without leaving your terminal.
+> The installer also automatically sets up **tvpkg**, the TermuxVoid package manager. Launch it anytime with **`tvpkg`** (alias **`tvp`**) for an interactive TUI — browse, filter, install and remove TermuxVoid tools without leaving your terminal.
 
 > [!TIP]
 > After installation, run `pkg update` to refresh your local package database. You can search for tools using `pkg search <tool-name>`.

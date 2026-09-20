@@ -121,7 +121,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [termux-desktop](https://termuxvoid.github.io/tool.html?name=termux-desktop) | Termux XFCE4 desktop GUI with hacker themes |
 | [termux-desktop-wallpapers](https://termuxvoid.github.io/tool.html?name=termux-desktop-wallpapers) | Wallpapers for termux-desktop |
 | [termux-penv](https://termuxvoid.github.io/tool.html?name=termux-penv) | Simplify chroot environments in Termux |
-| [tvpkgs](https://termuxvoid.github.io/tool.html?name=tvpkgs) | TermuxVoid package manager with a fuzzy TUI |
+| [tvpkg](https://termuxvoid.github.io/tool.html?name=tvpkg) | TermuxVoid package manager with a fuzzy TUI |
 | [wacli](https://termuxvoid.github.io/tool.html?name=wacli) | Command‑line tool for WhatsApp chat management |
 | [webserver](https://termuxvoid.github.io/tool.html?name=webserver) | Simple web server for Termux |
 | [whatsapp-cli](https://termuxvoid.github.io/tool.html?name=whatsapp-cli) | Standalone CLI for WhatsApp using multidevice protocol |
