@@ -99,7 +99,6 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 ### Miscellaneous Utilities
 | Tool | Description |
 |------|-------------|
-| [alienkrishn](https://termuxvoid.github.io/tool.html?name=alienkrishn) | TermuxVoid package manager and system helper |
 | [archivebox](https://termuxvoid.github.io/tool.html?name=archivebox) | Open-source self-hosted web archiving system |
 | [bun](https://termuxvoid.github.io/tool.html?name=bun) | Incredibly fast JavaScript runtime, bundler, test runner and package manager |
 | [cheat-sh](https://termuxvoid.github.io/tool.html?name=cheat-sh) | Command-line client for cheat.sh – cheat sheets for programming languages and tools |
@@ -122,6 +121,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [termux-desktop](https://termuxvoid.github.io/tool.html?name=termux-desktop) | Termux XFCE4 desktop GUI with hacker themes |
 | [termux-desktop-wallpapers](https://termuxvoid.github.io/tool.html?name=termux-desktop-wallpapers) | Wallpapers for termux-desktop |
 | [termux-penv](https://termuxvoid.github.io/tool.html?name=termux-penv) | Simplify chroot environments in Termux |
+| [tvpkgs](https://termuxvoid.github.io/tool.html?name=tvpkgs) | TermuxVoid package manager with a fuzzy TUI |
 | [wacli](https://termuxvoid.github.io/tool.html?name=wacli) | Command‑line tool for WhatsApp chat management |
 | [webserver](https://termuxvoid.github.io/tool.html?name=webserver) | Simple web server for Termux |
 | [whatsapp-cli](https://termuxvoid.github.io/tool.html?name=whatsapp-cli) | Standalone CLI for WhatsApp using multidevice protocol |
