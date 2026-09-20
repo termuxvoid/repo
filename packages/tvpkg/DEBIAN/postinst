@@ -2,7 +2,8 @@
 set -e
 
 VER="0.1.0"
-BASE="https://github.com/termuxvoid/tvpkg/releases/download/v${VER}"
+TAG="v${VER}"
+BASE="https://github.com/termuxvoid/tvpkg/releases/download/${TAG}"
 TMP_DIR="$TMPDIR/tvpkg-install"
 BIN_DIR="$PREFIX/bin"
 
@@ -18,7 +19,7 @@ rm -rf "$TMP_DIR"
 mkdir -p "$TMP_DIR"
 cd "$TMP_DIR"
 
-TGZ="tvpkg-${VER}-${ARCH}.tar.gz"
+TGZ="tvpkg-${TAG}-${ARCH}.tar.gz"
 curl -fsSL -o "$TGZ" "$BASE/$TGZ"
 curl -fsSL -o SHA256SUMS "$BASE/SHA256SUMS"
 grep -F "  $TGZ" SHA256SUMS > tvpkg.sha
