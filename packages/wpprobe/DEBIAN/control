@@ -2,7 +2,7 @@ Package: wpprobe
 Version: 0.12.11
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: curl, golang
+Depends: curl, golang, tar, gzip
 Section: web
 Priority: optional
 Homepage: https://github.com/Chocapikk/wpprobe
