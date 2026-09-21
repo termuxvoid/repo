@@ -13,26 +13,6 @@ cd "$TMP_DIR"
 ./autogen.sh
 ./configure CC=clang --prefix="$PREFIX" --with-generic-jconfig
 
-python - << 'PYEOF'
-import io
-import os
-base = os.environ.get("TMPDIR", "/data/data/com.termux/files/usr/tmp") + "/outguess-build/src"
-f1 = base + "/arc.c"
-f2 = base + "/md5.c"
-for f, old, new in [
-  (f1,
-   "u_int32_t\narc4_getword(as)\n\tstruct arc4_stream *as;\n{",
-   "u_int32_t\narc4_getword(struct arc4_stream *as)\n{"),
-  (f2,
-   "void\nMD5Init(ctx)\n     struct MD5Context *ctx;\n{",
-   "void\nMD5Init(struct MD5Context *ctx)\n{"),
-]:
-    s = io.open(f, encoding="utf-8").read()
-    if old in s:
-        io.open(f, "w", encoding="utf-8").write(s.replace(old, new, 1))
-print("K&R function definitions converted")
-PYEOF
-
 make CC="clang -std=gnu11" -j$(nproc 2>/dev/null || echo 2)
 make install
 

@@ -2,7 +2,7 @@ Package: stegseek
 Version: 0.6
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: curl, tar, gzip, make, cmake, clang, binutils, libmhash, libmcrypt, libjpeg-turbo, zlib
+Depends: curl, tar, gzip, sed, make, cmake, clang, binutils, libmhash, libmcrypt, libjpeg-turbo, zlib
 Section: stego
 Priority: optional
 Homepage: https://github.com/RickdeJager/StegSeek

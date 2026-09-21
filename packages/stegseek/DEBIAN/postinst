@@ -15,32 +15,15 @@ cd "$TMP_DIR/stegseek-0.6"
 # C++17 removed std::binary_function/std::unary_function; restore them for
 # the legacy steghide-derived headers.
 for f in src/SampleValue.h src/WKSConstructionHeuristic.h src/WavPCMSampleValue.h; do
-  python - "$f" << 'PYEOF'
-import sys
-f = sys.argv[1]
-s = open(f).read()
-marker = "TV_STD_FUNCTOR_SHIM"
-if marker in s:
-    sys.exit(0)
-shim = """
+  grep -q TV_STD_FUNCTOR_SHIM "$f" && continue
+  sed -i '0,/^[ \t]*#include/{/^[ \t]*#include/a\
+#if __cplusplus > 201402L\n#ifndef TV_STD_FUNCTOR_SHIM\n#define TV_STD_FUNCTOR_SHIM\nnamespace std {\ntemplate<class Arg, class Result> struct unary_function { typedef Arg argument_type; typedef Result result_type; };\ntemplate<class A1, class A2, class Res> struct binary_function { typedef A1 first_argument_type; typedef A2 second_argument_type; typedef Res result_type; };\n}\n#endif\n#endif
 
-#if __cplusplus > 201402L
-#ifndef TV_STD_FUNCTOR_SHIM
-#define TV_STD_FUNCTOR_SHIM
-namespace std {
-template<class Arg, class Result> struct unary_function { typedef Arg argument_type; typedef Result result_type; };
-template<class A1, class A2, class Res> struct binary_function { typedef A1 first_argument_type; typedef A2 second_argument_type; typedef Res result_type; };
-}
-#endif
-#endif
-"""
-s = s.replace("\n#include", shim + "\n#include", 1)
-open(f, "w").write(s)
-PYEOF
+}' "$f"
 done
 
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build
+cmake --build build -j$(nproc 2>/dev/null || echo 2)
 
 install -Dm755 build/src/stegseek "$BIN_DIR/stegseek"
 

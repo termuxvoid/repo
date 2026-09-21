@@ -2,7 +2,7 @@ Package: john
 Version: 1.9.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, make, clang, openssl, zlib
+Depends: git, make, clang, openssl, zlib, gawk
 Section: security
 Priority: optional
 Homepage: https://www.openwall.com/john/

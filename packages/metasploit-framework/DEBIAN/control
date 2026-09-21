@@ -2,7 +2,7 @@ Package: metasploit-framework
 Version: 6.4.142-dev
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: binutils, python, autoconf, bison, clang, coreutils, curl, findutils, apr, apr-util, postgresql, openssl, readline, libffi, libgmp, libpcap, libsqlite, libgrpc, libtool, libxml2, libxslt, ncurses, make, ncurses-utils, git, wget, unzip, zip, tar, termux-tools, termux-elf-cleaner, pkg-config, ruby, ruby-nokogiri, apktool, apksigner
+Depends: binutils, python, autoconf, bison, clang, coreutils, curl, findutils, apr, apr-util, postgresql, openssl, readline, libffi, libgmp, libpcap, libsqlite, libgrpc, libtool, libxml2, libxslt, ncurses, make, ncurses-utils, git, wget, unzip, zip, tar, termux-tools, termux-elf-cleaner, pkg-config, ruby, ruby-nokogiri, apktool, apksigner, gawk
 Section: net
 Priority: optional
 Homepage: https://www.metasploit.com/
