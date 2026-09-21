@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f $PREFIX/bin/xmlrpc-bruteforcer
+rm -rf $PREFIX/share/xmlrpc-bruteforcer
+
+echo "xmlrpc-bruteforcer completely removed."
+
+exit 0

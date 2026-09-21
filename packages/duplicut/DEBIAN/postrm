@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f $PREFIX/bin/duplicut
+rm -rf $PREFIX/share/duplicut
+
+echo "duplicut completely removed."
+
+exit 0

@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f $PREFIX/bin/pwndrop
+rm -rf $PREFIX/share/pwndrop
+
+echo "pwndrop completely removed."
+
+exit 0

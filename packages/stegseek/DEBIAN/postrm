@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f $PREFIX/bin/stegseek
+rm -rf $PREFIX/share/stegseek
+
+echo "stegseek completely removed."
+
+exit 0

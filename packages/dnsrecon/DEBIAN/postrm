@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f $PREFIX/bin/dnsrecon
+rm -rf $PREFIX/share/dnsrecon
+
+echo "dnsrecon completely removed."
+
+exit 0
