@@ -1,0 +1,12 @@
+Package: stegseek
+Version: 0.6
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl, tar, gzip, make, cmake, clang, binutils, libmhash, libmcrypt, libjpeg-turbo, zlib
+Section: stego
+Priority: optional
+Homepage: https://github.com/RickdeJager/StegSeek
+Description: Lightning-fast steghide password cracker
+ stegseek cracks steghide-protected JPEG files at speeds up to
+ thousands of passwords per second, and can also embed files and
+ check for steganographic content in images.

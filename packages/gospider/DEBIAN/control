@@ -1,0 +1,11 @@
+Package: gospider
+Version: 1.1.6
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl, golang, tar, gzip
+Section: recon
+Priority: optional
+Homepage: https://github.com/jaeles-project/gospider
+Description: Fast web spider written in Go
+ gospider crawls websites to extract endpoints, JavaScript and CSS
+ links, forms, and more for fast attack-surface discovery.

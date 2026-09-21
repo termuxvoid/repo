@@ -1,0 +1,21 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/kavishgr/xmlrpc-bruteforcer.git"
+DEST="$PREFIX/share/xmlrpc-bruteforcer"
+LAUNCHER="$PREFIX/bin/xmlrpc-bruteforcer"
+
+pip install requests termcolor
+
+rm -rf "$DEST" 2>/dev/null || true
+git clone --depth 1 "$REPO" "$DEST"
+
+cat > "$LAUNCHER" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+exec python "$PREFIX/share/xmlrpc-bruteforcer/xmlrpcbruteforce.py" "$@"
+EOF
+chmod +x "$LAUNCHER"
+
+echo "xmlrpc-bruteforcer installed. Run 'xmlrpc-bruteforcer'"
+echo "Example: xmlrpc-bruteforcer http://target.com/xmlrpc.php wordlist.txt admin"
+exit 0

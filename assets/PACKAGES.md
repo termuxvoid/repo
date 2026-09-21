@@ -132,6 +132,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [brutespray](https://termuxvoid.github.io/tool.html?name=brutespray) | Brute‑force attacks from Nmap output |
 | [cewl](https://termuxvoid.github.io/tool.html?name=cewl) | Custom wordlist generator from websites |
 | [cupp](https://termuxvoid.github.io/tool.html?name=cupp) | Common User Passwords Profiler (CUPP) |
+| [duplicut](https://termuxvoid.github.io/tool.html?name=duplicut) | Fast and memory-efficient duplicate line remover for massive wordlists – no sorting needed |
 | [elpscrk](https://termuxvoid.github.io/tool.html?name=elpscrk) | Password profiling tool inspired by the Mr. Robot series |
 | [fuckyou](https://termuxvoid.github.io/tool.html?name=fuckyou) | Powerful and customizable password list generator |
 | [haiti](https://termuxvoid.github.io/tool.html?name=haiti) | Hash type identifier (CLI tool) |
@@ -169,6 +170,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [dnsx](https://termuxvoid.github.io/tool.html?name=dnsx) | Fast DNS toolkit for reconnaissance |
 | [dirsearch](https://termuxvoid.github.io/tool.html?name=dirsearch) | Web path scanner – brute force directories and files in web servers |
 | [dnscan](https://termuxvoid.github.io/tool.html?name=dnscan) | Python wordlist‑based DNS subdomain scanner with zone‑transfer and TLD checks |
+| [dnsrecon](https://termuxvoid.github.io/tool.html?name=dnsrecon) | DNS enumeration – subdomains, record discovery, zone transfers and brute forcing |
 | [ffuf](https://termuxvoid.github.io/tool.html?name=ffuf) | Fast web fuzzer written in Go |
 | [findomain](https://termuxvoid.github.io/tool.html?name=findomain) | Fastest and complete solution for domain recognition |
 | [fscan](https://termuxvoid.github.io/tool.html?name=fscan) | Comprehensive intranet scanning tool |
@@ -178,6 +180,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [ghosttrack](https://termuxvoid.github.io/tool.html?name=ghosttrack) | Advanced tracking and reconnaissance tool |
 | [gitleaks](https://termuxvoid.github.io/tool.html?name=gitleaks) | Detect hard‑coded secrets and sensitive data in Git repositories |
 | [gobuster](https://termuxvoid.github.io/tool.html?name=gobuster) | Directory/file & DNS busting tool written in Go |
+| [gospider](https://termuxvoid.github.io/tool.html?name=gospider) | Fast web spider for endpoint and asset discovery – js/css links, forms and more |
 | [gowitness](https://termuxvoid.github.io/tool.html?name=gowitness) | Web screenshot utility using headless Chrome |
 | [httpx](https://termuxvoid.github.io/tool.html?name=httpx) | Fast and multi‑purpose HTTP toolkit |
 | [interlace](https://termuxvoid.github.io/tool.html?name=interlace) | Multi‑thread a single‑threaded CLI command across many targets (CIDR/glob) |
@@ -240,6 +243,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 |------|-------------|
 | [outguess](https://termuxvoid.github.io/tool.html?name=outguess) | Universal steganographic tool – hide secrets inside JPEG images |
 | [snow](https://termuxvoid.github.io/tool.html?name=snow) | Hide secret messages in plain text files using invisible whitespace, with optional compression and encryption |
+| [stegseek](https://termuxvoid.github.io/tool.html?name=stegseek) | Lightning-fast steghide password cracker for JPEG stego files |
 
 ### Social Engineering
 | Tool | Description |
@@ -334,12 +338,14 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [nikto](https://termuxvoid.github.io/tool.html?name=nikto) | Comprehensive web server scanner |
 | [nosqli](https://termuxvoid.github.io/tool.html?name=nosqli) | Fast NoSQL injection scanner and injector – error‑based, boolean‑blind, and timing‑based detection |
 | [playit](https://termuxvoid.github.io/tool.html?name=playit) | Global proxy for server hosting without port forwarding |
+| [pwndrop](https://termuxvoid.github.io/tool.html?name=pwndrop) | Self-deployable HTTP hosting service for red team payloads with a web admin panel |
 | [scanqli](https://termuxvoid.github.io/tool.html?name=scanqli) | A simple SQL injection scanner to detect classic, blind, and time‑based vulnerabilities |
 | [sqlmap](https://termuxvoid.github.io/tool.html?name=sqlmap) | Automatic SQL injection and database takeover tool |
 | [sqlscan](https://termuxvoid.github.io/tool.html?name=sqlscan) | Efficient tool to find SQL injection vulnerabilities |
 | [webhost](https://termuxvoid.github.io/tool.html?name=webhost) | Easily serve any local web project to the internet — instantly |
 | [websploit](https://termuxvoid.github.io/tool.html?name=websploit) | Advanced MITM framework |
 | [wpprobe](https://termuxvoid.github.io/tool.html?name=wpprobe) | Stealthy WordPress plugin and theme scanner with CVE checks |
+| [xmlrpc-bruteforcer](https://termuxvoid.github.io/tool.html?name=xmlrpc-bruteforcer) | Multithreaded WordPress XML-RPC brute-force tool |
 | [wpscan](https://termuxvoid.github.io/tool.html?name=wpscan) | WordPress security scanner |
 | [xbomber](https://termuxvoid.github.io/tool.html?name=xbomber) | High‑performance SMS bombing tool for educational testing |
 | [zaproxy](https://termuxvoid.github.io/tool.html?name=zaproxy) | OWASP Zed Attack Proxy |

@@ -1,0 +1,11 @@
+Package: dnsrecon
+Version: 1.6.3
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python
+Section: dns
+Priority: optional
+Homepage: https://github.com/darkoperator/dnsrecon
+Description: DNS enumeration tool
+ dnsrecon performs subdomain enumeration, SPF/DKIM/TXT record
+ discovery, zone transfers, reverse lookups, and DNS brute forcing.

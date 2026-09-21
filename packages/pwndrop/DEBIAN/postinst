@@ -1,0 +1,24 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/kgretzky/pwndrop/archive/refs/tags/1.0.1.tar.gz"
+TMP_DIR="$TMPDIR/pwndrop-build"
+BIN_DIR="$PREFIX/bin"
+
+rm -rf "$TMP_DIR" 2>/dev/null || true
+mkdir -p "$TMP_DIR"
+
+curl -fsSL -o "$TMP_DIR/pwndrop.tar.gz" "$REPO"
+tar xzf "$TMP_DIR/pwndrop.tar.gz" -C "$TMP_DIR"
+cd "$TMP_DIR/pwndrop-1.0.1"
+
+go build -mod=vendor -trimpath -ldflags "-s -w" -o pwndrop main.go
+
+install -Dm755 pwndrop "$BIN_DIR/pwndrop"
+
+cd / && rm -rf "$TMP_DIR"
+
+echo "pwndrop installed. Run 'pwndrop' in a writable directory"
+echo "Example: cd ~ && pwndrop"
+echo "Visit http://localhost:8080/admin in your browser"
+exit 0

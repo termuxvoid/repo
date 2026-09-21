@@ -1,0 +1,11 @@
+Package: xmlrpc-bruteforcer
+Version: 36.6a46371
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, python
+Section: web
+Priority: optional
+Homepage: https://github.com/kavishgr/xmlrpc-bruteforcer
+Description: WordPress XML-RPC brute-force tool
+ Multithreaded python3 brute-forcer that targets xmlrpc.php to test
+ WordPress credentials using the system.multicall attack vector.

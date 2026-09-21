@@ -1,0 +1,62 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/darkoperator/dnsrecon.git"
+DEST="$PREFIX/share/dnsrecon"
+LAUNCHER="$PREFIX/bin/dnsrecon"
+
+pip install dnspython netaddr httpx loguru stamina
+
+rm -rf "$DEST" 2>/dev/null || true
+git clone --depth 1 "$REPO" "$DEST"
+
+python - "$DEST/dnsrecon/lib/dnshelper.py" << 'PYEOF'
+import sys
+f = sys.argv[1]
+s = open(f).read()
+marker = "termux_ns_marker"
+if marker in s:
+    print("already patched")
+    sys.exit(0)
+
+init_old = "        configure = not ns_server\n        self._res = dns.resolver.Resolver(configure=configure)\n"
+init_new = """        if ns_server:
+            configure = True
+        else:
+            configure = False
+        self._res = dns.resolver.Resolver(configure=configure)
+"""
+assert init_old in s, "DNSHelper init block not found"
+s = s.replace(init_old, init_new, 1)
+
+ns_old = """        if ns_server:
+            if isinstance(ns_server, str):
+                ns_server = [ns_server]
+            self._res.nameservers = ns_server
+            if len(ns_server) > 1:
+                self._res.rotate = True
+"""
+ns_new = ns_old + """        else:
+            self._res.nameservers = ["8.8.8.8", "1.1.1.1"]
+"""
+if ns_old not in s:
+    raise SystemExit("nameservers block not found")
+s = s.replace(ns_old, ns_new, 1)
+s += "\n# termux_ns_marker\n"
+
+# Termux has no /etc/resolv.conf, so default to public resolvers when no -n is given.
+open(f, "w").write(s)
+print("termux nameservers patch applied")
+PYEOF
+
+cat > "$LAUNCHER" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$PREFIX/share/dnsrecon"
+exec python dnsrecon.py "$@"
+EOF
+chmod +x "$LAUNCHER"
+
+echo "dnsrecon installed. Run 'dnsrecon'"
+echo "Example: dnsrecon --domain example.com --type std"
+echo "Example: dnsrecon --domain example.com --type brt -n 8.8.8.8"
+exit 0

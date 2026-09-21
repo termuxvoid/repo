@@ -1,0 +1,12 @@
+Package: pwndrop
+Version: 1.0.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl, golang, tar, gzip
+Section: tunnel
+Priority: optional
+Homepage: https://github.com/kgretzky/pwndrop
+Description: Self-deployable HTTP file hosting service for red team payloads
+ pwndrop is a self-deployable server for hosting payloads over HTTP
+ and WebDAV, with a web-based admin panel and built-in LetsEncrypt
+ support. Control it via a REST API from your C2 framework.

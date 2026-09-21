@@ -1,0 +1,23 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+REPO="https://github.com/nil0x42/duplicut/archive/refs/tags/v2.4.tar.gz"
+TMP_DIR="$TMPDIR/duplicut-build"
+BIN_DIR="$PREFIX/bin"
+
+rm -rf "$TMP_DIR" 2>/dev/null || true
+mkdir -p "$TMP_DIR"
+
+curl -fsSL -o "$TMP_DIR/duplicut.tar.gz" "$REPO"
+tar xzf "$TMP_DIR/duplicut.tar.gz" -C "$TMP_DIR"
+cd "$TMP_DIR/duplicut-2.4"
+
+make
+
+install -Dm755 duplicut "$BIN_DIR/duplicut"
+
+cd / && rm -rf "$TMP_DIR"
+
+echo "duplicut installed. Run 'duplicut'"
+echo "Example: duplicut wordlist.txt -o clean.txt"
+exit 0
