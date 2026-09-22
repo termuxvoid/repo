@@ -1,5 +1,5 @@
 Package: jcode
-Version: 0.84.0
+Version: 0.86.0
 Architecture: all
 Pre-Depends: glibc-repo
 Maintainer: Alienkrishn [Anon4You]

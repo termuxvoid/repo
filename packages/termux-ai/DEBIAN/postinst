@@ -1,11 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
-RED='\033[1;31m'
-GREEN='\033[1;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[1;34m'
-NC='\033[0m'
+set -e
 
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+VERSION="4.0"
 
-echo -e "${GREEN}[✓] Installation complete!${NC}"
-echo -e "\nRun the AI Assistant with: ${BLUE}termux-ai${NC}"
+BIN_DIR="$PREFIX/bin"
+mkdir -p "$BIN_DIR"
+
+echo "Downloading termux-ai ${VERSION}..."
+curl -fsSL "https://raw.githubusercontent.com/Anon4You/Termux-Ai/main/termux-ai.sh" -o "$BIN_DIR/termux-ai"
+chmod +x "$BIN_DIR/termux-ai"
+
+echo "termux-ai ${VERSION} installed successfully."
+echo "Run 'termux-ai' to start."
+exit 0
 

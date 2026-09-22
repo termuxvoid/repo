@@ -2,7 +2,7 @@
 set -e
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="0.0.175"
+VERSION="0.0.181"
 ARCH=$(uname -m)
 
 case "$ARCH" in
@@ -11,7 +11,7 @@ case "$ARCH" in
         LD_SO="ld-linux-aarch64.so.1"
         ;;
     x86_64)
-        ARCH_TARGET="x86-64"
+        ARCH_TARGET="x64"
         LD_SO="ld-linux-x86-64.so.2"
         ;;
     *)

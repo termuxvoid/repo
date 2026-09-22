@@ -1,5 +1,5 @@
 Package: termux-ai
-Version: 3.0
+Version: 4.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, gum, tgpt
