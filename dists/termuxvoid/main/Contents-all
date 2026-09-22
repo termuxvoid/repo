@@ -514,7 +514,6 @@ data/data/com.termux/files/usr/lib/spider/report/reporter.py                    
 data/data/com.termux/files/usr/lib/spider/report/requirements.txt                spider
 data/data/com.termux/files/usr/bin/term-helper                                   term-helper
 data/data/com.termux/files/usr/bin/tsfconsole                                    termsploit
-data/data/com.termux/files/usr/bin/termux-ai                                     termux-ai
 data/data/com.termux/files/usr/share/backgrounds/termux-desktop-wallpapers/demon_slayer.png termux-desktop-wallpapers
 data/data/com.termux/files/usr/share/backgrounds/termux-desktop-wallpapers/hacker_green.png termux-desktop-wallpapers
 data/data/com.termux/files/usr/share/backgrounds/termux-desktop-wallpapers/hacker_matrix.png termux-desktop-wallpapers
