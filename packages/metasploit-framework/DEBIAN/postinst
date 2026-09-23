@@ -17,13 +17,14 @@ cd "$MSFPATH"
 
 gem install bundler
 
+# ruby 4.0 ships date 3.5.1 as a default gem; metasploit gemspec pins date
+# 3.4.1 ("Temporarily pinned until 3.5 can be tested"). Relax the pin so
+# bundler can use the default date and avoid the activation conflict.
+sed -i "s/add_runtime_dependency 'date', '3.4.1'/add_runtime_dependency 'date', '>= 3.4.1'/" metasploit-framework.gemspec
+
 # Extract exact versions from Gemfile.lock
-DATE_VER=$(grep "^    date (" Gemfile.lock | awk '{print $2}' | tr -d '()')
 ACTIONVIEW_VER=$(grep "actionview (" Gemfile.lock | awk '{print $2}' | tr -d '()')
 NET_VER=$(grep "network_interface (" Gemfile.lock | awk '{print $2}' | tr -d '()')
-
-# Install date gem with exact version (single equals in the argument is fine)
-gem install date -v "$DATE_VER" --no-document
 
 # Install network_interface with workaround
 gem install network_interface -v "$NET_VER" -- --with-cflags="-Wno-error=implicit-function-declaration" 2>/dev/null || true
@@ -33,13 +34,38 @@ rm -f Gemfile.lock
 bundle add actionview --version "$ACTIONVIEW_VER"
 
 bundle config set documentation false
+# Build sqlite3 against Termux's system sqlite; the default vendored
+# (mini_portile2) build path has no resolver on ruby 4.0 and fails.
+bundle config set build.sqlite3 "--enable-system-libraries"
 bundle install -j$(nproc --all)
 bundle update --bundler
 
-# Symlink all executable files in the root of MSFPATH (non‑extension files that are executable)
+# Termux has no /usr/bin/env; point the launcher shebangs at Termux's env and
+# enable rubygems explicitly (termux ruby does not auto-load rubygems) so gems
+# that are required directly (rex/*, getoptlong, ...) resolve properly.
+find "$MSFPATH" -maxdepth 1 -type f -executable -not -name "*.rb" -not -name "*.sh" -not -name "*.ru" -not -name "*.pl" | while read file; do
+    sed -i "1s|^#!/usr/bin/env ruby$|#!$PREFIX/bin/env ruby|" "$file"
+    grep -qE "^require ['\"]rubygems" "$file" || sed -i "1a require 'rubygems' unless defined?(Gem)" "$file"
+done
+
+# msfdb requires rex/* before its bundler boot, which activates ruby's default
+# openssl (4.0.2) ahead of the bundled 3.3.3 and breaks bundler. Boot the bundle
+# first, exactly like msfconsole does.
+if [ -f "$MSFPATH/msfdb" ] && ! grep -q "config/boot" "$MSFPATH/msfdb"; then
+    sed -i "2a require File.expand_path('config/boot', __dir__)" "$MSFPATH/msfdb"
+fi
+
+# Create bin wrappers for executable root scripts. The upstream scripts carry a
+# /usr/bin/env shebang (missing on Termux), so run them via ruby with the
+# framework Gemfile exported so bundler/setup finds it regardless of CWD.
 find "$MSFPATH" -maxdepth 1 -type f -executable -not -name "*.rb" -not -name "*.sh" -not -name "*.ru" -not -name "*.pl" | while read file; do
     binname=$(basename "$file")
-    ln -sf "$file" "$PREFIX/bin/$binname"
+    cat > "$PREFIX/bin/$binname" <<EOF
+#!/data/data/com.termux/files/usr/bin/env bash
+export BUNDLE_GEMFILE="$MSFPATH/Gemfile"
+exec ruby "$file" "\$@"
+EOF
+    chmod +x "$PREFIX/bin/$binname"
 done
 
 echo "Metasploit-Framework $TAG installed successfully"
