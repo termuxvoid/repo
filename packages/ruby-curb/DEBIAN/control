@@ -1,5 +1,5 @@
 Package: ruby-curb
-Version: 1.3.5
+Version: 1.3.5-1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: ruby, curl, libcurl, make, clang, build-essential

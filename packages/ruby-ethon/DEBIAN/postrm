@@ -1,4 +1,11 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
+
 gem uninstall ethon -v 0.18.0 -x --force 2>/dev/null || true
+
+SITE_RUBY="$(ruby -rrbconfig -e 'print RbConfig::CONFIG["sitelibdir"]')"
+rm -rf "$SITE_RUBY/ethon"
+rm -f "$SITE_RUBY/ethon.rb"
+
 echo "ruby-ethon completely removed."
 exit 0

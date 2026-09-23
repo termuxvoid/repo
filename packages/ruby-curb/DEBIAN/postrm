@@ -1,8 +1,14 @@
 #!/data/data/com.termux/files/usr/bin/bash
-SITE_RUBY="$PREFIX/lib/ruby/site_ruby/3.4.0"
+set -e
+
+SITE_RUBY="$(ruby -rrbconfig -e 'print RbConfig::CONFIG["sitelibdir"]')"
+SITE_ARCH="$(ruby -rrbconfig -e 'print RbConfig::CONFIG["sitearchdir"]')"
+
 rm -f "$SITE_RUBY/curb.rb"
 rm -f "$SITE_RUBY/curl.rb"
-rm -f "$SITE_RUBY/curb_core.so"
-rm -rf "$SITE_RUBY/aarch64-linux-android"
 rm -rf "$SITE_RUBY/curl"
+rm -f "$SITE_ARCH/curb_core.so"
+
+# Clean up leftovers from the old hardcoded site_ruby/3.4.0 installs
+rm -rf "$PREFIX/lib/ruby/site_ruby/3.4.0"
 exit 0

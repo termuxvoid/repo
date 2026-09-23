@@ -1,7 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-SITE_RUBY="$PREFIX/lib/ruby/site_ruby/3.4.0"
+# Derive the real site_ruby dir (never hardcode 3.x) so files land on the
+# ruby's $LOAD_PATH regardless of the installed ruby version.
+SITE_RUBY="$(ruby -rrbconfig -e 'print RbConfig::CONFIG["sitelibdir"]')"
 
 cd "$TMPDIR"
 gem fetch curb -v 1.3.5
@@ -17,8 +19,15 @@ make install
 cd ..
 mkdir -p "$SITE_RUBY"
 cp -r lib/* "$SITE_RUBY/"
-cp ext/curb_core.so "$SITE_RUBY/"
 
 cd "$TMPDIR"
 rm -rf "$GEM_FILE" "$DIR_NAME"
+
+echo "Verifying installation..."
+ruby -rcurb -e "puts Curl::VERSION" || {
+    echo "Curb installation failed!" >&2
+    exit 1
+}
+
+echo "Curb installed successfully."
 exit 0

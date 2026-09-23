@@ -1,12 +1,18 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-# Install the gem
-gem install ethon -v 0.18.0
+VERSION="0.18.0"
+
+# Ruby 4.x no longer auto-loads rubygems, so a gem-installed lib is un-require-able
+# via plain `ruby -rethon`. Ship ethon into site_ruby and make it load rubygems
+# itself (mirrors the ruby-nokogiri fix).
+gem install ethon -v "${VERSION}"
+
+GEM_DIR="$(find "$PREFIX/lib/ruby/gems" -maxdepth 4 -type d -name "ethon-${VERSION}" | head -n1)"
 
 # Apply the patch to libc.rb
-file=$(find $PREFIX/lib/ruby/gems -name "libc.rb" -path "*/ethon/*" | head -1)
-if [ -n "$file" ]; then
+file="$GEM_DIR/lib/ethon/libc.rb"
+if [ -n "$GEM_DIR" ] && [ -f "$file" ]; then
     cat > "$file" << 'EOF'
 # frozen_string_literal: true
 module Ethon
@@ -37,6 +43,23 @@ EOF
 else
     echo "ethon/libc.rb not found"
 fi
+
+SITE_RUBY="$(ruby -rrbconfig -e 'print RbConfig::CONFIG["sitelibdir"]')"
+mkdir -p "$SITE_RUBY"
+cp -r "$GEM_DIR/lib/ethon" "$SITE_RUBY/"
+cp "$GEM_DIR/lib/ethon.rb" "$SITE_RUBY/"
+
+for f in "$SITE_RUBY/ethon.rb" "$SITE_RUBY/ethon/libc.rb"; do
+    [ -f "$f" ] || continue
+    grep -q 'require "rubygems" unless defined?(Gem)' "$f" ||
+        sed -i '1i require "rubygems" unless defined?(Gem)' "$f"
+done
+
+echo "Verifying installation..."
+ruby -rethon -e "puts Ethon::VERSION" || {
+    echo "Ethon installation failed!" >&2
+    exit 1
+}
 
 echo "ruby-ethon installed successfully."
 exit 0

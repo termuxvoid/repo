@@ -12,6 +12,13 @@ gem uninstall nokogiri -a -x -I || true
 echo "Cleaning up residual files..."
 [ -d "$PREFIX/lib/ruby/gems" ] && find "$PREFIX/lib/ruby/gems" -name "*nokogiri*" -exec rm -rf {} + || true
 
+# Remove the site_ruby copies installed by postinst (ruby 4.x paths)
+for d in "$PREFIX"/lib/ruby/site_ruby/*/; do
+    rm -rf "$d/nokogiri"
+    rm -f  "$d/nokogiri.rb"
+    rm -rf "$d/xsd"
+done
+
 # Remove nokogiri binary from bin directory if it exists
 if [ -f "$PREFIX/bin/nokogiri" ]; then
     echo "Removing nokogiri binary from $PREFIX/bin..."
