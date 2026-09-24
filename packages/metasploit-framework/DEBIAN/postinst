@@ -15,57 +15,92 @@ rm -f "$TMPDIR/msf.zip"
 
 cd "$MSFPATH"
 
-gem install bundler
+# Termux ruby ships two rdoc versions (8.0.0 default vs 6.15.0 packaged);
+# the gem's automatic RDoc hook then crashes the install. Disable docs for
+# direct gem installs (bundler's own installs honor `documentation false`).
+gem install bundler --no-document
 
 # ruby 4.0 ships date 3.5.1 as a default gem; metasploit gemspec pins date
 # 3.4.1 ("Temporarily pinned until 3.5 can be tested"). Relax the pin so
 # bundler can use the default date and avoid the activation conflict.
 sed -i "s/add_runtime_dependency 'date', '3.4.1'/add_runtime_dependency 'date', '>= 3.4.1'/" metasploit-framework.gemspec
 
-# Extract exact versions from Gemfile.lock
-ACTIONVIEW_VER=$(grep "actionview (" Gemfile.lock | awk '{print $2}' | tr -d '()')
-NET_VER=$(grep "network_interface (" Gemfile.lock | awk '{print $2}' | tr -d '()')
+# Extract exact versions from Gemfile.lock. Only match the top-level spec
+# lines ("    name (ver)"); nested dependency lines like "name (= ver)" would
+# emit a multi-line (and thus invalid) version argument.
+ACTIONVIEW_VER=$(grep -E "^    actionview \([0-9]" Gemfile.lock | awk '{print $2}' | tr -d '()' | head -1)
+NET_VER=$(grep -E "^    network_interface \([0-9]" Gemfile.lock | awk '{print $2}' | tr -d '()' | head -1)
+SQLITE3_VER=$(grep -E "^    sqlite3 \([0-9]" Gemfile.lock | awk '{print $2}' | tr -d '()' | head -1)
 
-# Install network_interface with workaround
-gem install network_interface -v "$NET_VER" -- --with-cflags="-Wno-error=implicit-function-declaration" 2>/dev/null || true
+# Install network_interface with the ruby 4.0 implicit-function-declaration
+# cflag workaround; ignored when the exact version is already installed.
+gem install network_interface -v "$NET_VER" --no-document -- --with-cflags="-Wno-error=implicit-function-declaration" 2>/dev/null || true
 
-# Remove lock file and add actionview with correct version using single equals
-rm -f Gemfile.lock
-bundle add actionview --version "$ACTIONVIEW_VER"
-
+# Build sqlite3 against Termux's system sqlite up front, passing the flag
+# directly. The default vendored (mini_portile2) path has no resolver on ruby
+# 4.0, and a downgrade/rebuild triggered inside `bundle install` is flaky.
 bundle config set documentation false
-# Build sqlite3 against Termux's system sqlite; the default vendored
-# (mini_portile2) build path has no resolver on ruby 4.0 and fails.
 bundle config set build.sqlite3 "--enable-system-libraries"
-bundle install -j$(nproc --all)
+bundle config set build.nokogiri "--use-system-libraries"
+if [ -n "$SQLITE3_VER" ]; then
+    gem install sqlite3 -v "$SQLITE3_VER" --no-document -- --enable-system-libraries 2>/dev/null || true
+fi
+
+# Reuse the system ruby-nokogiri (Termux system-libraries build) instead of
+# letting bundler fetch its own copy from rubygems. Align the bundle to the
+# version the ruby-nokogiri package provides.
+NOKOGIRI_VER=$(gem list -e nokogiri | awk -F'[(,)]' 'NR==1{print $2}')
+if [ -n "$NOKOGIRI_VER" ]; then
+    if grep -q '^gem .nokogiri' Gemfile; then
+        sed -i "s|^gem 'nokogiri'.*|gem 'nokogiri', '= ${NOKOGIRI_VER}'|" Gemfile
+    else
+        echo "gem 'nokogiri', '= ${NOKOGIRI_VER}'" >> Gemfile
+    fi
+fi
+
+# Keep the upstream lockfile (deterministic installs) and only adjust what
+# ruby 4.0 actually breaks: re-pin the target actionview, let the bundle use
+# the default date (gemspec relaxed above), and reuse system nokogiri.
+# Note: `bundle add` is not idempotent (re-adding an already-pinned gem raises
+# an invalid-requirement error), so pin via sed/append and reconcile the lock.
+if grep -qE "^gem [\"']actionview" Gemfile; then
+    sed -i "s|^gem ['\"]actionview['\"].*|gem 'actionview', '= ${ACTIONVIEW_VER}'|" Gemfile
+else
+    echo "gem 'actionview', '= ${ACTIONVIEW_VER}'" >> Gemfile
+fi
+bundle update actionview --conservative
+bundle update date
+[ -n "$NOKOGIRI_VER" ] && bundle update nokogiri
+
+# Sequential install: parallel native builds (-j8) proved flaky on the first
+# run and are not worth the speedup for a one-shot postinst.
+bundle install
 bundle update --bundler
 
-# Termux has no /usr/bin/env; point the launcher shebangs at Termux's env and
-# enable rubygems explicitly (termux ruby does not auto-load rubygems) so gems
-# that are required directly (rex/*, getoptlong, ...) resolve properly.
+# Termux ruby 4.0 does not auto-load rubygems on script startup; root scripts
+# require rubygems (and rex/*) directly, so enable it explicitly. No shebang
+# patching is needed: termux-exec rewrites #!/usr/bin/env at execve time.
 find "$MSFPATH" -maxdepth 1 -type f -executable -not -name "*.rb" -not -name "*.sh" -not -name "*.ru" -not -name "*.pl" | while read file; do
-    sed -i "1s|^#!/usr/bin/env ruby$|#!$PREFIX/bin/env ruby|" "$file"
     grep -qE "^require ['\"]rubygems" "$file" || sed -i "1a require 'rubygems' unless defined?(Gem)" "$file"
 done
 
-# msfdb requires rex/* before its bundler boot, which activates ruby's default
-# openssl (4.0.2) ahead of the bundled 3.3.3 and breaks bundler. Boot the bundle
-# first, exactly like msfconsole does.
-if [ -f "$MSFPATH/msfdb" ] && ! grep -q "config/boot" "$MSFPATH/msfdb"; then
-    sed -i "2a require File.expand_path('config/boot', __dir__)" "$MSFPATH/msfdb"
-fi
+# Scripts that require the framework before deriving their Gemfile from __dir__
+# (config/boot computes it from its own realpath) must boot the bundle up front;
+# otherwise bundler resolves the Gemfile against CWD and errors outside $MSFPATH
+# (e.g. msfdb requiring rex/* and msfmcpd requiring msf/core/mcp pre-boot).
+for bootfile in msfdb msfmcpd; do
+    if [ -f "$MSFPATH/$bootfile" ] && ! grep -q "config/boot" "$MSFPATH/$bootfile"; then
+        sed -i "2a require File.expand_path('config/boot', __dir__)" "$MSFPATH/$bootfile"
+    fi
+done
 
-# Create bin wrappers for executable root scripts. The upstream scripts carry a
-# /usr/bin/env shebang (missing on Termux), so run them via ruby with the
-# framework Gemfile exported so bundler/setup finds it regardless of CWD.
+# Link the launcher scripts into PATH. The upstream scripts use a
+# #!/usr/bin/env ruby shebang; termux-exec (preloaded on stock Termux) rewrites
+# the interpreter to $PREFIX/bin/env at execve time, and once the symlink is
+# resolved the scripts boot the framework Gemfile from their real __dir__.
 find "$MSFPATH" -maxdepth 1 -type f -executable -not -name "*.rb" -not -name "*.sh" -not -name "*.ru" -not -name "*.pl" | while read file; do
     binname=$(basename "$file")
-    cat > "$PREFIX/bin/$binname" <<EOF
-#!/data/data/com.termux/files/usr/bin/env bash
-export BUNDLE_GEMFILE="$MSFPATH/Gemfile"
-exec ruby "$file" "\$@"
-EOF
-    chmod +x "$PREFIX/bin/$binname"
+    ln -sf "$file" "$PREFIX/bin/$binname"
 done
 
 echo "Metasploit-Framework $TAG installed successfully"
