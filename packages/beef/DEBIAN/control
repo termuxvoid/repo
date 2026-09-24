@@ -1,5 +1,5 @@
 Package: beef
-Version: 0.6.0.0
+Version: 0.6.0.0-1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: ruby, nodejs, git, make, clang, sqlite, openssl-tool, build-essential, curl, libcurl, ruby-nokogiri, ruby-curb
