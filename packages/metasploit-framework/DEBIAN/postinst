@@ -70,6 +70,11 @@ else
 fi
 bundle update actionview --conservative
 bundle update date
+# Psych is auto-loaded by rubygems as soon as the launcher scripts require
+# rubygems pre-boot, so the bundle must accept whatever psych the system
+# currently ships (other installs, e.g. beef, upgrade it past the upstream
+# lock's 5.3.1 -> 'already activated' crash otherwise).
+bundle update psych
 [ -n "$NOKOGIRI_VER" ] && bundle update nokogiri
 
 # Sequential install: parallel native builds (-j8) proved flaky on the first
