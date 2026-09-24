@@ -20,8 +20,12 @@ rm -f Gemfile.lock
 sed -i '/^gem .curb./d' Gemfile
 sed -i '/^gem .nokogiri./d' Gemfile
 
-gem install sqlite3 -- --enable-system-libraries
-gem install bundler
+# Termux ruby ships two rdoc versions (8.0.0 default vs 6.15.0 packaged); the
+# gem's automatic RDoc hook then crashes with a RDoc::Markup::PreProcess
+# NoMethodError. Disable docs for direct gem installs and for bundler.
+gem install sqlite3 --no-document -- --enable-system-libraries
+gem install bundler --no-document
+bundle config set documentation false
 bundle install
 
 # Correct displayed version from 0.5.4.0 to 0.6.0.0
