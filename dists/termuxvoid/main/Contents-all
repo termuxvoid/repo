@@ -504,7 +504,6 @@ data/data/com.termux/files/usr/etc/publiceye/scripts/ipinfo.sh                  
 data/data/com.termux/files/usr/etc/publiceye/scripts/phoneinfo.sh                publiceye
 data/data/com.termux/files/usr/etc/publiceye/scripts/timezoneinfo.sh             publiceye
 data/data/com.termux/files/usr/bin/rhawk                                         redhawk
-data/data/com.termux/files/usr/include/nokogiri_gumbo.h                          ruby-nokogiri
 data/data/com.termux/files/usr/bin/shellcrypt                                    shellcrypt
 data/data/com.termux/files/usr/bin/shorturl                                      shorturl
 data/data/com.termux/files/usr/bin/spider                                        spider
