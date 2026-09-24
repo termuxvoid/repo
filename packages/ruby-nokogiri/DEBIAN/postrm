@@ -4,7 +4,7 @@
 set -e
 
 echo "Removing Nokogiri gem..."
-gem uninstall nokogiri -v 1.19.0 -x || true
+gem uninstall nokogiri -v 1.19.4 -x || true
 
 # Also try to remove any other versions that might be installed
 gem uninstall nokogiri -a -x -I || true
@@ -24,6 +24,9 @@ if [ -f "$PREFIX/bin/nokogiri" ]; then
     echo "Removing nokogiri binary from $PREFIX/bin..."
     rm -f "$PREFIX/bin/nokogiri"
 fi
+
+# Remove the gumbo parser header fetched at install time
+rm -f "$PREFIX/include/nokogiri_gumbo.h"
 
 echo "Nokogiri removal complete."
 exit 0

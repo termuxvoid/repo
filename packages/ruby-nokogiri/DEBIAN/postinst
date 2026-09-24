@@ -3,9 +3,19 @@
 
 set -e
 
-VERSION="1.19.0"
+VERSION="1.19.4"
 
 echo "Installing Nokogiri ${VERSION} with system libraries..."
+
+# Fetch the nokogiri gumbo parser header at install time instead of shipping
+# it in the package data (matches upstream source, keeps the package small).
+mkdir -p "$PREFIX/include"
+if [ ! -f "$PREFIX/include/nokogiri_gumbo.h" ]; then
+    wget -q "https://raw.githubusercontent.com/sparklemotion/nokogiri/v${VERSION}/gumbo-parser/src/nokogiri_gumbo.h" \
+        -O "$PREFIX/include/nokogiri_gumbo.h" \
+        || curl -fsSL "https://raw.githubusercontent.com/sparklemotion/nokogiri/v${VERSION}/gumbo-parser/src/nokogiri_gumbo.h" \
+        -o "$PREFIX/include/nokogiri_gumbo.h"
+fi
 
 gem install nokogiri -v "${VERSION}" -- --use-system-libraries
 
