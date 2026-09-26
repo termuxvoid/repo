@@ -1,5 +1,5 @@
 Package: laudacode
-Version: 0.8.0
+Version: 0.9.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, tar
