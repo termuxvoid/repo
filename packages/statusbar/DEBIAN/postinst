@@ -1,0 +1,68 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="0.5.1"
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+INSTALL_DIR="$PREFIX/share/statusbar"
+TMP_DIR="$TMPDIR/statusbar-build"
+
+case "$(uname -m)" in
+    aarch64)
+        TARGET="aarch64-linux-musl"
+        ;;
+    x86_64)
+        TARGET="x86_64-linux-musl"
+        ;;
+    *)
+        echo "Unsupported architecture: $(uname -m) (statusbar supports aarch64 and x86_64)" >&2
+        exit 1
+        ;;
+esac
+
+# Official static musl build: no interpreter and no NEEDED libs, so it runs
+# directly on Termux/Android without a glibc shim.
+TARBALL="https://github.com/vrypan/statusbar/releases/download/v${VERSION}/statusbar-${VERSION}-${TARGET}.tar.gz"
+
+rm -rf "$TMP_DIR" "$INSTALL_DIR"
+mkdir -p "$TMP_DIR" "$INSTALL_DIR/bin" "$INSTALL_DIR/themes"
+
+curl -fsSL -o "$TMP_DIR/statusbar.tar.gz" "$TARBALL" || {
+    echo "Error: Failed to download statusbar." >&2
+    exit 1
+}
+tar -xzf "$TMP_DIR/statusbar.tar.gz" -C "$TMP_DIR"
+
+SRC="$TMP_DIR/statusbar-${VERSION}-${TARGET}"
+
+for tool in statusbar statusbar-theme; do
+    if [ ! -x "$SRC/bin/$tool" ]; then
+        echo "Error: $tool missing from release archive." >&2
+        exit 1
+    fi
+    install -m755 "$SRC/bin/$tool" "$INSTALL_DIR/bin/$tool"
+done
+
+cp "$SRC"/themes/*.statusbar "$INSTALL_DIR/themes/"
+cp "$SRC/AGENT_SETUP.md" "$INSTALL_DIR/AGENT_SETUP.md"
+
+cat > "$PREFIX/bin/statusbar" <<EOF
+#!/data/data/com.termux/files/usr/bin/bash
+exec "$INSTALL_DIR/bin/statusbar" "\$@"
+EOF
+chmod 755 "$PREFIX/bin/statusbar"
+
+# The release build has no compiled-in default themes dir, so pass the
+# bundled themes when the user gives no argument.
+cat > "$PREFIX/bin/statusbar-theme" <<EOF
+#!/data/data/com.termux/files/usr/bin/bash
+if [ \$# -eq 0 ]; then
+    exec "$INSTALL_DIR/bin/statusbar-theme" "$INSTALL_DIR/themes"
+fi
+exec "$INSTALL_DIR/bin/statusbar-theme" "\$@"
+EOF
+chmod 755 "$PREFIX/bin/statusbar-theme"
+
+cd / && rm -rf "$TMP_DIR"
+
+echo "statusbar installed. Run 'statusbar' to start your shell with a status bar."
+exit 0

@@ -1,0 +1,8 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+
+rm -f "$PREFIX/bin/statusbar" "$PREFIX/bin/statusbar-theme"
+rm -rf "$PREFIX/share/statusbar"
+
+exit 0

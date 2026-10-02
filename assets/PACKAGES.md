@@ -292,6 +292,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 ### Customization
 | Tool | Description |
 |------|-------------|
+| [statusbar](https://termuxvoid.github.io/tool.html?name=statusbar) | Terminal status bar that keeps useful information visible |
 | [termuxvoid-theme](https://termuxvoid.github.io/tool.html?name=termuxvoid-theme) | Professional terminal customization for Termux |
 | [void-fonts](https://termuxvoid.github.io/tool.html?name=void-fonts) | Custom font collection for Termux |
 
