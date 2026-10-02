@@ -6,17 +6,10 @@ PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
 SHARE_DIR="$PREFIX/share/statusbar"
 TMP_DIR="$TMPDIR/statusbar-build"
 
+# Architecture is validated in preinst; only the target triple is needed here.
 case "$(uname -m)" in
-    aarch64)
-        TARGET="aarch64-linux-musl"
-        ;;
-    x86_64)
-        TARGET="x86_64-linux-musl"
-        ;;
-    *)
-        echo "Unsupported architecture: $(uname -m) (statusbar supports aarch64 and x86_64)" >&2
-        exit 1
-        ;;
+    aarch64) TARGET="aarch64-linux-musl" ;;
+    x86_64)  TARGET="x86_64-linux-musl" ;;
 esac
 
 # Official static musl build: no interpreter, no NEEDED libs and no runtime
