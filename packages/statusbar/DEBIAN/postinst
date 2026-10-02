@@ -5,13 +5,15 @@ VERSION="0.5.1"
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
 SHARE_DIR="$PREFIX/share/statusbar"
 TMP_DIR="$TMPDIR/statusbar-build"
+TERMUX_TMP="$PREFIX/tmp"
+ZIG_LIB="$PREFIX/lib/zig/lib/std/Io/File/Atomic.zig"
 
 case "$(uname -m)" in
     aarch64) TARGET="aarch64-linux-musl" ;;
     x86_64)  TARGET="x86_64-linux-musl" ;;
 esac
 
-TARBALL="https://github.com/vrypan/statusbar/releases/download/v${VERSION}/statusbar-${VERSION}-${TARGET}.tar.gz"
+TARBALL="https://github.com/vrypan/statusbar/archive/refs/tags/v${VERSION}.tar.gz"
 
 rm -rf "$TMP_DIR" "$SHARE_DIR"
 mkdir -p "$TMP_DIR" "$SHARE_DIR/themes"
@@ -22,17 +24,63 @@ curl -fsSL -o "$TMP_DIR/statusbar.tar.gz" "$TARBALL" || {
 }
 tar -xzf "$TMP_DIR/statusbar.tar.gz" -C "$TMP_DIR"
 
-SRC="$TMP_DIR/statusbar-${VERSION}-${TARGET}"
+SRC="$TMP_DIR/statusbar-${VERSION}"
 
-for tool in statusbar statusbar-theme; do
-    install -Dm755 "$SRC/bin/$tool" "$PREFIX/bin/$tool"
+# statusbar hardcodes /tmp for its state file, control socket and FIFOs.
+# Android has no writable /tmp; use Termux's $PREFIX/tmp instead.
+grep -rl '"/tmp/statusbar' "$SRC/src" | while read -r f; do
+    sed -i "s|\"/tmp/statusbar|\"$TERMUX_TMP/statusbar|g" "$f"
 done
 
-cp "$SRC"/themes/*.statusbar "$SHARE_DIR/themes/"
+# Android's app sandbox denies link(2), which zig's build cache relies on.
+# Patch std's Atomic.link to copy the bytes when hardLink is refused.
+if ! grep -q 'linkOrCopy' "$ZIG_LIB"; then
+    sed -i 's|        try af\.file\.hardLink(io, af\.dir, af\.dest_sub_path, \.{});|        try linkOrCopy(af, io);|' "$ZIG_LIB"
+    cat >> "$ZIG_LIB" <<'PATCH'
+
+/// Android's app sandbox denies link(2); copy the bytes instead.
+fn linkOrCopy(af: *Atomic, io: Io) LinkError!void {
+    af.file.hardLink(io, af.dir, af.dest_sub_path, .{}) catch |err| switch (err) {
+        error.AccessDenied, error.PermissionDenied, error.SystemResources => {
+            const dest = af.dir.createFile(io, af.dest_sub_path, .{ .exclusive = true }) catch |e| return @errorCast(e);
+            defer dest.close(io);
+            var buf: [64 * 1024]u8 = undefined;
+            var offset: u64 = 0;
+            while (true) {
+                const n = af.file.readPositionalAll(io, &buf, offset) catch |e| return @errorCast(e);
+                if (n == 0) break;
+                dest.writeStreamingAll(io, buf[0..n]) catch |e| return @errorCast(e);
+                offset += n;
+            }
+            return;
+        },
+        else => return err,
+    };
+}
+PATCH
+fi
+
+cd "$SRC"
+zig build -Doptimize=ReleaseSafe -Dtarget="$TARGET" --cache-dir "$TMP_DIR/zig-cache" || {
+    echo "Error: statusbar build failed." >&2
+    exit 1
+}
+
+install -Dm755 "$SRC/zig-out/bin/statusbar" "$PREFIX/bin/statusbar"
+install -Dm755 "$SRC/zig-out/bin/statusbar-theme" "$SHARE_DIR/bin/statusbar-theme"
+
+cp "$SRC"/zig-out/share/statusbar/themes/*.statusbar "$SHARE_DIR/themes/"
 cp "$SRC/AGENT_SETUP.md" "$SHARE_DIR/AGENT_SETUP.md"
+
+# The picker needs a theme directory; default it to the bundled themes.
+cat > "$PREFIX/bin/statusbar-theme" <<WRAPPER
+#!/data/data/com.termux/files/usr/bin/bash
+exec "$SHARE_DIR/bin/statusbar-theme" "\${1:-$SHARE_DIR/themes}" "\${@:2}"
+WRAPPER
+chmod 755 "$PREFIX/bin/statusbar-theme"
 
 cd / && rm -rf "$TMP_DIR"
 
 echo "statusbar installed. Run 'statusbar' to start your shell with a status bar."
-echo "Inside a session, run 'statusbar-theme $SHARE_DIR/themes' to pick a theme."
+echo "Inside a session, run 'statusbar-theme' to pick a theme."
 exit 0

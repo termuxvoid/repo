@@ -2,7 +2,7 @@ Package: statusbar
 Version: 0.5.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: curl, tar
+Depends: curl, tar, zig
 Section: utils
 Priority: optional
 Homepage: https://github.com/vrypan/statusbar
@@ -10,5 +10,6 @@ Description: Terminal status bar that keeps useful information visible
  A status bar at the bottom of your terminal. It keeps useful information
  visible while you work, without repeating it in every prompt. Your shell,
  full-screen programs, and scrollback continue to work.
- Installs the official static Linux release. Ships statusbar and
- statusbar-theme, an interactive theme picker with 12 bundled themes.
+ Built from source for Termux, with runtime paths moved off Android's
+ read-only /tmp. Ships statusbar and statusbar-theme, an interactive theme
+ picker with 12 bundled themes.
