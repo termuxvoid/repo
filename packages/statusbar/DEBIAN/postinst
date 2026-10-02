@@ -3,7 +3,7 @@ set -e
 
 VERSION="0.5.1"
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-INSTALL_DIR="$PREFIX/share/statusbar"
+SHARE_DIR="$PREFIX/share/statusbar"
 TMP_DIR="$TMPDIR/statusbar-build"
 
 case "$(uname -m)" in
@@ -19,12 +19,12 @@ case "$(uname -m)" in
         ;;
 esac
 
-# Official static musl build: no interpreter and no NEEDED libs, so it runs
-# directly on Termux/Android without a glibc shim.
+# Official static musl build: no interpreter, no NEEDED libs and no runtime
+# data lookups, so the binaries install straight into $PREFIX/bin as-is.
 TARBALL="https://github.com/vrypan/statusbar/releases/download/v${VERSION}/statusbar-${VERSION}-${TARGET}.tar.gz"
 
-rm -rf "$TMP_DIR" "$INSTALL_DIR"
-mkdir -p "$TMP_DIR" "$INSTALL_DIR/bin" "$INSTALL_DIR/themes"
+rm -rf "$TMP_DIR" "$SHARE_DIR"
+mkdir -p "$TMP_DIR" "$PREFIX/bin" "$SHARE_DIR/themes"
 
 curl -fsSL -o "$TMP_DIR/statusbar.tar.gz" "$TARBALL" || {
     echo "Error: Failed to download statusbar." >&2
@@ -39,30 +39,14 @@ for tool in statusbar statusbar-theme; do
         echo "Error: $tool missing from release archive." >&2
         exit 1
     fi
-    install -m755 "$SRC/bin/$tool" "$INSTALL_DIR/bin/$tool"
+    install -m755 "$SRC/bin/$tool" "$PREFIX/bin/$tool"
 done
 
-cp "$SRC"/themes/*.statusbar "$INSTALL_DIR/themes/"
-cp "$SRC/AGENT_SETUP.md" "$INSTALL_DIR/AGENT_SETUP.md"
-
-cat > "$PREFIX/bin/statusbar" <<EOF
-#!/data/data/com.termux/files/usr/bin/bash
-exec "$INSTALL_DIR/bin/statusbar" "\$@"
-EOF
-chmod 755 "$PREFIX/bin/statusbar"
-
-# The release build has no compiled-in default themes dir, so pass the
-# bundled themes when the user gives no argument.
-cat > "$PREFIX/bin/statusbar-theme" <<EOF
-#!/data/data/com.termux/files/usr/bin/bash
-if [ \$# -eq 0 ]; then
-    exec "$INSTALL_DIR/bin/statusbar-theme" "$INSTALL_DIR/themes"
-fi
-exec "$INSTALL_DIR/bin/statusbar-theme" "\$@"
-EOF
-chmod 755 "$PREFIX/bin/statusbar-theme"
+cp "$SRC"/themes/*.statusbar "$SHARE_DIR/themes/"
+cp "$SRC/AGENT_SETUP.md" "$SHARE_DIR/AGENT_SETUP.md"
 
 cd / && rm -rf "$TMP_DIR"
 
 echo "statusbar installed. Run 'statusbar' to start your shell with a status bar."
+echo "Inside a session, run 'statusbar-theme $SHARE_DIR/themes' to pick a theme."
 exit 0
