@@ -6,7 +6,6 @@ PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
 SHARE_DIR="$PREFIX/share/statusbar"
 TMP_DIR="$TMPDIR/statusbar-build"
 TERMUX_TMP="$PREFIX/tmp"
-ZIG_LIB="$PREFIX/lib/zig/lib/std/Io/File/Atomic.zig"
 
 case "$(uname -m)" in
     aarch64) TARGET="aarch64-linux-musl" ;;
@@ -33,10 +32,21 @@ grep -rl '"/tmp/statusbar' "$SRC/src" | while read -r f; do
 done
 
 # Android's app sandbox denies link(2), which zig's build cache relies on.
-# Patch std's Atomic.link to copy the bytes when hardLink is refused.
-if ! grep -q 'linkOrCopy' "$ZIG_LIB"; then
-    sed -i 's|        try af\.file\.hardLink(io, af\.dir, af\.dest_sub_path, \.{});|        try linkOrCopy(af, io);|' "$ZIG_LIB"
-    cat >> "$ZIG_LIB" <<'PATCH'
+# Shadow zig's std library with a symlink tree and patch only our copy of
+# Atomic.zig, so the Termux package stays untouched and a zig upgrade cannot
+# leave a stale patch behind.
+ZIG_LIB_DIR="$TMP_DIR/zig-lib"
+mkdir -p "$ZIG_LIB_DIR"
+cp -Rs "$PREFIX/lib/zig/lib/." "$ZIG_LIB_DIR/"
+ZIG_ATOMIC="$ZIG_LIB_DIR/std/Io/File/Atomic.zig"
+rm -f "$ZIG_ATOMIC"
+cp "$PREFIX/lib/zig/lib/std/Io/File/Atomic.zig" "$ZIG_ATOMIC"
+sed -i 's|        try af\.file\.hardLink(io, af\.dir, af\.dest_sub_path, \.{});|        try linkOrCopy(af, io);|' "$ZIG_ATOMIC" || true
+grep -q 'linkOrCopy' "$ZIG_ATOMIC" || {
+    echo "Error: cannot patch zig std Atomic.zig (upstream layout changed?)." >&2
+    exit 1
+}
+cat >> "$ZIG_ATOMIC" <<'PATCH'
 
 /// Android's app sandbox denies link(2); copy the bytes instead.
 fn linkOrCopy(af: *Atomic, io: Io) LinkError!void {
@@ -58,10 +68,9 @@ fn linkOrCopy(af: *Atomic, io: Io) LinkError!void {
     };
 }
 PATCH
-fi
 
 cd "$SRC"
-zig build -Doptimize=ReleaseSafe -Dtarget="$TARGET" --cache-dir "$TMP_DIR/zig-cache" || {
+zig build -Doptimize=ReleaseSafe -Dtarget="$TARGET" --zig-lib-dir "$ZIG_LIB_DIR" --cache-dir "$TMP_DIR/zig-cache" || {
     echo "Error: statusbar build failed." >&2
     exit 1
 }
