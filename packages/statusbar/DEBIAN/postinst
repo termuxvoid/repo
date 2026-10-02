@@ -6,18 +6,15 @@ PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
 SHARE_DIR="$PREFIX/share/statusbar"
 TMP_DIR="$TMPDIR/statusbar-build"
 
-# Architecture is validated in preinst; only the target triple is needed here.
 case "$(uname -m)" in
     aarch64) TARGET="aarch64-linux-musl" ;;
     x86_64)  TARGET="x86_64-linux-musl" ;;
 esac
 
-# Official static musl build: no interpreter, no NEEDED libs and no runtime
-# data lookups, so the binaries install straight into $PREFIX/bin as-is.
 TARBALL="https://github.com/vrypan/statusbar/releases/download/v${VERSION}/statusbar-${VERSION}-${TARGET}.tar.gz"
 
 rm -rf "$TMP_DIR" "$SHARE_DIR"
-mkdir -p "$TMP_DIR" "$PREFIX/bin" "$SHARE_DIR/themes"
+mkdir -p "$TMP_DIR" "$SHARE_DIR/themes"
 
 curl -fsSL -o "$TMP_DIR/statusbar.tar.gz" "$TARBALL" || {
     echo "Error: Failed to download statusbar." >&2
@@ -28,11 +25,7 @@ tar -xzf "$TMP_DIR/statusbar.tar.gz" -C "$TMP_DIR"
 SRC="$TMP_DIR/statusbar-${VERSION}-${TARGET}"
 
 for tool in statusbar statusbar-theme; do
-    if [ ! -x "$SRC/bin/$tool" ]; then
-        echo "Error: $tool missing from release archive." >&2
-        exit 1
-    fi
-    install -m755 "$SRC/bin/$tool" "$PREFIX/bin/$tool"
+    install -Dm755 "$SRC/bin/$tool" "$PREFIX/bin/$tool"
 done
 
 cp "$SRC"/themes/*.statusbar "$SHARE_DIR/themes/"
