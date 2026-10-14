@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
-npm install -g @emend-ai/utim@2.4.1
+npm install -g @emend-ai/utim@2.4.3
 echo "utim-cli installed. Run 'utim' to start."
 exit 0
