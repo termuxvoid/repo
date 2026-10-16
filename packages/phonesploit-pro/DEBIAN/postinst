@@ -1,15 +1,29 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+VERSION="2.4"
+
 INSTALL_DIR="$PREFIX/share/phonesploitpro"
 LAUNCHER="$PREFIX/bin/phonesploit"
 
-echo "[*] Installing PhoneSploit Pro v1.6.1..."
-git clone --depth=1 https://github.com/AzeemIdrisi/PhoneSploit-Pro.git "$INSTALL_DIR" || {
-    echo "[!] Clone failed. Check:"
+echo "[*] Installing PhoneSploit Pro v${VERSION}..."
+
+[ -d "$INSTALL_DIR" ] && rm -rf "$INSTALL_DIR"
+
+curl -fsSL -o "$TMPDIR/phonesploit-pro.tar.gz" "https://github.com/AzeemIdrisi/PhoneSploit-Pro/archive/refs/tags/v${VERSION}.tar.gz" || {
+    echo "[!] Download failed. Check:"
     echo "    1. Internet connection"
-    echo "    2. git installation"
     exit 1
 }
+
+file "$TMPDIR/phonesploit-pro.tar.gz" | grep -q gzip || {
+    echo "[!] Downloaded file is not gzip."
+    rm -f "$TMPDIR/phonesploit-pro.tar.gz"
+    exit 1
+}
+
+mkdir -p "$INSTALL_DIR"
+tar -xzf "$TMPDIR/phonesploit-pro.tar.gz" -C "$INSTALL_DIR" --strip-components=1
+rm -f "$TMPDIR/phonesploit-pro.tar.gz"
 
 echo "[*] Installing Python dependencies..."
 pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r "$INSTALL_DIR/requirements.txt" || {

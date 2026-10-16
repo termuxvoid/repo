@@ -1,8 +1,8 @@
 Package: phonesploit-pro
-Version: 1.61
+Version: 2.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You] 
-Depends: git, python, android-tools, nmap, which, scrcpy
+Depends: curl, tar, python, python-pip, android-tools, nmap, which, scrcpy, file
 Section: security
 Priority: optional
 Homepage: https://github.com/AzeemIdrisi/PhoneSploit-Pro
