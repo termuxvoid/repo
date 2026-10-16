@@ -1,31 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
-LAUNCHER="$PREFIX/bin/httpx"
-HTTPX_BIN="$HOME/go/bin/httpx"
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
+VERSION="1.12.0"
+BUILD_DIR="$TMPDIR/httpx-build"
 
-echo -e "${GREEN}Installing httpx...${NC}"
-go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest || {
-    echo -e "${RED}Error: Failed to install httpx. Ensure Go is installed and internet is available.${NC}"
-    exit 1
-}
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-echo -e "${GREEN}Creating launcher at $LAUNCHER...${NC}"
-cat > "$LAUNCHER" <<- EOF
-#!/data/data/com.termux/files/usr/bin/bash
-$HTTPX_BIN "\$@"
-EOF
+curl -fsSL -o src.tar.gz "https://github.com/projectdiscovery/httpx/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-chmod +x "$LAUNCHER" || {
-    echo -e "${RED}Error: Failed to set executable permissions for $LAUNCHER.${NC}"
-    exit 1
-}
+go build -trimpath -ldflags "-w -s" -o httpx ./cmd/httpx
+install -Dm755 httpx "$PREFIX/bin/httpx"
 
-if [ -x "$HTTPX_BIN" ]; then
-    echo -e "${GREEN}httpx installed successfully! Run 'httpx -version' to verify.${NC}"
-else
-    echo -e "${RED}Error: httpx binary not found at $HTTPX_BIN.${NC}"
-    exit 1
-fi
+cd / && rm -rf "$BUILD_DIR"
+
+echo "httpx installed. Run 'httpx'"
+exit 0

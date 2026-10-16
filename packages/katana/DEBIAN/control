@@ -1,8 +1,8 @@
 Package: katana
-Version: 1.7.0
+Version: 1.8.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, golang
+Depends: curl, golang, tar, gzip
 Section: web
 Priority: optional
 Homepage: https://github.com/projectdiscovery/katana

@@ -1,7 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
-go install -trimpath -ldflags "-w -s" github.com/projectdiscovery/naabu/v2/cmd/naabu@v2.6.1
-if [ ! -f "$PREFIX/bin/naabu" ] && [ -f "$HOME/go/bin/naabu" ]; then
-    ln -sf "$HOME/go/bin/naabu" "$PREFIX/bin/naabu"
-fi
+
+VERSION="2.6.1"
+BUILD_DIR="$TMPDIR/naabu-build"
+
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
+
+curl -fsSL -o src.tar.gz "https://github.com/projectdiscovery/naabu/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
+
+go build -trimpath -ldflags "-w -s" -o naabu ./cmd/naabu
+install -Dm755 naabu "$PREFIX/bin/naabu"
+
+cd / && rm -rf "$BUILD_DIR"
+
+echo "naabu installed. Run 'naabu'"
 exit 0

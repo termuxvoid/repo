@@ -1,7 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
-go install -trimpath -ldflags "-w -s" github.com/projectdiscovery/subfinder/v2/cmd/subfinder@v2.16.0
-if [ ! -f "$PREFIX/bin/subfinder" ] && [ -f "$HOME/go/bin/subfinder" ]; then
-    ln -sf "$HOME/go/bin/subfinder" "$PREFIX/bin/subfinder"
-fi
+
+VERSION="2.17.0"
+BUILD_DIR="$TMPDIR/subfinder-build"
+
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
+
+curl -fsSL -o src.tar.gz "https://github.com/projectdiscovery/subfinder/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
+
+go build -trimpath -ldflags "-w -s" -o subfinder ./cmd/subfinder
+install -Dm755 subfinder "$PREFIX/bin/subfinder"
+
+cd / && rm -rf "$BUILD_DIR"
+
+echo "subfinder installed. Run 'subfinder'"
 exit 0

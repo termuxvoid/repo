@@ -2,7 +2,7 @@ Package: naabu
 Version: 2.6.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, golang, libcap
+Depends: curl, golang, tar, gzip, libcap
 Section: net
 Priority: optional
 Homepage: https://github.com/projectdiscovery/naabu
