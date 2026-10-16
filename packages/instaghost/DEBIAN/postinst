@@ -5,7 +5,18 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-echo -e "${GREEN}Installing InstaGhost 1.0.0...${NC}"
+echo -e "${GREEN}Installing InstaGhost 2.0.0...${NC}"
+
+# instagrapi needs the community wheel index on Termux
+python -m pip install -U pip setuptools wheel || {
+    echo -e "${RED}Error: Failed to install Python packaging tools.${NC}"
+    exit 1
+}
+
+python -m pip install --extra-index-url https://termux-user-repository.github.io/pypi/ instagrapi || {
+    echo -e "${RED}Error: Failed to install instagrapi.${NC}"
+    exit 1
+}
 
 # Install InstaGhost directly from GitHub
 pip install git+https://github.com/Anon4You/InstaGhost.git || {

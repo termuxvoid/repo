@@ -1,8 +1,8 @@
 Package: instaghost
-Version: 1.0.2
+Version: 2.0.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, python
+Depends: git, python, python-pip, python-pillow
 Section: social
 Priority: optional
 Homepage: https://github.com/Anon4You/InstaGhost
