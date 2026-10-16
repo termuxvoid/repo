@@ -29,14 +29,15 @@ cd "$INSTALL_DIR"
 pip install setuptools wheel packaging cython
 
 export ANDROID_API_LEVEL="$(getprop ro.build.version.sdk)"
-# uvicorn[standard] needs uvloop/watchfiles (no Android support):
-# install everything else from requirements, then plain uvicorn.
+# TUR community wheel index + prefer-binary: prebuilt Android wheels
+# (pydantic-core, brotli, ...) so pip skips the slow on-device
+# Rust/C source builds.
 grep -v '^uvicorn' requirements.txt > "$TMPDIR/requirements-termux.txt"
-pip install -r "$TMPDIR/requirements-termux.txt" || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r "$TMPDIR/requirements-termux.txt" || {
     echo "Error: Failed to install Python dependencies." >&2
     exit 1
 }
-pip install "uvicorn>=0.27" || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary "uvicorn>=0.27" || {
     echo "Error: Failed to install uvicorn." >&2
     exit 1
 }

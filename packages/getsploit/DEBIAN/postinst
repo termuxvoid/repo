@@ -8,7 +8,10 @@ pip install getsploit==3.0.1 --no-deps
 pip install vulners --no-deps
 
 # Install remaining dependencies manually
-pip install h2 hpack hyperframe ijson httpx pydantic pydantic-core \
+# TUR community wheel index + prefer-binary: prebuilt Android wheels
+# (brotli, pydantic-core) instead of slow on-device source builds.
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary \
+    h2 hpack hyperframe ijson httpx pydantic pydantic-core click rich \
     brotli zstandard pycryptodome stream-inflate stream-unzip orjson
 
 echo "getsploit installed. Run 'getsploit'"

@@ -1,24 +1,13 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
-# Get Python version (e.g. "3.10")
-PYVER=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
-
-echo "[*] Installing build dependencies..."
-pip install --upgrade setuptools wheel packaging pyproject_metadata cython meson-python versioneer || {
-    echo "[!] Failed to install build tools"
+# TUR community wheel index: prebuilt Android pandas wheel,
+# no on-device source build needed.
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ pandas==3.0.5 || {
+    echo "Error: Failed to install pandas." >&2
     exit 1
 }
 
-echo "[*] Building Pandas with Python$PYVER linkage..."
-MAKEFLAGS="-j$(nproc)" \
-LDFLAGS="-lpython$PYVER" \
-pip install --no-build-isolation --no-cache-dir pandas || {
-    echo "[!] Build failed. Common fixes:"
-    echo "    1. Run: pkg update && pkg upgrade"
-    echo "    2. Check storage (>1GB free recommended)"
-    echo "    3. Ensure all control file dependencies are installed"
-    exit 1
-}
-
-echo "[+] Pandas installed successfully!"
+echo "Pandas installed successfully!"
 echo "    Test with: python3 -c 'import pandas; print(pandas.__version__)'"
+exit 0

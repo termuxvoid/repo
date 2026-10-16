@@ -2,7 +2,7 @@ Package: python-pandas
 Version: 3.0.5
 Architecture: all
 Maintainer: Alienkrishn [Anon4You] 
-Depends: python, python-pip, python-numpy, build-essential, cmake, ninja, libopenblas, libandroid-execinfo, patchelf
+Depends: python, python-pip, python-numpy
 Section: science
 Priority: optional
 Homepage: https://pandas.pydata.org
