@@ -26,6 +26,8 @@ git clone --quiet https://github.com/snooppr/snoop.git "$INSTALL_DIR" || {
 # Install requirements
 echo -e "${YELLOW}Installing Python dependencies...${NC}"
 cd "$INSTALL_DIR"
+# Remove psutil (already installed as python-psutil dependency)
+sed -i '/psutil/d' requirements.txt
 pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r requirements.txt -q || {
     echo -e "${RED}Error: Failed to install requirements.${NC}"
     exit 1

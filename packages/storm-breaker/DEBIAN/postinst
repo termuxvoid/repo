@@ -12,6 +12,8 @@ git clone --depth 1 https://github.com/ultrasecurity/Storm-Breaker.git "$STORM_D
 
 echo "[*] Installing dependencies..."
 cd "$STORM_DIR"
+# Remove psutil (already installed as python-psutil dependency)
+sed -i '/psutil/d' requirements.txt
 pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r requirements.txt 2>/dev/null
 
 echo "[*] Creating launcher..."
