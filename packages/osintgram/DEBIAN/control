@@ -1,0 +1,12 @@
+Package: osintgram
+Version: 2.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl, tar, python, python-pip, build-essential, rust, file
+Section: social
+Priority: optional
+Homepage: https://github.com/Datalux/Osintgram
+Description: OSINT tool for Instagram account analysis
+ Osintgram collects and lays out everything a public Instagram
+ profile gives away in a local web interface. Ask in plain
+ language with a local AI model or drive the lookups yourself.

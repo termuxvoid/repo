@@ -1,0 +1,3 @@
+#!/data/data/com.termux/files/usr/bin/bash
+rm -f "$PREFIX/bin/osintgram"
+rm -rf "$PREFIX/share/osintgram"

@@ -1,0 +1,55 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="2.0"
+
+INSTALL_DIR="$PREFIX/share/osintgram"
+LAUNCHER="$PREFIX/bin/osintgram"
+
+[ -d "$INSTALL_DIR" ] && rm -rf "$INSTALL_DIR"
+
+# Download and extract release tarball
+curl -fsSL -o "$TMPDIR/osintgram.tar.gz" "https://github.com/Datalux/Osintgram/archive/refs/tags/${VERSION}.tar.gz" || {
+    echo "Error: Failed to download osintgram." >&2
+    exit 1
+}
+
+file "$TMPDIR/osintgram.tar.gz" | grep -q gzip || {
+    echo "Error: Downloaded file is not gzip." >&2
+    rm -f "$TMPDIR/osintgram.tar.gz"
+    exit 1
+}
+
+mkdir -p "$INSTALL_DIR"
+tar -xzf "$TMPDIR/osintgram.tar.gz" -C "$INSTALL_DIR" --strip-components=1
+rm -f "$TMPDIR/osintgram.tar.gz"
+
+cd "$INSTALL_DIR"
+
+pip install setuptools wheel packaging cython
+
+export ANDROID_API_LEVEL="$(getprop ro.build.version.sdk)"
+# uvicorn[standard] needs uvloop/watchfiles (no Android support):
+# install everything else from requirements, then plain uvicorn.
+grep -v '^uvicorn' requirements.txt > "$TMPDIR/requirements-termux.txt"
+pip install -r "$TMPDIR/requirements-termux.txt" || {
+    echo "Error: Failed to install Python dependencies." >&2
+    exit 1
+}
+pip install "uvicorn>=0.27" || {
+    echo "Error: Failed to install uvicorn." >&2
+    exit 1
+}
+
+cat > "$LAUNCHER" <<EOF
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$INSTALL_DIR" || exit 1
+exec uvicorn src.web.app:app --host 127.0.0.1 --port 8000 "\$@"
+EOF
+chmod +x "$LAUNCHER"
+
+[ -x "$LAUNCHER" ] || exit 1
+
+echo "Osintgram installed successfully."
+echo "Run 'osintgram' to start the web interface."
+exit 0

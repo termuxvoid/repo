@@ -67,6 +67,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [metagoofil](https://termuxvoid.github.io/tool.html?name=metagoofil) | Search Google and download specific file types for OSINT gathering |
 | [numinfo](https://termuxvoid.github.io/tool.html?name=numinfo) | Phone number intelligence and lookup tool |
 | [onionsearch](https://termuxvoid.github.io/tool.html?name=onionsearch) | Scrape .onion URLs from various Tor search engines |
+| [osintgram](https://termuxvoid.github.io/tool.html?name=osintgram) | OSINT tool for Instagram account analysis |
 | [phoneinfo](https://termuxvoid.github.io/tool.html?name=phoneinfo) | Phone number lookup tool |
 | [phoneinfoga](https://termuxvoid.github.io/tool.html?name=phoneinfoga) | Advanced phone number OSINT framework for information gathering and vulnerability scanning |
 | [phoneintel](https://termuxvoid.github.io/tool.html?name=phoneintel) | Phone number intelligence and validation tool |
