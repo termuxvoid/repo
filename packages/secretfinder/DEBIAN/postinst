@@ -4,7 +4,7 @@ set -e
 curl -sL -o "$PREFIX/bin/secretfinder" "https://raw.githubusercontent.com/m4ll0k/SecretFinder/master/SecretFinder.py"
 termux-fix-shebang "$PREFIX/bin/secretfinder"
 chmod +x "$PREFIX/bin/secretfinder"
-pip install requests_file requests jsbeautifier
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests_file requests jsbeautifier
 
 echo "SecretFinder installed. Run 'secretfinder'"
 exit 0

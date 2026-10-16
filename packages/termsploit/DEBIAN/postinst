@@ -1,11 +1,12 @@
 #!/data/data/com.termux/files/usr/bin/bash
+export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk)
 termsploitDir="$PREFIX/opt/termsploit"
 git clone --quiet https://github.com/Anon4You/termsploit-framework $termsploitDir
 
 [[ -d $termsploitDir ]] && {
   echo "Installing requirements ..."
   chmod 751 -R $termsploitDir
-  pip install setuptools wheel packaging pyproject_metadata cython meson-python versioneer requests tqdm aiohttp bcrypt pikepdf requests[socks] bs4 urllib3
+  pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary setuptools wheel packaging pyproject_metadata cython meson-python versioneer requests tqdm aiohttp bcrypt pikepdf requests[socks] bs4 urllib3
   npm -g install bash-obfuscate
 } || {
  echo -en "\e[31mE:\e[0m termsploit directory missing ... \e[33mAborting.\e[0m\n"

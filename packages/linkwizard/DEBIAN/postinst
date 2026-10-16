@@ -9,7 +9,7 @@ echo -e "${GREEN}Installing linkwizard...${NC}"
 
 # Install Python dependencies
 echo -e "${YELLOW}Installing Python dependencies...${NC}"
-pip install rich requests bs4 pyfiglet || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary rich requests bs4 pyfiglet || {
     echo -e "${RED}Error: Failed to install dependencies.${NC}"
     exit 1
 }

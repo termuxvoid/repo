@@ -17,7 +17,7 @@ git clone https://github.com/commixproject/commix.git $PREFIX/share/commix || {
 # Install commix from the cloned directory
 echo -e "${YELLOW}Installing commix package...${NC}"
 cd $PREFIX/share/commix
-pip install . || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary . || {
     echo -e "${RED}Error: Failed to install commix.${NC}"
     exit 1
 }

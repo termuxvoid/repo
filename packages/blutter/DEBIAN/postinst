@@ -19,7 +19,7 @@ git clone https://github.com/dedshit/blutter-termux.git $PREFIX/share/blutter ||
 }
 
 echo -e "${YELLOW}Installing Python dependencies...${NC}"
-pip install requests pyelftools || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests pyelftools || {
     echo -e "${RED}Error: Failed to install Python dependencies.${NC}"
     exit 1
 }

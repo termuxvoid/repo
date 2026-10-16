@@ -9,7 +9,7 @@ echo -e "${GREEN}Installing pip-basic-depends 1.0...${NC}"
 echo -e "${YELLOW}Setting up essential Python build tools...${NC}"
 
 # Install essential Python packaging tools
-pip install setuptools wheel packaging pyproject_metadata cython meson-python versioneer || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary setuptools wheel packaging pyproject_metadata cython meson-python versioneer || {
     echo -e "${RED}Error: Failed to install Python packaging tools.${NC}"
     exit 1
 }

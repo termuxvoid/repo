@@ -27,10 +27,10 @@ rm -f "$TMPDIR/hermes-agent.tar.gz"
 
 cd "$INSTALL_DIR"
 
-pip install setuptools wheel
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary setuptools wheel
 
 export ANDROID_API_LEVEL="$(getprop ro.build.version.sdk)"
-python -m pip install '.[termux]' -c constraints-termux.txt --ignore-requires-python 2>/dev/null || python -m pip install '.[termux]' --ignore-requires-python
+python -m pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary '.[termux]' -c constraints-termux.txt --ignore-requires-python 2>/dev/null || python -m pip install '.[termux]' --ignore-requires-python
 
 echo "Hermes Agent installed successfully."
 echo "Run 'hermes setup' to configure."

@@ -18,13 +18,13 @@ git clone https://github.com/s0md3v/XSStrike.git $PREFIX/share/xsstrike || {
 echo -e "${YELLOW}Installing Python requirements...${NC}"
 cd $PREFIX/share/xsstrike
 if [ -f "requirements.txt" ]; then
-    pip install -r requirements.txt || {
+    pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r requirements.txt || {
         echo -e "${RED}Error: Failed to install requirements.${NC}"
         exit 1
     }
 else
     echo -e "${YELLOW}Warning: requirements.txt not found, installing common dependencies...${NC}"
-    pip install requests tldextract fuzzywuzzy python-Levenshtein || {
+    pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests tldextract fuzzywuzzy python-Levenshtein || {
         echo -e "${RED}Error: Failed to install common dependencies.${NC}"
         exit 1
     }

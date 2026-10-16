@@ -6,7 +6,7 @@ INSTALL_DIR="$TMPDIR/qdl-build"
 # Agar pehle se folder hai to remove kar do
 [ -d "$INSTALL_DIR" ] && rm -rf "$INSTALL_DIR"
 
-pip install meson
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary meson
 
 git clone https://github.com/linux-msm/qdl.git "$INSTALL_DIR"
 cd "$INSTALL_DIR"

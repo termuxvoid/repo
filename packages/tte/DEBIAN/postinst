@@ -8,7 +8,7 @@ NC='\033[0m'
 echo -e "${GREEN}Installing tte 0.15.0...${NC}"
 
 echo -e "${YELLOW}Installing terminaltexteffects via pip...${NC}"
-pip install terminaltexteffects==0.15.0 || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary terminaltexteffects==0.15.0 || {
     echo -e "${RED}Error: Failed to install terminaltexteffects.${NC}"
     exit 1
 }

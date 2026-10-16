@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/sh
 
 echo "Installing/updating Keysigner Python package..."
-pip install --force-reinstall keysigner
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary --force-reinstall keysigner
 
 echo "Keysigner installation complete!"

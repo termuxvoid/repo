@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-pip install psutil
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary psutil

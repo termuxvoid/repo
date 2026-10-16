@@ -5,7 +5,7 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 echo -e "${GREEN}Installing pywhat 5.1.0...${NC}"
-pip install pywhat==5.1.0 || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary pywhat==5.1.0 || {
     echo -e "${RED}Error: Failed to install pywhat. Ensure Python and pip are available.${NC}"
     exit 1
 }

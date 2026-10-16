@@ -8,7 +8,7 @@ NC='\033[0m'
 echo -e "${GREEN}Installing Ghauri 1.4.3...${NC}"
 
 # Install Ghauri directly from GitHub
-pip install git+https://github.com/r0oth3x49/ghauri.git || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary git+https://github.com/r0oth3x49/ghauri.git || {
     echo -e "${RED}Error: Failed to install Ghauri.${NC}"
     echo -e "${YELLOW}Make sure dependencies (git, python) are installed.${NC}"
     exit 1

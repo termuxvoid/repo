@@ -4,12 +4,12 @@ set -e
 REPO="https://github.com/mschwager/fierce.git"
 DEST="$PREFIX/share/fierce"
 
-pip install dnspython
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary dnspython
 
 rm -rf "$DEST" 2>/dev/null || true
 git clone --depth 1 "$REPO" "$DEST"
 
-python -m pip install --no-deps "$DEST"
+python -m pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary --no-deps "$DEST"
 
 python - << 'PYEOF'
 import site, pathlib

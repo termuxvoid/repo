@@ -8,7 +8,7 @@ NC='\033[0m'
 echo -e "${GREEN}Installing apksearch 1.3.5...${NC}"
 
 echo -e "${YELLOW}Installing apksearch via pip...${NC}"
-pip install -U apksearch || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -U apksearch || {
     echo -e "${RED}Error: Failed to install apksearch.${NC}"
     exit 1
 }

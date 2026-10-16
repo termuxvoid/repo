@@ -3,6 +3,8 @@ set -e
 
 export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk)
 
+pip install setuptools wheel packaging cython
+
 # Install getsploit and vulners without dependencies (avoid isal build issues)
 pip install getsploit==3.0.1 --no-deps
 pip install vulners --no-deps

@@ -2,7 +2,7 @@
 set -e
 
 echo "[*] Installing hashid 3.1.4..."
-pip install --upgrade --force-reinstall hashid==3.1.4 >/dev/null 2>&1 || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary --upgrade --force-reinstall hashid==3.1.4 >/dev/null 2>&1 || {
     echo "[!] Installation failed" >&2
     exit 1
 }

@@ -1,2 +1,2 @@
 #!/bin/bash
-pip install requests
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests

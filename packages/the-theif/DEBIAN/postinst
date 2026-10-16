@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-pip install rich
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary rich
 mkdir -p ~/the-theif
 printf "\n\nthe-theif is installed...\nReport issus at telegram.me/nullxvoid"

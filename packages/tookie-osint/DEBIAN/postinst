@@ -8,7 +8,7 @@ INSTALL_DIR="$PREFIX/share/tookie-osint"
 
 git clone --depth 1 "$REPO" "$INSTALL_DIR"
 cd "$INSTALL_DIR"
-pip install -r requirements.txt
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r requirements.txt
 
 # Fix shebang for Termux and make executable
 termux-fix-shebang brib.py

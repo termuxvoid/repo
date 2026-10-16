@@ -7,7 +7,7 @@ WHEEL_PATH="$TMPDIR/pptool-2.0-py3-none-any.whl"
 
 curl -L -o "$WHEEL_PATH" "$WHEEL_URL" || exit 1
 
-pip install --quiet --force-reinstall "$WHEEL_PATH" || exit 1
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary --quiet --force-reinstall "$WHEEL_PATH" || exit 1
 
 rm -f "$WHEEL_PATH"
 

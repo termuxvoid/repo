@@ -18,7 +18,7 @@ git clone --depth=1 https://github.com/silverxpymaster/SilverInstaEye.git "$SILV
 export ANDROID_API_LEVEL=24
 echo -e "${GREEN}Installing Python dependencies...${NC}"
 cd "$SILVEREYE_DIR"
-pip install -r requirements.txt || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r requirements.txt || {
     echo -e "${RED}Error: Failed to install Python dependencies.${NC}"
     exit 1
 }

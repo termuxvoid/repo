@@ -24,13 +24,13 @@ git clone -q https://github.com/BullsEye0/dorks-eye.git $PREFIX/share/dorks-eye 
 
 echo -e "${YELLOW}Installing requirements...${NC}"
 cd $PREFIX/share/dorks-eye
-pip install -r requirements.txt || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r requirements.txt || {
     echo -e "${RED}Error: Failed to install requirements.${NC}"
     exit 1
 }
 
 echo -e "${YELLOW}Installing ddgs...${NC}"
-pip install ddgs || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary ddgs || {
     echo -e "${RED}Error: Failed to install ddgs.${NC}"
     exit 1
 }

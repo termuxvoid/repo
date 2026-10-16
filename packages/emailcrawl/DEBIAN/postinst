@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-pip install requests beautifulsoup4 colorama tldextract tabulate
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests beautifulsoup4 colorama tldextract tabulate
 
 exit 0

@@ -5,7 +5,7 @@ REPO="https://github.com/darkoperator/dnsrecon.git"
 DEST="$PREFIX/share/dnsrecon"
 LAUNCHER="$PREFIX/bin/dnsrecon"
 
-pip install dnspython netaddr httpx loguru stamina
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary dnspython netaddr httpx loguru stamina
 
 rm -rf "$DEST" 2>/dev/null || true
 git clone --depth 1 "$REPO" "$DEST"

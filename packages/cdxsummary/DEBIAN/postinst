@@ -5,7 +5,7 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 echo -e "${GREEN}Installing cdxsummary 0.1.1...${NC}"
-pip install cdxsummary || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary cdxsummary || {
     echo -e "${RED}Error: Failed to install cdxsummary. Ensure Python and pip are available.${NC}"
     exit 1
 }

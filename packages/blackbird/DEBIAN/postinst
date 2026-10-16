@@ -16,10 +16,10 @@ sed -i '/pillow/d' requirements.txt
 sed -i '/requests/d' requirements.txt
 
 # Install requests separately (as per user request)
-pip install requests
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests
 
 # Install remaining requirements
-pip install -r requirements.txt
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r requirements.txt
 
 cat > "$LAUNCHER" << 'EOF'
 #!/data/data/com.termux/files/usr/bin/bash

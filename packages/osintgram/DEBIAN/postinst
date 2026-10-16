@@ -26,9 +26,8 @@ rm -f "$TMPDIR/osintgram.tar.gz"
 
 cd "$INSTALL_DIR"
 
-pip install setuptools wheel packaging cython
+pip install setuptools wheel
 
-export ANDROID_API_LEVEL="$(getprop ro.build.version.sdk)"
 # TUR community wheel index + prefer-binary: prebuilt Android wheels
 # (pydantic-core, brotli, ...) so pip skips the slow on-device
 # Rust/C source builds.

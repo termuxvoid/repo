@@ -8,7 +8,7 @@ NC='\033[0m'
 echo -e "${GREEN}Installing sploitscan 0.14.3...${NC}"
 
 echo -e "${YELLOW}Installing sploitscan via pip...${NC}"
-pip install sploitscan==0.14.3 || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary sploitscan==0.14.3 || {
     echo -e "${RED}Error: Failed to install sploitscan.${NC}"
     exit 1
 }

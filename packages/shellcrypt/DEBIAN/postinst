@@ -3,7 +3,7 @@ set -e
 
 echo "[*] Installing shellcrypt dependencies..."
 npm install -g bash-obfuscate
-python -m pip install emojify
+python -m pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary emojify
 
 echo "shellcrypt installed successfully!"
 echo ""

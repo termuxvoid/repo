@@ -11,7 +11,7 @@ git clone --depth=1 https://github.com/devanshbatham/paramspider.git "$PARAMSPID
 
 echo "[*] Installing Python package..."
 cd "$PARAMSPIDER_DIR"
-pip install .
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary .
 
 echo -e "\n[√] ParamSpider installed successfully!"
 echo "Usage:"

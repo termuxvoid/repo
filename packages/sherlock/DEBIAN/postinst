@@ -1,2 +1,2 @@
 #!/data/data/com.termux/files/usr/bin/bash
-pip install sherlock-project 
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary sherlock-project 

@@ -21,7 +21,7 @@ git clone --quiet https://github.com/TrixSec/waymap.git $PREFIX/share/waymap || 
 echo -e "${YELLOW}Installing requirements...${NC}"
 cd $PREFIX/share/waymap
 if [ -f "requirements.txt" ]; then
-    pip install -r requirements.txt -q|| {
+    pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r requirements.txt -q|| {
         echo -e "${RED}Error: Failed to install requirements.${NC}"
         exit 1
     }

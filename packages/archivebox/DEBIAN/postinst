@@ -30,7 +30,7 @@ cat > "$SP/uv.py" <<'EOF'
 __version__ = "0.12.12"
 EOF
 
-pip install "psycopg==$psycopg_ver"
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary "psycopg==$psycopg_ver"
 
 mkdir -p "$SP/psycopg_binary-$psycopg_ver.dist-info"
 cat > "$SP/psycopg_binary-$psycopg_ver.dist-info/METADATA" <<EOF
@@ -48,7 +48,7 @@ EOF
 mkdir -p "$SP/psycopg_binary"
 : > "$SP/psycopg_binary/__init__.py"
 
-pip install archivebox==0.9.35rc437
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary archivebox==0.9.35rc437
 
 echo "archivebox installed. Run 'archivebox' to start."
 echo "For initial setup: archivebox init"

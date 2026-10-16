@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
-pip install arjun==2.2.7
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary arjun==2.2.7
 
 echo "Arjun installed successfully."
 echo "Basic usage:"

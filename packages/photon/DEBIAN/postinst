@@ -8,7 +8,7 @@ LAUNCHER="$PREFIX/bin/photon"
 
 git clone https://github.com/s0md3v/photon.git "$INSTALL_DIR"
 cd "$INSTALL_DIR"
-pip install -r requirements.txt
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r requirements.txt
 
 cat > "$LAUNCHER" << 'EOF'
 #!/data/data/com.termux/files/usr/bin/bash

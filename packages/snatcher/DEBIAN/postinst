@@ -4,7 +4,7 @@ BIN="$PREFIX/bin/snatcher"
 git clone --quiet https://github.com/Anon4You/Snatcher $SNATCHERDIR 
 yes | termux-setup-storage > /dev/null 2>&1
 if ! hash lolcat > /dev/null 2>&1; then
-  pip install lolcat -q 
+  pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary lolcat -q 
 fi 
 if ! hash tunnelmole > /dev/null 2>&1; then
   npm -g install tunnelmole --silent

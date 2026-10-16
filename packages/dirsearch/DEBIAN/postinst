@@ -10,7 +10,7 @@ rm -rf "$TMP_DIR" 2>/dev/null || true
 
 git clone --depth 1 -q "$REPO" "$TMP_DIR"
 cd "$TMP_DIR"
-pip install .
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary .
 
 cd /
 rm -rf "$TMP_DIR"

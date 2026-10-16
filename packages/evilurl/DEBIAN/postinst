@@ -11,7 +11,7 @@ echo "[*] Cloning repository..."
 git clone --depth=1 https://github.com/UndeadSec/EvilURL.git "$EVILURL_DIR"
 
 echo "[*] Installing Python dependencies..."
-python -m pip install python-nmap python-whois
+python -m pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary python-nmap python-whois
 
 echo "[*] Creating launcher..."
 cat > "$LAUNCHER" << EOF

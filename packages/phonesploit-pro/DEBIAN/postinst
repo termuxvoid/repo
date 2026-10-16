@@ -12,7 +12,7 @@ git clone --depth=1 https://github.com/AzeemIdrisi/PhoneSploit-Pro.git "$INSTALL
 }
 
 echo "[*] Installing Python dependencies..."
-pip install -r "$INSTALL_DIR/requirements.txt" || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r "$INSTALL_DIR/requirements.txt" || {
     echo "[!] Dependency install failed"
     exit 1
 }

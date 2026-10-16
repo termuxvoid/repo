@@ -9,7 +9,7 @@ LAUNCHER="$PREFIX/bin/darkcrawler"
 git clone --depth 1 https://github.com/Anon4You/DarkCrawler.git "$INSTALL_DIR"
 
 cd "$INSTALL_DIR"
-pip install requests pysocks beautifulsoup4 stem rich
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests pysocks beautifulsoup4 stem rich
 
 cat > "$LAUNCHER" << 'EOF'
 #!/data/data/com.termux/files/usr/bin/bash

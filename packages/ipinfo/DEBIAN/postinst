@@ -1,5 +1,5 @@
 #!/bin/bash
-pip install requests --quiet
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests --quiet
 
 echo "
 now you can launch the tool by

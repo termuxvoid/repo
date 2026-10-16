@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
-pip install requests -q
-pip install rich -q
-pip install lolcat -q
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests -q
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary rich -q
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary lolcat -q
 echo -e "
 Installation complete
 report bugs at \e[34mhttps://telegram.me/alienkrishn

@@ -2,7 +2,7 @@
 BIN="$PREFIX/bin/5luser"
 SRCDIR="$PREFIX/share/5luser"
 git clone --quiet https://github.com/Anon4You/5LUser.git $SRCDIR 
-pip install requests -q 
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests -q 
 cat > $BIN <<- EOF
 #!$PREFIX/bin/bash
 cd $SRCDIR 

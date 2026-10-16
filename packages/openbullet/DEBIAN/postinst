@@ -16,7 +16,7 @@ git clone --depth=1 https://github.com/esfelurm/OpenBullet.git "$OBP_DIR" || {
 }
 
 echo -e "${GREEN}Installing Python dependencies...${NC}"
-pip install requests bs4 colorama jsonpath_ng || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests bs4 colorama jsonpath_ng || {
     echo -e "${RED}Error: Failed to install Python dependencies.${NC}"
     exit 1
 }

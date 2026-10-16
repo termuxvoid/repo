@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 echo "[*] Installing Holehe via pip..."
-pip install holehe || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary holehe || {
     echo "[!] Installation failed. Ensure:"
     echo "    1. Python 3.7+ is installed"
     echo "    2. pip is up-to-date (python -m pip install --upgrade pip)"

@@ -26,7 +26,7 @@ git clone --quiet https://github.com/snooppr/snoop.git "$INSTALL_DIR" || {
 # Install requirements
 echo -e "${YELLOW}Installing Python dependencies...${NC}"
 cd "$INSTALL_DIR"
-pip install -r requirements.txt -q || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r requirements.txt -q || {
     echo -e "${RED}Error: Failed to install requirements.${NC}"
     exit 1
 }

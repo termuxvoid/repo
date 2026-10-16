@@ -19,7 +19,7 @@ git clone https://github.com/Anon4You/PKiller.git $PREFIX/share/PKiller || {
 }
 
 echo -e "${YELLOW}Installing Python dependencies...${NC}"
-pip install termcolor -q || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary termcolor -q || {
     echo -e "${RED}Error: Failed to install termcolor.${NC}"
     exit 1
 }

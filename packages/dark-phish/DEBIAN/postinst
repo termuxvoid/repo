@@ -4,7 +4,7 @@ set -e
 
 echo "Installing Dark-Phish..."
 
-pip install requests wget pyshorteners bs4 || exit 1
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary requests wget pyshorteners bs4 || exit 1
 
 INSTALL_DIR="$PREFIX/share/dark-phish"
 rm -rf "$INSTALL_DIR"

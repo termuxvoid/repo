@@ -9,7 +9,7 @@ LAUNCHER="$PREFIX/bin/elpscrk"
 git clone https://github.com/D4Vinci/elpscrk.git "$INSTALL_DIR"
 
 cd "$INSTALL_DIR"
-pip install colorama phonenumbers
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary colorama phonenumbers
 
 cat > "$LAUNCHER" << 'EOF'
 #!/data/data/com.termux/files/usr/bin/bash

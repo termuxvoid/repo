@@ -8,7 +8,7 @@ NC='\033[0m'
 echo -e "${GREEN}Installing subcat 1.6.0...${NC}"
 
 echo -e "${YELLOW}Installing subcat via pip...${NC}"
-pip install subcat==1.6.0 || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary subcat==1.6.0 || {
     echo -e "${RED}Error: Failed to install subcat.${NC}"
     exit 1
 }

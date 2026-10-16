@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
-pip install onionsearch==1.3
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary onionsearch==1.3
 exit 0
