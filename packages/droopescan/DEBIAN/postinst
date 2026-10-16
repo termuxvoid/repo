@@ -9,7 +9,7 @@ pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --p
 rm -rf "$DEST" 2>/dev/null || true
 git clone --depth 1 "$REPO" "$DEST"
 
-python -m pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary --no-deps "$DEST"
+python -m pip install --no-deps "$DEST"
 
 # cement 2.6.x still uses the 'imp' module removed in Python 3.12;
 # patch the installed library to use importlib instead.

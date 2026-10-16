@@ -14,7 +14,7 @@ curl -sL -o $TMPDIR/hbctool-0.1.6-py3-none-any.whl "https://github.com/Kirlif/HB
 }
 
 echo -e "${YELLOW}Installing hbctool...${NC}"
-pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary --quiet --force-reinstall $TMPDIR/hbctool-0.1.6-py3-none-any.whl || {
+pip install --quiet --force-reinstall $TMPDIR/hbctool-0.1.6-py3-none-any.whl || {
     echo -e "${RED}Error: Failed to install hbctool.${NC}"
     exit 1
 }
