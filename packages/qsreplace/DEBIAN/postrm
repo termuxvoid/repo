@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/qsreplace" "$HOME/go/bin/qsreplace"
+rm -f "$PREFIX/bin/qsreplace"
 echo "qsreplace removed."
 exit 0

@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/vulnx" "$HOME/go/bin/vulnx"
+rm -f "$PREFIX/bin/vulnx"
 echo "vulnx removed."
 exit 0

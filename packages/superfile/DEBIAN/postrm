@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/superfile" "$HOME/go/bin/superfile"
+rm -f "$PREFIX/bin/superfile"
 echo "superfile removed."
 exit 0

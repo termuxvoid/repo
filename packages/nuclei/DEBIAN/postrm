@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/nuclei" "$HOME/go/bin/nuclei"
+rm -f "$PREFIX/bin/nuclei"
 echo "nuclei removed."
 exit 0

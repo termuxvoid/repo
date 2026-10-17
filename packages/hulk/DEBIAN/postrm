@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/hulk" "$HOME/go/bin/hulk"
+rm -f "$PREFIX/bin/hulk"
 echo "hulk removed."
 exit 0

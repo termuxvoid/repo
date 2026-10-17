@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/fscan" "$HOME/go/bin/fscan"
+rm -f "$PREFIX/bin/fscan"
 echo "fscan removed."
 exit 0

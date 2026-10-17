@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/nosqli" "$HOME/go/bin/nosqli"
+rm -f "$PREFIX/bin/nosqli"
 echo "nosqli removed."
 exit 0

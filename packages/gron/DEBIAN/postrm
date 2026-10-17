@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/gron" "$HOME/go/bin/gron"
+rm -f "$PREFIX/bin/gron"
 echo "gron removed."
 exit 0

@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/unfurl" "$HOME/go/bin/unfurl"
+rm -f "$PREFIX/bin/unfurl"
 echo "unfurl removed."
 exit 0

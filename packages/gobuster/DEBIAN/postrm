@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/gobuster" "$HOME/go/bin/gobuster"
+rm -f "$PREFIX/bin/gobuster"
 echo "gobuster removed."
 exit 0

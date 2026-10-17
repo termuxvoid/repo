@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/waybackurls" "$HOME/go/bin/waybackurls"
+rm -f "$PREFIX/bin/waybackurls"
 echo "waybackurls removed."
 exit 0

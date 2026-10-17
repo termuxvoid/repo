@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/wpprobe" "$HOME/go/bin/wpprobe"
+rm -f "$PREFIX/bin/wpprobe"
 echo "wpprobe removed."
 exit 0

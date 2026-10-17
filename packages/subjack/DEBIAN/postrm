@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/subjack" "$HOME/go/bin/subjack"
+rm -f "$PREFIX/bin/subjack"
 echo "subjack removed."
 exit 0

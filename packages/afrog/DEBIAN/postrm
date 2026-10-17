@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/afrog" "$HOME/go/bin/afrog"
+rm -f "$PREFIX/bin/afrog"
 rm -rf "$HOME/.config/afrog"
 echo "afrog removed."
 exit 0

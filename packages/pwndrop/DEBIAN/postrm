@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/pwndrop" "$HOME/go/bin/pwndrop"
+rm -f "$PREFIX/bin/pwndrop"
 rm -rf "$PREFIX/share/pwndrop"
 echo "pwndrop removed."
 exit 0

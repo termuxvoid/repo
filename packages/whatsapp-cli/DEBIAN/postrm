@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/whatsapp-cli" "$HOME/go/bin/whatsapp-cli"
+rm -f "$PREFIX/bin/whatsapp-cli"
 echo "whatsapp-cli removed."
 exit 0
