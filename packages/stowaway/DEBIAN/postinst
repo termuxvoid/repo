@@ -4,6 +4,7 @@ set -e
 VERSION="2.2"
 DEST="$PREFIX/share/stowaway"
 
+rm -rf "$DEST"
 mkdir -p "$DEST"
 cd "$DEST"
 

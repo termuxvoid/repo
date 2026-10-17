@@ -4,6 +4,7 @@ set -e
 VERSION="1.12.0"
 BUILD_DIR="$TMPDIR/httpx-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

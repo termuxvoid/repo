@@ -4,6 +4,7 @@ set -e
 VERSION="1.0.3"
 BUILD_DIR="$TMPDIR/kerbrute-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

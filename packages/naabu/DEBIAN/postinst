@@ -4,6 +4,7 @@ set -e
 VERSION="2.6.1"
 BUILD_DIR="$TMPDIR/naabu-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

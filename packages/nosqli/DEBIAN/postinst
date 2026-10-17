@@ -4,6 +4,7 @@ set -e
 VERSION="0.5.4"
 BUILD_DIR="$TMPDIR/nosqli-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

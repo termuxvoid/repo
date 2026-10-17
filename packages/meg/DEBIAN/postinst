@@ -4,6 +4,7 @@ set -e
 VERSION="v0.3.0"
 BUILD_DIR="$TMPDIR/meg-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

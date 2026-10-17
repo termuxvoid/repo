@@ -4,6 +4,7 @@ set -e
 VERSION="0.22.0"
 BUILD_DIR="$TMPDIR/wacli-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

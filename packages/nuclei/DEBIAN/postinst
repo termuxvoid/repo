@@ -4,6 +4,7 @@ set -e
 VERSION="3.11.1"
 BUILD_DIR="$TMPDIR/nuclei-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

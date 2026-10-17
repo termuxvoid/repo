@@ -4,6 +4,7 @@ set -e
 VERSION="v2.3.0"
 BUILD_DIR="$TMPDIR/ffuf-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

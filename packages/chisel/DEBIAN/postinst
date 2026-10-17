@@ -4,6 +4,7 @@ set -e
 VERSION="v1.12.1"
 BUILD_DIR="$TMPDIR/chisel-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

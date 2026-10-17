@@ -4,6 +4,7 @@ set -e
 VERSION="2.1.7"
 BUILD_DIR="$TMPDIR/goshs-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

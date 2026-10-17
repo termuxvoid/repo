@@ -4,6 +4,7 @@ set -e
 VERSION="v0.12.12"
 BUILD_DIR="$TMPDIR/wpprobe-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

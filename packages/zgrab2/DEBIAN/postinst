@@ -4,6 +4,7 @@ set -e
 VERSION="v1.0.0"
 BUILD_DIR="$TMPDIR/zgrab2-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

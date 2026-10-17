@@ -4,6 +4,7 @@ set -e
 VERSION="0.7.1"
 BUILD_DIR="$TMPDIR/gron-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

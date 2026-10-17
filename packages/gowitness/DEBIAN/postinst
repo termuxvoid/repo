@@ -4,6 +4,7 @@ set -e
 VERSION="3.2.2"
 BUILD_DIR="$TMPDIR/gowitness-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 

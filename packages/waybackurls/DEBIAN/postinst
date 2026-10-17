@@ -4,6 +4,7 @@ set -e
 VERSION="0.1.0"
 BUILD_DIR="$TMPDIR/waybackurls-build"
 
+rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
