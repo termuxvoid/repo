@@ -2,7 +2,7 @@ Package: waybackurls
 Version: 0.1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: golang, git
+Depends: curl, golang, tar, gzip
 Section: recon
 Priority: optional
 Homepage: https://github.com/tomnomnom/waybackurls

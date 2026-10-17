@@ -1,31 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
-LAUNCHER="$PREFIX/bin/waybackurls"
-WAYBACKURLS_BIN="$HOME/go/bin/waybackurls"
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
+VERSION="0.1.0"
+BUILD_DIR="$TMPDIR/waybackurls-build"
 
-echo -e "${GREEN}Installing waybackurls...${NC}"
-go install -v github.com/tomnomnom/waybackurls@latest || {
-    echo -e "${RED}Error: Failed to install waybackurls. Ensure Go is installed and internet is available.${NC}"
-    exit 1
-}
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-echo -e "${GREEN}Creating launcher at $LAUNCHER...${NC}"
-cat > "$LAUNCHER" <<- EOF
-#!/data/data/com.termux/files/usr/bin/bash
-$WAYBACKURLS_BIN "\$@"
-EOF
+curl -fsSL -o src.tar.gz "https://github.com/tomnomnom/waybackurls/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-chmod +x "$LAUNCHER" || {
-    echo -e "${RED}Error: Failed to set executable permissions for $LAUNCHER.${NC}"
-    exit 1
-}
+go build -trimpath -ldflags "-w -s" -o waybackurls .
+install -Dm755 waybackurls "$PREFIX/bin/waybackurls"
 
-if [ -x "$WAYBACKURLS_BIN" ]; then
-    echo -e "${GREEN}waybackurls installed successfully. Run 'waybackurls -h' to verify.${NC}"
-else
-    echo -e "${RED}Error: waybackurls binary not found at $WAYBACKURLS_BIN.${NC}"
-    exit 1
-fi
+cd / && rm -rf "$BUILD_DIR"
+
+echo "waybackurls installed. Run 'waybackurls'"
+exit 0

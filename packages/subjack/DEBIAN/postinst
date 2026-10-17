@@ -1,31 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
-LAUNCHER="$PREFIX/bin/subjack"
-SUBJACK_BIN="$HOME/go/bin/subjack"
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
+VERSION="3.1.0"
+BUILD_DIR="$TMPDIR/subjack-build"
 
-echo -e "${GREEN}Installing subjack...${NC}"
-go install -v github.com/haccer/subjack@latest || {
-    echo -e "${RED}Error: Failed to install subjack. Ensure Go is installed and internet is available.${NC}"
-    exit 1
-}
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-echo -e "${GREEN}Creating launcher at $LAUNCHER...${NC}"
-cat > "$LAUNCHER" <<- EOF
-#!/data/data/com.termux/files/usr/bin/bash
-$SUBJACK_BIN "\$@"
-EOF
+curl -fsSL -o src.tar.gz "https://github.com/haccer/subjack/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-chmod +x "$LAUNCHER" || {
-    echo -e "${RED}Error: Failed to set executable permissions for $LAUNCHER.${NC}"
-    exit 1
-}
+go build -trimpath -ldflags "-w -s" -o ./dist/subjack .
+install -Dm755 ./dist/subjack "$PREFIX/bin/subjack"
 
-if [ -x "$SUBJACK_BIN" ]; then
-    echo -e "${GREEN}subjack installed successfully. Run 'subjack -h' to verify.${NC}"
-else
-    echo -e "${RED}Error: subjack binary not found at $SUBJACK_BIN.${NC}"
-    exit 1
-fi
+cd / && rm -rf "$BUILD_DIR"
+
+echo "subjack installed. Run 'subjack'"
+exit 0

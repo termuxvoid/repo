@@ -1,31 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
-LAUNCHER="$PREFIX/bin/subzy"
-SUBZY_BIN="$HOME/go/bin/subzy"
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
+VERSION="1.2.1"
+BUILD_DIR="$TMPDIR/subzy-build"
 
-echo -e "${GREEN}Installing subzy...${NC}"
-go install -v github.com/PentestPad/subzy@latest || {
-    echo -e "${RED}Error: Failed to install subzy. Ensure Go is installed and internet is available.${NC}"
-    exit 1
-}
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-echo -e "${GREEN}Creating launcher at $LAUNCHER...${NC}"
-cat > "$LAUNCHER" <<- EOF
-#!/data/data/com.termux/files/usr/bin/bash
-$SUBZY_BIN "\$@"
-EOF
+curl -fsSL -o src.tar.gz "https://github.com/PentestPad/subzy/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-chmod +x "$LAUNCHER" || {
-    echo -e "${RED}Error: Failed to set executable permissions for $LAUNCHER.${NC}"
-    exit 1
-}
+go build -trimpath -ldflags "-w -s" -o subzy .
+install -Dm755 subzy "$PREFIX/bin/subzy"
 
-if [ -x "$SUBZY_BIN" ]; then
-    echo -e "${GREEN}subzy installed successfully. Run 'subzy -h' to verify.${NC}"
-else
-    echo -e "${RED}Error: subzy binary not found at $SUBZY_BIN.${NC}"
-    exit 1
-fi
+cd / && rm -rf "$BUILD_DIR"
+
+echo "subzy installed. Run 'subzy'"
+exit 0

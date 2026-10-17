@@ -1,14 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="v0.5.4"
-REPO="github.com/Charlie-belmer/nosqli"
+VERSION="0.5.4"
+BUILD_DIR="$TMPDIR/nosqli-build"
 
-go install -trimpath -ldflags "-w -s" "${REPO}@${VERSION}"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-if [ ! -f "$PREFIX/bin/nosqli" ] && [ -f "$HOME/go/bin/nosqli" ]; then
-    ln -sf "$HOME/go/bin/nosqli" "$PREFIX/bin/nosqli"
-fi
+curl -fsSL -o src.tar.gz "https://github.com/Charlie-belmer/nosqli/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
+
+go build -trimpath -ldflags "-w -s" -o nosqli .
+install -Dm755 nosqli "$PREFIX/bin/nosqli"
+
+cd / && rm -rf "$BUILD_DIR"
 
 echo "nosqli installed. Run 'nosqli'"
 exit 0

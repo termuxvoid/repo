@@ -2,7 +2,7 @@ Package: subzy
 Version: 1.2.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: golang, git
+Depends: curl, golang, tar, gzip
 Section: security
 Priority: optional
 Homepage: https://github.com/PentestPad/subzy

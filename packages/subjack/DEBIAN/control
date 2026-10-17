@@ -1,8 +1,8 @@
 Package: subjack
-Version: 3.0.0
+Version: 3.1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: golang, git
+Depends: curl, golang, tar, gzip
 Section: security
 Priority: optional
 Homepage: https://github.com/haccer/subjack

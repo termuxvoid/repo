@@ -1,31 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
-LAUNCHER="$PREFIX/bin/kerbrute"
-KERBRUTE_BIN="$HOME/go/bin/kerbrute"
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
+VERSION="1.0.3"
+BUILD_DIR="$TMPDIR/kerbrute-build"
 
-echo -e "${GREEN}Installing Kerbrute...${NC}"
-go install -v github.com/ropnop/kerbrute@latest || {
-    echo -e "${RED}Error: Failed to install Kerbrute. Ensure Go is installed and internet is available.${NC}"
-    exit 1
-}
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-echo -e "${GREEN}Creating launcher at $LAUNCHER...${NC}"
-cat > "$LAUNCHER" <<- EOF
-#!/data/data/com.termux/files/usr/bin/bash
-$KERBRUTE_BIN "\$@"
-EOF
+curl -fsSL -o src.tar.gz "https://github.com/ropnop/kerbrute/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-chmod +x "$LAUNCHER" || {
-    echo -e "${RED}Error: Failed to set executable permissions for $LAUNCHER.${NC}"
-    exit 1
-}
+go build -trimpath -ldflags "-w -s" -o kerbrute .
+install -Dm755 kerbrute "$PREFIX/bin/kerbrute"
 
-if [ -x "$KERBRUTE_BIN" ]; then
-    echo -e "${GREEN}Kerbrute installed successfully. Run 'kerbrute -h' to verify.${NC}"
-else
-    echo -e "${RED}Error: Kerbrute binary not found at $KERBRUTE_BIN.${NC}"
-    exit 1
-fi
+cd / && rm -rf "$BUILD_DIR"
+
+echo "kerbrute installed. Run 'kerbrute'"
+exit 0
