@@ -1,32 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
-LAUNCHER="$PREFIX/bin/gobuster"
-GOBUSTER_BIN="$HOME/go/bin/gobuster"
-GO_DIR="$HOME/go"
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
-NC='\033[0m'
-
-echo -e "${GREEN}Uninstalling gobuster...${NC}"
-
-[ -d "$GO_DIR" ] && chmod 751 -R "$GO_DIR"
-
-if [ -f "$LAUNCHER" ]; then
-    rm -f "$LAUNCHER" && echo -e "${GREEN}✓ Removed launcher${NC}" || \
-    echo -e "${RED}✗ Failed to remove launcher${NC}"
-fi
-
-if [ -f "$GOBUSTER_BIN" ]; then
-    rm -f "$GOBUSTER_BIN" && echo -e "${GREEN}✓ Removed binary${NC}" || \
-    echo -e "${RED}✗ Failed to remove binary (try: rm -f $GOBUSTER_BIN)${NC}"
-fi
-
-read -p "Clean wordlists directory? [y/N]: " choice
-[[ "$choice" =~ [yY] ]] && {
-    rm -rf "$HOME/gobuster-wordlists" 2>/dev/null && \
-    echo -e "${GREEN}✓ Wordlists removed${NC}" || \
-    echo -e "${RED}✗ No wordlists found${NC}"
-}
-
-echo -e "${GREEN}Uninstallation complete${NC}"
+rm -f "$PREFIX/bin/gobuster" "$HOME/go/bin/gobuster"
+echo "gobuster removed."
+exit 0

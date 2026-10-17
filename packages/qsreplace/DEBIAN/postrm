@@ -1,6 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
-# Remove binary and symlink
-rm -f "$HOME/go/bin/qsreplace" "$PREFIX/bin/qsreplace"
-
+rm -f "$PREFIX/bin/qsreplace" "$HOME/go/bin/qsreplace"
+echo "qsreplace removed."
 exit 0

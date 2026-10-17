@@ -1,35 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
-LAUNCHER="$PREFIX/bin/httpx"
-HTTPX_BIN="$HOME/go/bin/httpx"
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
-NC='\033[0m'
-
-echo -e "${GREEN}Uninstalling httpx...${NC}"
-
-[ -d "$HOME/go" ] && chmod 751 -R "$HOME/go"
-
-if [ -f "$LAUNCHER" ]; then
-    rm -f "$LAUNCHER" && echo -e "${GREEN}✓ Removed launcher${NC}" || \
-    echo -e "${RED}✗ Failed to remove launcher${NC}"
-else
-    echo -e "${YELLOW}⚠ Launcher not found${NC}"
-fi
-
-if [ -f "$HTTPX_BIN" ]; then
-    rm -f "$HTTPX_BIN" && echo -e "${GREEN}✓ Removed binary${NC}" || \
-    echo -e "${RED}✗ Failed to remove binary (try: rm -f $HTTPX_BIN)${NC}"
-else
-    echo -e "${YELLOW}⚠ Binary not found${NC}"
-fi
-
-read -p "Clean Go cache? [y/N]: " choice
-if [[ "$choice" =~ [yY] ]]; then
-    go clean -cache -modcache 2>/dev/null && \
-    echo -e "${GREEN}✓ Go cache cleaned${NC}" || \
-    echo -e "${RED}✗ Failed to clean cache${NC}"
-fi
-
-echo -e "${GREEN}✔ httpx uninstallation complete${NC}"
+rm -f "$PREFIX/bin/httpx" "$HOME/go/bin/httpx"
+echo "httpx removed."
+exit 0

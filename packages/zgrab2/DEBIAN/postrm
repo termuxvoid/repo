@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/zgrab2"
-echo "zgrab2 completely removed."
+rm -f "$PREFIX/bin/zgrab2" "$HOME/go/bin/zgrab2"
+echo "zgrab2 removed."
 exit 0

@@ -1,16 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
-
-echo -e "${GREEN}Uninstalling whatsapp-cli...${NC}"
-
-# Remove binary
-if [ -f "$PREFIX/bin/whatsapp-cli" ]; then
-    rm -f "$PREFIX/bin/whatsapp-cli"
-    echo -e "${GREEN}Removed whatsapp-cli binary${NC}"
-fi
-
-echo -e "${GREEN}whatsapp-cli completely removed${NC}"
+rm -f "$PREFIX/bin/whatsapp-cli" "$HOME/go/bin/whatsapp-cli"
+echo "whatsapp-cli removed."
 exit 0

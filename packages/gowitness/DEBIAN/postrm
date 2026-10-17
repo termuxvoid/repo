@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/gowitness"
+rm -f "$PREFIX/bin/gowitness" "$HOME/go/bin/gowitness"
 echo "gowitness removed."
 exit 0

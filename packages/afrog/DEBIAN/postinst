@@ -1,16 +1,24 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="v3.5.8"
+VERSION="3.5.6"
 BUILD_DIR="$TMPDIR/afrog-build"
 
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
-curl -fsSL -o src.tar.gz "https://github.com/zan8in/afrog/archive/refs/tags/v3.5.8.tar.gz"
+curl -fsSL -o src.tar.gz "https://github.com/zan8in/afrog/archive/refs/tags/v${VERSION}.tar.gz"
 tar -xzf src.tar.gz --strip-components=1
 
-go build -trimpath -o afrog ./cmd/afrog
+go mod vendor
+
+# dm driver overflows uint32 on 32-bit builds; upstream fix pending
+PATCH_FILE="vendor/gitee.com/chunanyong/dm/zq.go"
+if [ -f "$PATCH_FILE" ]; then
+    sed -i 's/Dm_build_704 && len(dataBytes) < 0xffffffff &&/Dm_build_704 \&\& uint32(len(dataBytes)) < uint32(0xffffffff) \&\&/' "$PATCH_FILE"
+fi
+
+go build -trimpath -ldflags "-w -s" -o afrog ./cmd/afrog
 install -Dm755 afrog "$PREFIX/bin/afrog"
 
 cd / && rm -rf "$BUILD_DIR"

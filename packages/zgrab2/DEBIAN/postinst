@@ -10,8 +10,12 @@ cd "$BUILD_DIR"
 curl -fsSL -o src.tar.gz "https://github.com/zmap/zgrab2/archive/refs/tags/v1.0.0.tar.gz"
 tar -xzf src.tar.gz --strip-components=1
 
-go build -trimpath -o zgrab2 ./cmd/zgrab2
+export CGO_ENABLED=0
+go build -trimpath -ldflags "-w -s" -o zgrab2 ./cmd/zgrab2
 install -Dm755 zgrab2 "$PREFIX/bin/zgrab2"
+
+mkdir -p "$HOME/.config/zgrab2"
+touch "$HOME/.config/zgrab2/blocklist.conf"
 
 cd / && rm -rf "$BUILD_DIR"
 

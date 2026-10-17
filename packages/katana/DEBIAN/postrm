@@ -1,3 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$HOME/go/bin/katana" "$PREFIX/bin/katana"
+rm -f "$PREFIX/bin/katana" "$HOME/go/bin/katana"
+echo "katana removed."
 exit 0

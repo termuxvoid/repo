@@ -1,3 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$HOME/go/bin/naabu" "$PREFIX/bin/naabu"
+rm -f "$PREFIX/bin/naabu" "$HOME/go/bin/naabu"
+echo "naabu removed."
 exit 0

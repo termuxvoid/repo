@@ -1,16 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
-
-echo -e "${GREEN}Uninstalling wacli...${NC}"
-
-# Remove binary
-if [ -f "$PREFIX/bin/wacli" ]; then
-    rm -f "$PREFIX/bin/wacli"
-    echo -e "${GREEN}Removed wacli binary${NC}"
-fi
-
-echo -e "${GREEN}wacli completely removed${NC}"
+rm -f "$PREFIX/bin/wacli" "$HOME/go/bin/wacli"
+echo "wacli removed."
 exit 0

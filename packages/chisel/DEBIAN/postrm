@@ -1,9 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-set -e
-
-rm -f $PREFIX/bin/chisel
-rm -rf $PREFIX/share/chisel
-
-echo "chisel completely removed."
-
+rm -f "$PREFIX/bin/chisel" "$HOME/go/bin/chisel"
+rm -rf "$PREFIX/share/chisel"
+echo "chisel removed."
 exit 0

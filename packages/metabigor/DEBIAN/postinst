@@ -10,8 +10,10 @@ cd "$BUILD_DIR"
 curl -fsSL -o src.tar.gz "https://github.com/j3ssie/metabigor/archive/refs/tags/v2.2.0.tar.gz"
 tar -xzf src.tar.gz --strip-components=1
 
-go build -trimpath -o metabigor ./cmd/metabigor
-install -Dm755 metabigor "$PREFIX/bin/metabigor"
+BUILDDATE=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+LDFLAGS="-s -w -X 'main.version=${VERSION}' -X 'main.commit=${VERSION}' -X 'main.buildDate=${BUILDDATE}'"
+go build -trimpath -ldflags "${LDFLAGS}" -o ./dist/metabigor ./cmd/metabigor
+install -Dm755 ./dist/metabigor "$PREFIX/bin/metabigor"
 
 cd / && rm -rf "$BUILD_DIR"
 

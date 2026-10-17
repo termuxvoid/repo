@@ -1,3 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$HOME/go/bin/subfinder" "$PREFIX/bin/subfinder"
+rm -f "$PREFIX/bin/subfinder" "$HOME/go/bin/subfinder"
+echo "subfinder removed."
 exit 0

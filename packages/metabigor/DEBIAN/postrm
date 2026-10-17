@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-rm -f "$PREFIX/bin/metabigor"
-echo "metabigor completely removed."
+rm -f "$PREFIX/bin/metabigor" "$HOME/go/bin/metabigor"
+echo "metabigor removed."
 exit 0
