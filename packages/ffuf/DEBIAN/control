@@ -2,7 +2,7 @@ Package: ffuf
 Version: 2.3.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, golang
+Depends: curl, golang, tar, gzip
 Section: web
 Priority: optional
 Homepage: https://github.com/ffuf/ffuf

@@ -1,21 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
-echo "Installing frog (patched afrog)..."
+VERSION="v3.5.8"
+BUILD_DIR="$TMPDIR/afrog-build"
 
-git clone https://github.com/zan8in/afrog.git "$TMPDIR/afrogsrc" || exit 1
-cd "$TMPDIR/afrogsrc"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-go mod vendor || exit 1
+curl -fsSL -o src.tar.gz "https://github.com/zan8in/afrog/archive/refs/tags/v3.5.8.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-PATCH_FILE="vendor/gitee.com/chunanyong/dm/zq.go"
-if [ -f "$PATCH_FILE" ]; then
-    sed -i 's/Dm_build_704 && len(dataBytes) < 0xffffffff &&/Dm_build_704 \&\& uint32(len(dataBytes)) < uint32(0xffffffff) \&\&/' "$PATCH_FILE"
-fi
+go build -trimpath -o afrog ./cmd/afrog
+install -Dm755 afrog "$PREFIX/bin/afrog"
 
-go build -v -a -o afrog cmd/afrog/main.go || exit 1
-install -Dm700 -t "$PREFIX/bin" afrog || exit 1
+cd / && rm -rf "$BUILD_DIR"
 
-rm -rf "$TMPDIR/afrogsrc"
-
-echo "frog installed successfully (as 'afrog'). Run 'afrog' to start."
+echo "afrog installed. Run 'afrog'"
 exit 0

@@ -2,7 +2,7 @@ Package: git-hound
 Version: 3.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, golang
+Depends: curl, golang, tar, gzip
 Section: recon
 Priority: optional
 Homepage: https://github.com/tillson/git-hound

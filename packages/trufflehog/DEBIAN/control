@@ -1,8 +1,8 @@
 Package: trufflehog
-Version: 3.97.5
+Version: 3.99.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, golang
+Depends: curl, golang, tar, gzip
 Section: security
 Priority: optional
 Homepage: https://github.com/trufflesecurity/trufflehog

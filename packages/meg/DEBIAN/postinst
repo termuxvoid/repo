@@ -1,23 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-REPO="https://github.com/tomnomnom/meg/archive/refs/tags/v0.3.0.tar.gz"
-TMP_DIR="$TMPDIR/meg-build"
-BIN_DIR="$PREFIX/bin"
+VERSION="v0.3.0"
+BUILD_DIR="$TMPDIR/meg-build"
 
-rm -rf "$TMP_DIR" 2>/dev/null || true
-mkdir -p "$TMP_DIR"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-curl -fsSL -o "$TMP_DIR/meg.tar.gz" "$REPO"
-tar xzf "$TMP_DIR/meg.tar.gz" -C "$TMP_DIR"
-cd "$TMP_DIR/meg-0.3.0"
+curl -fsSL -o src.tar.gz "https://github.com/tomnomnom/meg/archive/refs/tags/v0.3.0.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-go build -trimpath -ldflags "-w -s" -o meg ./
+go build -trimpath -o meg ./
+install -Dm755 meg "$PREFIX/bin/meg"
 
-install -Dm755 meg "$BIN_DIR/meg"
-
-cd / && rm -rf "$TMP_DIR"
+cd / && rm -rf "$BUILD_DIR"
 
 echo "meg installed. Run 'meg'"
-echo "Example: meg /robots.txt https://example.com"
 exit 0

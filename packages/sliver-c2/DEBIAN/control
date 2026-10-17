@@ -1,5 +1,5 @@
 Package: sliver-c2
-Version: 1.7.3
+Version: 1.7.8
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: golang, make, build-essential, zig, sed, python, curl, tar

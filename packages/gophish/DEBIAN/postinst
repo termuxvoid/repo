@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-REPO="https://github.com/gophish/gophish.git"
+VERSION="0.12.1"
 TMP_DIR="$TMPDIR/gophish-build"
 SHARE_DIR="$PREFIX/share/gophish"
 BIN_DIR="$PREFIX/bin"
@@ -14,8 +14,8 @@ rm -rf "$SHARE_DIR" 2>/dev/null || true
 mkdir -p "$TMP_DIR"
 cd "$TMP_DIR"
 
-git clone --depth 1 "$REPO"
-cd gophish
+curl -fsSL -o src.tar.gz "https://github.com/gophish/gophish/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
 go build -trimpath -ldflags "-w -s" -o gophish
 

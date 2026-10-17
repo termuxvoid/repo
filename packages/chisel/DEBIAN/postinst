@@ -1,23 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-REPO="https://github.com/jpillora/chisel/archive/refs/tags/v1.12.1.tar.gz"
-TMP_DIR="$TMPDIR/chisel-build"
-BIN_DIR="$PREFIX/bin"
+VERSION="v1.12.1"
+BUILD_DIR="$TMPDIR/chisel-build"
 
-rm -rf "$TMP_DIR" 2>/dev/null || true
-mkdir -p "$TMP_DIR"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-curl -fsSL -o "$TMP_DIR/chisel.tar.gz" "$REPO"
-tar xzf "$TMP_DIR/chisel.tar.gz" -C "$TMP_DIR"
-cd "$TMP_DIR/chisel-1.12.1"
+curl -fsSL -o src.tar.gz "https://github.com/jpillora/chisel/archive/refs/tags/v1.12.1.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-go build -trimpath -ldflags "-w -s -X github.com/jpillora/chisel/share.BuildVersion=v1.12.1" -o chisel ./
+go build -trimpath -ldflags "-w -s -X github.com/jpillora/chisel/share.BuildVersion=v1.12.1" -o chisel .
+install -Dm755 chisel "$PREFIX/bin/chisel"
 
-install -Dm755 chisel "$BIN_DIR/chisel"
-
-cd / && rm -rf "$TMP_DIR"
+cd / && rm -rf "$BUILD_DIR"
 
 echo "chisel installed. Run 'chisel'"
-echo "Example: chisel server --reverse --port 8080"
 exit 0

@@ -1,44 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
+VERSION="v1.3.3"
+BUILD_DIR="$TMPDIR/whatsapp-cli-build"
 
-echo -e "${GREEN}Installing whatsapp-cli...${NC}"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-# Clone repository quietly
-echo -e "${YELLOW}Cloning whatsapp-cli repository...${NC}"
-git clone --depth 1 -q https://github.com/vicentereig/whatsapp-cli.git "$TMPDIR/whatsapp-cli" || {
-    echo -e "${RED}Error: Failed to clone repository.${NC}"
-    exit 1
-}
+curl -fsSL -o src.tar.gz "https://github.com/vicentereig/whatsapp-cli/archive/refs/tags/v1.3.3.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-cd "$TMPDIR/whatsapp-cli"
+go build -trimpath -o whatsapp-cli .
+install -Dm755 whatsapp-cli "$PREFIX/bin/whatsapp-cli"
 
-# Download dependencies
-echo -e "${YELLOW}Downloading Go dependencies...${NC}"
-go mod download || {
-    echo -e "${RED}Error: Failed to download dependencies.${NC}"
-    exit 1
-}
+cd / && rm -rf "$BUILD_DIR"
 
-# Build binary
-echo -e "${YELLOW}Building whatsapp-cli...${NC}"
-go build -o whatsapp-cli . || {
-    echo -e "${RED}Error: Build failed.${NC}"
-    exit 1
-}
-
-# Install binary
-echo -e "${YELLOW}Installing binary...${NC}"
-install -Dm700 -t "$PREFIX/bin" whatsapp-cli || {
-    echo -e "${RED}Error: Failed to install binary.${NC}"
-    exit 1
-}
-
-# Clean up
-rm -rf "$TMPDIR/whatsapp-cli"
-
-echo -e "${GREEN}whatsapp-cli installed successfully!${NC}"
+echo "whatsapp-cli installed. Run 'whatsapp-cli'"
 exit 0

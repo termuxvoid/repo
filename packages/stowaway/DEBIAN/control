@@ -2,7 +2,7 @@ Package: stowaway
 Version: 2.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, golang
+Depends: curl, golang, tar, gzip
 Section: net
 Priority: optional
 Homepage: https://github.com/ph4ntonn/Stowaway

@@ -1,11 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-REPO_DIR="$TMPDIR/fscan"
-git clone --depth 1 --branch v2.2.1 https://github.com/shadow1ng/fscan.git "$REPO_DIR"
-cd "$REPO_DIR"
-go build -trimpath -ldflags "-w -s" -o fscan .
-install -Dm700 -t "$PREFIX/bin" fscan
-rm -rf "$REPO_DIR"
+VERSION="v2.2.2"
+BUILD_DIR="$TMPDIR/fscan-build"
 
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
+
+curl -fsSL -o src.tar.gz "https://github.com/shadow1ng/fscan/archive/refs/tags/v2.2.2.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
+
+go build -trimpath -o fscan .
+install -Dm755 fscan "$PREFIX/bin/fscan"
+
+cd / && rm -rf "$BUILD_DIR"
+
+echo "fscan installed. Run 'fscan'"
 exit 0

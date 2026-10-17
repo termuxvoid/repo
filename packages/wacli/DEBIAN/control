@@ -1,8 +1,8 @@
 Package: wacli
-Version: 0.13.0
+Version: 0.22.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, golang
+Depends: curl, golang, tar, gzip
 Section: utils
 Priority: optional
 Homepage: https://wacli.sh/

@@ -1,23 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-REPO="https://github.com/Chocapikk/wpprobe/archive/refs/tags/v0.12.11.tar.gz"
-TMP_DIR="$TMPDIR/wpprobe-build"
-BIN_DIR="$PREFIX/bin"
+VERSION="v0.12.12"
+BUILD_DIR="$TMPDIR/wpprobe-build"
 
-rm -rf "$TMP_DIR" 2>/dev/null || true
-mkdir -p "$TMP_DIR"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-curl -fsSL -o "$TMP_DIR/wpprobe.tar.gz" "$REPO"
-tar xzf "$TMP_DIR/wpprobe.tar.gz" -C "$TMP_DIR"
-cd "$TMP_DIR/wpprobe-0.12.11"
+curl -fsSL -o src.tar.gz "https://github.com/Chocapikk/wpprobe/archive/refs/tags/v0.12.12.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-go build -trimpath -ldflags "-w -s" -o wpprobe ./
+go build -trimpath -o wpprobe ./
+install -Dm755 wpprobe "$PREFIX/bin/wpprobe"
 
-install -Dm755 wpprobe "$BIN_DIR/wpprobe"
-
-cd / && rm -rf "$TMP_DIR"
+cd / && rm -rf "$BUILD_DIR"
 
 echo "wpprobe installed. Run 'wpprobe'"
-echo "Example: wpprobe scan -u https://example.com"
 exit 0

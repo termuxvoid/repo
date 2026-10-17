@@ -1,12 +1,12 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-TAG="v1.7.3"
+TAG="v1.7.8"
 TMP_DIR="$TMPDIR/sliver-build"
 BIN_DIR="$PREFIX/bin"
 ARCHIVE_URL="https://github.com/BishopFox/sliver/archive/refs/tags/${TAG}.tar.gz"
 
-LDFLAGS="-s -w -X github.com/bishopfox/sliver/client/command/update.SliverPublicKey=RWTZPg959v3b7tLG7VzKHRB1/QT+d3c71Uzetfa44qAoX5rH7mGoQTTR -X github.com/bishopfox/sliver/client/assets.DefaultArmoryPublicKey=RWSBpxpRWDrD7Fe+VvRE3c2VEDC2NK80rlNCj+BX0gz44Xw07r6KQD9L -X github.com/bishopfox/sliver/client/assets.DefaultArmoryRepoURL=https://api.github.com/repos/sliverarmory/armory/releases -X github.com/bishopfox/sliver/server/version.Version=${TAG} -X github.com/bishopfox/sliver/server/version.GitCommit=3bbaf805104dcc4a75414ee0084e8de50702cad4 -X github.com/bishopfox/sliver/client/version.Version=${TAG} -X github.com/bishopfox/sliver/client/version.GitCommit=3bbaf805104dcc4a75414ee0084e8de50702cad4"
+LDFLAGS="-s -w -X github.com/bishopfox/sliver/client/command/update.SliverPublicKey=RWTZPg959v3b7tLG7VzKHRB1/QT+d3c71Uzetfa44qAoX5rH7mGoQTTR -X github.com/bishopfox/sliver/client/assets.DefaultArmoryPublicKey=RWSBpxpRWDrD7Fe+VvRE3c2VEDC2NK80rlNCj+BX0gz44Xw07r6KQD9L -X github.com/bishopfox/sliver/client/assets.DefaultArmoryRepoURL=https://api.github.com/repos/sliverarmory/armory/releases -X github.com/bishopfox/sliver/server/version.Version=${TAG} -X github.com/bishopfox/sliver/server/version.GitCommit=422044af0dbfd75e4588756f9c7a4e3536eba376 -X github.com/bishopfox/sliver/client/version.Version=${TAG} -X github.com/bishopfox/sliver/client/version.GitCommit=422044af0dbfd75e4588756f9c7a4e3536eba376"
 
 rm -rf "$TMP_DIR" 2>/dev/null || true
 mkdir -p "$TMP_DIR"

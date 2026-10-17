@@ -1,21 +1,18 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-REPO="https://github.com/grafov/hulk.git"
-TMP_DIR="$TMPDIR/hulk-build"
-BIN_DIR="$PREFIX/bin"
+BUILD_DIR="$TMPDIR/hulk-build"
 
-rm -rf "$TMP_DIR" 2>/dev/null || true
-mkdir -p "$TMP_DIR"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-git clone --depth 1 -q "$REPO" "$TMP_DIR"
-cd "$TMP_DIR"
+curl -fsSL -o src.tar.gz "https://github.com/grafov/hulk/archive/refs/heads/master.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-go build -trimpath -ldflags "-w -s" -o hulk
+go build -trimpath -ldflags "-w -s" -o hulk .
+install -Dm755 hulk "$PREFIX/bin/hulk"
 
-install -Dm755 hulk "$BIN_DIR/hulk"
-
-cd / && rm -rf "$TMP_DIR"
+cd / && rm -rf "$BUILD_DIR"
 
 echo "hulk installed. Run 'hulk'"
 exit 0

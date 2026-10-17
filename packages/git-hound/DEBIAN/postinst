@@ -1,18 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-REPO="https://github.com/tillson/git-hound.git"
-TAG="v3.2"
-TMP_DIR="$TMPDIR/git-hound-build"
-BIN="$PREFIX/bin/git-hound"
+VERSION="v3.2"
+BUILD_DIR="$TMPDIR/git-hound-build"
 
-rm -rf "$TMP_DIR" 2>/dev/null || true
-git clone -q --depth 1 --branch "$TAG" --config advice.detachedHead=false "$REPO" "$TMP_DIR"
-cd "$TMP_DIR"
-go build -trimpath -ldflags "-w -s" -o git-hound
-install -Dm755 git-hound "$BIN"
-cd /
-rm -rf "$TMP_DIR"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-[ -x "$BIN" ]
+curl -fsSL -o src.tar.gz "https://github.com/tillson/git-hound/archive/refs/tags/v3.2.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
+
+go build -trimpath -o git-hound .
+install -Dm755 git-hound "$PREFIX/bin/git-hound"
+
+cd / && rm -rf "$BUILD_DIR"
+
+echo "git-hound installed. Run 'git-hound'"
 exit 0

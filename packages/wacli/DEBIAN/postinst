@@ -1,38 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
+VERSION="0.22.0"
+BUILD_DIR="$TMPDIR/wacli-build"
 
-echo -e "${GREEN}Installing wacli...${NC}"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-# Clone repository quietly
-echo -e "${YELLOW}Cloning wacli repository...${NC}"
-git clone --depth 1 -q https://github.com/steipete/wacli.git "$TMPDIR/wacli" || {
-    echo -e "${RED}Error: Failed to clone repository.${NC}"
-    exit 1
-}
+curl -fsSL -o src.tar.gz "https://github.com/steipete/wacli/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-cd "$TMPDIR/wacli"
+go build -tags sqlite_fts5 -o ./dist/wacli ./cmd/wacli
+install -Dm755 ./dist/wacli "$PREFIX/bin/wacli"
 
-# Build binary
-echo -e "${YELLOW}Building wacli...${NC}"
-go build -tags sqlite_fts5 -o ./dist/wacli ./cmd/wacli || {
-    echo -e "${RED}Error: Build failed.${NC}"
-    exit 1
-}
+cd / && rm -rf "$BUILD_DIR"
 
-# Move binary to $PREFIX/bin
-echo -e "${YELLOW}Installing binary...${NC}"
-mv "$TMPDIR/wacli/dist/wacli" "$PREFIX/bin/wacli" || {
-    echo -e "${RED}Error: Failed to move binary.${NC}"
-    exit 1
-}
-chmod +x "$PREFIX/bin/wacli"
-
-# Clean up
-rm -rf "$TMPDIR/wacli"
-
-echo -e "${GREEN}wacli installed successfully!${NC}"
+echo "wacli installed. Run 'wacli'"
 exit 0

@@ -1,22 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-REPO="https://github.com/yorukot/superfile.git"
-TMP_DIR="$TMPDIR/superfile-build"
-BIN_DIR="$PREFIX/bin"
+VERSION="v1.6.0"
+BUILD_DIR="$TMPDIR/superfile-build"
 
-rm -rf "$TMP_DIR" 2>/dev/null || true
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-git clone --depth 1 "$REPO" "$TMP_DIR"
-cd "$TMP_DIR"
+curl -fsSL -o src.tar.gz "https://github.com/yorukot/superfile/archive/refs/tags/v1.6.0.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
 
-go build -trimpath -ldflags "-w -s" -o superfile
+go build -trimpath -o superfile .
+install -Dm755 superfile "$PREFIX/bin/superfile"
 
-install -Dm755 superfile "$BIN_DIR/superfile"
+cd / && rm -rf "$BUILD_DIR"
 
-cd /
-rm -rf "$TMP_DIR"
-
-echo "superfile installed successfully."
-echo "Run 'superfile' to start."
+echo "superfile installed. Run 'superfile'"
 exit 0
