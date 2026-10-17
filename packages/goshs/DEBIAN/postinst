@@ -1,20 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-go install goshs.de/goshs/v2@latest
+VERSION="2.1.7"
+BUILD_DIR="$TMPDIR/goshs-build"
 
-if [ -f "$HOME/go/bin/goshs" ]; then
-    ln -sf "$HOME/go/bin/goshs" "$PREFIX/bin/goshs"
-fi
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-echo "goshs installed successfully."
-echo ""
-echo "Usage examples:"
-echo "  goshs                          # Serve current directory on port 8000"
-echo "  goshs -s -ss -b user:password  # HTTPS with basic auth"
-echo "  goshs -smb -smb-domain CORP    # Capture SMB hashes"
-echo "  goshs -ldap                    # Capture LDAP credentials"
-echo "  goshs -dns -smtp               # Catch DNS callbacks and receive emails"
-echo "  goshs --ttl 2h                 # Self-destruct after 2 hours"
-echo "  goshs --tui                    # Run with interactive terminal dashboard"
+curl -fsSL -o src.tar.gz "https://github.com/goshs-labs/goshs/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
+
+go build -trimpath -ldflags "-w -s" -o goshs .
+install -Dm755 goshs "$PREFIX/bin/goshs"
+
+cd / && rm -rf "$BUILD_DIR"
+
+echo "goshs installed. Run 'goshs'"
 exit 0

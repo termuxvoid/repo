@@ -2,7 +2,7 @@ Package: unfurl
 Version: 0.4.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, golang
+Depends: curl, golang, tar, gzip
 Section: utils
 Priority: optional
 Homepage: https://github.com/tomnomnom/unfurl

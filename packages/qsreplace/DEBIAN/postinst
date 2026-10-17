@@ -1,13 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
 set -e
 
-# Install using go install (latest version)
-go install -trimpath -ldflags "-w -s" github.com/tomnomnom/qsreplace@latest
+VERSION="0.0.3"
+BUILD_DIR="$TMPDIR/qsreplace-build"
 
-# Create symlink in $PREFIX/bin if binary is not already there
-if [ ! -f "$PREFIX/bin/qsreplace" ] && [ -f "$HOME/go/bin/qsreplace" ]; then
-    ln -sf "$HOME/go/bin/qsreplace" "$PREFIX/bin/qsreplace"
-fi
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
+curl -fsSL -o src.tar.gz "https://github.com/tomnomnom/qsreplace/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
+
+go build -trimpath -ldflags "-w -s" -o qsreplace .
+install -Dm755 qsreplace "$PREFIX/bin/qsreplace"
+
+cd / && rm -rf "$BUILD_DIR"
+
+echo "qsreplace installed. Run 'qsreplace'"
 exit 0

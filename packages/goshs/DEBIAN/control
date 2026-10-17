@@ -1,8 +1,8 @@
 Package: goshs
-Version: 2.1.4
+Version: 2.1.7
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, golang
+Depends: curl, golang, tar, gzip
 Section: net
 Priority: optional
 Homepage: https://goshs.de/

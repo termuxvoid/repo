@@ -2,7 +2,7 @@ Package: brutespray
 Version: 2.7.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: golang, git
+Depends: curl, golang, tar, gzip
 Section: security
 Priority: optional
 Homepage: https://github.com/x90skysn3k/brutespray

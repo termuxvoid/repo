@@ -1,13 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
 set -e
 
-# Install specific version using go install
-go install -trimpath -ldflags "-w -s" github.com/tomnomnom/unfurl@v0.4.3
+VERSION="0.4.3"
+BUILD_DIR="$TMPDIR/unfurl-build"
 
-# Create symlink in $PREFIX/bin if binary is not already there
-if [ ! -f "$PREFIX/bin/unfurl" ] && [ -f "$HOME/go/bin/unfurl" ]; then
-    ln -sf "$HOME/go/bin/unfurl" "$PREFIX/bin/unfurl"
-fi
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
+curl -fsSL -o src.tar.gz "https://github.com/tomnomnom/unfurl/archive/refs/tags/v${VERSION}.tar.gz"
+tar -xzf src.tar.gz --strip-components=1
+
+go build -trimpath -ldflags "-w -s" -o unfurl .
+install -Dm755 unfurl "$PREFIX/bin/unfurl"
+
+cd / && rm -rf "$BUILD_DIR"
+
+echo "unfurl installed. Run 'unfurl'"
 exit 0
