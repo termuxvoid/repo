@@ -17,6 +17,10 @@ wget -q --show-progress "$JAR_URL" -O qrylz.jar || {
 }
 
 echo "[*] Creating launcher..."
-cat > "$LAUNCHER" <<EOF
-#!/data/data/com.termux/files/usr/bin/bash
-exec java -jar "$INSTALL_DIR/qrylz.jar" "\$@"
+printf '%s\n' \
+'#!/data/data/com.termux/files/usr/bin/bash' \
+"exec java -jar \"$INSTALL_DIR/qrylz.jar\" \"\$@\"" > "$LAUNCHER"
+chmod +x "$LAUNCHER" && echo -e "\n[+] Qrylz ready! Usage:\n  qrylz -h" || {
+    echo "[!] Launcher creation failed"
+    exit 1
+}
