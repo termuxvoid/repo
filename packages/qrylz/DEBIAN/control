@@ -1,0 +1,13 @@
+Package: qrylz
+Version: 1.0.3
+Architecture: all
+Maintainer: Anon4You
+Depends: openjdk-21, wget
+Section: android
+Priority: optional
+Homepage: https://github.com/Anon4You/Qrylz
+Description: APK signature-verification patcher
+ Patch an APK so its own signature check keeps working after it is
+ re-signed with a different key. Merges split APKs, reads the original
+ signing certificate and injects a tiny payload - output stays unsigned,
+ sign it yourself afterwards.

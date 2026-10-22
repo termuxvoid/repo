@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+INSTALL_DIR="$PREFIX/share/qrylz"
+LAUNCHER="$PREFIX/bin/qrylz"
+JAR_URL="https://github.com/Anon4You/Qrylz/releases/download/v1.0.3/qrylz.jar"
+
+echo "[*] Setting up Qrylz..."
+mkdir -p "$INSTALL_DIR" && cd "$INSTALL_DIR" || exit 1
+
+echo "[*] Downloading JAR..."
+wget -q --show-progress "$JAR_URL" -O qrylz.jar || {
+    echo -e "\n[!] Download failed. Possible fixes:"
+    echo "    1. Check internet connection"
+    echo "    2. Run: pkg install wget"
+    echo "    3. Try manual download: $JAR_URL"
+    exit 1
+}
+
+echo "[*] Creating launcher..."
+cat > "$LAUNCHER" <<EOF
+#!/data/data/com.termux/files/usr/bin/bash
+exec java -jar "$INSTALL_DIR/qrylz.jar" "\$@"

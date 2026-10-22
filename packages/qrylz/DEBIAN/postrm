@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+rm -f "$PREFIX/bin/qrylz"
+rm -rf "$PREFIX/share/qrylz"
+echo "qrylz removed."
+exit 0

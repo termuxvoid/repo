@@ -93,6 +93,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [android-sdk](https://termuxvoid.github.io/tool.html?name=android-sdk) | Complete Android development toolkit (ADB, Fastboot, etc.) |
 | [andrax](https://termuxvoid.github.io/tool.html?name=andrax) | Android Penetration Testing OS (rootless) |
 | [apkgen-cli](https://termuxvoid.github.io/tool.html?name=apkgen-cli) | CLI tool to quickly generate Android APKs from a template |
+| [qrylz](https://termuxvoid.github.io/tool.html?name=qrylz) | APK signature-verification patcher – re-Signed APKs keep the check |
 | [flutter](https://termuxvoid.github.io/tool.html?name=flutter) | Google's UI toolkit for building native apps |
 | [vedic](https://termuxvoid.github.io/tool.html?name=vedic) | World's first Sanskrit programming language |
 | [zen-c](https://termuxvoid.github.io/tool.html?name=zen-c) | High‑level systems programming language compiling to C |
