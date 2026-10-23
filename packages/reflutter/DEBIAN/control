@@ -1,0 +1,13 @@
+Package: reflutter
+Version: 0.9.8
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python, python-pip
+Section: security
+Priority: optional
+Homepage: https://github.com/Impact-I/reFlutter
+Description: Reverse-engineer Flutter apps and intercept their traffic
+ reFlutter swaps a Flutter app's engine with a prebuilt patched one
+ (repack mode) or instruments the app's own engine at runtime (attach mode).
+ It disables BoringSSL certificate verification so Flutter traffic can be
+ intercepted with a proxy, with no root or certificate installation needed.

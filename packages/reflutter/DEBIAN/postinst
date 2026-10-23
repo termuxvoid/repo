@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+pip install reflutter==0.9.8
+
+echo "reflutter installed. Run 'reflutter app.apk'"
+exit 0

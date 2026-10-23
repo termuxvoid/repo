@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+pip uninstall -y mitmproxy 2>/dev/null || true
+echo "mitmproxy removed."
+exit 0

@@ -94,6 +94,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [andrax](https://termuxvoid.github.io/tool.html?name=andrax) | Android Penetration Testing OS (rootless) |
 | [apkgen-cli](https://termuxvoid.github.io/tool.html?name=apkgen-cli) | CLI tool to quickly generate Android APKs from a template |
 | [qrylz](https://termuxvoid.github.io/tool.html?name=qrylz) | APK signature-verification patcher – re-Signed APKs keep the check |
+| [reflutter](https://termuxvoid.github.io/tool.html?name=reflutter) | Patch Flutter apps to intercept their traffic – repack or runtime attach mode |
 | [flutter](https://termuxvoid.github.io/tool.html?name=flutter) | Google's UI toolkit for building native apps |
 | [vedic](https://termuxvoid.github.io/tool.html?name=vedic) | World's first Sanskrit programming language |
 | [zen-c](https://termuxvoid.github.io/tool.html?name=zen-c) | High‑level systems programming language compiling to C |
@@ -191,6 +192,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 | [masscan](https://termuxvoid.github.io/tool.html?name=masscan) | High‑speed TCP port scanner – Internet‑scale SYN scanning |
 | [meg](https://termuxvoid.github.io/tool.html?name=meg) | Fetch many paths for many hosts – bulk HTTP reconnaissance without flooding targets |
 | [metabigor](https://termuxvoid.github.io/tool.html?name=metabigor) | OSINT tool without API keys – network discovery, ASN/IP lookups, and search engine queries |
+| [mitmproxy](https://termuxvoid.github.io/tool.html?name=mitmproxy) | Interactive TLS-capable intercepting HTTP proxy – mitmproxy, mitmdump and mitmweb |
 | [naabu](https://termuxvoid.github.io/tool.html?name=naabu) | Fast port scanning tool with SYN/CONNECT modes |
 | [nuclei](https://termuxvoid.github.io/tool.html?name=nuclei) | Advanced template‑based vulnerability scanner |
 | [pandora](https://termuxvoid.github.io/tool.html?name=pandora) | Open source OSINT tool |

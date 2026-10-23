@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+pip uninstall -y reflutter 2>/dev/null || true
+echo "reflutter removed."
+exit 0

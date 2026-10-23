@@ -1,0 +1,13 @@
+Package: mitmproxy
+Version: 12.3.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: python, python-pip, python-cryptography, python-brotli, python-bcrypt, build-essential, libffi
+Section: net
+Priority: optional
+Homepage: https://github.com/mitmproxy/mitmproxy
+Description: Interactive TLS-capable intercepting HTTP proxy
+ mitmproxy is a set of tools that provide an interactive, SSL/TLS-capable
+ intercepting proxy for HTTP/1, HTTP/2, and WebSockets. It ships a console
+ interface (mitmproxy), a command-line tool (mitmdump) and a web UI (mitmweb).
+ Works without root in explicit proxy mode on Termux.
