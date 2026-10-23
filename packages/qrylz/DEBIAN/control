@@ -1,5 +1,5 @@
 Package: qrylz
-Version: 1.0.3
+Version: 1.0.4
 Architecture: all
 Maintainer: Anon4You
 Depends: openjdk-21, wget

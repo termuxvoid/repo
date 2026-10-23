@@ -1,5 +1,5 @@
 Package: theharvester
-Version: 4.10.1
+Version: 4.11.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: proot, tar, axel, nethunter-cli

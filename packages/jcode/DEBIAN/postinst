@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="0.89.2"
+VERSION="0.99.1"
 ARCH=$(uname -m)
 
 case "$ARCH" in

@@ -1,5 +1,5 @@
 Package: user-scanner
-Version: 1.5.1
+Version: 1.5.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip

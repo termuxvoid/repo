@@ -1,5 +1,5 @@
 Package: chisel
-Version: 1.12.1
+Version: 1.13.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip

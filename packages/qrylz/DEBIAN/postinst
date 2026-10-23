@@ -2,7 +2,7 @@
 
 INSTALL_DIR="$PREFIX/share/qrylz"
 LAUNCHER="$PREFIX/bin/qrylz"
-JAR_URL="https://github.com/Anon4You/Qrylz/releases/download/v1.0.3/qrylz.jar"
+JAR_URL="https://github.com/Anon4You/Qrylz/releases/download/v1.0.4/qrylz.jar"
 
 echo "[*] Setting up Qrylz..."
 mkdir -p "$INSTALL_DIR" && cd "$INSTALL_DIR" || exit 1

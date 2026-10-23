@@ -48,7 +48,7 @@ EOF
 mkdir -p "$SP/psycopg_binary"
 : > "$SP/psycopg_binary/__init__.py"
 
-pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary archivebox==0.9.35rc437
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary archivebox==0.9.73
 
 echo "archivebox installed. Run 'archivebox' to start."
 echo "For initial setup: archivebox init"

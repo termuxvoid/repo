@@ -1,17 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="v1.12.1"
+VERSION="v1.13.0"
 BUILD_DIR="$TMPDIR/chisel-build"
 
 rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
-curl -fsSL -o src.tar.gz "https://github.com/jpillora/chisel/archive/refs/tags/v1.12.1.tar.gz"
+curl -fsSL -o src.tar.gz "https://github.com/jpillora/chisel/archive/refs/tags/v1.13.0.tar.gz"
 tar -xzf src.tar.gz --strip-components=1
 
-go build -trimpath -ldflags "-w -s -X github.com/jpillora/chisel/share.BuildVersion=v1.12.1" -o chisel .
+go build -trimpath -ldflags "-w -s -X github.com/jpillora/chisel/share.BuildVersion=v1.13.0" -o chisel .
 install -Dm755 chisel "$PREFIX/bin/chisel"
 
 cd / && rm -rf "$BUILD_DIR"

@@ -1,5 +1,5 @@
 Package: subcat
-Version: 1.6.0
+Version: 1.6.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip
