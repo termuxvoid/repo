@@ -2,8 +2,8 @@
 set -e
 
 FLUTTER_DIR="$PREFIX/opt/flutter"
-DOWNLOAD_URL="https://github.com/termuxvoid/flutter-termux/releases/download/3.41.9/flutter.7z"
-TMP_ARCHIVE="$TMPDIR/flutter.7z"
+DOWNLOAD_URL="https://github.com/termuxvoid/flutter-termux/releases/download/3.47.7/flutter_3.47.7_aarch64.tar.gz"
+TMP_ARCHIVE="$TMPDIR/flutter.tar.gz"
 
 echo "[*] Setting up Flutter..."
 [ -d "$FLUTTER_DIR" ] && { echo "[*] Removing existing installation..."; rm -rf "$FLUTTER_DIR"; }
@@ -15,7 +15,7 @@ echo "[*] Downloading Flutter SDK..."
 axel -n 10 -o "$TMP_ARCHIVE" "$DOWNLOAD_URL" || { echo "[!] Download failed"; exit 1; }
 
 echo "[*] Extracting Flutter SDK..."
-7z x "$TMP_ARCHIVE" -o"$PREFIX/opt" -y > /dev/null || { echo "[!] Extraction failed"; exit 1; }
+tar -xzf "$TMP_ARCHIVE" -C "$PREFIX/opt" || { echo "[!] Extraction failed"; exit 1; }
 
 echo "[*] Creating launcher..."
 cat > "$PREFIX/bin/flutter" << EOF
