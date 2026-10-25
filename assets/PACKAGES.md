@@ -49,6 +49,7 @@ The complete catalog of packages available from the TermuxVoid repository. Each 
 ### Information Gathering
 | Tool | Description |
 |------|-------------|
+| [aliens-eye](https://termuxvoid.github.io/tool.html?name=aliens-eye) | AI-powered OSINT username scanner – 800+ social media and web platforms |
 | [blackbird](https://termuxvoid.github.io/tool.html?name=blackbird) | OSINT tool for username and email searches across 600+ platforms |
 | [byakugan](https://termuxvoid.github.io/tool.html?name=byakugan) | Advanced footprinting tool for Termux |
 | [darkcrawler](https://termuxvoid.github.io/tool.html?name=darkcrawler) | Crawl .onion sites through Tor and generate threat reports |

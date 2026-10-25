@@ -1,0 +1,13 @@
+Package: aliens-eye
+Version: 2.7.4
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Pre-Depends: x11-repo
+Depends: python, python-pip, build-essential
+Recommends: python-playwright
+Section: recon
+Priority: optional
+Homepage: https://github.com/arxhr007/Aliens_eye
+Description: AI-powered OSINT username scanner
+ Scans 800+ social media and web platforms for a username using
+ AI-assisted correlation, with optional Playwright browser support.

@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary aliens-eye==2.7.4
+
+echo "aliens-eye installed. Run 'aliens_eye --help'"
+exit 0
