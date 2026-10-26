@@ -5,9 +5,9 @@ Maintainer: Alienkrishn [Anon4You]
 Pre-Depends: x11-repo
 Depends: git, axel, which
 Recommends: android-sdk
-Section: development
+Section: devel
 Priority: optional
-Homepage: https://flutter.dev
+Homepage: https://github.com/termuxvoid/flutter-termux
 Description: Google's UI toolkit for building native apps
  Cross-platform app development with:
  - Hot reload development
