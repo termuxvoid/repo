@@ -3,7 +3,7 @@ Version: 2.2.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, npm, ripgrep
-Section: devel
+Section: ai
 Priority: optional
 Homepage: https://github.com/MoonshotAI/kimi-code
 Description: AI-powered coding assistant for the terminal

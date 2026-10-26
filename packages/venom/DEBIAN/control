@@ -3,5 +3,6 @@ Version: 1.0.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git,curl,php,openssh,nodejs,cloudflared
+Section: security
 Homepage: https://github.com/Anon4You/venom/
 Description: An automated phishing tool for absolute beginners

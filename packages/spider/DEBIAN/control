@@ -4,4 +4,5 @@ Architecture: all
 Depends: python,python-pip
 Installed-Size: 1
 Maintainer: Alienkrishn [Anon4You]
+Section: social
 Description: telegram autoreport script

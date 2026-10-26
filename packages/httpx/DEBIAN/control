@@ -3,7 +3,7 @@ Version: 1.12.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
-Section: web
+Section: recon
 Priority: optional
 Homepage: https://docs.projectdiscovery.io/tools/httpx
 Description: Fast and Multi-Purpose HTTP Toolkit by ProjectDiscovery

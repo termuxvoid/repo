@@ -3,7 +3,7 @@ Version: 3.8.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: clang, make, pkg-config, openssl, build-essential, sed, curl, tar, bzip2
-Section: security
+Section: password
 Priority: optional
 Homepage: https://ophcrack.sourceforge.io/
 Description: NTLM/LM hash cracker using rainbow tables

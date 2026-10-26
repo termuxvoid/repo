@@ -3,7 +3,7 @@ Version: 0.6
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, tar, gzip, sed, make, cmake, clang, binutils, libmhash, libmcrypt, libjpeg-turbo, zlib
-Section: stego
+Section: crypto
 Priority: optional
 Homepage: https://github.com/RickdeJager/StegSeek
 Description: Lightning-fast steghide password cracker

@@ -5,5 +5,6 @@ Maintainer: Alienkrishn [Anon4You]
 Depends: python2,git
 Suggest: maskme,shorturl
 Installet-Size: 1
+Section: security
 Homepage: https://github.com/evait-security/weeman
 Description: HTTP server for phishing in python2

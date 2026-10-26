@@ -3,7 +3,7 @@ Version: 1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, python, python-pip, python-lxml, termux-tools
-Section: recon
+Section: security
 Priority: optional
 Homepage: https://github.com/m4ll0k/SecretFinder
 Description: Discover sensitive data (API keys, access tokens, JWT, etc.) in JavaScript files

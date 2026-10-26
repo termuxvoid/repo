@@ -4,4 +4,5 @@ Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python,python-pip,figlet
 Installed-Size: 56
+Section: recon
 Description: A collection of open cctv camera ip

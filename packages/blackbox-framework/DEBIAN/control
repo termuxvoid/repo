@@ -3,7 +3,7 @@ Version: 2.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python2
-Section: utils
+Section: security
 Priority: optional
 Homepage: https://github.com/jothatron/blackbox
 Description: A Python-based network analysis and exploitation toolkit

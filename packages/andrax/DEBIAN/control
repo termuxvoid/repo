@@ -4,7 +4,7 @@ Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: proot, tar, axel
 Installed-Size: 12060343
-Section: utils
+Section: security
 Priority: optional
 Homepage: https://gitlab.com/crk-mythical/andrax-hackers-platform-v5-2
 Description: Android Penetration Testing OS (rootless)

@@ -3,7 +3,7 @@ Version: 1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python2
-Section: net
+Section: web
 Priority: optional
 Homepage: https://github.com/bibortone/D-Tech
 Description: D-TECT - Pentest the Modern Web

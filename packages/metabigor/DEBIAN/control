@@ -3,7 +3,7 @@ Version: 2.2.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, tar, git, golang
-Section: net
+Section: recon
 Priority: optional
 Homepage: https://github.com/j3ssie/metabigor
 Description: OSINT tool without API keys

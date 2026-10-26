@@ -3,7 +3,7 @@ Version: 1.4.9
 Architecture: all
 Maintainer: Alienkrishn [Anon4You] 
 Depends: openjdk-21, wget
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://github.com/REandroid/APKEditor
 Description: Lightweight APK modification tool

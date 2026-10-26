@@ -3,7 +3,7 @@ Version: 6.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: proot, tar, axel
-Section: net
+Section: security
 Priority: optional
 Homepage: https://www.parrotsec.org/
 Description: Parrot Security OS 6.3 (Lorikeet) for Termux

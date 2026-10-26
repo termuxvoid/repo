@@ -3,7 +3,7 @@ Version: 5.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python, openjdk-17, apksigner
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://github.com/TechnoIndian/RKPairip
 Description: Remove Pairip Protection and Rebuild APKs

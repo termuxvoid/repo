@@ -3,7 +3,7 @@ Version: 1.6.0-1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python
-Section: net
+Section: recon
 Priority: optional
 Homepage: https://github.com/mschwager/fierce
 Description: DNS reconnaissance tool for locating targets and non-contiguous IP space

@@ -4,7 +4,7 @@ Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: openjdk-21, 7zip, axel
 Suggests: cmake, ninja-build
-Section: development
+Section: android
 Priority: optional
 Homepage: https://developer.android.com
 Description: Android SDK built using musl libc, supporting multiple architectures.

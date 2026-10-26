@@ -3,7 +3,7 @@ Version: 6.2.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, ruby, pkg-config, openssl, libxml2, libxslt, ruby-nokogiri, exiftool
-Section: utils
+Section: password
 Priority: optional
 Homepage: https://github.com/digininja/CeWL
 Description: Custom Word List generator (CeWL) for password cracking

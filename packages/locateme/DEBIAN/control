@@ -4,4 +4,5 @@ Architecture: all
 Installed-Size: 202
 Maintainer: Alienkrishn [Anon4You]
 Depends: php,jq,openssh,figlet
+Section: recon
 Description: Live location tracker using google maps

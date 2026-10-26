@@ -3,7 +3,7 @@ Version: 2.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: tor, python, libxml2, libxslt, clang, python-lxml, git
-Section: net
+Section: recon
 Priority: optional
 Homepage: https://github.com/Anon4You/DarkCrawler
 Description: CLI tool to crawl .onion sites and generate threat reports

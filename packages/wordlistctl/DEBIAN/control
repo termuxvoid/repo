@@ -3,7 +3,7 @@ Version: 0.9.4-1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, curl
-Section: misc
+Section: password
 Priority: optional
 Homepage: https://github.com/BlackArch/wordlistctl
 Description: Fetch, install and search wordlist archives from wordlists and repositories

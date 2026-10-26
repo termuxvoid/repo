@@ -3,7 +3,7 @@ Version: 2.6.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, jadx
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://github.com/dwisiswant0/apkleaks
 Description: Scanning APK file for URIs, endpoints & secrets.

@@ -4,5 +4,6 @@ Version: 1
 Maintainer: Alienkrishn [Anon4You]
 Depends: git
 Installed-Size: 1
+Section: misc
 Homepage: https://github.com/Alienkrishn/random_banners
 Description: random banner and quote

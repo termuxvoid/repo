@@ -3,7 +3,7 @@ Version: 1.0.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python, python-pip
-Section: security
+Section: web
 Priority: optional
 Homepage: https://github.com/devanshbatham/paramspider
 Description: Parameter discovery suite for web applications

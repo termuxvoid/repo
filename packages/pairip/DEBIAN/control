@@ -3,7 +3,7 @@ Version: 1.3.10
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: openjdk-21
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://telegram.me/NullRE_Channel
 Description: PairIP Protection Removal Tool

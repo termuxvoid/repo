@@ -3,7 +3,7 @@ Version: 1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You] 
 Depends: qpdf
-Section: utils
+Section: password
 Priority: optional
 Homepage: https://github.com/Anon4You/PDFCracker
 Description: A powerful yet simple PDF password recovery tool designed for security professionals and ethical hackers.

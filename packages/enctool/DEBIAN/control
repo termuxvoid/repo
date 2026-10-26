@@ -4,5 +4,6 @@ Architecture: all
 Installed-Size: 64
 Maintainer: Alienkrishn [Anon4You]
 Depends: python,nodejs
+Section: crypto
 Description: encrypt or decrypt bash file and encrypt python in Marshal format
 

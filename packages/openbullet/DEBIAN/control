@@ -3,7 +3,7 @@ Version: 1.0.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python, python-pip
-Section: security
+Section: web
 Priority: optional
 Homepage: https://github.com/esfelurm/OpenBullet.git
 Description: A tool for running openbullet configurations

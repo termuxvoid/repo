@@ -3,7 +3,7 @@ Version: 2.3.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, php, python, python-tkinter, openssh, npm
-Section: web
+Section: security
 Priority: optional
 Homepage: https://github.com/Cyber-Anonymous/Dark-Phish
 Description: Powerful Phishing Tool with 50+ templates

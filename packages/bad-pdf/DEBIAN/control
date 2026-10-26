@@ -3,7 +3,7 @@ Version: 1.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, python, termux-tools
-Section: utils
+Section: security
 Priority: optional
 Homepage: https://github.com/deepzec/Bad-Pdf
 Description: Create malicious PDFs to steal NTLM hashes from Windows

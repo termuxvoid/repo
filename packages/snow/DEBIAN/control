@@ -3,7 +3,7 @@ Version: 20130616
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: build-essential
-Section: net
+Section: crypto
 Priority: optional
 Homepage: https://darkside.com.au/snow/index.html
 Description: Steganography tool to conceal messages in text files

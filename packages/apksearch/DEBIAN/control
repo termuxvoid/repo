@@ -3,7 +3,7 @@ Version: 1.3.5
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://abhithemodder.github.io/apksearch/
 Description: APK Search Tool for Multiple APK Websites

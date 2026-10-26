@@ -3,7 +3,7 @@ Version: 2.4.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, npm
-Section: devel
+Section: ai
 Priority: optional
 Homepage: https://github.com/emend-ai/utim
 Description: UTIM CLI — AI-powered unified terminal intelligence manager

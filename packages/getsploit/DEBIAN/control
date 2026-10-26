@@ -3,7 +3,7 @@ Version: 3.0.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip, rust, make, pkg-config
-Section: utils
+Section: recon
 Priority: optional
 Homepage: https://github.com/vulnersCom/getsploit
 Description: Command-line search tool for exploits and vulnerabilities

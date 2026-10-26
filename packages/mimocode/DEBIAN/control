@@ -3,7 +3,7 @@ Version: 0.1.15
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, clang, glibc, tar
-Section: devel
+Section: ai
 Priority: optional
 Homepage: https://github.com/XiaomiMiMo/MiMo-Code
 Description: AI‑powered coding assistant (glibc wrapper for Termux)

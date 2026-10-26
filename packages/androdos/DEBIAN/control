@@ -4,4 +4,5 @@ Architecture: all
 Depends: python
 Maintainer: Alienkrishn [Anon4You]
 Installed-Size: 52
+Section: net
 Description: Denials of service(DoS) attack tool 

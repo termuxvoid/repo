@@ -3,5 +3,6 @@ Version: 1.9.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: make, golang, git
+Section: net
 Homepage: https://github.com/zer-far/spurt/
 Description: HTTP stress testing tool that can overload web servers.

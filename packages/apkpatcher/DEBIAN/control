@@ -3,7 +3,7 @@ Version: 1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You] 
 Depends: git, libxml2, openjdk-17, apkeditor, apksigner 
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://github.com/Anon4You/APKpatcher
 Description: Advanced APK Modification Tool 

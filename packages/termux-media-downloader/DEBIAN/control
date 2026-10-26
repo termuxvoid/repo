@@ -2,6 +2,7 @@ Package: termux-media-downloader
 Version: 2.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
+Section: utils
 Homepage: https://github.com/Anon4You/Termux-Media-Downloader
 Depends: curl, python, python-pip, ffmpeg
 Description: A high-performance media downloader for Termux

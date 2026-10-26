@@ -1,9 +1,9 @@
 Package: byakugan
 Version: 1.0.5
 Architecture: all
-Section: security
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, git, php, cloudflared, jq, figlet
+Section: recon
 Priority: optional
 Homepage: https://github.com/Anon4You/Byakugan.git
 Description: Advanced footprinting tool for Termux

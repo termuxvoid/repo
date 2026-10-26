@@ -3,5 +3,6 @@ Version: 1.0.1
 Architecture: all
 Depends: python
 Maintainer: Alienkrishn [Anon4You]
+Section: net
 Description: A multi-threaded Denial of Service tool made in Python
 Installed-Size: 32

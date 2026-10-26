@@ -3,7 +3,7 @@ Version: 1.0.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, npm, apkeditor, apksigner
-Section: net
+Section: security
 Priority: optional
 Homepage: https://github.com/Anon4You/haxRat
 Description: Cloud-based remote Android management suite

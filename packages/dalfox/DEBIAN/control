@@ -3,7 +3,7 @@ Version: 3.2.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: rust, clang, pkg-config, openssl, openssl-tool
-Section: security
+Section: web
 Priority: optional
 Homepage: https://github.com/hahwul/dalfox
 Description: Fast parameter analysis and XSS scanning tool (v3 in Rust)

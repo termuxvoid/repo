@@ -3,7 +3,7 @@ Version: 0.17.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, rust, build-essential, pkg-config
-Section: net
+Section: tunnel
 Priority: optional
 Homepage: https://playit.gg/
 Description: Global Proxy for Server Hosting Without Port Forwarding

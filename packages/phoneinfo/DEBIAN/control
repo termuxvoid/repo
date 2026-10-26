@@ -4,5 +4,6 @@ Maintainer: Alienkrishn [Anon4You]
 Architecture: all
 Depends: termux-tools,termux-exec,figlet,jq
 Installed-Size: 36
+Section: recon
 Description: Phone number lookup tool for termux
 

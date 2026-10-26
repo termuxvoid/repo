@@ -3,7 +3,7 @@ Version: 3.7
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, clang, libxml2, libusb, libzip, ninja, build-essential, help2man, pkg-config, termux-api, python, python-pip
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://github.com/linux-msm/qdl
 Description: Qualcomm Download Tool (QDL) for EDL flashing

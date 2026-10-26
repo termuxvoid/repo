@@ -3,7 +3,7 @@ Version: 1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python, python-pip
-Section: security
+Section: web
 Priority: optional
 Homepage: https://github.com/b3-v3r/Hunner
 Description: Open Source Penetration Testing Framework

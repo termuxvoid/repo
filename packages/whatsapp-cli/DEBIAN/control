@@ -3,7 +3,7 @@ Version: 1.3.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
-Section: net
+Section: social
 Priority: optional
 Homepage: https://github.com/vicentereig/whatsapp-cli
 Description: Standalone CLI for WhatsApp using multidevice protocol

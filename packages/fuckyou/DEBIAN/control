@@ -3,7 +3,7 @@ Version: 1.0.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You] 
 Depends: termux-exec
-Section: utils
+Section: password
 Priority: optional
 Homepage: https://github.com/Anon4You/FuckYou
 Description: A powerful and customizable password list generator written in Bash.

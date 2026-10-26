@@ -3,7 +3,7 @@ Version: 1.0.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, php, python, npm, ngrok, cloudflared, figlet, openssh
-Section: net
+Section: tunnel
 Priority: optional
 Homepage: https://github.com/Anon4You/WebHost
 Description: Serve local directories and expose via tunnels

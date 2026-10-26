@@ -3,7 +3,7 @@ Version: 1.0-patched
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python, python-pip, python-pillow, python-numpy, build-essential, cmake, ninja, libopenblas, libandroid-execinfo, patchelf, binutils, rust
-Section: security
+Section: social
 Priority: optional
 Homepage: https://github.com/silverxpymaster/SilverInstaEye
 Description: Instagram information gathering tool

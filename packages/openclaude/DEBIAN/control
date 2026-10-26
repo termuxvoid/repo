@@ -3,7 +3,7 @@ Version: 0.33.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: npm, ripgrep, proot
-Section: devel
+Section: ai
 Priority: optional
 Homepage: https://github.com/Gitlawb/openclaude
 Description: Open‑source coding‑agent CLI for cloud and local LLMs

@@ -3,7 +3,7 @@ Version: 1.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip
-Section: net
+Section: recon
 Priority: optional
 Homepage: https://github.com/megadose/OnionSearch
 Description: Scrape .onion URLs from various Tor search engines

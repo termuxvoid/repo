@@ -3,7 +3,7 @@ Version: 0.1.6
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, curl, tar
-Section: utils
+Section: ai
 Priority: optional
 Homepage: https://freebuff.com
 Description: Free, subscription-less AI coding agent for the terminal

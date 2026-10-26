@@ -3,7 +3,7 @@ Version: 1.61
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip
-Section: security
+Section: recon
 Priority: optional
 Homepage: https://github.com/megadose/holehe
 Description: Email OSINT tool

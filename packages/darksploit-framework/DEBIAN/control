@@ -4,6 +4,7 @@ Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python2, perl, wget, php
 suggest: alienkrishn
+Section: security
 Homepage: https://github.com/ykankaya/DarkSploit
 Installed-Size: 1
 Description: Darksploit is a tool to run and create exploits

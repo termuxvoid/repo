@@ -3,7 +3,7 @@ Version: 2.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python, python-psutil
-Section: utils
+Section: password
 Priority: optional
 Homepage: https://github.com/D4Vinci/elpscrk
 Description: Intelligent common user-password profiler

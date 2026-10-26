@@ -3,7 +3,7 @@ Version: 2.0.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
-Section: utils
+Section: recon
 Priority: optional
 Homepage: https://github.com/projectdiscovery/vulnx
 Description: Modern CLI for exploring vulnerability data with powerful search, filtering, and analysis capabilities.

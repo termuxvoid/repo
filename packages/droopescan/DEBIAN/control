@@ -3,7 +3,7 @@ Version: 1.45.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python
-Section: net
+Section: web
 Priority: optional
 Homepage: https://github.com/droope/droopescan
 Description: CMS scanner for Drupal, WordPress, Silverstripe and Joomla

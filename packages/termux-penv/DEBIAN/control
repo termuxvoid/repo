@@ -2,6 +2,7 @@ Package: termux-penv
 Version: 2.0.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
+Section: utils
 Homepage: https://github.com/Anon4You/termux-penv.git
 Installed-Size: 103
 Depends: wget, proot, figlet

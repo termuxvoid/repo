@@ -3,7 +3,7 @@ Version: 3.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
-Section: recon
+Section: security
 Priority: optional
 Homepage: https://github.com/tillson/git-hound
 Description: A pattern-matching, patch-attacking, batch-catching secret snatcher

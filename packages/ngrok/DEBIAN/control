@@ -3,7 +3,7 @@ Version: 3.39.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: wget, proot, openssl
-Section: net
+Section: tunnel
 Priority: optional
 Homepage: https://ngrok.com
 Description: Secure tunnels to localhost

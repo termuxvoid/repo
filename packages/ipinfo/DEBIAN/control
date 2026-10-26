@@ -4,4 +4,5 @@ Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Installed-Size: 48
 Depends: python,python-pip,termux-exec,termux-tools
+Section: recon
 Description: Ip address information gathering tool for termux 

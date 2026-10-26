@@ -4,7 +4,7 @@ Architecture: all
 Pre-Depends: glibc-repo
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, curl, tar, patchelf, findutils
-Section: devel
+Section: ai
 Priority: optional
 Homepage: https://github.com/1jehuang/jcode
 Description: Terminal coding agent harness

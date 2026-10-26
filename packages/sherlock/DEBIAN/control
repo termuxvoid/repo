@@ -3,7 +3,7 @@ Version: 0.16.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip, python-numpy, python-pandas
-Section: social
+Section: recon
 Priority: optional
 Homepage: https://sherlockproject.xyz
 Description: Hunt down social media accounts by username

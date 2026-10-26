@@ -3,7 +3,7 @@ Version: 0.14.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip, pip-basic-depends
-Section: web
+Section: recon
 Priority: optional
 Homepage: https://github.com/xaitax/SploitScan
 Description: Exploit Intelligence Gathering and Analysis Tool

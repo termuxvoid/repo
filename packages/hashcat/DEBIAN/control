@@ -3,7 +3,7 @@ Version: 7.1.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: clang, make, binutils, curl, libc++, libiconv, opencl-vendor-driver, python
-Section: security
+Section: password
 Priority: optional
 Homepage: https://hashcat.net/hashcat/
 Description: World's fastest and most advanced password recovery utility

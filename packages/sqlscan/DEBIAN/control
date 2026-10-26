@@ -3,6 +3,7 @@ Version: 1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git,curl
+Section: web
 Homepage: https://github.com/machine1337/sqlscan
 Description: A small and an efficient tool to find SQL injection vulnerability in a websites.
 

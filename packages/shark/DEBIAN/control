@@ -3,7 +3,7 @@ Version: 2.5.1.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, curl, wget, php, unzip, 7zip, ncurses-utils, proot, resolv-conf, sox, ffmpeg, dialog
-Section: web
+Section: security
 Priority: optional
 Homepage: https://github.com/E343IO/shark
 Description: Future of Phishing with less delay

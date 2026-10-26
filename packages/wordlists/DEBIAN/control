@@ -3,5 +3,6 @@ Version: 1.1-0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: wget, git, gawk
+Section: password
 Description: Security wordlists collection (rockyou.txt + SecLists subset).
  Uses faster GitHub mirror for rockyou.txt. For authorized security research only.

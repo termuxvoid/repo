@@ -4,7 +4,7 @@ Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, gum, termux-tools, android-sdk
 Recommends: flutter
-Section: devel
+Section: android
 Priority: optional
 Homepage: https://github.com/termuxvoid/apkgen-cli
 Description: CLI tool to quickly generate Android APKs from local templates

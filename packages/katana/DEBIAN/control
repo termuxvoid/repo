@@ -3,7 +3,7 @@ Version: 1.8.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
-Section: web
+Section: recon
 Priority: optional
 Homepage: https://github.com/projectdiscovery/katana
 Description: Fast, passive and active web crawler

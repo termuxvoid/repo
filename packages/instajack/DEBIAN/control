@@ -4,4 +4,5 @@ Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python,python-pip
 Installed-Size: 1
+Section: social
 Description: Instagram old account jacker

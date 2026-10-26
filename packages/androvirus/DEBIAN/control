@@ -1,9 +1,9 @@
 Package: androvirus
 Version: 3.0
 Architecture: all
-Section: security
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, git, php, cloudflared
+Section: security
 Priority: optional
 Homepage: https://github.com/Anon4You/AndroVirus.git
 Description: Android penetration testing framework (USE RESPONSIBLY)

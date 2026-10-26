@@ -3,7 +3,7 @@ Version: 2.21.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, openjdk-21
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://github.com/luoyesiqiu/dpt-shell
 Description: DPT Shell - Dex Protection Tool Shell dpt-shell is an Android Dex protection shell that hollows out Dex method implementations and reconstructs them at runtime.

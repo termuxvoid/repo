@@ -3,6 +3,7 @@ Version: 4.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip, openjdk-17, apksigner, openssl-tool
+Section: android
 Homepage: https://github.com/muhammadrizwan87/keysigner.git
 Description: APK signing tool for Termux
  A tool for signing APK files on Termux with various options.

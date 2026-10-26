@@ -3,7 +3,7 @@ Version: 0.12.1-termuxvoid
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip, build-essential, sqlite
-Section: net
+Section: security
 Priority: optional
 Homepage: https://getgophish.com/
 Description: Open-source phishing framework

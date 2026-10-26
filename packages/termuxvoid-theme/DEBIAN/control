@@ -9,4 +9,5 @@ Description: Professional terminal customization for Termux
   - Starship prompt setup
   - Custom banner support
   - Color schemes and fonts
+Section: shell
 Homepage: https://github.com/termuxvoid/TermuxVoid-Theme

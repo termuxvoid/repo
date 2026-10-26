@@ -3,7 +3,7 @@ Version: 2.2.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
-Section: net
+Section: recon
 Priority: optional
 Homepage: https://github.com/lc/gau
 Description: Fetch known URLs from AlienVault OTX, Wayback Machine, Common Crawl

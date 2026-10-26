@@ -3,7 +3,7 @@ Version: 3.2.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
-Section: web
+Section: recon
 Priority: optional
 Homepage: https://github.com/sensepost/gowitness
 Description: Web screenshot utility using headless Chrome

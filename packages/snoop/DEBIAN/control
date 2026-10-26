@@ -3,7 +3,7 @@ Version: 1.4.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python, python-psutil
-Section: utils
+Section: recon
 Priority: optional
 Homepage: https://github.com/snooppr/snoop
 Description: Information gathering tool using online resources

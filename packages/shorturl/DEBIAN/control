@@ -3,6 +3,7 @@ Version: 1.0.0
 Architecture: all
 Depends: toilet,curl
 Maintainer: Alienkrishn [Anon4You]
+Section: utils
 Description: URL shortner for termux
 Installed-Size: 32
 

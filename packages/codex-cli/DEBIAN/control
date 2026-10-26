@@ -3,7 +3,7 @@ Version: 0.162.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: npm
-Section: devel
+Section: ai
 Priority: optional
 Homepage: https://github.com/DioNanos/codex-termux
 Description: Codex CLI for Termux (npm version)

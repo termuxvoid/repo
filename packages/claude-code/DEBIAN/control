@@ -3,7 +3,7 @@ Version: 2.1.309
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, curl, tar
-Section: devel
+Section: ai
 Priority: optional
 Homepage: https://github.com/anthropics/claude-code
 Description: Claude Code - AI coding assistant by Anthropic

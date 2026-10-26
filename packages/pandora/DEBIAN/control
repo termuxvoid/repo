@@ -2,6 +2,7 @@ Package: pandora
 Version: 3.2.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
+Section: recon
 Homepage: https://github.com/MrSanZz/pandora
 Depends: git, python, wget, curl
 Description: open source osint tool

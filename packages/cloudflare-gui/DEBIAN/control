@@ -1,8 +1,8 @@
 Package: cloudflare-gui
 Version: 1.0
 Architecture: all
+Section: tunnel
 Priority: optional
-Section: net
 Maintainer: Alienkrishn [Anon4You]
 Depends: cloudflared, python, python-pip, python-tkinter
 Homepage: https://github.com/Keyaru-code/Cloudflare-GUI

@@ -3,7 +3,7 @@ Version: 2.6.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: make, openssl, rust, perl, pkg-config
-Section: utils
+Section: web
 Priority: optional
 Homepage: https://jwt-hack.hahwul.com/
 Description: JWT security testing and exploitation tool

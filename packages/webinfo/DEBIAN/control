@@ -2,6 +2,7 @@ Package: webinfo
 Version: 3.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
+Section: recon
 Homepage: https://github.com/Anon4You/webinfo/
 Depends: curl,openssl-tool,dnsutils,nmap,whois,traceroute
 Installed-Size: 8

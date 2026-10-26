@@ -3,7 +3,7 @@ Version: 0.4.0-devel4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, make, termux-tools
-Section: shells
+Section: shell
 Priority: optional
 Homepage: https://github.com/akinomyoga/ble.sh
 Description: Bash Line Editor (ble.sh) – interactive command line editing

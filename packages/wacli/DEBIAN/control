@@ -3,7 +3,7 @@ Version: 0.22.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
-Section: utils
+Section: social
 Priority: optional
 Homepage: https://wacli.sh/
 Description: Command-line tool for WhatsApp chat management

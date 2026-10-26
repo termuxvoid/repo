@@ -3,7 +3,7 @@ Version: 0.18.0-1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: ruby, libcurl, libffi, sed, findutils
-Section: ruby
+Section: libs
 Priority: optional
 Homepage: https://github.com/typhoeus/ethon
 Description: Ruby HTTP client library (libcurl wrapper)

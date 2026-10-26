@@ -3,7 +3,7 @@ Version: 0.1.6
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip, curl
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://github.com/Kirlif/HBC-Tool
 Description: Hermes Bytecode Disassembler and Assembler

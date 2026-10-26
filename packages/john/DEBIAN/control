@@ -3,7 +3,7 @@ Version: 1.9.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, make, clang, openssl, zlib, gawk
-Section: security
+Section: password
 Priority: optional
 Homepage: https://www.openwall.com/john/
 Description: John the Ripper password cracker

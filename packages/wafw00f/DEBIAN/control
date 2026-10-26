@@ -3,7 +3,7 @@ Version: 2.4.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip
-Section: security
+Section: web
 Priority: optional
 Homepage: https://github.com/EnableSecurity/wafw00f
 Description: Web Application Firewall detection tool

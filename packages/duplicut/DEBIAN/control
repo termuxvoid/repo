@@ -3,7 +3,7 @@ Version: 2.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, tar, gzip, make, clang, binutils
-Section: cracking
+Section: password
 Priority: optional
 Homepage: https://github.com/nil0x42/duplicut
 Description: Fast duplicate line remover for wordlists

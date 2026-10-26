@@ -3,7 +3,7 @@ Version: 1.0.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You] 
 Depends: ruby, git
-Section: security
+Section: recon
 Priority: optional
 Homepage: https://github.com/HatBashBR/HatCloud
 Description: CloudFlare detector and information gatherer

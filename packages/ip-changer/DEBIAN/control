@@ -2,6 +2,7 @@ Package: ip-changer
 Version: 1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
+Section: net
 Homepage: https://github.com/Anon4You/Ip-Changer 
 Depends: git,curl,tor,privoxy,netcat-openbsd 
 Description: A powerful and easy-to-use tool to change your IP address automatically

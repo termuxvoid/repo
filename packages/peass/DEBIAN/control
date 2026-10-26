@@ -3,7 +3,7 @@ Version: 20260919.fca1e2b0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl
-Section: scanner
+Section: security
 Priority: optional
 Homepage: https://github.com/carlospolop/PEASS-ng
 Description: Privilege Escalation Awesome Scripts SUITE (with colors)

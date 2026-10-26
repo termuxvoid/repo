@@ -3,7 +3,7 @@ Version: 2.6.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: perl, git, openssl, openssl-tool, clang, make, cmake, curl, pkg-config
-Section: security
+Section: web
 Priority: optional
 Homepage: https://github.com/sullo/nikto
 Description: Comprehensive web server scanner

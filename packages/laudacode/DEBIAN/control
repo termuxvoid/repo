@@ -3,7 +3,7 @@ Version: 0.13.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, tar
-Section: devel
+Section: ai
 Priority: optional
 Homepage: https://github.com/Anon4You/Laudacode
 Description: Fast, lightweight AI coding agent for your terminal

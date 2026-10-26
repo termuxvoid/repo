@@ -5,5 +5,6 @@ Maintainer: Alienkrishn [Anon4You]
 Installed-Size: 2
 Depends: php, git, python, curl, wget
 Suggests: alienkrishn
+Section: security
 Homepage: https://github.com/surya-dev-singh/BITB-framwork
 Description: Phishing technique that simulates a browser window within the browser to spoof a legitimate domain.

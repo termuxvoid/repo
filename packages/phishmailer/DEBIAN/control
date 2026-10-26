@@ -3,7 +3,7 @@ Version: 2.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python
-Section: web
+Section: security
 Priority: optional
 Homepage: https://github.com/BiZken/PhishMailer
 Description: Professional Phishing Email Generation Tool

@@ -4,5 +4,6 @@ Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: termux-am,xfce4,xfce4-terminal,xwayland,xfce4-whiskermenu-plugin,firefox,neovim,termux-x11-nightly,dbus,termux-desktop-wallpapers,xfce4-goodies
 Installed-Size: 70830
+Section: misc
 Description: termux xfce4 desktop gui with Hacker themes and icona 
 

@@ -3,5 +3,6 @@ Version: 2.1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, libcaca
+Section: utils
 Homepage: https://github.com/Anon4You/asciibanner
 Description: A feature-rich FIGlet-compatible ASCII art generator with color support and font previews

@@ -3,7 +3,7 @@ Version: 1.0.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, tar, make, git, golang
-Section: security
+Section: net
 Priority: optional
 Homepage: https://github.com/zmap/zgrab2
 Description: Fast modular L7 application-layer scanner

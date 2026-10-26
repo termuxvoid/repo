@@ -3,7 +3,7 @@ Version: 1.1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: openjdk-21
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://telegram.me/NullRE_Channel
 Description: MTCR Patch Application Tool for Android APKs

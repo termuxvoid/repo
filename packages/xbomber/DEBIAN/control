@@ -3,7 +3,7 @@ Version: 2.0.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python, curl
-Section: utils
+Section: security
 Priority: optional
 Homepage: https://github.com/Anon4You/XBomber
 Description: A High-Performance SMS Bombing Tool for Educational Testing

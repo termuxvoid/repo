@@ -3,7 +3,7 @@ Version: 1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You] 
 Depends: zip, unzip
-Section: utils
+Section: password
 Priority: optional
 Homepage: https://github.com/Anon4You/ZipCracker
 Description: A powerful yet simple ZIP archive password recovery tool designed for Termux

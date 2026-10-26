@@ -3,7 +3,7 @@ Version: 10.0.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, rust, make, cmake
-Section: net
+Section: recon
 Priority: optional
 Homepage: https://github.com/Findomain/Findomain
 Description: The fastest and complete solution for domain recognition

@@ -4,5 +4,6 @@ Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git,curl,python,build-essential,cmake,ninja,libopenblas,libandroid-execinfo,patchelf,binutils-is-llvm,rust,jq,python-pillow,nodejs,qpdf,libiconv,libxml2,libxslt,dnsutils,whois,php 
 Installed-Size: 1 
+Section: security
 Homepage: https://github.com/Anon4You/termsploit-framework 
 Description: Pentesting framework for Termux

@@ -3,7 +3,7 @@ Version: 2.0.1-0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, tar, dotnet-sdk-10.0, npm, libsqlite
-Section: net
+Section: web
 Priority: optional
 Homepage: https://github.com/openbullet/OpenBullet2
 Description: Cross-platform automation suite powered by .NET Core

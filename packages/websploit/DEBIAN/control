@@ -4,5 +4,6 @@ Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Installed-Size: 1
 Depends: python, python-pip, git, python-numpy 
+Section: security
 Homepage: https://github.com/The404Hacking/websploit
 Description: Advanced MITM framework.

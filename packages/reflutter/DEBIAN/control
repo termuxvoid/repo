@@ -3,7 +3,7 @@ Version: 0.9.8
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip
-Section: security
+Section: android
 Priority: optional
 Homepage: https://github.com/Impact-I/reFlutter
 Description: Reverse-engineer Flutter apps and intercept their traffic

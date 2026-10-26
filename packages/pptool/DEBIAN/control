@@ -3,7 +3,7 @@ Version: 2.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, python, python-pip
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://github.com/Kirlif/PPTool
 Description: Python tool to find the loading addresses of Dart objects in libapp.so through their pool pointer offset.

@@ -3,7 +3,7 @@ Version: 1.0.28
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: npm
-Section: devel
+Section: ai
 Priority: optional
 Homepage: https://github.com/MiniMax-AI/cli
 Description: CLI tool for MiniMax AI

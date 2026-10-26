@@ -3,7 +3,7 @@ Version: 0.0.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: ruby, build-essential
-Section: net
+Section: security
 Priority: optional
 Homepage: https://noraj.github.io/ADAssault/
 Description: Active Directory penetration testing tool

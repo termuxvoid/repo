@@ -3,7 +3,7 @@ Version: 1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python, python-pip, cmake, ninja, build-essential, pkg-config, libicu, capstone, fmt, radare2
-Section: utils
+Section: android
 Priority: optional
 Homepage: https://github.com/dedshit/blutter-termux
 Description: Flutter/Dart Binary Analysis and Reverse Engineering

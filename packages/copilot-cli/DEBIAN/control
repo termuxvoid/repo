@@ -3,7 +3,7 @@ Version: 1.0.103
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, gh, glibc, clang, python, curl, tar
-Section: devel
+Section: ai
 Priority: optional
 Homepage: https://github.com/github/copilot-cli
 Description: GitHub Copilot CLI (glibc version)

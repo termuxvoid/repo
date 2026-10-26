@@ -3,7 +3,7 @@ Version: 1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip
-Section: utils
+Section: recon
 Priority: optional
 Homepage: https://telegram.me/nullxvoid
 Description: Powerful profile link finder for Termux

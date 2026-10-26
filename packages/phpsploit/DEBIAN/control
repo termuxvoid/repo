@@ -3,7 +3,7 @@ Version: 3.2-aea961d
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python, python-pip
-Section: web
+Section: security
 Priority: optional
 Homepage: https://github.com/nil0x42/phpsploit
 Description: Stealth post-exploitation C2 framework for web servers

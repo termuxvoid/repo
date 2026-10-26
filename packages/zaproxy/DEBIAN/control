@@ -3,7 +3,7 @@ Version: 2026.03.02
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: openjdk-21, python, tar
-Section: security
+Section: web
 Priority: optional
 Homepage: https://www.zaproxy.org/
 Description: OWASP Zed Attack Proxy

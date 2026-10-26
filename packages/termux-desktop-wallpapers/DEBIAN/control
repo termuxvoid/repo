@@ -3,5 +3,6 @@ Version: 1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: termux-tools, termux-desktop
+Section: misc
 Homepage: https://alienkrishn.infy.uk
 Description: Wallpapers for termux-desktop

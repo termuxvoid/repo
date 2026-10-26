@@ -3,6 +3,7 @@ Version: 2.0.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, php
+Section: security
 Homepage: https://github.com/Tuhinshubhra/RED_HAWK 
 Installed-Size: 1
 Description: All in one tool for Information Gathering, Vulnerability Scanning and Crawling

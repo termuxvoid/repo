@@ -3,7 +3,7 @@ Version: 2025.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: proot, tar, axel
-Section: net
+Section: security
 Priority: optional
 Homepage: https://www.kali.org/
 Description: Kali NetHunter Rootless Edition CLI

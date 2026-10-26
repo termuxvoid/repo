@@ -2,6 +2,7 @@ Package: hound
 Version: 0.2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
+Section: recon
 Homepage: https://github.com/Anon4You/hound
 Depends: git, php, nodejs
 Description: Simple and light tool for information gathering and capture exact GPS coordinates
