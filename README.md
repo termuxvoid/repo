@@ -100,6 +100,7 @@ AI tools may require accounts or API keys and may send data to third-party provi
 | **claude-code** | Claude Code - AI coding assistant by Anthropic |
 | **codex-cli** | Codex CLI - AI coding agent (npm version) |
 | **copilot-cli** | GitHub Copilot CLI |
+| **deepseek-harness** | DeepSeek Harness - AI coding agent with local web UI |
 | **freebuff** | AI coding agent for the terminal |
 | **hermes-agent** | AI coding assistant and workflow automation tool |
 | **jcode** | Terminal coding agent harness |

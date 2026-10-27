@@ -1,0 +1,13 @@
+Package: glibc-nodejs
+Version: 26.12.1
+Architecture: all
+Pre-Depends: glibc-repo
+Maintainer: Alienkrishn [Anon4You]
+Depends: glibc, curl, tar, xz-utils, bash, coreutils, ca-certificates
+Section: devel
+Priority: optional
+Homepage: https://nodejs.org/
+Description: Node.js runtime with glibc for Termux
+ Isolated Node.js runtime built for glibc, installed without replacing
+ the Termux system Node.js. Node.js 26.12.1 is downloaded from the
+ official release and verified with a pinned SHA-256 checksum.

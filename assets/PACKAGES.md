@@ -23,6 +23,7 @@ The complete catalog of packages in the TermuxVoid APT repository, grouped by th
 | [claude-code](https://termuxvoid.github.io/tool.html?name=claude-code) | AI‑powered coding assistant by Anthropic for agentic coding tasks |
 | [codex-cli](https://termuxvoid.github.io/tool.html?name=codex-cli) | Codex CLI – lightweight AI‑powered coding agent that runs in your terminal |
 | [copilot-cli](https://termuxvoid.github.io/tool.html?name=copilot-cli) | GitHub Copilot CLI – AI‑powered assistance in your terminal |
+| [deepseek-harness](https://termuxvoid.github.io/tool.html?name=deepseek-harness) | DeepSeek Harness - AI coding agent with local web UI |
 | [freebuff](https://termuxvoid.github.io/tool.html?name=freebuff) | AI coding agent for the terminal |
 | [hermes-agent](https://termuxvoid.github.io/tool.html?name=hermes-agent) | AI-powered coding assistant and workflow automation tool |
 | [jcode](https://termuxvoid.github.io/tool.html?name=jcode) | Terminal coding agent harness with a fast local TUI, persistent memory, and MCP support |
@@ -83,6 +84,7 @@ The complete catalog of packages in the TermuxVoid APT repository, grouped by th
 |------|-------------|
 | [bun](https://termuxvoid.github.io/tool.html?name=bun) | Incredibly fast JavaScript runtime, bundler, test runner and package manager |
 | [flutter](https://termuxvoid.github.io/tool.html?name=flutter) | Google's UI toolkit for building native apps |
+| [glibc-nodejs](https://termuxvoid.github.io/tool.html?name=glibc-nodejs) | Node.js 26.12.1 runtime with glibc for Termux |
 | [pip-basic-depends](https://termuxvoid.github.io/tool.html?name=pip-basic-depends) | Essential build dependencies for Python packages |
 | [vedic](https://termuxvoid.github.io/tool.html?name=vedic) | Sanskrit programming language |
 | [zen-c](https://termuxvoid.github.io/tool.html?name=zen-c) | High‑level systems programming language compiling to C |

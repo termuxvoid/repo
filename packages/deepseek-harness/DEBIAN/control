@@ -1,0 +1,13 @@
+Package: deepseek-harness
+Version: 0.2.1-rc.4
+Architecture: all
+Pre-Depends: glibc-repo
+Maintainer: Alienkrishn [Anon4You]
+Depends: glibc-nodejs, bash, coreutils, ca-certificates, ripgrep
+Section: ai
+Priority: optional
+Homepage: https://github.com/deepseek-ai/deepseek-harness
+Description: DeepSeek Harness (dsh) AI coding agent for Termux
+ DeepSeek Harness is an open-source agent harness from DeepSeek AI.
+ This package runs the official npm release on the shared glibc Node.js
+ runtime from glibc-nodejs and installs the dsh command.

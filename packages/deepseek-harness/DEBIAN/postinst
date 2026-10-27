@@ -1,0 +1,142 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/deepseek-harness"
+BIN="$PREFIX/bin"
+DSH_VERSION="0.2.1-rc.4"
+DSH_NPM_VERSION="0.2.1-rc.4"
+
+die() {
+    echo "deepseek-harness: $*" >&2
+    exit 1
+}
+
+[ "$(uname -m)" = "aarch64" ] ||
+    die "only aarch64 is supported"
+[ -x "$BIN/glibc-node" ] && [ -x "$BIN/glibc-npm" ] ||
+    die "glibc-nodejs is not installed; install it first"
+[ -x "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" ] ||
+    die "glibc loader not found; install glibc-repo and glibc"
+
+install_wrappers() {
+    mkdir -p "$BIN" "$SHARE/bin"
+
+    cat > "$BIN/dsh-node" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+exec "$PREFIX/bin/glibc-node" --expose-internals "$@"
+EOF
+
+    cat > "$BIN/dsh" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/deepseek-harness"
+export PATH="$SHARE/bin:$PREFIX/bin:$PATH"
+export SHELL="${SHELL:-$PREFIX/bin/bash}"
+exec "$PREFIX/bin/dsh-node" \
+    "$SHARE/app/node_modules/@deepseek-ai/dsh/lib/bin.js" "$@"
+EOF
+
+    cat > "$BIN/dsh-npm" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/deepseek-harness"
+export PATH="$SHARE/bin:$PREFIX/bin:$PATH"
+export npm_config_script_shell="$PREFIX/bin/sh"
+export npm_config_cache="$SHARE/npm-cache"
+export npm_config_update_notifier=false
+export npm_config_node_gyp="$SHARE/bin/node-gyp"
+exec "$PREFIX/bin/glibc-npm" "$@"
+EOF
+
+    cat > "$BIN/dsh-npx" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/deepseek-harness"
+export PATH="$SHARE/bin:$PREFIX/bin:$PATH"
+export npm_config_script_shell="$PREFIX/bin/sh"
+export npm_config_cache="$SHARE/npm-cache"
+export npm_config_update_notifier=false
+exec "$PREFIX/bin/glibc-npx" "$@"
+EOF
+
+    cat > "$BIN/dsh-pnpm" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/deepseek-harness"
+unset LD_PRELOAD LD_LIBRARY_PATH
+exec "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" \
+    --library-path "$PREFIX/glibc/lib" \
+    "$SHARE/pnpm/node_modules/pnpm/pnpm" "$@"
+EOF
+
+    cat > "$SHARE/bin/node-gyp" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+exec "$PREFIX/bin/glibc-node" \
+    "$PREFIX/share/glibc-nodejs/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "$@"
+EOF
+
+    chmod 755 "$BIN/dsh" "$BIN/dsh-node" "$BIN/dsh-npm" "$BIN/dsh-npx" "$BIN/dsh-pnpm" "$SHARE/bin/node-gyp"
+    ln -sfn "$BIN/dsh-node" "$SHARE/bin/node"
+    ln -sfn "$BIN/dsh-npm" "$SHARE/bin/npm"
+    ln -sfn "$BIN/dsh-npx" "$SHARE/bin/npx"
+    if [ -x "$SHARE/pnpm/node_modules/pnpm/pnpm" ]; then
+        ln -sfn "$BIN/dsh-pnpm" "$SHARE/bin/pnpm"
+    else
+        rm -f "$SHARE/bin/pnpm"
+    fi
+}
+
+if [ -f "$SHARE/.version" ] &&
+   [ "$(cat "$SHARE/.version")" = "$DSH_VERSION" ] &&
+   [ -f "$SHARE/app/node_modules/@deepseek-ai/dsh/lib/bin.js" ]; then
+    install_wrappers
+    echo "deepseek-harness $DSH_VERSION is already installed."
+    exit 0
+fi
+
+rm -rf "$SHARE/app" "$SHARE/pnpm" "$SHARE/bin" "$SHARE/npm-cache"
+mkdir -p "$SHARE/app" "$SHARE/pnpm" "$SHARE/bin"
+install_wrappers
+
+echo "Installing @deepseek-ai/dsh@$DSH_VERSION..."
+"$BIN/dsh-npm" install \
+    --prefix "$SHARE/app" \
+    --omit=dev --ignore-scripts --no-audit --no-fund \
+    --os=linux --cpu=arm64 --libc=glibc \
+    "@deepseek-ai/dsh@$DSH_NPM_VERSION"
+
+[ -f "$SHARE/app/node_modules/@deepseek-ai/dsh/lib/bin.js" ] ||
+    die "dsh entrypoint was not installed"
+
+echo "Installing pnpm..."
+if "$BIN/dsh-npm" install \
+    --prefix "$SHARE/pnpm" \
+    --omit=dev --ignore-scripts --no-audit --no-fund \
+    pnpm@latest; then
+    if [ -f "$SHARE/pnpm/node_modules/pnpm/install.js" ]; then
+        "$BIN/glibc-node" "$SHARE/pnpm/node_modules/pnpm/install.js" >/dev/null 2>&1 ||
+            echo "Warning: pnpm native binary setup failed." >&2
+    fi
+    ln -sfn "$BIN/dsh-pnpm" "$SHARE/bin/pnpm"
+else
+    rm -rf "$SHARE/pnpm"
+    echo "Warning: pnpm was not installed; 'dsh plugin' may not work." >&2
+fi
+
+if timeout 120 "$BIN/dsh" --version; then
+    echo "deepseek-harness $DSH_VERSION installed."
+else
+    echo "Warning: dsh did not start during verification." >&2
+fi
+
+printf '%s\n' "$DSH_VERSION" > "$SHARE/.version"
+echo "Run 'dsh web --no-open' and open http://127.0.0.1:3080"

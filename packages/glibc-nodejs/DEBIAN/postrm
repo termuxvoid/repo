@@ -1,0 +1,19 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/glibc-nodejs"
+BIN="$PREFIX/bin"
+
+case "${1:-}" in
+    remove|purge)
+        rm -f "$BIN/glibc-node" "$BIN/glibc-npm" "$BIN/glibc-npx"
+        rm -f "$SHARE/.node-version"
+        rm -rf "$SHARE/node" "$SHARE/bin" "$SHARE/npm-cache"
+        rm -f "$SHARE/node-compat.cjs" "$SHARE/link-compat.cjs"
+        rmdir "$SHARE" 2>/dev/null || true
+        echo "glibc-nodejs removed."
+        ;;
+esac
+
+exit 0

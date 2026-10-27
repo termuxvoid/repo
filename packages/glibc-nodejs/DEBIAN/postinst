@@ -1,0 +1,269 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/glibc-nodejs"
+BIN="$PREFIX/bin"
+TMPDIR=${TMPDIR:-$PREFIX/tmp}
+STAGE="$TMPDIR/glibc-nodejs-stage"
+NODE_VERSION="26.12.1"
+NODE_FILE="node-v${NODE_VERSION}-linux-arm64.tar.xz"
+NODE_HASH="42aa04922591ee5d4dbc7740d452621acf28508239daa512f5ee8c47ee224fdb"
+
+die() {
+    echo "glibc-nodejs: $*" >&2
+    exit 1
+}
+
+[ "$(uname -m)" = "aarch64" ] ||
+    die "only aarch64 is supported"
+[ -x "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" ] ||
+    die "glibc loader not found; install glibc-repo and glibc"
+mkdir -p "$SHARE"
+cat > "$SHARE/node-compat.cjs" <<'NODE_COMPAT_EOF'
+'use strict';
+
+const fs = require('node:fs');
+const os = require('node:os');
+
+const wrapper = process.env.GLIBC_NODE_WRAPPER;
+
+if (wrapper && fs.existsSync(wrapper)) {
+    try {
+        Object.defineProperty(process, 'execPath', {
+            value: wrapper,
+            writable: true,
+            configurable: true,
+        });
+    } catch {}
+}
+
+for (const [saved, original] of [
+    ['GLIBC_ORIG_LD_PRELOAD', 'LD_PRELOAD'],
+    ['GLIBC_ORIG_LD_LIBRARY_PATH', 'LD_LIBRARY_PATH'],
+]) {
+    if (process.env[saved]) {
+        process.env[original] = process.env[saved];
+        delete process.env[saved];
+    }
+}
+
+const originalCpus = os.cpus;
+os.cpus = function cpus() {
+    try {
+        const result = originalCpus.call(os);
+        if (result.length > 0) return result;
+    } catch {}
+    return [{
+        model: 'unknown',
+        speed: 0,
+        times: { user: 0, nice: 0, sys: 0, idle: 0, irq: 0 },
+    }];
+};
+
+const originalNetworkInterfaces = os.networkInterfaces;
+os.networkInterfaces = function networkInterfaces() {
+    try {
+        return originalNetworkInterfaces.call(os);
+    } catch {
+        return {
+            lo: [{
+                address: '127.0.0.1',
+                netmask: '255.0.0.0',
+                family: 'IPv4',
+                mac: '00:00:00:00:00:00',
+                internal: true,
+                cidr: '127.0.0.1/8',
+            }],
+        };
+    }
+};
+NODE_COMPAT_EOF
+cat > "$SHARE/link-compat.cjs" <<'LINK_COMPAT_EOF'
+'use strict';
+
+const fs = require('node:fs');
+const fsp = fs.promises;
+const fallbackCodes = new Set(['EACCES', 'EPERM', 'ENOTSUP', 'EOPNOTSUPP', 'EMLINK']);
+
+if (!globalThis.__dshLinkCompat) {
+    globalThis.__dshLinkCompat = true;
+
+    const canFallback = (error) =>
+        Boolean(error && typeof error === 'object' && fallbackCodes.has(error.code));
+
+    const copyFile = async (source, target) => {
+        const stat = await fsp.lstat(source);
+        if (stat.isSymbolicLink()) {
+            await fsp.symlink(await fsp.readlink(source), target);
+            return;
+        }
+        if (!stat.isFile()) {
+            const error = new Error(`link fallback only supports files: ${source}`);
+            error.code = 'EPERM';
+            throw error;
+        }
+        await fsp.copyFile(source, target, fs.constants.COPYFILE_EXCL);
+        const handle = await fsp.open(target, 'r+');
+        try {
+            await handle.sync();
+        } finally {
+            await handle.close();
+        }
+        await fsp.chmod(target, stat.mode & 0o7777);
+    };
+
+    const originalAsyncLink = fsp.link.bind(fsp);
+    fsp.link = async function linkAsync(source, target) {
+        try {
+            return await originalAsyncLink(source, target);
+        } catch (error) {
+            if (!canFallback(error)) throw error;
+            return copyFile(source, target);
+        }
+    };
+
+    fs.link = function link(source, target, callback) {
+        const done = typeof callback === 'function' ? callback : () => {};
+        fsp.link(source, target).then(
+            () => process.nextTick(done, null),
+            (error) => process.nextTick(done, error),
+        );
+    };
+
+    const originalSyncLink = fs.linkSync.bind(fs);
+    fs.linkSync = function linkSync(source, target) {
+        try {
+            return originalSyncLink(source, target);
+        } catch (error) {
+            if (!canFallback(error)) throw error;
+            const stat = fs.lstatSync(source);
+            if (stat.isSymbolicLink()) {
+                fs.symlinkSync(fs.readlinkSync(source), target);
+                return;
+            }
+            if (!stat.isFile()) {
+                const unsupported = new Error(`link fallback only supports files: ${source}`);
+                unsupported.code = 'EPERM';
+                throw unsupported;
+            }
+            fs.copyFileSync(source, target, fs.constants.COPYFILE_EXCL);
+            const fd = fs.openSync(target, 'r+');
+            try {
+                fs.fsyncSync(fd);
+            } finally {
+                fs.closeSync(fd);
+            }
+            fs.chmodSync(target, stat.mode & 0o7777);
+        }
+    };
+}
+LINK_COMPAT_EOF
+chmod 644 "$SHARE/node-compat.cjs" "$SHARE/link-compat.cjs"
+
+install_wrappers() {
+    mkdir -p "$BIN" "$SHARE/bin"
+
+    cat > "$BIN/glibc-node" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/glibc-nodejs"
+export GLIBC_NODE_WRAPPER="$PREFIX/bin/glibc-node"
+if [ -n "${LD_PRELOAD:-}" ]; then export GLIBC_ORIG_LD_PRELOAD="$LD_PRELOAD"; fi
+if [ -n "${LD_LIBRARY_PATH:-}" ]; then export GLIBC_ORIG_LD_LIBRARY_PATH="$LD_LIBRARY_PATH"; fi
+unset LD_PRELOAD LD_LIBRARY_PATH
+if [ -n "${NODE_OPTIONS:-}" ]; then
+    export NODE_OPTIONS="--require $SHARE/node-compat.cjs --require $SHARE/link-compat.cjs $NODE_OPTIONS"
+else
+    export NODE_OPTIONS="--require $SHARE/node-compat.cjs --require $SHARE/link-compat.cjs"
+fi
+exec "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" \
+    --library-path "$PREFIX/glibc/lib" \
+    "$SHARE/node/bin/node.real" "$@"
+EOF
+
+    cat > "$BIN/glibc-npm" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/glibc-nodejs"
+export GLIBC_NODE_WRAPPER="$PREFIX/bin/glibc-node"
+if [ -n "${LD_PRELOAD:-}" ]; then export GLIBC_ORIG_LD_PRELOAD="$LD_PRELOAD"; fi
+if [ -n "${LD_LIBRARY_PATH:-}" ]; then export GLIBC_ORIG_LD_LIBRARY_PATH="$LD_LIBRARY_PATH"; fi
+unset LD_PRELOAD LD_LIBRARY_PATH
+if [ -n "${NODE_OPTIONS:-}" ]; then
+    export NODE_OPTIONS="--require $SHARE/node-compat.cjs --require $SHARE/link-compat.cjs $NODE_OPTIONS"
+else
+    export NODE_OPTIONS="--require $SHARE/node-compat.cjs --require $SHARE/link-compat.cjs"
+fi
+export PATH="$SHARE/bin:$PREFIX/bin:$PATH"
+export npm_config_script_shell="${npm_config_script_shell:-$PREFIX/bin/sh}"
+export npm_config_cache="${npm_config_cache:-$SHARE/npm-cache}"
+export npm_config_update_notifier=false
+export npm_config_libc=glibc
+export npm_config_os=linux
+export npm_config_cpu=arm64
+exec "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" \
+    --library-path "$PREFIX/glibc/lib" \
+    "$SHARE/node/bin/node.real" \
+    "$SHARE/node/lib/node_modules/npm/bin/npm-cli.js" "$@"
+EOF
+
+    cat > "$BIN/glibc-npx" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/glibc-nodejs"
+export GLIBC_NODE_WRAPPER="$PREFIX/bin/glibc-node"
+if [ -n "${LD_PRELOAD:-}" ]; then export GLIBC_ORIG_LD_PRELOAD="$LD_PRELOAD"; fi
+if [ -n "${LD_LIBRARY_PATH:-}" ]; then export GLIBC_ORIG_LD_LIBRARY_PATH="$LD_LIBRARY_PATH"; fi
+unset LD_PRELOAD LD_LIBRARY_PATH
+if [ -n "${NODE_OPTIONS:-}" ]; then
+    export NODE_OPTIONS="--require $SHARE/node-compat.cjs --require $SHARE/link-compat.cjs $NODE_OPTIONS"
+else
+    export NODE_OPTIONS="--require $SHARE/node-compat.cjs --require $SHARE/link-compat.cjs"
+fi
+export PATH="$SHARE/bin:$PREFIX/bin:$PATH"
+export npm_config_script_shell="${npm_config_script_shell:-$PREFIX/bin/sh}"
+export npm_config_cache="${npm_config_cache:-$SHARE/npm-cache}"
+export npm_config_update_notifier=false
+export npm_config_libc=glibc
+export npm_config_os=linux
+export npm_config_cpu=arm64
+exec "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" \
+    --library-path "$PREFIX/glibc/lib" \
+    "$SHARE/node/bin/node.real" \
+    "$SHARE/node/lib/node_modules/npm/bin/npx-cli.js" "$@"
+EOF
+
+    chmod 755 "$BIN/glibc-node" "$BIN/glibc-npm" "$BIN/glibc-npx"
+    ln -sfn "$BIN/glibc-node" "$SHARE/bin/node"
+    ln -sfn "$BIN/glibc-npm" "$SHARE/bin/npm"
+    ln -sfn "$BIN/glibc-npx" "$SHARE/bin/npx"
+}
+
+trap 'rm -rf "$STAGE"' EXIT
+rm -rf "$STAGE"
+mkdir -p "$STAGE/node"
+
+echo "Downloading Node.js $NODE_VERSION..."
+curl -fL --retry 3 --max-time 600 \
+    -o "$STAGE/$NODE_FILE" \
+    "https://nodejs.org/dist/v${NODE_VERSION}/$NODE_FILE"
+printf '%s  %s\n' "$NODE_HASH" "$STAGE/$NODE_FILE" | sha256sum -c - >/dev/null ||
+    die "Node.js checksum mismatch"
+
+tar -xJf "$STAGE/$NODE_FILE" -C "$STAGE/node" --strip-components=1
+[ -f "$STAGE/node/bin/node" ] || die "Node.js binary not found in archive"
+mv "$STAGE/node/bin/node" "$STAGE/node/bin/node.real"
+chmod 755 "$STAGE/node/bin/node.real"
+
+rm -rf "$SHARE/node"
+mv "$STAGE/node" "$SHARE/node"
+install_wrappers
+
+"$BIN/glibc-node" --version >/dev/null
+printf '%s\n' "$("$BIN/glibc-node" --version)" > "$SHARE/.node-version"
+echo "glibc-nodejs installed: $("$BIN/glibc-node" --version)"
+echo "Use 'glibc-node', 'glibc-npm', or 'glibc-npx'."

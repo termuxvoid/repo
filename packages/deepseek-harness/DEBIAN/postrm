@@ -1,0 +1,24 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+HOME=${HOME:-/data/data/com.termux/files/home}
+SHARE="$PREFIX/share/deepseek-harness"
+BIN="$PREFIX/bin"
+
+case "${1:-}" in
+    remove|purge)
+        rm -f "$BIN/dsh" "$BIN/dsh-node" "$BIN/dsh-npm" "$BIN/dsh-npx" "$BIN/dsh-pnpm"
+        rm -f "$SHARE/.version"
+        rm -rf "$SHARE/app" "$SHARE/pnpm" "$SHARE/bin" "$SHARE/npm-cache"
+        if [ "${1:-}" = "purge" ]; then
+            rm -rf "$HOME/.dsh"
+            echo "deepseek-harness removed, including user data."
+        else
+            echo "deepseek-harness removed. User data is kept in $HOME/.dsh."
+        fi
+        rmdir "$SHARE" 2>/dev/null || true
+        ;;
+esac
+
+exit 0
