@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+
+rm -f "$PREFIX/bin/opencode-v2"
+rm -rf "$PREFIX/share/opencode-v2"
+
+exit 0

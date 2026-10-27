@@ -110,6 +110,7 @@ AI tools may require accounts or API keys and may send data to third-party provi
 | **mmx-cli** | CLI for MiniMax AI |
 | **openclaude** | Open-source coding-agent CLI for cloud and local LLMs |
 | **opencode** | AI-powered coding assistant |
+| **opencode-v2** | OpenCode 2 - AI coding agent (glibc version) |
 | **termux-ai** | Interactive AI assistant for Termux |
 | **utim-cli** | AI-powered unified terminal intelligence manager |
 

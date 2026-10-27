@@ -33,6 +33,7 @@ The complete catalog of packages in the TermuxVoid APT repository, grouped by th
 | [mmx-cli](https://termuxvoid.github.io/tool.html?name=mmx-cli) | CLI tool for MiniMax AI – chat, completion, and image generation from the terminal |
 | [openclaude](https://termuxvoid.github.io/tool.html?name=openclaude) | Open‑source coding‑agent CLI for cloud and local LLMs |
 | [opencode](https://termuxvoid.github.io/tool.html?name=opencode) | AI‑powered coding assistant (glibc version) |
+| [opencode-v2](https://termuxvoid.github.io/tool.html?name=opencode-v2) | OpenCode 2 - AI coding agent (glibc version) |
 | [termux-ai](https://termuxvoid.github.io/tool.html?name=termux-ai) | Interactive AI assistant for Termux |
 | [utim-cli](https://termuxvoid.github.io/tool.html?name=utim-cli) | UTIM CLI – AI‑powered unified terminal intelligence manager |
 

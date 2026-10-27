@@ -1,0 +1,82 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+VERSION="2.1.4"
+TARFILE="cli-linux-arm64-${VERSION}.tgz"
+DOWNLOAD_URL="https://registry.npmjs.org/@opencode/cli-linux-arm64/-/${TARFILE}"
+SHA256="e9acb4e23a9ac432139693aa166455a6add8946533394cbe083459a48e788861"
+SHARE_DIR="$PREFIX/share/opencode-v2"
+BIN_DIR="$PREFIX/bin"
+LOADER="$PREFIX/glibc/lib/ld-linux-aarch64.so.1"
+LIB_PATH="$PREFIX/glibc/lib"
+TMPDIR=${TMPDIR:-$PREFIX/tmp}
+
+die() {
+    echo "opencode-v2: $*" >&2
+    exit 1
+}
+
+[ "$(uname -m)" = "aarch64" ] ||
+    die "only aarch64 is supported"
+[ -x "$LOADER" ] ||
+    die "glibc loader not found; install glibc-repo and glibc"
+
+STAGE=$(mktemp -d "$TMPDIR/opencode-v2.XXXXXX")
+trap 'rm -rf "$STAGE"' EXIT
+
+echo "Downloading OpenCode 2 ${VERSION}..."
+curl -fL --retry 3 --max-time 600 -o "$STAGE/$TARFILE" "$DOWNLOAD_URL"
+printf '%s  %s\n' "$SHA256" "$STAGE/$TARFILE" | sha256sum -c - >/dev/null ||
+    die "checksum mismatch"
+tar -xzf "$STAGE/$TARFILE" -C "$STAGE"
+[ -f "$STAGE/package/bin/opencode" ] ||
+    die "OpenCode 2 binary not found in archive"
+
+rm -rf "$SHARE_DIR"
+mkdir -p "$SHARE_DIR" "$BIN_DIR"
+patchelf --set-interpreter "$LOADER" "$STAGE/package/bin/opencode"
+mv "$STAGE/package/bin/opencode" "$SHARE_DIR/opencode.real"
+chmod 755 "$SHARE_DIR/opencode.real"
+
+cat > "$STAGE/opencode-v2.c" <<'C_EOF'
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
+int main(int argc, char** argv) {
+    unsetenv("LD_PRELOAD");
+
+    setenv("LD_LIBRARY_PATH", "/data/data/com.termux/files/usr/glibc/lib", 1);
+    setenv("GODEBUG", "netdns=cgo", 1);
+    setenv("SSL_CERT_FILE", "/data/data/com.termux/files/usr/etc/tls/cert.pem", 1);
+
+    char real_bin[] = "/data/data/com.termux/files/usr/share/opencode-v2/opencode.real";
+
+    char** new_argv = malloc((argc + 1) * sizeof(char*));
+    if (!new_argv) {
+        return 1;
+    }
+
+    new_argv[0] = real_bin;
+    for (int i = 1; i < argc; i++) {
+        new_argv[i] = argv[i];
+    }
+    new_argv[argc] = NULL;
+
+    execv(real_bin, new_argv);
+    perror("execv");
+    free(new_argv);
+    return 1;
+}
+C_EOF
+
+clang -O2 -o "$BIN_DIR/opencode-v2" "$STAGE/opencode-v2.c"
+chmod 755 "$BIN_DIR/opencode-v2"
+
+if timeout 60 "$BIN_DIR/opencode-v2" --version >/dev/null; then
+    echo "OpenCode 2 ${VERSION} installed successfully."
+else
+    die "OpenCode 2 failed to start"
+fi
+echo "Run 'opencode-v2' to start."
