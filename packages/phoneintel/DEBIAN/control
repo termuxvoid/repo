@@ -3,7 +3,7 @@ Version: 1.1.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip
-Section: libs
+Section: recon
 Priority: optional
 Homepage: https://phoneintel.github.io
 Description: Phone number intelligence and validation tool

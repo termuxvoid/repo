@@ -4,7 +4,7 @@ Thank you for your interest in adding a package. Before you start, make sure you
 
 ## Prerequisites
 
-1. **Debian package layout.** Each package in `packages/<name>/` is an unpacked Debian package directory. It must contain a `DEBIAN/` directory with a `control` file and lifecycle scripts (`preinst`, `postinst`, `postrm`). Understand what a `control` file contains and when each script runs. See the [Debian Policy](https://www.debian.org/doc/debian-policy/) if needed.
+1. **Debian package layout.** Each package in `packages/<name>/` is an unpacked Debian package directory. It must contain a `DEBIAN/` directory with a `control` file and any needed lifecycle scripts (`preinst`, `postinst`, `postrm`). Understand what a `control` file contains and when each script runs. See the [Debian Policy](https://www.debian.org/doc/debian-policy/) if needed.
 
 2. **Termux paths and environment.** These are used throughout the scripts:
    - `$PREFIX` → `/data/data/com.termux/files/usr` — root of the installed environment
@@ -21,8 +21,8 @@ packages/<name>/
 └── DEBIAN/
     ├── control     # metadata
     ├── preinst     # pre-install checks (optional)
-    ├── postinst    # build/install/link (required)
-    └── postrm      # uninstall cleanup (required)
+    ├── postinst    # build/install/link (when needed)
+    └── postrm      # uninstall cleanup (when needed)
 ```
 
 ### control

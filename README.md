@@ -3,7 +3,7 @@
     <img alt="TermuxVoid" height="180" src="img/termuxvoid_logo.png">
     <h1>TermuxVoid APT Repository</h1>
   </a>
-  <p><b>Unofficial APT Repository: 220+ Ethical Hacking & Pentesting Packages</b></p>
+  <p><b>Unofficial APT repository: 250+ security and utility tools for Termux</b></p>
 
   <div>
     <a href="https://github.com/TermuxVoid/repo/stargazers">
@@ -18,88 +18,94 @@
   </div>
 </div>
 
-## 📖 Table of Contents
+## Table of Contents
 
-- [Project Overview](#-project-overview)
-- [Prerequisites](#-prerequisites)
-- [Quick Installation](#-quick-installation)
-- [Pacman Users](#-pacman-users)
-- [Featured Tools](#-featured-tools)
-- [Legal & Disclaimer](#-legal--disclaimer)
-- [Frequently Asked Questions](#-frequently-asked-questions)
-- [Support & Community](#-support--community)
-- [Contribution & Support](#-contribution--support)
-
----
-
-## 📋 Prerequisites
-
-Before using TermuxVoid, ensure your environment meets these requirements:
-
-- **Termux** installed from [F-Droid](https://f-droid.org/en/packages/com.termux/) (recommended) or GitHub
-- **Android 7+** with ~2GB free storage for larger tools
-- **Working internet connection** for package downloads
-- **No root required** for most tools (some may need root for certain features)
+- [Project Overview](#project-overview)
+- [Prerequisites](#prerequisites)
+- [Security & Transparency](#security--transparency)
+- [Quick Installation](#quick-installation)
+- [Pacman Users](#pacman-users)
+- [Featured Tools](#featured-tools)
+- [AI Tools](#ai-tools)
+- [Legal & Disclaimer](#legal--disclaimer)
+- [Frequently Asked Questions](#frequently-asked-questions)
+- [Support & Community](#support--community)
+- [Contribution & Support](#contribution--support)
 
 ---
 
-## 🔍 Project Overview
+## Project Overview
 
-**TermuxVoid** is an **unofficial custom APT repository** that bridges the gap between mobile convenience and professional security auditing. We host **220+ advanced security tools** that are not available in the official Termux repositories. Package installation happens on your device: depending on the tool, the package may build from source, install an upstream dependency, or download an upstream release.
+**TermuxVoid** is an unofficial, community-maintained APT repository for Termux. It packages **250+ security, reverse-engineering, Android, and utility tools**, many of which are not consistently packaged in the official Termux repositories. Installation happens on your device: depending on the package, the install script may compile from source, install dependencies, or download an upstream release binary. The package script is the source of truth.
 
-Whether you are a professional penetration tester or an ethical hacking enthusiast, TermuxVoid turns your Android device into a portable powerhouse.
+The repository is intended for security researchers, students, and developers who understand the risks of running dual-use tooling on a personal device.
 
 > [!NOTE]
-> This repository contains tools that are often excluded from official sources due to complexity, licensing, or security sensitivity. Read a package's installation script and its upstream source before installing it.<br>
+> These packages are often excluded from official repositories because of size, dependencies, licensing, or security-policy concerns. Review each package script and its upstream project before installing.
+
+## Prerequisites
+
+- **Termux** installed from [F-Droid](https://f-droid.org/en/packages/com.termux/) (recommended) or GitHub.
+- **Android 7 or newer** and **several GB of free storage** for large tools (Flutter, Android SDK, Ghidra, Metasploit, and similar).
+- **Working internet access** for package downloads.
+- **No root for most tools**, but some require root, ADB, or device-specific features. Check the package script and dependencies.
+- **Accounts or API keys** for some AI and cloud tools. These tools may send data to third-party services.
 
 ## Security & Transparency
 
-TermuxVoid is an unofficial, community-maintained repository. Package definitions and lifecycle scripts are published here so you can inspect what runs on installation and removal. A package may build from source on your device, install through an upstream package manager, or download an upstream release; the package script is the source of truth.
+TermuxVoid is unofficial and community-maintained. Package definitions and lifecycle scripts are published here so you can inspect what runs on installation and removal. Installation scripts execute with your user permissions; read them before installing anything.
 
-Each package lives in `packages/<name>/` and normally ships a standard Debian layout under `DEBIAN/`:
+Each package lives in `packages/<name>/` with this layout:
 
-- `control` — metadata (name, version, dependencies, description)
-- `preinst` — pre-install checks (e.g. architecture validation)
-- `postinst` — performs installation (such as building, downloading, or linking the tool)
-- `postrm` — removes files created by the package when possible
+- `control` — metadata (name, version, dependencies, description).
+- `preinst` — pre-install checks, where present.
+- `postinst` — installation work such as compiling, downloading, or linking.
+- `postrm` — cleanup on removal, where present.
 
-### What packages do—and do not—change
+Some packages also ship a `data/` tree with files placed under `$PREFIX`.
 
-- No package modifies `$PATH`, `$HOME`, `$PREFIX`, or any other Termux environment variable.
-- Most tool packages do not alter existing Termux configuration and expose commands through **symlinks** or package-manager-installed commands instead of environment mutation.
-- Packages whose stated purpose is shell styling, themes, desktop environments, or similar customization may create or change relevant configuration files. Read their scripts carefully before installation and removal.
-- Uninstall scripts are intended to remove files created by the package. Preserve your own configuration backups, especially before installing customization packages.
+### What packages do — and do not — change
+
+- Package scripts do not permanently modify `$PATH`, `$HOME`, `$PREFIX`, or other Termux environment variables.
+- Most tool packages do not alter existing Termux configuration. Packages whose stated purpose is shell styling, themes, desktop environments, or similar customization may create or change relevant configuration files.
+- Removal scripts are intended to remove files created by the package. They cannot restore user changes made after installation, so back up configuration before installing customization packages.
+- Some packages create symlinks or wrapper scripts in `$PREFIX/bin`. Review the script for details.
+
+### Install-time downloads and integrity
+
+Some packages compile from source on your device; others download prebuilt upstream binaries. Fixed-version downloads are checked with pinned SHA-256 hashes where upstream provides a stable artifact. Git clones, mutable URLs, pip/gem installs, and upstream installers are not hash-pinned. Where a SHA-256 check exists, a mismatch aborts installation.
+
+A checksum protects against corrupted or swapped downloads. It does not protect against a compromised upstream account, a malicious upstream release, or a compromised repository signing key. Some packages bundle third-party loaders or patched binaries (for example, Burp Suite Professional); these may violate software licenses and carry additional malware risk. There is no warranty that any package is safe or suitable for your device.
+
+APT repository metadata is distributed with a GPG signature (`InRelease`), and `install.sh` installs the TermuxVoid key under `$PREFIX/etc/apt/trusted.gpg.d/`.
 
 ### Before you install
 
-Security tools are powerful and many have dual-use capabilities. Use them only on systems and data you own or are explicitly authorized to test. Do not install a package solely because it is listed here.
+1. Read the package metadata and lifecycle scripts (and any data archive).
+2. Check every download URL, Git repository, package-manager command, and configuration change.
+3. Review the upstream project, its license, and its privacy/security posture.
+4. Use a test device or isolate sensitive data when trying unfamiliar tools.
+5. Use security and surveillance tools only on systems, accounts, and data you own or are explicitly authorized to test.
 
-1. Read `packages/<name>/DEBIAN/control`, `preinst`, `postinst`, and `postrm` (where present).
-2. Check every download URL, Git repository, package-manager command, and configuration change in those scripts.
-3. Review the upstream tool and its license, then install it in a test environment first if it is unfamiliar.
-4. Keep backups of personal configuration before installing shell, theme, or desktop packages.
+Don't trust — verify. See [SECURITY.md](SECURITY.md) for the security policy and [CONTRIBUTING.md](CONTRIBUTING.md) for the package layout.
 
-Don't trust — verify. See [CONTRIBUTING.md](CONTRIBUTING.md) for the package layout and [SECURITY.md](SECURITY.md) for the security policy.
+## Quick Installation
 
-### Package-source expectations
-
-When a package obtains software from upstream, its scripts should make the source auditable. Contributors should provide the upstream project URL, use a pinned release, tag, or commit where practical, and verify an upstream checksum or signature when one is available. Review every network download, upstream package-manager command, file/configuration change, exposed command, and uninstall action before installing.
-
-## 🚀 Quick Installation
-
-Getting started is seamless. Run the following one-liner in your Termux terminal to add the repository automatically:
+Run the installer in Termux to add the repository:
 
 ```bash
-# Add repository
 curl -sL https://github.com/termuxvoid/repo/raw/main/install.sh | bash
 ```
 
 > [!WARNING]
 > Piping a remote script directly to `bash` executes it immediately. For maximum transparency, download and inspect `install.sh` first, then run it locally.
 
-Once the repository is added, you can install any tool using `pkg install`:
+Once the repository is added, install tools with:
 
 ```bash
+# Refresh package lists and upgrade installed packages
+pkg update
+
 # Install any tool
 pkg install <tool-name>
 
@@ -108,164 +114,163 @@ pkg install metasploit-framework
 ```
 
 > [!TIP]
-> The installer also automatically sets up **tvpkg**, the TermuxVoid package manager. Launch it anytime with **`tvpkg`** (alias **`tvp`**) for an interactive TUI — browse, filter, install and remove TermuxVoid tools without leaving your terminal.
+> The installer also installs **tvpkg**, the TermuxVoid package manager. Launch it with **`tvpkg`** (alias **`tvp`**) for an interactive TUI to browse, filter, install, and remove TermuxVoid tools.
 
 > [!TIP]
-> After installation, run `pkg update` to refresh your local package database. You can search for tools using `pkg search <tool-name>`.
+> To refresh package lists later, run `pkg update`. Search with `pkg search <tool-name>`.
 
 > [!NOTE]
-> Removing the TermuxVoid repository later does not remove packages you already installed. Use the package manager to remove individual packages; see the [uninstall instructions](#how-do-i-uninstall-the-termuxvoid-repository) to remove only the repository source and key.
+> Removing the TermuxVoid repository does not remove packages you already installed. Use the package manager to remove individual packages; see the [uninstall instructions](#how-do-i-uninstall-the-termuxvoid-repository).
 
-## 🐧 Pacman Users
+## Pacman Users
 
-Running a **pacman-based Termux** (switched pacman bootstrap or `termux-penv`)? The very same tools are also shipped as pacman packages through our dedicated pacman repository — signed database, `arch=('any')` builds, `pacman -S <tool>` workflow.
+Running a pacman-based Termux? The same package set is also available from our Pacman repository:
 
-**Pacman repository:** [github.com/termuxvoid/pacman-repo](https://github.com/termuxvoid/pacman-repo)
+- Repository: [github.com/termuxvoid/pacman-repo](https://github.com/termuxvoid/pacman-repo)
+- Installer: `curl -sL https://github.com/termuxvoid/pacman-repo/raw/main/install-repo.sh | bash`
 
-```bash
-curl -sL https://github.com/termuxvoid/pacman-repo/raw/main/install-repo.sh | bash
-```
+The package sets are kept in sync. Use the [Pacman README](https://github.com/termuxvoid/pacman-repo#readme) for that package manager's commands.
 
-If you are on standard apt/dpkg Termux, stay right here — this repository is for you.
+## Featured Tools
 
-## ✨ Featured Tools
-
-We provide a curated selection of industry-standard tools. Here are some highlights:
+Examples from the catalog:
 
 <div align="center">
 
 | Tool | Category | Description |
 | :--- | :--- | :--- |
-| **Metasploit Framework** | `Exploitation` | The world's most used penetration testing framework. |
-| **Burp Suite** | `Web Security` | Leading toolkit for web application security testing. |
-| **Ghidra** | `Reverse Eng.` | NSA's high-end software reverse engineering suite. |
-| **THC Hydra** | `Password Cracking` | Fast network logon cracker supporting many protocols. |
-| **SQLMap** | `Web Security` | Automatic SQL injection and database takeover tool. |
+| **Metasploit Framework** | `Security & Exploitation` | Penetration testing framework. |
+| **Burp Suite** | `Web Security` | Web application security testing platform (Community Edition). |
+| **Ghidra** | `Security & Exploitation` | Software reverse-engineering suite. |
+| **THC Hydra** | `Networking` | Parallelized login cracker. |
+| **SQLMap** | `Web Security` | SQL injection detection and exploitation tool. |
 
 </div>
 
 <details>
-<summary><b>📊 View Mermaid Architecture</b></summary>
+<summary><b>View package-group diagram</b></summary>
 
 ```mermaid
 graph TD
-    A[TermuxVoid Repo] -->|Provides| B[Exploitation]
-    A -->|Provides| C[Reverse Engineering]
-    A -->|Provides| D[Network Scanning]
-    A -->|Provides| E[Password Attacks]
-
-    B --> B1[Metasploit]
-    B --> B2[SQLMap]
-
-    C --> C1[Ghidra]
-    C --> C2[Radare2]
-
-    D --> D1[Nmap]
-    D --> D2[Netcat]
-
-    E --> E1[Hydra]
-    E --> E2[John the Ripper]
+    A[TermuxVoid] --> B[Reconnaissance]
+    A --> C[Security & Exploitation]
+    A --> D[Web Security]
+    A --> E[Password Tools]
+    B --> B1[amass]
+    B --> B2[subfinder]
+    C --> C1[Metasploit]
+    C --> C2[sliver-c2]
+    D --> D1[sqlmap]
+    D --> D2[burpsuite]
+    E --> E1[hashcat]
+    E --> E2[john]
 ```
 </details>
 
 <div align="center">
   <a href="assets/PACKAGES.md">
-    <img src="https://img.shields.io/badge/📦-Browse_All_220%2B_Packages-2ea44f?style=for-the-badge" alt="Browse All Packages">
+    <img src="https://img.shields.io/badge/Browse_All_250%2B_Tools-2ea44f?style=for-the-badge" alt="Browse All Tools">
   </a>
 </div>
 
-## 🧠 AI Agents
+## AI Tools
+
+AI tools may require accounts, API keys, or paid plans and may send prompts, code, or other data to third-party providers. AI output can be wrong; review generated code before running it. The catalog lists every AI package.
 
 | Tool | Description |
 | :--- | :--- |
+| **9router** | Gateway between your tools and AI providers |
+| **antigravity-cli** | AI coding assistant (glibc wrapper for Termux) |
+| **claude-code** | Claude Code — AI coding assistant by Anthropic |
+| **codex-cli** | Codex CLI — AI coding agent (npm version) |
+| **copilot-cli** | GitHub Copilot CLI |
+| **freebuff** | AI coding agent for the terminal |
+| **hermes-agent** | AI coding assistant and workflow automation tool |
+| **jcode** | Terminal coding agent harness |
+| **kimi-code** | AI coding assistant for the terminal |
+| **laudacode** | Lightweight AI coding agent for your terminal |
+| **mimocode** | AI coding agent (glibc wrapper for Termux) |
+| **mmx-cli** | CLI for MiniMax AI |
+| **openclaude** | Open-source coding-agent CLI for cloud and local LLMs |
 | **opencode** | AI-powered coding assistant |
-| **claude-code** | AI-powered coding assistant by Anthropic |
-| **antigravity-cli** | AI coding assistant (glibc wrapper) |
-| **copilot-cli** | GitHub Copilot CLI — AI-powered assistance in your terminal |
-| **codex-cli** | Codex CLI by OpenAI — lightweight AI-powered coding agent in your terminal |
-| **mimocode** | Autonomous AI engineer — creates, modifies, tests, deploys code |
-| **openclaude** | Open-source coding-agent CLI for cloud & local LLMs |
-| **hermes-agent** | AI-powered coding assistant and workflow automation tool |
-| **kimi-code** | AI-powered coding assistant for the terminal by Moonshot AI |
-| **mmx-cli** | CLI tool for MiniMax AI – chat, completion, and image generation from the terminal |
-| **utim-cli** | UTIM CLI — AI-powered unified terminal intelligence manager |
+| **termux-ai** | Interactive AI assistant for Termux |
+| **utim-cli** | AI-powered unified terminal intelligence manager |
 
 ## Legal & Disclaimer
 
-These tools are provided for **educational and authorized security research only**. You are responsible for ensuring your use complies with all applicable laws and regulations. Unauthorized access to systems you do not own or lack explicit permission to test is illegal. The maintainers assume no responsibility for any misuse.
+These tools are provided for **educational, research, and authorized security testing only**. You are responsible for complying with applicable laws, platform terms, and authorization requirements. Unauthorized access, interception, disruption, or data exfiltration is illegal. The maintainers accept no liability for misuse, damage, or data loss.
 
-## ❓ Frequently Asked Questions
+## Frequently Asked Questions
 
 <details>
 <summary><b>Are these tools safe to use on a personal device?</b></summary>
 <br>
-Yes, all packages are built from source directly on your device during installation. This means no pre-compiled binaries are shipped — each tool is compiled and installed for your specific Termux environment. However, these are powerful security tools; ensure you understand what a tool does before executing it to avoid unintended system modifications.
+No package is guaranteed safe. These are powerful, dual-use tools. Some compile from source, some install dependencies, and some download prebuilt upstream binaries. Fixed-version downloads are checked with pinned SHA-256 hashes where a stable upstream artifact exists; git clones, mutable URLs, pip/gem installs, and upstream installers are not hash-pinned. Read the package scripts and the upstream source before installing, and use a test device or isolated environment where possible.
 </details>
 
 <details>
 <summary><b>Are these tools legal to use?</b></summary>
 <br>
-All tools are for <strong>legal security research and ethical hacking purposes only</strong>. Always obtain proper authorization before testing systems you do not own.
+They are intended for legal security research and authorized testing. Always obtain explicit permission before testing systems, accounts, or networks you do not own. Some tools may also violate platform terms or local law even when used on your own accounts.
+</details>
+
+<details>
+<summary><b>Do these packages collect or send data?</b></summary>
+<br>
+Some do. AI tools, OSINT services, Telegram-based tools, phishing/surveillance utilities, and cloud integrations may send data to third parties. Read the package script and the upstream project's privacy policy. Do not feed secrets, credentials, or personal data to tools you do not trust.
 </details>
 
 <details>
 <summary><b>Why aren't these in the official repo?</b></summary>
 <br>
-Many of these tools (like Metasploit or Ghidra) have heavy dependencies, large sizes, or licensing complexities that make them difficult to maintain in the official core repositories. We handle the heavy lifting so you don't have to.
+Many are large, have complex dependencies, or are excluded for licensing or security-policy reasons. Some may be available in other community repositories; check before installing duplicates.
 </details>
 
 <details>
 <summary><b>How often are tools updated?</b></summary>
 <br>
-- Security patches within 24 hours
-- Version updates every Sunday
-- Emergency fixes as needed
+Updates follow upstream releases and reported issues. There is no fixed schedule or response-time guarantee; security-relevant fixes are prioritized when maintainers are available.
 </details>
 
 <details>
 <summary><b>How do I request a new package?</b></summary>
 <br>
-We are constantly expanding. You can request new tools via:
-
-1. Opening a **[GitHub Issue](https://github.com/TermuxVoid/repo/issues)**
-2. Contacting us on Telegram: **[Telegram @nullxvoid](https://telegram.me/nullxvoid)**
-3. Sending an email to: **[termuxvoid@gmail.com](mailto:termuxvoid@gmail.com)**
+Open a **[GitHub Issue](https://github.com/TermuxVoid/repo/issues)** or contact us on Telegram: **[Telegram @nullxvoid](https://telegram.me/nullxvoid)**. Email: **[termuxvoid@gmail.com](mailto:termuxvoid@gmail.com)**.
 </details>
 
 <details>
 <summary><b>How do I report a broken package?</b></summary>
 <br>
-Open an issue on **[GitHub](https://github.com/TermuxVoid/repo/issues)** with the tool name and error output. We aim to fix reported issues within 24 hours.
+Open an issue on **[GitHub](https://github.com/TermuxVoid/repo/issues)** with the tool name and error output. Fixes depend on maintainer availability.
 </details>
 
 <details>
 <summary><b>How do I uninstall the TermuxVoid repository?</b></summary>
 <br>
-To remove the repository from your Termux environment:
+To remove the repository source and signing key:
 
 ```bash
 curl -sL https://github.com/termuxvoid/repo/raw/main/uninstall.sh | bash
 ```
 
-This removes the repository source and its GPG key, refreshes APT, and does not remove packages you have already installed.
+This refreshes the package database and does **not** remove packages you already installed.
 </details>
 
 <details>
 <summary><b>I get a "package not found" error — what should I do?</b></summary>
 <br>
-Ensure you have run `pkg update` after adding the repository. If the issue persists, try:
-
-```bash
-apt update
-pkg search <tool-name>
-```
-
-If the tool still doesn't appear, it may have a different package name — check the **[full package list](assets/PACKAGES.md)** for the exact name.
+Run `pkg update` after adding the repository, then search with `pkg search <tool-name>`. If the tool still does not appear, check the **[full package list](assets/PACKAGES.md)** for the exact package name.
 </details>
 
-## 🌐 Support & Community
+<details>
+<summary><b>Is this repository affiliated with Termux or F-Droid?</b></summary>
+<br>
+No. TermuxVoid is an independent, unofficial community project. Report TermuxVoid package issues here, not to the Termux or F-Droid maintainers.
+</details>
 
-Join our growing community of security researchers and mobile hackers.
+## Support & Community
+
+Join our community of security researchers and Termux users.
 
 <div align="center">
   <a href="https://telegram.me/nullxvoid">
@@ -281,16 +286,15 @@ Join our growing community of security researchers and mobile hackers.
 
 ---
 
-## 🛠️ Contribution & Support
+## Contribution & Support
 
-Support the project to help us keep the packages updated and add more tools:
+- Star the repository to show your support.
+- Report bugs responsibly via Issues.
+- Share it with people who understand the legal and security risks.
+- Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
 
-- ⭐ **Star** this repository to show your support.
-- 🐛 **Report Bugs** responsibly via Issues.
-- 📢 **Share** with the security community.
-
-[View Complete Package List »](assets/PACKAGES.md)
+[View Complete Package Catalog »](assets/PACKAGES.md)
 
 <div align="center">
-  <sub>Built with ❤️ for security researchers by <a href="https://github.com/Anon4You">Alienkrishn</a> | Built on-device for best compatibility</sub>
+  <sub>Built for Termux by <a href="https://github.com/Anon4You">Alienkrishn</a> | Unofficial community project; review package scripts before installing.</sub>
 </div>
