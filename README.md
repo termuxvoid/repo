@@ -165,6 +165,7 @@ graph TD
     E --> E1[hashcat]
     E --> E2[john]
 ```
+
 </details>
 
 <div align="center">
@@ -204,49 +205,56 @@ These tools are provided for **educational, research, and authorized security te
 
 <details>
 <summary><b>Are these tools safe to use on a personal device?</b></summary>
-<br>
+
 No package is guaranteed safe. These are powerful, dual-use tools. Some compile from source, some install dependencies, and some download prebuilt upstream binaries. Fixed-version downloads are checked with pinned SHA-256 hashes where a stable upstream artifact exists; git clones, mutable URLs, pip/gem installs, and upstream installers are not hash-pinned. Read the package scripts and the upstream source before installing, and use a test device or isolated environment where possible.
+
 </details>
 
 <details>
 <summary><b>Are these tools legal to use?</b></summary>
-<br>
+
 They are intended for legal security research and authorized testing. Always obtain explicit permission before testing systems, accounts, or networks you do not own. Some tools may also violate platform terms or local law even when used on your own accounts.
+
 </details>
 
 <details>
 <summary><b>Do these packages collect or send data?</b></summary>
-<br>
+
 Some do. AI tools, OSINT services, Telegram-based tools, phishing/surveillance utilities, and cloud integrations may send data to third parties. Read the package script and the upstream project's privacy policy. Do not feed secrets, credentials, or personal data to tools you do not trust.
+
 </details>
 
 <details>
 <summary><b>Why aren't these in the official repo?</b></summary>
-<br>
+
 Many are large, have complex dependencies, or are excluded for licensing or security-policy reasons. Some may be available in other community repositories; check before installing duplicates.
+
 </details>
 
 <details>
 <summary><b>How often are tools updated?</b></summary>
-<br>
+
 Updates follow upstream releases and reported issues. There is no fixed schedule or response-time guarantee; security-relevant fixes are prioritized when maintainers are available.
+
 </details>
 
 <details>
 <summary><b>How do I request a new package?</b></summary>
-<br>
+
 Open a **[GitHub Issue](https://github.com/TermuxVoid/repo/issues)** or contact us on Telegram: **[Telegram @nullxvoid](https://telegram.me/nullxvoid)**. Email: **[termuxvoid@gmail.com](mailto:termuxvoid@gmail.com)**.
+
 </details>
 
 <details>
 <summary><b>How do I report a broken package?</b></summary>
-<br>
+
 Open an issue on **[GitHub](https://github.com/TermuxVoid/repo/issues)** with the tool name and error output. Fixes depend on maintainer availability.
+
 </details>
 
 <details>
 <summary><b>How do I uninstall the TermuxVoid repository?</b></summary>
-<br>
+
 To remove the repository source and signing key:
 
 ```bash
@@ -254,18 +262,21 @@ curl -sL https://github.com/termuxvoid/repo/raw/main/uninstall.sh | bash
 ```
 
 This refreshes the package database and does **not** remove packages you already installed.
+
 </details>
 
 <details>
 <summary><b>I get a "package not found" error — what should I do?</b></summary>
-<br>
+
 Run `pkg update` after adding the repository, then search with `pkg search <tool-name>`. If the tool still does not appear, check the **[full package list](assets/PACKAGES.md)** for the exact package name.
+
 </details>
 
 <details>
 <summary><b>Is this repository affiliated with Termux or F-Droid?</b></summary>
-<br>
+
 No. TermuxVoid is an independent, unofficial community project. Report TermuxVoid package issues here, not to the Termux or F-Droid maintainers.
+
 </details>
 
 ## Support & Community
