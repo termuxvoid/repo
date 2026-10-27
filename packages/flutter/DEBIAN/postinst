@@ -15,6 +15,12 @@ echo "[*] Downloading Flutter SDK..."
 axel -n 10 -o "$TMP_ARCHIVE" "$DOWNLOAD_URL" || { echo "[!] Download failed"; exit 1; }
 
 echo "[*] Extracting Flutter SDK..."
+SHA256="0fa28eccd823c216ddd2641fb067efd6af169e77145397d8a02e72930619ea71"
+if ! printf '%s  %s\n' "$SHA256" "$TMP_ARCHIVE" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMP_ARCHIVE" >&2
+    rm -f "$TMP_ARCHIVE"
+    exit 1
+fi
 tar -xzf "$TMP_ARCHIVE" -C "$PREFIX/opt" || { echo "[!] Extraction failed"; exit 1; }
 
 echo "[*] Creating launcher..."

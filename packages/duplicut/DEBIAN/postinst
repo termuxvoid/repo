@@ -9,6 +9,12 @@ rm -rf "$TMP_DIR" 2>/dev/null || true
 mkdir -p "$TMP_DIR"
 
 curl -fsSL -o "$TMP_DIR/duplicut.tar.gz" "$REPO"
+SHA256="33352afc42e71c9bbfdcd1014ab6e704a8effba2c6fb8034cf21a9a29e887b6e"
+if ! printf '%s  %s\n' "$SHA256" "$TMP_DIR/duplicut.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMP_DIR/duplicut.tar.gz" >&2
+    rm -f "$TMP_DIR/duplicut.tar.gz"
+    exit 1
+fi
 tar xzf "$TMP_DIR/duplicut.tar.gz" -C "$TMP_DIR"
 cd "$TMP_DIR/duplicut-2.4"
 

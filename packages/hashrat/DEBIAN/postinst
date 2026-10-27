@@ -10,6 +10,12 @@ mkdir -p "$TMP_DIR"
 cd "$TMP_DIR"
 
 curl -fsSL -o source.tar.gz "$URL"
+SHA256="4414dcfbb8c3c9c53a326767ae21aa1f5a42799d2088dc26d3bb2ff4974b7a41"
+if ! printf '%s  %s\n' "$SHA256" "source.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: source.tar.gz" >&2
+    rm -f "source.tar.gz"
+    exit 1
+fi
 tar -xzf source.tar.gz --strip-components=1
 
 API_LEVEL=$(getprop ro.build.version.sdk 2>/dev/null || echo 28)

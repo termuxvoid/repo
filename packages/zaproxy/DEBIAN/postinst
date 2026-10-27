@@ -14,6 +14,12 @@ echo "[*] Installing to $ZAP_DIR..."
 [ -d "$ZAP_DIR" ] && rm -rf "$ZAP_DIR"
 
 # Extract and move the specific folder (ZAP_D-2026-08-11) to ZAP_DIR
+SHA256="853360b7d246c2e8465a2f66c9cac99be19e7518a2194200a115df65c9156b2a"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/zap.zip" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/zap.zip" >&2
+    rm -f "$TMPDIR/zap.zip"
+    exit 1
+fi
 unzip -q "$TMPDIR/zap.zip" -d "$TMPDIR"
 mv "$TMPDIR/ZAP_D-2026-08-11" "$ZAP_DIR"
 

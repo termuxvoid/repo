@@ -9,6 +9,12 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/vicentereig/whatsapp-cli/archive/refs/tags/v1.3.3.tar.gz"
+SHA256="72cce645ba15e913d0bc8c3f8956fa727d092e81c6ef27cba5ac54ad985689e4"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    rm -f "src.tar.gz"
+    exit 1
+fi
 tar -xzf src.tar.gz --strip-components=1
 
 go build -trimpath -o whatsapp-cli .

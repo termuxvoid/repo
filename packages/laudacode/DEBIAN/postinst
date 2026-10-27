@@ -6,15 +6,19 @@ ARCH=$(uname -m)
 
 case "$ARCH" in
     aarch64)
+        SHA256="667484d4e0d859829e73cd292c29b48d167a482cee5f90b6593567abd6861817"
         TARGET="aarch64-linux-android"
         ;;
     armv7l|armv8l)
+        SHA256="be4a7dfc1f2c2a0e281fd70ed5a6a63fb1193cc76cbdf35aa8e2c7b5f1e859c8"
         TARGET="armv7-linux-androideabi"
         ;;
     i686)
+        SHA256="839d84c823621b49620bac941587992eec051fb4e13823e3aaa56f342e47b8dc"
         TARGET="i686-linux-android"
         ;;
     x86_64)
+        SHA256="f8fcee1b95742c6a6dd1f4d199284a954b40c2bd129bad5d428f39e14d0f253a"
         TARGET="x86_64-linux-android"
         ;;
     *)
@@ -31,6 +35,11 @@ rm -rf "$TMP_DIR" 2>/dev/null || true
 mkdir -p "$TMP_DIR"
 
 curl -fsSL -o "$TMP_DIR/$ARCHIVE" "https://github.com/Anon4You/Laudacode/releases/download/v${VERSION}/${ARCHIVE}"
+if ! printf '%s  %s\n' "$SHA256" "$TMP_DIR/$ARCHIVE" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMP_DIR/$ARCHIVE" >&2
+    rm -f "$TMP_DIR/$ARCHIVE"
+    exit 1
+fi
 tar -xzf "$TMP_DIR/$ARCHIVE" -C "$TMP_DIR"
 
 install -Dm755 "$TMP_DIR/laudacode" "$DEST"

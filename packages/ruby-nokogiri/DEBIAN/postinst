@@ -12,9 +12,16 @@ echo "Installing Nokogiri ${VERSION} with system libraries..."
 mkdir -p "$PREFIX/include"
 if [ ! -f "$PREFIX/include/nokogiri_gumbo.h" ]; then
     wget -q "https://raw.githubusercontent.com/sparklemotion/nokogiri/v${VERSION}/gumbo-parser/src/nokogiri_gumbo.h" \
-        -O "$PREFIX/include/nokogiri_gumbo.h" \
+        -O "$TMPDIR/nokogiri_gumbo.h" \
         || curl -fsSL "https://raw.githubusercontent.com/sparklemotion/nokogiri/v${VERSION}/gumbo-parser/src/nokogiri_gumbo.h" \
-        -o "$PREFIX/include/nokogiri_gumbo.h"
+        -o "$TMPDIR/nokogiri_gumbo.h"
+    SHA256="664f3c889f0c97b34e375745d9745810a97dfcbc5bccd7c7ea2005262bf08acd"
+    if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/nokogiri_gumbo.h" | sha256sum -c - >/dev/null; then
+        echo "checksum mismatch: $TMPDIR/nokogiri_gumbo.h" >&2
+        rm -f "$TMPDIR/nokogiri_gumbo.h"
+        exit 1
+    fi
+    mv "$TMPDIR/nokogiri_gumbo.h" "$PREFIX/include/nokogiri_gumbo.h"
 fi
 
 gem install nokogiri -v "${VERSION}" -- --use-system-libraries

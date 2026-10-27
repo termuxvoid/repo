@@ -16,6 +16,12 @@ wget -q --show-progress "$JAR_URL" -O APKEditor.jar || {
     exit 1
 }
 
+SHA256="a9cd40df818845456be6d696de6110c89edf4b0a0580cb83438ed6b25a366e67"
+if ! printf '%s  %s\n' "$SHA256" "APKEditor.jar" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: APKEditor.jar" >&2
+    rm -f "APKEditor.jar"
+    exit 1
+fi
 echo "[*] Creating launcher..."
 cat > "$LAUNCHER" <<EOF
 #!/data/data/com.termux/files/usr/bin/bash

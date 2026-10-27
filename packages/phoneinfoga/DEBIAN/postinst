@@ -6,12 +6,15 @@ ARCH=$(uname -m)
 
 case "$ARCH" in
     aarch64)
+        SHA256="bc8ed51e3e20fe4b82999aac16a7925f783562346563ba4b26e33c90434cd58b"
         ARCH_SUFFIX="arm64"
         ;;
     x86_64)
+        SHA256="6173dfc4ec009a6fe688068bac5a250646f5a8f56409098f5edcc7e404b12a52"
         ARCH_SUFFIX="x86_64"
         ;;
     i686)
+        SHA256="f0d94a8bec019bfa4c0158d1cc3d2f0823aa20243a8a5873cad474e4b4f0eddf"
         ARCH_SUFFIX="386"
         ;;
     *)
@@ -30,6 +33,11 @@ echo "Downloading PhoneInfoga ${VERSION} for ${ARCH}..."
 curl -fsSL -o "$TMP_DIR/phoneinfoga.tar.gz" "$DOWNLOAD_URL"
 
 echo "Extracting..."
+if ! printf '%s  %s\n' "$SHA256" "$TMP_DIR/phoneinfoga.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMP_DIR/phoneinfoga.tar.gz" >&2
+    rm -f "$TMP_DIR/phoneinfoga.tar.gz"
+    exit 1
+fi
 tar -xzf "$TMP_DIR/phoneinfoga.tar.gz" -C "$TMP_DIR"
 
 echo "Installing binary..."

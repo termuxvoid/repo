@@ -9,6 +9,12 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/tomnomnom/waybackurls/archive/refs/tags/v${VERSION}.tar.gz"
+SHA256="01db2e44742aa358012cec6accd8a3c5e2f17f208e6f9240409c7fd56148c635"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    rm -f "src.tar.gz"
+    exit 1
+fi
 tar -xzf src.tar.gz --strip-components=1
 
 go build -trimpath -ldflags "-w -s" -o waybackurls .

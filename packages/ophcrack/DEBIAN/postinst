@@ -16,6 +16,12 @@ mkdir -p "$BUILD"
 print_status "Downloading ophcrack ${VERSION} source..."
 curl -sL -o "$TMPDIR/$ARCHIVE" "$URL" || print_error "Download failed"
 
+SHA256="048a6df57983a3a5a31ac7c4ec12df16aa49e652a29676d93d4ef959d50aeee0"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/$ARCHIVE" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/$ARCHIVE" >&2
+    rm -f "$TMPDIR/$ARCHIVE"
+    exit 1
+fi
 tar xjf "$TMPDIR/$ARCHIVE" -C "$BUILD" --strip-components=1 || print_error "Extraction failed"
 cd "$BUILD"
 

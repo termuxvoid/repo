@@ -16,6 +16,12 @@ wget -q --show-progress "$JAR_URL" -O qrylz.jar || {
     exit 1
 }
 
+SHA256="18761d0a8d867cff9c9543fd4c949e92e5099e7d3342e5c73d492d16b68c4841"
+if ! printf '%s  %s\n' "$SHA256" "qrylz.jar" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: qrylz.jar" >&2
+    rm -f "qrylz.jar"
+    exit 1
+fi
 echo "[*] Creating launcher..."
 printf '%s\n' \
 '#!/data/data/com.termux/files/usr/bin/bash' \

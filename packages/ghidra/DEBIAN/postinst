@@ -12,6 +12,12 @@ wget --show-progress -q --progress=bar:force:noscroll \
 
 echo "[*] Installing to $GHIDRA_DIR..."
 [ -d "$GHIDRA_DIR" ] && rm -rf "$GHIDRA_DIR"
+SHA256="93a5d11a9ad510622acaaf908c556a7b9b764d338e78a7567f3689bf5081fd54"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/ghidra.zip" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/ghidra.zip" >&2
+    rm -f "$TMPDIR/ghidra.zip"
+    exit 1
+fi
 unzip -q "$TMPDIR/ghidra.zip" -d "$PREFIX/share"
 mv "$PREFIX/share/ghidra_12.1.3_PUBLIC" "$GHIDRA_DIR"
 

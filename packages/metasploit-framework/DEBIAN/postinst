@@ -9,6 +9,12 @@ ZIP_URL="https://github.com/rapid7/metasploit-framework/archive/refs/tags/${TAG}
 mkdir -p $PREFIX/opt
 
 wget -q "$ZIP_URL" -O "$TMPDIR/msf.zip"
+SHA256="e90becc3fa09c8e146984b762ce88b7e2a52a9a9dd76fd20a4adba964e8bcafa"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/msf.zip" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/msf.zip" >&2
+    rm -f "$TMPDIR/msf.zip"
+    exit 1
+fi
 unzip -q "$TMPDIR/msf.zip" -d "$TMPDIR"
 mv "$TMPDIR/metasploit-framework-${TAG}" "$MSFPATH"
 rm -f "$TMPDIR/msf.zip"

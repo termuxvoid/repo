@@ -9,6 +9,12 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/steipete/wacli/archive/refs/tags/v${VERSION}.tar.gz"
+SHA256="8f13537b24f78a18c87e494e743f5c80d22546b5df6626de07de4d523342c7a2"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    rm -f "src.tar.gz"
+    exit 1
+fi
 tar -xzf src.tar.gz --strip-components=1
 
 go build -tags sqlite_fts5 -o ./dist/wacli ./cmd/wacli

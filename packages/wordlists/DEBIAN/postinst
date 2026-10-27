@@ -11,9 +11,19 @@ mkdir -p "$WORDLISTS_DIR"
 
 # Download rockyou.txt from Brannon Dorsey's mirror (faster)
 echo "[*] Fetching rockyou.txt (GitHub mirror)..."
-wget -q --show-progress -O "$WORDLISTS_DIR/rockyou.txt" \
-    https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt \
-    && echo "[+] rockyou.txt installed (143MB)"
+if wget -q --show-progress -O "$WORK_DIR/rockyou.txt" \
+    https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt; then
+    printf '%s  %s\n' "6dfa76aa0e02303994fd1062d0ac983f0b69ece5474d85a5bba36362e19c1076" "$WORK_DIR/rockyou.txt" | sha256sum -c - >/dev/null || {
+        echo "[!] Checksum mismatch: rockyou.txt" >&2
+        rm -f "$WORK_DIR/rockyou.txt"
+        exit 1
+    }
+    mv "$WORK_DIR/rockyou.txt" "$WORDLISTS_DIR/rockyou.txt"
+    echo "[+] rockyou.txt installed (143MB)"
+else
+    echo "[!] Failed to download rockyou.txt" >&2
+    exit 1
+fi
 
 # Minimal SecLists (only Common-Credentials)
 cd "$WORK_DIR" && {

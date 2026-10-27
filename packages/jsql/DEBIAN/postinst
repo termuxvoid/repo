@@ -43,6 +43,12 @@ mkdir -p "$JSQL_DIR" || error_msg "Failed to create directory"
 # Download JAR
 info_msg "Downloading jSQL Injection JAR..."
 curl -L -o "$JSQL_DIR/$JAR_NAME" "$JAR_URL" || error_msg "Download failed"
+SHA256="7eb35a73628b775619dd0deb4d7c555f1fb9b5011cb2816ed739cbadae8962cd"
+if ! printf '%s  %s\n' "$SHA256" "$JSQL_DIR/$JAR_NAME" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $JAR_NAME" >&2
+    rm -f "$JSQL_DIR/$JAR_NAME"
+    exit 1
+fi
 
 # Create launcher
 cat > "$LAUNCHER" << EOF

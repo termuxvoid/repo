@@ -6,6 +6,7 @@ VERSION="1.19.0"
 TARFILE="opencode-linux-arm64.tar.gz"
 DOWNLOAD_URL="https://github.com/anomalyco/opencode/releases/download/v${VERSION}/${TARFILE}"
 
+SHA256="e9841d43d3e1a8f36ed2691592d3b8b4fb097e606c8b559a277a1b845840e26b"
 SHARE_DIR="$PREFIX/share/opencode"
 BIN_DIR="$PREFIX/bin"
 LOADER="$PREFIX/glibc/lib/ld-linux-aarch64.so.1"
@@ -17,7 +18,14 @@ mkdir -p "$SHARE_DIR" "$BIN_DIR"
 
 # Download and extract
 echo "Downloading opencode ${VERSION}..."
-curl -fsSL "$DOWNLOAD_URL" | tar -xz -C "$SHARE_DIR"
+curl -fsSL -o "$TMPDIR/opencode.tar.gz" "$DOWNLOAD_URL"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/opencode.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/opencode.tar.gz" >&2
+    rm -f "$TMPDIR/opencode.tar.gz"
+    exit 1
+fi
+tar -xzf "$TMPDIR/opencode.tar.gz" -C "$SHARE_DIR"
+rm -f "$TMPDIR/opencode.tar.gz"
 if [ ! -f "$SHARE_DIR/opencode" ]; then
     echo "Error: opencode binary not found after extraction." >&2
     exit 1

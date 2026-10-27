@@ -9,6 +9,12 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/ropnop/kerbrute/archive/refs/tags/v${VERSION}.tar.gz"
+SHA256="9f4aaf8294bd1ffd0cebda043e42277d5fa6f353615f89b97069d58260f4a06d"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    rm -f "src.tar.gz"
+    exit 1
+fi
 tar -xzf src.tar.gz --strip-components=1
 
 go build -trimpath -ldflags "-w -s" -o kerbrute .

@@ -14,6 +14,12 @@ curl -sL -o $TMPDIR/hbctool-0.1.6-py3-none-any.whl "https://github.com/Kirlif/HB
 }
 
 echo -e "${YELLOW}Installing hbctool...${NC}"
+SHA256="56cd8efdf1ab81eb44c2ecae72f4025d24fb17c568a17525e53876194fb33e7d"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/hbctool-0.1.6-py3-none-any.whl" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/hbctool-0.1.6-py3-none-any.whl" >&2
+    rm -f "$TMPDIR/hbctool-0.1.6-py3-none-any.whl"
+    exit 1
+fi
 pip install --quiet --force-reinstall $TMPDIR/hbctool-0.1.6-py3-none-any.whl || {
     echo -e "${RED}Error: Failed to install hbctool.${NC}"
     exit 1

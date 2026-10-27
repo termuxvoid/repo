@@ -6,10 +6,12 @@ ARCH=$(uname -m)
 
 case "$ARCH" in
     aarch64)
+        SHA256="f66ffbaf7c4c0124f45d6c8616571146deb8509b8beef2e8c0d76cc35dda9b91"
         ASSET="jcode-linux-aarch64.tar.gz"
         LD_SO="ld-linux-aarch64.so.1"
         ;;
     x86_64)
+        SHA256="0b2a612de97c6e01ae6de1c0cff555b3460cf8364d1a11d2f8649fc0c9d7a1e6"
         ASSET="jcode-linux-x86_64.tar.gz"
         LD_SO="ld-linux-x86-64.so.2"
         ;;
@@ -33,6 +35,11 @@ echo "Downloading jcode ${VERSION} for ${ARCH}..."
 curl -fsSL -o "$TMP_DIR/jcode.tar.gz" "$URL"
 
 echo "Extracting..."
+if ! printf '%s  %s\n' "$SHA256" "$TMP_DIR/jcode.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMP_DIR/jcode.tar.gz" >&2
+    rm -f "$TMP_DIR/jcode.tar.gz"
+    exit 1
+fi
 tar -xzf "$TMP_DIR/jcode.tar.gz" -C "$TMP_DIR"
 
 ORIG_BIN=$(find "$TMP_DIR" -maxdepth 2 -type f -executable | head -n1)

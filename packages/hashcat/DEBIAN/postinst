@@ -17,6 +17,12 @@ mkdir -p "$BUILD"
 print_status "Downloading hashcat ${VERSION} source..."
 curl -sL -o "$TMPDIR/$ARCHIVE" "$URL" || print_error "Download failed"
 
+SHA256="9546a6326d747530b44fcc079babad40304a87f32d3c9080016d58b39cfc8b96"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/$ARCHIVE" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/$ARCHIVE" >&2
+    rm -f "$TMPDIR/$ARCHIVE"
+    exit 1
+fi
 tar xzf "$TMPDIR/$ARCHIVE" -C "$BUILD" --strip-components=1 || print_error "Extraction failed"
 cd "$BUILD"
 

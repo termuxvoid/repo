@@ -8,6 +8,12 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/tillson/git-hound/archive/refs/tags/v3.2.tar.gz"
+SHA256="be883cd265a2cc049c9ed8c7bbf29dccf89789173b19b237618d9c9613ee9127"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    rm -f "src.tar.gz"
+    exit 1
+fi
 tar -xzf src.tar.gz --strip-components=1
 
 go build -trimpath -o git-hound .

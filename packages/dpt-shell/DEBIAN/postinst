@@ -20,6 +20,12 @@ curl -L -o $TMPDIR/dpt-shell.zip $DOWNLOAD_URL || {
 }
 
 echo -e "${YELLOW}Extracting dpt-shell...${NC}"
+SHA256="11d07c39ab5061e361f8df1b0665defdb29cab8b5314781a1bdab383f48517f3"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/dpt-shell.zip" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/dpt-shell.zip" >&2
+    rm -f "$TMPDIR/dpt-shell.zip"
+    exit 1
+fi
 unzip -q $TMPDIR/dpt-shell.zip -d $TMPDIR/ || {
     echo -e "${RED}Error: Failed to extract dpt-shell.${NC}"
     exit 1

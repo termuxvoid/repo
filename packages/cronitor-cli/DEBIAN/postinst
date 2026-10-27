@@ -11,9 +11,18 @@ echo -e "${GREEN}Installing CronitorCLI $VERSION...${NC}"
 
 ARCH=$(uname -m)
 case $ARCH in
-    aarch64) ARCH_TYPE="arm64" ;;
-    arm*) ARCH_TYPE="arm" ;;
-    x86_64) ARCH_TYPE="amd64" ;;
+    aarch64)
+        ARCH_TYPE="arm64"
+        SHA256="29fb3a82f07b1d8a3b82ad1ddb66b326e26a85887dc903fb4b5233d06f5372ed"
+        ;;
+    arm*)
+        ARCH_TYPE="arm"
+        SHA256="2ab0513f2cc0f2aa4263658dcfa0c4b4b20d09de03331c52ebfdda732411eaa4"
+        ;;
+    x86_64)
+        ARCH_TYPE="amd64"
+        SHA256="3482a6a7eed8a4a97af0d732dd5a42799063b025600aaded2624c6a5b355fab7"
+        ;;
     *)
         echo -e "${RED}Error: Unsupported architecture: $ARCH${NC}"
         exit 1
@@ -29,6 +38,11 @@ curl -L -o $TMPDIR/cronitor.tar.gz $DOWNLOAD_URL || {
     exit 1
 }
 
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/cronitor.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/cronitor.tar.gz" >&2
+    rm -f "$TMPDIR/cronitor.tar.gz"
+    exit 1
+fi
 tar xvf $TMPDIR/cronitor.tar.gz -C $PREFIX/bin || {
     echo -e "${RED}Error: Failed to extract CronitorCLI.${NC}"
     exit 1

@@ -1,5 +1,5 @@
 Package: jsql
-Version: 0.144
+Version: 0.115
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, openjdk-21

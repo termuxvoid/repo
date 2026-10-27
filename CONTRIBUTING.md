@@ -43,6 +43,7 @@ Runs after installation. This is where the real work happens: download, build, i
 - **Never** modify `$PATH`, `$HOME`, `$PREFIX`, or any other environment variable.
 - **Never** touch the user's existing Termux config or dotfiles.
 - Expose commands via **symlinks into `$PREFIX/bin`**. Prefer a `ln -s` over a wrapper script.
+- **Verify every fixed-version download with a pinned SHA-256** before use, and refresh the hash in the same commit as a version bump. GitHub tag archives are checked too: if upstream regenerates one, update its hash as well.
 - Its final job is to verify the command exists; `exit 1` on any failure.
 
 Example (Go tool):
@@ -96,6 +97,7 @@ test ! -e "$PREFIX/bin/tool"
 - [ ] `postinst` keeps to one job, uses symlinks, and does **not** change any environment variable or path.
 - [ ] `postrm` removes only what the package created.
 - [ ] Installed, ran, and uninstalled successfully during testing.
+- [ ] Fixed-version downloads are verified with a pinned SHA-256, and the hash matches the current version.
 - [ ] Added to `assets/PACKAGES.md` under the correct category.
 
 If unsure about any step, ask before opening the PR rather than guessing.

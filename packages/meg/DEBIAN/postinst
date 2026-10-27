@@ -9,6 +9,12 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/tomnomnom/meg/archive/refs/tags/v0.3.0.tar.gz"
+SHA256="55f8928d048f5a8204ff2bc353fbbcb1954daa7b199ef7068217f99310086aa8"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    rm -f "src.tar.gz"
+    exit 1
+fi
 tar -xzf src.tar.gz --strip-components=1
 
 go build -trimpath -o meg ./

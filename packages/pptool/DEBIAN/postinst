@@ -7,6 +7,12 @@ WHEEL_PATH="$TMPDIR/pptool-2.0-py3-none-any.whl"
 
 curl -L -o "$WHEEL_PATH" "$WHEEL_URL" || exit 1
 
+SHA256="6113873a59df68a3fa7a0e3c3227d3b75a4a90cc69fca791ed8ea0946e58db1b"
+if ! printf '%s  %s\n' "$SHA256" "$WHEEL_PATH" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $WHEEL_PATH" >&2
+    rm -f "$WHEEL_PATH"
+    exit 1
+fi
 pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary --quiet --force-reinstall "$WHEEL_PATH" || exit 1
 
 rm -f "$WHEEL_PATH"

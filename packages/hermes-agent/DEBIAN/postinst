@@ -15,6 +15,12 @@ curl -Lf "https://codeload.github.com/NousResearch/hermes-agent/tar.gz/refs/tags
     exit 1
 }
 
+SHA256="285f3fc134ff466a90065e1517801a68993733b807158ee8f32aa01613786990"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/hermes-agent.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/hermes-agent.tar.gz" >&2
+    rm -f "$TMPDIR/hermes-agent.tar.gz"
+    exit 1
+fi
 file "$TMPDIR/hermes-agent.tar.gz" | grep -q gzip || {
     echo "Error: Downloaded file is not gzip." >&2
     rm -f "$TMPDIR/hermes-agent.tar.gz"

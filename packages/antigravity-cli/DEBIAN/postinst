@@ -11,6 +11,12 @@ mkdir -p "$SHARE_DIR" "$BIN_DIR" "$STAGING"
 
 # Download and extract
 curl -fsSL -o "$STAGING/agy.tar.gz" "$DOWNLOAD_URL"
+SHA256="065505ab4686ec7113b7ccd87fce87795a8fd4b7776f771da4d53940206e34cc"
+if ! printf '%s  %s\n' "$SHA256" "$STAGING/agy.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $STAGING/agy.tar.gz" >&2
+    rm -f "$STAGING/agy.tar.gz"
+    exit 1
+fi
 tar -xzf "$STAGING/agy.tar.gz" -C "$STAGING"
 
 # Locate binary

@@ -21,6 +21,12 @@ curl -fsSL -o "$TMP_DIR/statusbar.tar.gz" "$TARBALL" || {
     echo "Error: Failed to download statusbar." >&2
     exit 1
 }
+SHA256="23bb84129a2f118e0cace46caeee8eefe742908fdd85a584e24850cefd72d605"
+if ! printf '%s  %s\n' "$SHA256" "$TMP_DIR/statusbar.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMP_DIR/statusbar.tar.gz" >&2
+    rm -f "$TMP_DIR/statusbar.tar.gz"
+    exit 1
+fi
 tar -xzf "$TMP_DIR/statusbar.tar.gz" -C "$TMP_DIR"
 
 SRC="$TMP_DIR/statusbar-${VERSION}"

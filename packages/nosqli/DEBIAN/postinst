@@ -9,6 +9,12 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/Charlie-belmer/nosqli/archive/refs/tags/v${VERSION}.tar.gz"
+SHA256="ab519f979d345d27ed9c0bd33994eb5cf88844784f9f1673af218a67675a3b92"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    rm -f "src.tar.gz"
+    exit 1
+fi
 tar -xzf src.tar.gz --strip-components=1
 
 go build -trimpath -ldflags "-w -s" -o nosqli .

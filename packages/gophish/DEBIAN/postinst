@@ -15,6 +15,12 @@ mkdir -p "$TMP_DIR"
 cd "$TMP_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/gophish/gophish/archive/refs/tags/v${VERSION}.tar.gz"
+SHA256="d748b91bcd9ede187002ccaf9e3699ecbff2315aff02d54c0a29debf6fb5fb3e"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    rm -f "src.tar.gz"
+    exit 1
+fi
 tar -xzf src.tar.gz --strip-components=1
 
 go build -trimpath -ldflags "-w -s" -o gophish

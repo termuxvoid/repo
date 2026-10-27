@@ -9,6 +9,12 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/zmap/zgrab2/archive/refs/tags/v1.0.0.tar.gz"
+SHA256="682e9c12ecd8714d8702c88f37916c43654ec1091e97d7d0cc76e54236fcd6cc"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    rm -f "src.tar.gz"
+    exit 1
+fi
 tar -xzf src.tar.gz --strip-components=1
 
 export CGO_ENABLED=0

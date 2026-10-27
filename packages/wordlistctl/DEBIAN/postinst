@@ -7,10 +7,26 @@ mkdir -p $PREFIX/share/wordlistctl
 cd $PREFIX/share/wordlistctl
 
 if [ ! -f wordlistctl.py ]; then
-    curl -fsSL -o wordlistctl.py \
+    mkdir -p "$TMPDIR/wordlistctl-download"
+    curl -fsSL -o "$TMPDIR/wordlistctl-download/wordlistctl.py" \
         https://raw.githubusercontent.com/BlackArch/wordlistctl/v0.9.4/wordlistctl.py
-    curl -fsSL -o repo.json \
+    SHA256="4434b5e637a3a9ae4df8a08b7d14c67055ec5bf9267d45a95f3340456c71e793"
+    if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/wordlistctl-download/wordlistctl.py" | sha256sum -c - >/dev/null; then
+        echo "checksum mismatch: $TMPDIR/wordlistctl-download/wordlistctl.py" >&2
+        rm -f "$TMPDIR/wordlistctl-download/wordlistctl.py"
+        exit 1
+    fi
+    curl -fsSL -o "$TMPDIR/wordlistctl-download/repo.json" \
         https://raw.githubusercontent.com/BlackArch/wordlistctl/v0.9.4/repo.json
+    SHA256="8a7ffd0de2633d04161c70d858949a00f77680667905f673644c52bed676bcf3"
+    if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/wordlistctl-download/repo.json" | sha256sum -c - >/dev/null; then
+        echo "checksum mismatch: $TMPDIR/wordlistctl-download/repo.json" >&2
+        rm -f "$TMPDIR/wordlistctl-download/repo.json"
+        exit 1
+    fi
+    mv "$TMPDIR/wordlistctl-download/wordlistctl.py" wordlistctl.py
+    mv "$TMPDIR/wordlistctl-download/repo.json" repo.json
+    rm -rf "$TMPDIR/wordlistctl-download"
 fi
 
 python - << 'PYEOF'

@@ -10,6 +10,12 @@ mkdir -p "$BEEF_DIR"
 
 cd "$TMPDIR"
 curl -L -o beef.tar.gz "$TARBALL_URL"
+SHA256="2b2fe183ad90696d14cc556220cced0ac5274c39e55c70c94a71031626fc9124"
+if ! printf '%s  %s\n' "$SHA256" "beef.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: beef.tar.gz" >&2
+    rm -f "beef.tar.gz"
+    exit 1
+fi
 tar -xzf beef.tar.gz --strip-components=1 -C "$BEEF_DIR"
 rm beef.tar.gz
 

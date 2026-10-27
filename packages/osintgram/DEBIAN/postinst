@@ -14,6 +14,12 @@ curl -fsSL -o "$TMPDIR/osintgram.tar.gz" "https://github.com/Datalux/Osintgram/a
     exit 1
 }
 
+SHA256="7e3e9a1f5fd1ea1e5390c4f53c37fc5c31228c7f482c3a7b9cff80671ad7251c"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/osintgram.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/osintgram.tar.gz" >&2
+    rm -f "$TMPDIR/osintgram.tar.gz"
+    exit 1
+fi
 file "$TMPDIR/osintgram.tar.gz" | grep -q gzip || {
     echo "Error: Downloaded file is not gzip." >&2
     rm -f "$TMPDIR/osintgram.tar.gz"

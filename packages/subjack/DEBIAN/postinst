@@ -9,6 +9,12 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/haccer/subjack/archive/refs/tags/v${VERSION}.tar.gz"
+SHA256="3daf124c32a1bf839736420a0f3bc6d92c5358987c9e08ec00a0c8cf3a3febe4"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    rm -f "src.tar.gz"
+    exit 1
+fi
 tar -xzf src.tar.gz --strip-components=1
 
 go build -trimpath -ldflags "-w -s" -o ./dist/subjack .

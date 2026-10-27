@@ -15,6 +15,12 @@ echo "Downloading Android SDK..."
 axel -n 4 -o $TMPDIR/android-sdk.tar.xz https://github.com/termuxvoid/android-sdk-termux/releases/download/36.0.0/android-sdk.7z
 
 echo "Extracting SDK..."
+SHA256="bf1126da6c4cd6abcbcb9a1545dbb98a8097604769a60fceca3fdb41a057a1f3"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/android-sdk.tar.xz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/android-sdk.tar.xz" >&2
+    rm -f "$TMPDIR/android-sdk.tar.xz"
+    exit 1
+fi
 7z x $TMPDIR/android-sdk.tar.xz -o"$PREFIX/opt" -y > /dev/null
 
 rm $TMPDIR/android-sdk.tar.xz

@@ -15,6 +15,12 @@ curl -fsSL -o "$TMPDIR/phonesploit-pro.tar.gz" "https://github.com/AzeemIdrisi/P
     exit 1
 }
 
+SHA256="3c1e1b7f1fa8903a69b216efb1a09de153582b8b707143c90def1dae82e41b65"
+if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/phonesploit-pro.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMPDIR/phonesploit-pro.tar.gz" >&2
+    rm -f "$TMPDIR/phonesploit-pro.tar.gz"
+    exit 1
+fi
 file "$TMPDIR/phonesploit-pro.tar.gz" | grep -q gzip || {
     echo "[!] Downloaded file is not gzip."
     rm -f "$TMPDIR/phonesploit-pro.tar.gz"
