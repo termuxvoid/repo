@@ -5,13 +5,10 @@
 The complete catalog of packages in the TermuxVoid APT repository, grouped by the category recorded in each package's metadata. Each entry links to its documentation page.
 
 > [!WARNING]
-> This repository includes dual-use security tools: exploitation frameworks, phishing kits, credential and cookie theft, DoS tools, malware samples, Android backdoors, SMS/gallery/camera interception, and other surveillance utilities. Some packages bundle third-party loaders or patched binaries (for example, Burp Suite Professional); these may violate software licenses and carry additional malware risk. Use them only on devices, accounts, and networks you own or are explicitly authorized to test. Misuse can be illegal, can damage systems, and may violate platform terms. Review each package's install script and upstream source before use.
-
-> [!IMPORTANT]
-> Installation scripts run on your device with your user permissions. Packages may compile from source, install dependencies, or download upstream release binaries at install time. Fixed-version downloads are checked with pinned SHA-256 hashes where upstream provides a stable artifact. Git clones, mutable URLs, pip/gem installs, and upstream installers are not hash-pinned. Where a SHA-256 check is present, a mismatch aborts installation, but a compromised upstream account or repository key remains a residual risk.
+> This repository includes dual-use security tools. Use them only on devices, accounts, and networks you own or are explicitly authorized to test. Review each package's install script and upstream source before use.
 
 > [!NOTE]
-> The same tools are also available as pacman packages: [github.com/termuxvoid/pacman-repo](https://github.com/termuxvoid/pacman-repo) (`curl -sL https://github.com/termuxvoid/pacman-repo/raw/main/install-repo.sh | bash`).
+> Some installs download upstream binaries. Stable fixed-version downloads use pinned SHA-256 hashes; git clones, mutable URLs, pip/gem, and upstream installers are not pinned. The same tools are available as pacman packages: [github.com/termuxvoid/pacman-repo](https://github.com/termuxvoid/pacman-repo) (`curl -sL https://github.com/termuxvoid/pacman-repo/raw/main/install-repo.sh | bash`).
 
 ## Tool List
 
@@ -384,8 +381,8 @@ The complete catalog of packages in the TermuxVoid APT repository, grouped by th
 | [arjun](https://termuxvoid.github.io/tool.html?name=arjun) | HTTP parameter discovery suite supporting GET/POST methods with threading |
 | [beef](https://termuxvoid.github.io/tool.html?name=beef) | Browser Exploitation Framework |
 | [breacher](https://termuxvoid.github.io/tool.html?name=breacher) | Multi‑threaded URL brute‑forcer for hidden paths |
-| [burpsuite](https://termuxvoid.github.io/tool.html?name=burpsuite) | Web security testing platform (community edition) |
-| [burpsuite-pro](https://termuxvoid.github.io/tool.html?name=burpsuite-pro) | Burp Suite Professional with a third-party loader (licensing and malware risk) |
+| [burpsuite](https://termuxvoid.github.io/tool.html?name=burpsuite) | Web security testing platform |
+| [burpsuite-pro](https://termuxvoid.github.io/tool.html?name=burpsuite-pro) | Web security testing platform |
 | [commix](https://termuxvoid.github.io/tool.html?name=commix) | Automated OS command injection and exploitation tool |
 | [d-tect](https://termuxvoid.github.io/tool.html?name=d-tect) | D‑TECT – Pentest the Modern Web |
 | [dalfox](https://termuxvoid.github.io/tool.html?name=dalfox) | Parameter analysis and XSS scanning tool |
