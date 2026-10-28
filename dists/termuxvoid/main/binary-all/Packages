@@ -185,6 +185,25 @@ SHA1: f48c7002ee96bccd07353ae0e1269cbed5395162
 SHA256: ef0619f4721a782123941dbcdd0a4859ba78734c5d3f7b70f5a0ff2f06b37d4c
 SHA512: 8021bf8733423c114f135bb3c5da3e2a632fa48842338e49c2487101344ba48eea479567cfb232744fcc9a431b2754071fbc8f33ab5b0222a162f18538899f7c
 
+Package: android-cmake
+Version: 4.1.2
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: axel, xz-utils, ca-certificates
+Section: android
+Priority: optional
+Homepage: https://github.com/HomuHomu833/cmake-custom
+Description: Custom CMake 4.1.2 and Ninja for Termux (aarch64 and x86_64)
+ Custom-built CMake and Ninja for Android SDK/NDK builds.
+ Downloads the matching Termux build and extracts it to
+ $PREFIX/opt/android-cmake/4.1.2.
+Filename: dists/termuxvoid/main/binary-all/android-cmake_4.1.2_all.deb
+Size: 1636
+MD5Sum: 55b66770854802ce131c7784026ad35f
+SHA1: 191f4398d2c023464d6d3e379b8b2ed0219c0976
+SHA256: b6fb786f05dbd6662cd8be8368fe592580ee73ab2cdf3d0bf8aeb33ee8c39192
+SHA512: 4b824ea8c5a9c79c775dc8c904772c28bf573cf02b6688af942167524996d5ab8cf27cb43d682b78aaa9bc0fc8db1f92c294e73356cc3747aff37841c2150722
+
 Package: android-ndk
 Version: 30.0.16248370
 Architecture: all
@@ -317,10 +336,10 @@ SHA256: 49f6b2b0c9f129d96f0e2456c10a326cc17961fbb5a62f431e39e0d0bac41ccd
 SHA512: da365ff4edf4e5ab96505fa92f77e800729a0038836da77e302cface92dd6b1051580d40139159df7aca1616539af4c6f6fcde342398d8d6b603fc8765a0185f
 
 Package: apkgen-cli
-Version: 1.4.0
+Version: 1.4.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, gum, termux-tools, android-sdk
+Depends: git, gum, termux-tools, android-sdk, android-ndk, android-cmake
 Recommends: flutter
 Section: android
 Priority: optional
@@ -329,12 +348,12 @@ Description: CLI tool to quickly generate Android APKs from local templates
  apkgen-cli simplifies Android APK generation using local templates.
  Supports Java, Kotlin, native, and Flutter projects, providing a streamlined
  workflow for developers and CI/CD pipelines.
-Filename: dists/termuxvoid/main/binary-all/apkgen-cli_1.4.0_all.deb
-Size: 1144
-MD5Sum: d70c63b65e1626409eff0fae9d193917
-SHA1: d56dfab9e8ec2564b16abb169a191a277deecfe8
-SHA256: ce2c4c8b9e038b39122ff7208aeca5cf21bdcae96e38820314e0352318cf70c4
-SHA512: 38622790629e53bc679d1918fdbeda7e6d80faf923f48845c40789762c37021ef9c19bb69b30709c63911297c9b612d3cddb4a22ebd92b9b1fab6255f47c2bb5
+Filename: dists/termuxvoid/main/binary-all/apkgen-cli_1.4.1_all.deb
+Size: 1272
+MD5Sum: 2d981a7de4439e9db4d5260d09c64751
+SHA1: 7e92a4096c331d0afd0bf531b21ec7eb85337bde
+SHA256: 2435eee7acc255881f6b649dbb21ed934322a116eef9856f14ac1b9c796e27c1
+SHA512: f91f5ef4c5243f18e9b3c0624e5d17030caf7f88ab4320d121c390c967cae43b050af0c6ac0dedff08d946f02d29c86255aeb13694721fbfa81b45f08fd16787
 
 Package: apkleaks
 Version: 2.6.3
