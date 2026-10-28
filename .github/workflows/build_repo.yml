@@ -3,6 +3,9 @@ name: Build and Deploy APT Repo to gh-pages
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'packages/**'
+      - '.github/workflows/build_repo.yml'
   workflow_dispatch:
 
 concurrency:
@@ -34,31 +37,132 @@ jobs:
           sudo apt-get install -y dpkg-dev gnupg
           pip3 install termux-apt-repo
 
-      - name: Create directories
+      - name: Restore published packages
+        id: previous
         run: |
-          mkdir -p debs repo
+          set -euo pipefail
+          mkdir -p debs previous repo
+          base=""
+          if git fetch --depth=1 origin +refs/heads/gh-pages:refs/remotes/origin/gh-pages; then
+            if git archive origin/gh-pages dists/termuxvoid/main/binary-all 2>/dev/null | tar -x -C previous; then
+              find previous/dists/termuxvoid/main/binary-all -name '*.deb' -exec cp {} debs/ \;
+            fi
+            base=$(git show origin/gh-pages:DEPLOYED_SHA 2>/dev/null || true)
+            if [ -z "$base" ]; then
+              base=$(git log -1 --format=%s origin/gh-pages | sed -n 's/^deploy: //p')
+            fi
+          fi
+          if [ -n "$base" ] && git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            echo "base=$base" >> "$GITHUB_OUTPUT"
+          else
+            echo "base=" >> "$GITHUB_OUTPUT"
+          fi
+          echo "restored=$(find debs -maxdepth 1 -name '*.deb' | wc -l)" >> "$GITHUB_OUTPUT"
 
-      - name: Build all packages
+      - name: Determine packages to build
+        id: changed
+        env:
+          BASE: ${{ steps.previous.outputs.base }}
         run: |
-          echo "Building all packages..."
-          for pkg_dir in packages/*/; do
-            if [ -f "${pkg_dir}/DEBIAN/control" ]; then
-              echo "Building package from ${pkg_dir}"
-              dpkg-deb -b -Zxz "${pkg_dir}" debs/
+          set -euo pipefail
+          list="$RUNNER_TEMP/build-packages.txt"
+          : > "$list"
+          add() {
+            grep -qxF "$1" "$list" || echo "$1" >> "$list"
+          }
+
+          if [ -z "$BASE" ]; then
+            echo "No previous deployment; rebuilding all packages"
+            for dir in packages/*/; do
+              [ -f "${dir}DEBIAN/control" ] && add "$(basename "$dir")"
+            done
+          else
+            git diff --name-only "$BASE" "$GITHUB_SHA" -- packages |
+              awk -F/ '$1 == "packages" && $2 != "" { print $2 }' |
+              sort -u |
+              while IFS= read -r pkg; do add "$pkg"; done
+          fi
+
+          for dir in packages/*/; do
+            [ -f "${dir}DEBIAN/control" ] || continue
+            pkg=$(basename "$dir")
+            name=$(awk -F': ' '/^Package:/{print $2; exit}' "${dir}DEBIAN/control" | tr -d '[:space:]')
+            ver=$(awk -F': ' '/^Version:/{print $2; exit}' "${dir}DEBIAN/control" | tr -d '[:space:]')
+            [ -n "$name" ] && [ -n "$ver" ] || {
+              echo "Invalid control file: ${dir}DEBIAN/control" >&2
+              exit 1
+            }
+            if ! compgen -G "debs/${name}_${ver}_*.deb" > /dev/null; then
+              echo "Missing published artifact: $pkg $ver"
+              add "$pkg"
             fi
           done
-          echo "Total debs: $(ls debs/*.deb | wc -l)"
 
-      - name: Remove stale debs for deleted packages
+          sort -u "$list" -o "$list"
+          echo "count=$(wc -l < "$list")" >> "$GITHUB_OUTPUT"
+          echo "packages=$(paste -sd' ' "$list")" >> "$GITHUB_OUTPUT"
+          echo "Packages to build:"
+          cat "$list"
+
+      - name: Build changed packages
+        if: steps.changed.outputs.count != '0'
+        env:
+          PACKAGES: ${{ steps.changed.outputs.packages }}
         run: |
+          set -euo pipefail
+          for pkg in $PACKAGES; do
+            dir="packages/$pkg"
+            rm -f debs/"${pkg}"_*.deb
+            if [ -d "$dir" ]; then
+              [ -f "$dir/DEBIAN/control" ] || {
+                echo "Missing control file: $dir" >&2
+                exit 1
+              }
+              echo "Building $pkg"
+              dpkg-deb -b -Zxz "$dir" debs/
+            else
+              echo "Removed package: $pkg"
+            fi
+          done
+
+      - name: Remove stale packages
+        run: |
+          set -euo pipefail
+          expected="$RUNNER_TEMP/expected-packages.tsv"
+          : > "$expected"
+          for control in packages/*/DEBIAN/control; do
+            [ -f "$control" ] || continue
+            name=$(awk -F': ' '/^Package:/{print $2; exit}' "$control" | tr -d '[:space:]')
+            ver=$(awk -F': ' '/^Version:/{print $2; exit}' "$control" | tr -d '[:space:]')
+            printf '%s\t%s\n' "$name" "$ver" >> "$expected"
+          done
+
+          shopt -s nullglob
           for deb in debs/*.deb; do
-            pkg_name=$(basename "$deb" | sed 's/_.*//')
-            if [ ! -d "packages/${pkg_name}" ]; then
-              echo "Removing stale deb: ${deb}"
+            name=$(dpkg-deb -f "$deb" Package)
+            ver=$(dpkg-deb -f "$deb" Version)
+            if ! awk -F'\t' -v n="$name" -v v="$ver" \
+              '$1 == n && $2 == v { found = 1 } END { exit !found }' "$expected"; then
+              echo "Removing stale package: $deb"
               rm -f "$deb"
             fi
           done
-          echo "Final debs: $(ls debs/*.deb | wc -l)"
+          echo "Packages in debs: $(find debs -maxdepth 1 -name '*.deb' | wc -l)"
+
+      - name: Verify package coverage
+        run: |
+          set -euo pipefail
+          for control in packages/*/DEBIAN/control; do
+            [ -f "$control" ] || continue
+            name=$(awk -F': ' '/^Package:/{print $2; exit}' "$control" | tr -d '[:space:]')
+            ver=$(awk -F': ' '/^Version:/{print $2; exit}' "$control" | tr -d '[:space:]')
+            count=$(find debs -maxdepth 1 -name "${name}_${ver}_*.deb" | wc -l)
+            if [ "$count" -ne 1 ]; then
+              echo "Expected one deb for $name $ver, found $count" >&2
+              exit 1
+            fi
+          done
+          echo "All packages have exactly one current deb"
 
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v6
@@ -67,12 +171,28 @@ jobs:
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Generate APT repository
-        run: termux-apt-repo debs repo termuxvoid main -s
+        run: |
+          set -euo pipefail
+          termux-apt-repo debs repo termuxvoid main -s
+          printf '%s\n' "$GITHUB_SHA" > repo/DEPLOYED_SHA
 
       - name: Verify signature
         run: |
           gpg --list-keys
           gpg --verify repo/dists/termuxvoid/InRelease
+
+      - name: Verify published package set
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for deb in debs/*.deb; do
+            file=$(basename "$deb")
+            test -f "repo/dists/termuxvoid/main/binary-all/$file" || {
+              echo "Missing published deb: $file" >&2
+              exit 1
+            }
+          done
+          echo "Published $(find repo/dists/termuxvoid/main/binary-all -maxdepth 1 -name '*.deb' | wc -l) packages"
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
