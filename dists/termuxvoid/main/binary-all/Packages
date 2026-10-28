@@ -2994,6 +2994,26 @@ SHA1: f2fd7c7a39124a01bc56bd07dc158fd8bd73e331
 SHA256: d1e6c13184033c5d23a22055c1fb7ca098ad6d0775afcd8d5f0689d9028132d5
 SHA512: f0eff6b01b40cd4096b5d1e19be66cc0ffa6008ca358a1c87323b258332607e5ea4be3dc10ff466bbf89ad26cb14c3845c9cc5eb60aa2e06c2669fb4838ff122
 
+Package: omniroute
+Version: 3.8.52
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: npm, python, build-essential, git, ca-certificates
+Section: ai
+Priority: optional
+Homepage: https://www.omniroute.online/
+Description: AI gateway with one OpenAI-compatible endpoint for many providers
+ OmniRoute is a local AI gateway that routes requests across many AI
+ providers through a single OpenAI-compatible endpoint, with automatic
+ fallback and a web dashboard. This package installs the npm release for
+ normal Termux Node.js and provides the omniroute command.
+Filename: dists/termuxvoid/main/binary-all/omniroute_3.8.52_all.deb
+Size: 2180
+MD5Sum: 9f25b010b752d75eb7efbb0f511b6b67
+SHA1: c9f8e39d5a4b428b9db1831dd3158a84ea2a625b
+SHA256: 20b53fdbf17f785c36adca8138d5343b9e28ab1e434b9cfec2805a24ef81b045
+SHA512: eac2bfd35c5d164806a66499c648718a677351ce3d7057fdd6735dc067eaef20868477a79c54b7dbb81bb1c956c1303800b34b838140c5445753b36d70958e17
+
 Package: onionsearch
 Version: 1.3
 Architecture: all
