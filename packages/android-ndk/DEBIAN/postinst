@@ -1,0 +1,43 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+NDK_DIR="$PREFIX/opt/android-ndk"
+ARCH=$(uname -m)
+
+case "$ARCH" in
+    aarch64)
+        ASSET_ARCH="aarch64"
+        SHA256="406afc90e64eee11caf39c0eadb0fc829b126387f18e50562320cdc6162e5a2b"
+        ;;
+    x86_64)
+        ASSET_ARCH="x86_64"
+        SHA256="9a4679ef84fd19970f6e69a6c14949c57594acc72b332bf21a674f576d91693b"
+        ;;
+    *)
+        echo "[!] Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+
+DOWNLOAD_URL="https://github.com/HomuHomu833/android-ndk-custom/releases/download/r30/android-ndk-r30-${ASSET_ARCH}-linux-android.tar.xz"
+TMP_ARCHIVE="$TMPDIR/android-ndk.tar.xz"
+
+echo "[*] Downloading Android NDK r30..."
+mkdir -p "$PREFIX/opt"
+rm -rf "$NDK_DIR"
+mkdir -p "$NDK_DIR"
+axel -n 4 -o "$TMP_ARCHIVE" "$DOWNLOAD_URL" || { echo "[!] Download failed" >&2; exit 1; }
+
+if ! printf '%s  %s\n' "$SHA256" "$TMP_ARCHIVE" | sha256sum -c - >/dev/null; then
+    echo "[!] Checksum mismatch: $TMP_ARCHIVE" >&2
+    rm -f "$TMP_ARCHIVE"
+    exit 1
+fi
+
+echo "[*] Extracting Android NDK..."
+tar -xJf "$TMP_ARCHIVE" -C "$NDK_DIR" --strip-components=1
+rm -f "$TMP_ARCHIVE"
+
+[ -x "$NDK_DIR/ndk-build" ] || { echo "[!] ndk-build not found" >&2; exit 1; }
+echo "[√] Android NDK installed at $NDK_DIR"

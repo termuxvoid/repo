@@ -44,7 +44,8 @@ The complete catalog of packages in the TermuxVoid APT repository, grouped by th
 
 | Tool | Description |
 |------|-------------|
-| [android-sdk](https://termuxvoid.github.io/tool.html?name=android-sdk) | Android development toolkit (ADB, Fastboot, and related tools) |
+| [android-ndk](https://termuxvoid.github.io/tool.html?name=android-ndk) | Custom Android NDK r30 for Termux (aarch64/x86_64) |
+| [android-sdk](https://termuxvoid.github.io/tool.html?name=android-sdk) | Custom Android SDK 37.0.0 for Termux (aarch64/x86_64) |
 | [antisplit](https://termuxvoid.github.io/tool.html?name=antisplit) | APK Split Package Combiner and Modifier |
 | [apkeditor](https://termuxvoid.github.io/tool.html?name=apkeditor) | Lightweight APK modification tool |
 | [apkgen-cli](https://termuxvoid.github.io/tool.html?name=apkgen-cli) | CLI tool to quickly generate Android APKs from a template |

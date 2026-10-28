@@ -1,14 +1,14 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-echo "[*] Checking device architecture..."
 ARCH=$(uname -m)
-
-if [ "$ARCH" != "aarch64" ]; then
-    echo "[!] ERROR: Device architecture $ARCH is not supported"
-    echo "[!] This package requires aarch64 (ARM64) devices only"
-    exit 1
-fi
-
-echo "[√] Architecture check passed: $ARCH"
-exit 0
+case "$ARCH" in
+    aarch64|x86_64)
+        exit 0
+        ;;
+    *)
+        echo "[!] ERROR: android-sdk supports aarch64 and x86_64 only" >&2
+        echo "[!] Your device architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac

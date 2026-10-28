@@ -1,50 +1,44 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
-echo "Starting Android SDK installation..."
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SDK_DIR="$PREFIX/opt/android-sdk"
+ARCH=$(uname -m)
 
-ANDROID_DIR="$PREFIX/opt/android-sdk"
+case "$ARCH" in
+    aarch64)
+        ASSET_ARCH="aarch64"
+        SHA256="4d1eaa28e54c845d501d0dda686392219f10db2a3d9ef7c9060e9f6d356d4646"
+        ;;
+    x86_64)
+        ASSET_ARCH="x86_64"
+        SHA256="a3cfeffb07b55bcba2466cbe0834d6f9424ef7579097a275b56259458e79b506"
+        ;;
+    *)
+        echo "[!] Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
 
-# Create directory
-if [ -d "$ANDROID_DIR" ]; then
-    rm -rf "$ANDROID_DIR"
-fi
+DOWNLOAD_URL="https://github.com/HomuHomu833/android-sdk-custom/releases/download/37.0.0/android-sdk-${ASSET_ARCH}-linux-android.tar.xz"
+TMP_ARCHIVE="$TMPDIR/android-sdk.tar.xz"
 
+echo "[*] Downloading Android SDK 37.0.0..."
 mkdir -p "$PREFIX/opt"
+rm -rf "$SDK_DIR"
+mkdir -p "$SDK_DIR"
+axel -n 4 -o "$TMP_ARCHIVE" "$DOWNLOAD_URL" || { echo "[!] Download failed" >&2; exit 1; }
 
-echo "Downloading Android SDK..."
-axel -n 4 -o $TMPDIR/android-sdk.tar.xz https://github.com/termuxvoid/android-sdk-termux/releases/download/36.0.0/android-sdk.7z
-
-echo "Extracting SDK..."
-SHA256="bf1126da6c4cd6abcbcb9a1545dbb98a8097604769a60fceca3fdb41a057a1f3"
-if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/android-sdk.tar.xz" | sha256sum -c - >/dev/null; then
-    echo "checksum mismatch: $TMPDIR/android-sdk.tar.xz" >&2
-    rm -f "$TMPDIR/android-sdk.tar.xz"
+if ! printf '%s  %s\n' "$SHA256" "$TMP_ARCHIVE" | sha256sum -c - >/dev/null; then
+    echo "[!] Checksum mismatch: $TMP_ARCHIVE" >&2
+    rm -f "$TMP_ARCHIVE"
     exit 1
 fi
-7z x $TMPDIR/android-sdk.tar.xz -o"$PREFIX/opt" -y > /dev/null
 
-rm $TMPDIR/android-sdk.tar.xz
+echo "[*] Extracting Android SDK..."
+tar -xJf "$TMP_ARCHIVE" -C "$SDK_DIR" --strip-components=1
+rm -f "$TMP_ARCHIVE"
 
-echo "Verifying installation..."
-
-# Get versions dynamically
-BUILD_TOOLS_VERSION=$(ls "$ANDROID_DIR/build-tools/" | head -1)
-NDK_VERSION=$(ls "$ANDROID_DIR/ndk/" | head -1)
-CMAKE_VERSION=$(ls "$ANDROID_DIR/cmake/" | head -1)
-
-echo ""
-echo "Installation complete!"
-echo "Android SDK is installed at: $ANDROID_DIR"
-echo ""
-echo "=== EDIT APP PROPERTIES ==="
-echo ""
-echo "1. Edit android/gradle.properties:"
-echo "   Add: android.aapt2FromMavenOverride=$ANDROID_DIR/build-tools/$BUILD_TOOLS_VERSION/aapt2"
-echo ""
-echo "2. Edit android/local.properties:"
-echo "   Add:"
-echo "   sdk.dir=$ANDROID_DIR"
-echo "   ndk.dir=$ANDROID_DIR/ndk/$NDK_VERSION"
-echo "   cmake.dir=$ANDROID_DIR/cmake/$CMAKE_VERSION"
-echo ""
-echo "Note: No PATH or environment variables needed."
+[ -x "$SDK_DIR/platform-tools/adb" ] || { echo "[!] adb not found" >&2; exit 1; }
+[ -x "$SDK_DIR/cmdline-tools/bin/sdkmanager" ] || { echo "[!] sdkmanager not found" >&2; exit 1; }
+echo "[√] Android SDK installed at $SDK_DIR"

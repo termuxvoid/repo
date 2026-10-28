@@ -1,0 +1,12 @@
+Package: android-ndk
+Version: 30.0.16248370
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: axel, xz-utils, ca-certificates
+Section: android
+Priority: optional
+Homepage: https://github.com/HomuHomu833/android-ndk-custom
+Description: Android NDK r30 for Termux (aarch64 and x86_64)
+ Custom-built Android NDK r30 with LLVM and ndk-build.
+ Downloads the matching Termux build and extracts it to
+ $PREFIX/opt/android-ndk.

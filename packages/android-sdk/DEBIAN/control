@@ -1,18 +1,12 @@
 Package: android-sdk
-Version: 36.0.0
+Version: 37.0.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: openjdk-21, 7zip, axel
-Suggests: cmake, ninja-build
+Depends: openjdk-21, axel, xz-utils, ca-certificates
 Section: android
 Priority: optional
-Homepage: https://developer.android.com
-Description: Android SDK built using musl libc, supporting multiple architectures.
- Provides Android NDK 29.0.14206865 and CMake 4.1.2.
- Includes:
-  - Android SDK tools
-  - Android NDK 29.0.14206865
-  - CMake 4.1.2
-  - Platform tools
-  - Build tools
-  - System images
+Homepage: https://github.com/HomuHomu833/android-sdk-custom
+Description: Android SDK 37.0.0 for Termux (aarch64 and x86_64)
+ Custom-built Android SDK with platform-tools, build-tools 37.0.0,
+ and cmdline-tools 19.0. Downloads the matching Termux build and
+ extracts it to $PREFIX/opt/android-sdk.

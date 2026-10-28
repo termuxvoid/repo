@@ -1,0 +1,14 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+ARCH=$(uname -m)
+case "$ARCH" in
+    aarch64|x86_64)
+        exit 0
+        ;;
+    *)
+        echo "[!] ERROR: android-ndk supports aarch64 and x86_64 only" >&2
+        echo "[!] Your device architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
