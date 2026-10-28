@@ -185,30 +185,43 @@ SHA1: f48c7002ee96bccd07353ae0e1269cbed5395162
 SHA256: ef0619f4721a782123941dbcdd0a4859ba78734c5d3f7b70f5a0ff2f06b37d4c
 SHA512: 8021bf8733423c114f135bb3c5da3e2a632fa48842338e49c2487101344ba48eea479567cfb232744fcc9a431b2754071fbc8f33ab5b0222a162f18538899f7c
 
-Package: android-sdk
-Version: 36.0.0
+Package: android-ndk
+Version: 30.0.16248370
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: openjdk-21, 7zip, axel
-Suggests: cmake, ninja-build
+Depends: axel, xz-utils, ca-certificates
 Section: android
 Priority: optional
-Homepage: https://developer.android.com
-Description: Android SDK built using musl libc, supporting multiple architectures.
- Provides Android NDK 29.0.14206865 and CMake 4.1.2.
- Includes:
-  - Android SDK tools
-  - Android NDK 29.0.14206865
-  - CMake 4.1.2
-  - Platform tools
-  - Build tools
-  - System images
-Filename: dists/termuxvoid/main/binary-all/android-sdk_36.0.0_all.deb
-Size: 1780
-MD5Sum: 30729d2454861301a9a20cc1a4a8c59d
-SHA1: e1deacb3aa94c5b16e36246eecad0e2e371636ff
-SHA256: 70839525ebba88139e97e8d6655af673fa234619e719b23c09a7d09331ca09e9
-SHA512: 15a84a7c5d366d7188ae007d1005814eff308c9964e3f0a0425efc06791215229e99c8f31039c8606fdf6f1800addc950f774e3d0ec60c57e8ac6bd447be39a6
+Homepage: https://github.com/HomuHomu833/android-ndk-custom
+Description: Android NDK r30 for Termux (aarch64 and x86_64)
+ Custom-built Android NDK r30 with LLVM and ndk-build.
+ Downloads the matching Termux build and extracts it to
+ $PREFIX/opt/android-ndk.
+Filename: dists/termuxvoid/main/binary-all/android-ndk_30.0.16248370_all.deb
+Size: 1584
+MD5Sum: 643a45f90f0769f5907bceab0edc7d40
+SHA1: 20e3f87e57689d39819322c10a561ba3bc83f326
+SHA256: a2fb29a01f76631ee94ab26afc6a39f14a7ae00050bd123f4e6fc1b19a3db0d4
+SHA512: 2d89bc00eae3f8d9c14a6ba7e6328e05143615a2caec4e5945fbc1ccb2f8816ee498772094895929bddc1a5bd8ec0e34ea59ce7d5a2030de8ec237e8394da8b7
+
+Package: android-sdk
+Version: 37.0.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: openjdk-21, axel, xz-utils, ca-certificates
+Section: android
+Priority: optional
+Homepage: https://github.com/HomuHomu833/android-sdk-custom
+Description: Android SDK 37.0.0 for Termux (aarch64 and x86_64)
+ Custom-built Android SDK with platform-tools, build-tools 37.0.0,
+ and cmdline-tools 19.0. Downloads the matching Termux build and
+ extracts it to $PREFIX/opt/android-sdk.
+Filename: dists/termuxvoid/main/binary-all/android-sdk_37.0.0_all.deb
+Size: 1620
+MD5Sum: 3245576a31a9f0be91cf44df4c004e3e
+SHA1: 073de900ed3cbc742b7b50c163cd62b3108252f7
+SHA256: 0a8f9c98ab6d8dfe628cde0fe5e42d754a1eea3a74648ebface7edb86e8e09ce
+SHA512: e06974d9f0263a625906268ead913703224e75ec6ecb3fbb1c1bddd0b6da462230fa78212d2ff2a43ea0826b851603b0f49d39f68ceabb95961aa406b79e8633
 
 Package: androvirus
 Version: 3.0
