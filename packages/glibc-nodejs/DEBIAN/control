@@ -1,9 +1,9 @@
 Package: glibc-nodejs
-Version: 26.12.1-1
+Version: 26.12.1-2
 Architecture: all
 Pre-Depends: glibc-repo
 Maintainer: Alienkrishn [Anon4You]
-Depends: glibc, curl, tar, xz-utils, bash, coreutils, ca-certificates
+Depends: glibc, gcc-libs-glibc, curl, tar, xz-utils, bash, coreutils, ca-certificates
 Section: devel
 Priority: optional
 Homepage: https://nodejs.org/
