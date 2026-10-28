@@ -1468,7 +1468,7 @@ SHA256: e2e38ec915db726798ae7c54f322dd1ce55962b44176afcf970212f8c0e49139
 SHA512: 53a943b5aeaf40565b656d478a958b5824928c331895a9c95b8a697062836a87fb8074ad3d184bb722609260d3cc7b54668782f9f97893e754d9ab32bc7ee849
 
 Package: flutter
-Version: 3.47.7
+Version: 3.47.8
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Pre-Depends: x11-repo
@@ -1480,15 +1480,15 @@ Homepage: https://github.com/termuxvoid/flutter-termux
 Description: Google's UI toolkit for building native apps
  Cross-platform app development with:
  - Hot reload development
- - Native ARM performance
+ - Native ARM64/x86_64 performance
  - Material/Cupertino widgets
  - Android/iOS/Linux support
-Filename: dists/termuxvoid/main/binary-all/flutter_3.47.7_all.deb
-Size: 1700
-MD5Sum: f54a4fdbe65448bccc20ceed93d12034
-SHA1: 8154c2e91ef2607f65b1f9fa4090590de7cdb1b0
-SHA256: f8756f505a1071c8b6c3646c1b3c528d41146c7b62a58bcbc010e3d3021d7572
-SHA512: 8e34a042523c261d5047da5dc955caa2a344f621401e5b5cab1e5999a1b6b92ed9fdc3016fe42da047fa4fba04b649bba4b46dec167ab399a16957bf953ed640
+Filename: dists/termuxvoid/main/binary-all/flutter_3.47.8_all.deb
+Size: 1828
+MD5Sum: 12ff1942ff2edb4c86becab289d233a5
+SHA1: 00b1ad4ba624604d39b41c8bb6a365a58c438618
+SHA256: 3c9ef1c0f4ed2351d0293da53ba735171527111d7acbf972b0bd798e34b97fa5
+SHA512: 3cf918572a9cf3d2d9d15fc7f6f6eecf9ce00764b28b314b998b18f6d75b30a980147476ec8aa99e8c8dcf19d23a549e7ecc5ae4103ef573b46fdefd66e1cafb
 
 Package: freebuff
 Version: 0.2.34
