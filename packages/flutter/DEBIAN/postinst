@@ -2,7 +2,22 @@
 set -e
 
 FLUTTER_DIR="$PREFIX/opt/flutter"
-DOWNLOAD_URL="https://github.com/termuxvoid/flutter-termux/releases/download/3.47.7/flutter_3.47.7_aarch64.tar.gz"
+ARCH=$(uname -m)
+case "$ARCH" in
+    aarch64)
+        ASSET_ARCH="aarch64"
+        SHA256="e54f7b6c141c8a305009c07ae19f7d5096ba84f17202dc0c41b790c425a9ea82"
+        ;;
+    x86_64)
+        ASSET_ARCH="x86_64"
+        SHA256="73283393491687de62a9c77abba6c4ef7e1b4b9e5bee90376c8c4388e1b3bf45"
+        ;;
+    *)
+        echo "[!] Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+DOWNLOAD_URL="https://github.com/termuxvoid/flutter-termux/releases/download/3.47.8/flutter_3.47.8_${ASSET_ARCH}.tar.gz"
 TMP_ARCHIVE="$TMPDIR/flutter.tar.gz"
 
 echo "[*] Setting up Flutter..."
@@ -15,7 +30,6 @@ echo "[*] Downloading Flutter SDK..."
 axel -n 10 -o "$TMP_ARCHIVE" "$DOWNLOAD_URL" || { echo "[!] Download failed"; exit 1; }
 
 echo "[*] Extracting Flutter SDK..."
-SHA256="0fa28eccd823c216ddd2641fb067efd6af169e77145397d8a02e72930619ea71"
 if ! printf '%s  %s\n' "$SHA256" "$TMP_ARCHIVE" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMP_ARCHIVE" >&2
     rm -f "$TMP_ARCHIVE"

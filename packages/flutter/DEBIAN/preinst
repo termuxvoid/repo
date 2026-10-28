@@ -4,12 +4,15 @@ set -e
 echo "[*] Checking device architecture..."
 ARCH=$(uname -m)
 
-if [ "$ARCH" != "aarch64" ]; then
-    echo "[!] ERROR: This package requires aarch64 architecture"
-    echo "[!] Your device architecture: $ARCH"
-    echo "[!] Installation cannot continue"
-    exit 1
-fi
-
-echo "[√] Architecture check passed: aarch64"
-exit 0
+case "$ARCH" in
+    aarch64|x86_64)
+        echo "[√] Architecture check passed: $ARCH"
+        exit 0
+        ;;
+    *)
+        echo "[!] ERROR: This package supports aarch64 and x86_64 only"
+        echo "[!] Your device architecture: $ARCH"
+        echo "[!] Installation cannot continue"
+        exit 1
+        ;;
+esac
