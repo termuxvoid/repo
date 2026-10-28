@@ -31,6 +31,7 @@ The complete catalog of packages in the TermuxVoid APT repository, grouped by th
 | [laudacode](https://termuxvoid.github.io/tool.html?name=laudacode) | Lightweight AI coding agent for your terminal |
 | [mimocode](https://termuxvoid.github.io/tool.html?name=mimocode) | AI coding agent (glibc wrapper for Termux) |
 | [mmx-cli](https://termuxvoid.github.io/tool.html?name=mmx-cli) | CLI tool for MiniMax AI – chat, completion, and image generation from the terminal |
+| [omniroute](https://termuxvoid.github.io/tool.html?name=omniroute) | AI gateway with one OpenAI-compatible endpoint for many providers |
 | [openclaude](https://termuxvoid.github.io/tool.html?name=openclaude) | Open‑source coding‑agent CLI for cloud and local LLMs |
 | [opencode](https://termuxvoid.github.io/tool.html?name=opencode) | AI‑powered coding assistant (glibc version) |
 | [opencode-v2](https://termuxvoid.github.io/tool.html?name=opencode-v2) | OpenCode 2 - AI coding agent (glibc version) |

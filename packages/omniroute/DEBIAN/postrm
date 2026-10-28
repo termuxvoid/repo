@@ -1,0 +1,24 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+HOME=${HOME:-/data/data/com.termux/files/home}
+SHARE="$PREFIX/share/omniroute"
+BIN="$PREFIX/bin"
+
+case "${1:-}" in
+    remove|purge)
+        rm -f "$BIN/omniroute" "$BIN/omniroute-reset-password"
+        rm -f "$SHARE/.version"
+        rm -rf "$SHARE/app" "$SHARE/npm-cache"
+        if [ "${1:-}" = "purge" ]; then
+            rm -rf "$HOME/.omniroute"
+            echo "omniroute removed, including user data."
+        else
+            echo "omniroute removed. User data is kept in $HOME/.omniroute."
+        fi
+        rmdir "$SHARE" 2>/dev/null || true
+        ;;
+esac
+
+exit 0

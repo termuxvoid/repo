@@ -1,0 +1,13 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+case "$(uname -m)" in
+    aarch64|x86_64)
+        exit 0
+        ;;
+    *)
+        echo "Error: omniroute supports only aarch64 and x86_64." >&2
+        echo "Your architecture: $(uname -m)" >&2
+        exit 1
+        ;;
+esac

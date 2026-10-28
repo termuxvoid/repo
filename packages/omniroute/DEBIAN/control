@@ -1,0 +1,13 @@
+Package: omniroute
+Version: 3.8.52
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: npm, python, build-essential, git, ca-certificates
+Section: ai
+Priority: optional
+Homepage: https://www.omniroute.online/
+Description: AI gateway with one OpenAI-compatible endpoint for many providers
+ OmniRoute is a local AI gateway that routes requests across many AI
+ providers through a single OpenAI-compatible endpoint, with automatic
+ fallback and a web dashboard. This package installs the npm release for
+ normal Termux Node.js and provides the omniroute command.

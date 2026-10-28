@@ -1,0 +1,93 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/omniroute"
+APP="$SHARE/app"
+BIN="$PREFIX/bin"
+NODE="$PREFIX/bin/node"
+NPM="$PREFIX/bin/npm"
+VERSION="3.8.52"
+ENTRY="$APP/node_modules/omniroute/bin/omniroute.mjs"
+RESET="$APP/node_modules/omniroute/bin/reset-password.mjs"
+
+die() {
+    echo "omniroute: $*" >&2
+    exit 1
+}
+
+install_wrappers() {
+    mkdir -p "$BIN"
+
+    cat > "$BIN/omniroute" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/omniroute"
+export PATH="$SHARE/app/node_modules/.bin:$PREFIX/bin:$PATH"
+export OMNIROUTE_SERVER_HOST="${OMNIROUTE_SERVER_HOST:-127.0.0.1}"
+exec "$PREFIX/bin/node" "$SHARE/app/node_modules/omniroute/bin/omniroute.mjs" "$@"
+EOF
+
+    cat > "$BIN/omniroute-reset-password" <<'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+SHARE="$PREFIX/share/omniroute"
+export PATH="$SHARE/app/node_modules/.bin:$PREFIX/bin:$PATH"
+exec "$PREFIX/bin/node" "$SHARE/app/node_modules/omniroute/bin/reset-password.mjs" "$@"
+EOF
+
+    chmod 755 "$BIN/omniroute" "$BIN/omniroute-reset-password"
+}
+
+[ -x "$NODE" ] || die "node is not installed; install npm first"
+[ -x "$NPM" ] || die "npm is not installed"
+export PATH="$PREFIX/bin:$PATH"
+
+if [ -f "$SHARE/.version" ] &&
+   [ "$(cat "$SHARE/.version")" = "$VERSION" ] &&
+   [ -f "$ENTRY" ] &&
+   [ -f "$RESET" ]; then
+    install_wrappers
+    echo "omniroute $VERSION is already installed."
+    exit 0
+fi
+
+rm -rf "$APP" "$SHARE/npm-cache"
+mkdir -p "$APP" "$SHARE/npm-cache"
+
+cat > "$APP/.npmrc" <<'EOF'
+allow-scripts[]=omniroute
+allow-scripts[]=keytar
+allow-scripts[]=onnxruntime-node
+allow-scripts[]=@parcel/watcher
+allow-scripts[]=@swc/core
+allow-scripts[]=protobufjs
+allow-scripts[]=esbuild
+EOF
+
+echo "Installing omniroute $VERSION from npm; this can take several minutes..."
+"$NPM" install \
+    --prefix "$APP" \
+    --omit=dev --no-audit --no-fund --foreground-scripts \
+    --cache "$SHARE/npm-cache" \
+    "omniroute@$VERSION" ||
+    die "npm install failed"
+
+[ -f "$ENTRY" ] && [ -f "$RESET" ] ||
+    die "omniroute entrypoints were not installed"
+
+INSTALLED_VERSION=$("$NODE" "$ENTRY" --version 2>/dev/null || true)
+[ "$INSTALLED_VERSION" = "$VERSION" ] ||
+    die "version check failed: expected $VERSION, got ${INSTALLED_VERSION:-none}"
+
+( cd "$APP" && "$NODE" -e "require('better-sqlite3')" ) ||
+    die "better-sqlite3 failed to load"
+
+rm -rf "$SHARE/npm-cache"
+printf '%s\n' "$VERSION" > "$SHARE/.version"
+install_wrappers
+echo "omniroute $VERSION installed successfully."
+echo "Run 'omniroute' to start; open http://localhost:20128"
+exit 0
