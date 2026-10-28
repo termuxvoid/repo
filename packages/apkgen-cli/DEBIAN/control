@@ -1,8 +1,8 @@
 Package: apkgen-cli
-Version: 1.4.0
+Version: 1.4.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, gum, termux-tools, android-sdk
+Depends: git, gum, termux-tools, android-sdk, android-ndk, android-cmake
 Recommends: flutter
 Section: android
 Priority: optional
