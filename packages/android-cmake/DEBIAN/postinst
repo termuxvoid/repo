@@ -1,0 +1,45 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+CMAKE_VERSION="4.1.2"
+CMAKE_ROOT="$PREFIX/opt/android-cmake"
+CMAKE_DIR="$CMAKE_ROOT/$CMAKE_VERSION"
+ARCH=$(uname -m)
+
+case "$ARCH" in
+    aarch64)
+        ASSET_ARCH="aarch64"
+        SHA256="58087cdca16fcbaa557c3c8821fe72c69279b62e3006c685f03f53dacdaf5f6d"
+        ;;
+    x86_64)
+        ASSET_ARCH="x86_64"
+        SHA256="2fa58f619d87308b76d96277fcbca672a8c5d2c791176d824bda3a0be7368a39"
+        ;;
+    *)
+        echo "[!] Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+
+DOWNLOAD_URL="https://github.com/HomuHomu833/cmake-custom/releases/download/${CMAKE_VERSION}/cmake-${ASSET_ARCH}-linux-android.tar.xz"
+TMP_ARCHIVE="$TMPDIR/android-cmake.tar.xz"
+
+echo "[*] Downloading CMake ${CMAKE_VERSION}..."
+mkdir -p "$CMAKE_ROOT"
+rm -rf "$CMAKE_DIR"
+axel -n 4 -o "$TMP_ARCHIVE" "$DOWNLOAD_URL" || { echo "[!] Download failed" >&2; exit 1; }
+
+if ! printf '%s  %s\n' "$SHA256" "$TMP_ARCHIVE" | sha256sum -c - >/dev/null; then
+    echo "[!] Checksum mismatch: $TMP_ARCHIVE" >&2
+    rm -f "$TMP_ARCHIVE"
+    exit 1
+fi
+
+echo "[*] Extracting CMake..."
+tar -xJf "$TMP_ARCHIVE" -C "$CMAKE_ROOT"
+rm -f "$TMP_ARCHIVE"
+
+[ -x "$CMAKE_DIR/bin/cmake" ] || { echo "[!] cmake not found" >&2; exit 1; }
+[ -x "$CMAKE_DIR/bin/ninja" ] || { echo "[!] ninja not found" >&2; exit 1; }
+echo "[√] CMake ${CMAKE_VERSION} installed at $CMAKE_DIR"

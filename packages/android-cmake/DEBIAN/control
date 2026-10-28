@@ -1,0 +1,12 @@
+Package: android-cmake
+Version: 4.1.2
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: axel, xz-utils, ca-certificates
+Section: android
+Priority: optional
+Homepage: https://github.com/HomuHomu833/cmake-custom
+Description: Custom CMake 4.1.2 and Ninja for Termux (aarch64 and x86_64)
+ Custom-built CMake and Ninja for Android SDK/NDK builds.
+ Downloads the matching Termux build and extracts it to
+ $PREFIX/opt/android-cmake/4.1.2.

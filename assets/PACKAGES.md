@@ -44,6 +44,7 @@ The complete catalog of packages in the TermuxVoid APT repository, grouped by th
 
 | Tool | Description |
 |------|-------------|
+| [android-cmake](https://termuxvoid.github.io/tool.html?name=android-cmake) | Custom CMake 4.1.2 and Ninja for Termux (aarch64/x86_64) |
 | [android-ndk](https://termuxvoid.github.io/tool.html?name=android-ndk) | Custom Android NDK r30 for Termux (aarch64/x86_64) |
 | [android-sdk](https://termuxvoid.github.io/tool.html?name=android-sdk) | Custom Android SDK 37.0.0 for Termux (aarch64/x86_64) |
 | [antisplit](https://termuxvoid.github.io/tool.html?name=antisplit) | APK Split Package Combiner and Modifier |

@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+CMAKE_ROOT="$PREFIX/opt/android-cmake"
+rm -rf "$CMAKE_ROOT/4.1.2"
+rmdir "$CMAKE_ROOT" 2>/dev/null || true
