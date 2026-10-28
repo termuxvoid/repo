@@ -1,13 +1,31 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="2.1.309"
-TARFILE="claude-linux-arm64.tar.gz"
+VERSION="2.1.312"
+ARCH=$(uname -m)
+case "$ARCH" in
+    aarch64)
+        TARFILE="claude-linux-arm64.tar.gz"
+        SHA256="0635c6245b11bbb4ca16e4119b0ac3980ee99e2f8cf5ab6e8d6c0e9e0db3ee5b"
+        LD_SO="ld-linux-aarch64.so.1"
+        ;;
+    x86_64)
+        TARFILE="claude-linux-x64.tar.gz"
+        SHA256="d9324231c4e3dfe342e853f56c752348ae060f9f221cdf4b0f90ef1dc47ee907"
+        LD_SO="ld-linux-x86-64.so.2"
+        ;;
+    *)
+        echo "Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
 DOWNLOAD_URL="https://github.com/anthropics/claude-code/releases/download/v${VERSION}/${TARFILE}"
 
 SHARE_DIR="$PREFIX/share/claude-code"
 BIN_DIR="$PREFIX/bin"
 STAGING_DIR="$TMPDIR/claude-staging"
+LOADER="$PREFIX/glibc/lib/$LD_SO"
+LIB_PATH="$PREFIX/glibc/lib"
 
 rm -rf "$STAGING_DIR" 2>/dev/null || true
 rm -rf "$SHARE_DIR" 2>/dev/null || true
@@ -15,7 +33,6 @@ mkdir -p "$SHARE_DIR" "$BIN_DIR" "$STAGING_DIR"
 
 echo "Downloading Claude Code ${VERSION}..."
 curl -fsSL -o "$STAGING_DIR/claude.tar.gz" "$DOWNLOAD_URL"
-SHA256="8ecd1f2d06ccbd3f89c8886e840e42b57a19063f3de9cfe5f7d90fe875ba99ef"
 if ! printf '%s  %s\n' "$SHA256" "$STAGING_DIR/claude.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $STAGING_DIR/claude.tar.gz" >&2
     rm -f "$STAGING_DIR/claude.tar.gz"
@@ -40,7 +57,7 @@ try {
 EOF
 chmod 644 "$DNS_JS"
 
-cat > "$TMPDIR/claude_wrapper.c" << 'EOF'
+cat > "$TMPDIR/claude_wrapper.c" << EOF
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
@@ -58,9 +75,9 @@ int main(int argc, char** argv) {
     setenv("DISABLE_TELEMETRY", "1", 1);
     setenv("BUN_OPTIONS", "--preload /data/data/com.termux/files/usr/share/claude-code/setdns.js", 1);
 
-    char* loader = "/data/data/com.termux/files/usr/glibc/lib/ld-linux-aarch64.so.1";
+    char* loader = "$LOADER";
     char real_bin[] = "/data/data/com.termux/files/usr/share/claude-code/claude.real";
-    char lib_path[] = "/data/data/com.termux/files/usr/glibc/lib";
+    char lib_path[] = "$LIB_PATH";
 
     char** new_argv = malloc((argc + 4) * sizeof(char*));
     if (!new_argv) return 1;

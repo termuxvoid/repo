@@ -7,17 +7,34 @@ BIN="$PREFIX/bin"
 TMPDIR=${TMPDIR:-$PREFIX/tmp}
 STAGE="$TMPDIR/glibc-nodejs-stage"
 NODE_VERSION="26.12.1"
-NODE_FILE="node-v${NODE_VERSION}-linux-arm64.tar.xz"
-NODE_HASH="42aa04922591ee5d4dbc7740d452621acf28508239daa512f5ee8c47ee224fdb"
+ARCH=$(uname -m)
+case "$ARCH" in
+    aarch64)
+        NODE_ARCH="arm64"
+        NPM_CPU="arm64"
+        NODE_HASH="42aa04922591ee5d4dbc7740d452621acf28508239daa512f5ee8c47ee224fdb"
+        LD_SO="ld-linux-aarch64.so.1"
+        ;;
+    x86_64)
+        NODE_ARCH="x64"
+        NPM_CPU="x64"
+        NODE_HASH="6170b2d474e1c626f43cff3adc118df9fe3b573258a4fc3d850c8dbc6b079bbd"
+        LD_SO="ld-linux-x86-64.so.2"
+        ;;
+    *)
+        echo "Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+NODE_FILE="node-v${NODE_VERSION}-linux-${NODE_ARCH}.tar.xz"
+LOADER="$PREFIX/glibc/lib/$LD_SO"
 
 die() {
     echo "glibc-nodejs: $*" >&2
     exit 1
 }
 
-[ "$(uname -m)" = "aarch64" ] ||
-    die "only aarch64 is supported"
-[ -x "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" ] ||
+[ -x "$LOADER" ] ||
     die "glibc loader not found; install glibc-repo and glibc"
 mkdir -p "$SHARE"
 cat > "$SHARE/node-compat.cjs" <<'NODE_COMPAT_EOF'
@@ -178,7 +195,7 @@ if [ -n "${NODE_OPTIONS:-}" ]; then
 else
     export NODE_OPTIONS="--require $SHARE/node-compat.cjs --require $SHARE/link-compat.cjs"
 fi
-exec "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" \
+exec "LOADER_PLACEHOLDER" \
     --library-path "$PREFIX/glibc/lib" \
     "$SHARE/node/bin/node.real" "$@"
 EOF
@@ -203,8 +220,8 @@ export npm_config_cache="${npm_config_cache:-$SHARE/npm-cache}"
 export npm_config_update_notifier=false
 export npm_config_libc=glibc
 export npm_config_os=linux
-export npm_config_cpu=arm64
-exec "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" \
+export npm_config_cpu=NPM_CPU_PLACEHOLDER
+exec "LOADER_PLACEHOLDER" \
     --library-path "$PREFIX/glibc/lib" \
     "$SHARE/node/bin/node.real" \
     "$SHARE/node/lib/node_modules/npm/bin/npm-cli.js" "$@"
@@ -230,14 +247,16 @@ export npm_config_cache="${npm_config_cache:-$SHARE/npm-cache}"
 export npm_config_update_notifier=false
 export npm_config_libc=glibc
 export npm_config_os=linux
-export npm_config_cpu=arm64
-exec "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" \
+export npm_config_cpu=NPM_CPU_PLACEHOLDER
+exec "LOADER_PLACEHOLDER" \
     --library-path "$PREFIX/glibc/lib" \
     "$SHARE/node/bin/node.real" \
     "$SHARE/node/lib/node_modules/npm/bin/npx-cli.js" "$@"
 EOF
 
     chmod 755 "$BIN/glibc-node" "$BIN/glibc-npm" "$BIN/glibc-npx"
+    sed -i "s|LOADER_PLACEHOLDER|$LOADER|g; s|NPM_CPU_PLACEHOLDER|$NPM_CPU|g" \
+        "$BIN/glibc-node" "$BIN/glibc-npm" "$BIN/glibc-npx"
     ln -sfn "$BIN/glibc-node" "$SHARE/bin/node"
     ln -sfn "$BIN/glibc-npm" "$SHARE/bin/npm"
     ln -sfn "$BIN/glibc-npx" "$SHARE/bin/npx"

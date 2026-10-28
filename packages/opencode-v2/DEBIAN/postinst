@@ -2,13 +2,29 @@
 set -euo pipefail
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="2.1.4"
-TARFILE="cli-linux-arm64-${VERSION}.tgz"
-DOWNLOAD_URL="https://registry.npmjs.org/@opencode/cli-linux-arm64/-/${TARFILE}"
-SHA256="e9acb4e23a9ac432139693aa166455a6add8946533394cbe083459a48e788861"
+VERSION="2.2.0"
+ARCH=$(uname -m)
+case "$ARCH" in
+    aarch64)
+        NPM_ARCH="arm64"
+        SHA256="6a40643c0dca3aff9d37c87c26c0ee003c46abb810e1c6ddde094ffbf7460b8b"
+        LD_SO="ld-linux-aarch64.so.1"
+        ;;
+    x86_64)
+        NPM_ARCH="x64"
+        SHA256="fe3046b86872e624f62268058f4801a1f1efffc193103a9988238c891b8ca028"
+        LD_SO="ld-linux-x86-64.so.2"
+        ;;
+    *)
+        echo "Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+TARFILE="cli-linux-${NPM_ARCH}-${VERSION}.tgz"
+DOWNLOAD_URL="https://registry.npmjs.org/@opencode/cli-linux-${NPM_ARCH}/-/${TARFILE}"
 SHARE_DIR="$PREFIX/share/opencode-v2"
 BIN_DIR="$PREFIX/bin"
-LOADER="$PREFIX/glibc/lib/ld-linux-aarch64.so.1"
+LOADER="$PREFIX/glibc/lib/$LD_SO"
 LIB_PATH="$PREFIX/glibc/lib"
 TMPDIR=${TMPDIR:-$PREFIX/tmp}
 
@@ -17,8 +33,6 @@ die() {
     exit 1
 }
 
-[ "$(uname -m)" = "aarch64" ] ||
-    die "only aarch64 is supported"
 [ -x "$LOADER" ] ||
     die "glibc loader not found; install glibc-repo and glibc"
 

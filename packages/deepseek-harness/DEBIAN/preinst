@@ -3,13 +3,22 @@ set -e
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
 
-if [ "$(uname -m)" != "aarch64" ]; then
-    echo "Error: deepseek-harness is only available for aarch64 (ARM64)." >&2
-    echo "Your architecture: $(uname -m)" >&2
-    exit 1
-fi
+ARCH=$(uname -m)
+case "$ARCH" in
+    aarch64)
+        LD_SO="ld-linux-aarch64.so.1"
+        ;;
+    x86_64)
+        LD_SO="ld-linux-x86-64.so.2"
+        ;;
+    *)
+        echo "Error: deepseek-harness supports only aarch64 and x86_64." >&2
+        echo "Your architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
 
-if [ ! -x "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" ]; then
+if [ ! -x "$PREFIX/glibc/lib/$LD_SO" ]; then
     echo "Error: glibc loader not found." >&2
     echo "Install the glibc repository first: pkg install glibc-repo glibc" >&2
     exit 1

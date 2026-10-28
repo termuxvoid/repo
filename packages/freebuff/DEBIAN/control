@@ -1,5 +1,5 @@
 Package: freebuff
-Version: 0.1.6
+Version: 0.2.34
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, curl, tar

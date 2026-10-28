@@ -1,5 +1,5 @@
 Package: antigravity-cli
-Version: 1.3.5
+Version: 1.4.8
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, clang, python, glibc
@@ -8,5 +8,5 @@ Priority: optional
 Homepage: https://antigravity.google/
 Description: AI‑powered coding assistant (glibc wrapper for Termux)
  Antigravity CLI provides real‑time code suggestions. This package
- downloads the official Linux ARM64 binary, applies necessary memory
- patches, and runs it inside the Termux glibc environment.
+ downloads the official Linux ARM64 or x86_64 binary, applies memory
+ patches on ARM64, and runs it inside the Termux glibc environment.

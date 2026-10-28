@@ -2,14 +2,29 @@
 set -e
  
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="1.19.0"
-TARFILE="opencode-linux-arm64.tar.gz"
+VERSION="1.19.4"
+ARCH=$(uname -m)
+case "$ARCH" in
+    aarch64)
+        SHA256="8568230ccd847dc93e95b9f6894379077d3e014a16b48040743573e77c23e85f"
+        TARFILE="opencode-linux-arm64.tar.gz"
+        LD_SO="ld-linux-aarch64.so.1"
+        ;;
+    x86_64)
+        SHA256="849bd6b3d959a1d2ef200ed1634a51c79a45ca236aa26665d75debd694805cce"
+        TARFILE="opencode-linux-x64.tar.gz"
+        LD_SO="ld-linux-x86-64.so.2"
+        ;;
+    *)
+        echo "Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
 DOWNLOAD_URL="https://github.com/anomalyco/opencode/releases/download/v${VERSION}/${TARFILE}"
 
-SHA256="e9841d43d3e1a8f36ed2691592d3b8b4fb097e606c8b559a277a1b845840e26b"
 SHARE_DIR="$PREFIX/share/opencode"
 BIN_DIR="$PREFIX/bin"
-LOADER="$PREFIX/glibc/lib/ld-linux-aarch64.so.1"
+LOADER="$PREFIX/glibc/lib/$LD_SO"
 REAL_BIN="$SHARE_DIR/opencode.real"
 LIB_PATH="$PREFIX/glibc/lib"
 
@@ -34,7 +49,7 @@ mv "$SHARE_DIR/opencode" "$REAL_BIN"
 chmod +x "$REAL_BIN"
 
 # Write wrapper source
-cat > "$TMPDIR/opencode_helper.c" << 'EOF'
+cat > "$TMPDIR/opencode_helper.c" << EOF
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
@@ -49,9 +64,9 @@ int main(int argc, char** argv) {
     setenv("GODEBUG", "netdns=cgo", 1);
     setenv("SSL_CERT_FILE", "/data/data/com.termux/files/usr/etc/tls/cert.pem", 1);
 
-    char* loader = "/data/data/com.termux/files/usr/glibc/lib/ld-linux-aarch64.so.1";
+    char* loader = "$LOADER";
     char real_bin[] = "/data/data/com.termux/files/usr/share/opencode/opencode.real";
-    char lib_path[] = "/data/data/com.termux/files/usr/glibc/lib";
+    char lib_path[] = "$LIB_PATH";
 
     char** new_argv = malloc((argc + 4) * sizeof(char*));
     if (!new_argv) {

@@ -6,17 +6,31 @@ SHARE="$PREFIX/share/deepseek-harness"
 BIN="$PREFIX/bin"
 DSH_VERSION="0.2.1-rc.4"
 DSH_NPM_VERSION="0.2.1-rc.4"
+ARCH=$(uname -m)
+case "$ARCH" in
+    aarch64)
+        NPM_CPU="arm64"
+        LD_SO="ld-linux-aarch64.so.1"
+        ;;
+    x86_64)
+        NPM_CPU="x64"
+        LD_SO="ld-linux-x86-64.so.2"
+        ;;
+    *)
+        echo "Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+LOADER="$PREFIX/glibc/lib/$LD_SO"
 
 die() {
     echo "deepseek-harness: $*" >&2
     exit 1
 }
 
-[ "$(uname -m)" = "aarch64" ] ||
-    die "only aarch64 is supported"
 [ -x "$BIN/glibc-node" ] && [ -x "$BIN/glibc-npm" ] ||
     die "glibc-nodejs is not installed; install it first"
-[ -x "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" ] ||
+[ -x "$LOADER" ] ||
     die "glibc loader not found; install glibc-repo and glibc"
 
 install_wrappers() {
@@ -71,7 +85,7 @@ set -e
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
 SHARE="$PREFIX/share/deepseek-harness"
 unset LD_PRELOAD LD_LIBRARY_PATH
-exec "$PREFIX/glibc/lib/ld-linux-aarch64.so.1" \
+exec "LOADER_PLACEHOLDER" \
     --library-path "$PREFIX/glibc/lib" \
     "$SHARE/pnpm/node_modules/pnpm/pnpm" "$@"
 EOF
@@ -85,6 +99,7 @@ exec "$PREFIX/bin/glibc-node" \
 EOF
 
     chmod 755 "$BIN/dsh" "$BIN/dsh-node" "$BIN/dsh-npm" "$BIN/dsh-npx" "$BIN/dsh-pnpm" "$SHARE/bin/node-gyp"
+    sed -i "s|LOADER_PLACEHOLDER|$LOADER|g" "$BIN/dsh-pnpm"
     ln -sfn "$BIN/dsh-node" "$SHARE/bin/node"
     ln -sfn "$BIN/dsh-npm" "$SHARE/bin/npm"
     ln -sfn "$BIN/dsh-npx" "$SHARE/bin/npx"
@@ -111,7 +126,7 @@ echo "Installing @deepseek-ai/dsh@$DSH_VERSION..."
 "$BIN/dsh-npm" install \
     --prefix "$SHARE/app" \
     --omit=dev --ignore-scripts --no-audit --no-fund \
-    --os=linux --cpu=arm64 --libc=glibc \
+    --os=linux --cpu=$NPM_CPU --libc=glibc \
     "@deepseek-ai/dsh@$DSH_NPM_VERSION"
 
 [ -f "$SHARE/app/node_modules/@deepseek-ai/dsh/lib/bin.js" ] ||

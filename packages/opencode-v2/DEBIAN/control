@@ -1,5 +1,5 @@
 Package: opencode-v2
-Version: 2.1.4
+Version: 2.2.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, patchelf, curl, tar, ca-certificates, bash, coreutils
@@ -8,5 +8,5 @@ Priority: optional
 Homepage: https://opencode.ai/v2/
 Description: OpenCode 2 AI coding agent for Termux (glibc version)
  OpenCode 2 is the next generation AI coding agent from OpenCode.
- This package installs the official linux-arm64 binary and provides the
- opencode-v2 command, alongside the opencode command from OpenCode 1.
+ This package installs the official linux-arm64 or linux-x64 binary and
+ provides the opencode-v2 command, alongside the opencode command from OpenCode 1.

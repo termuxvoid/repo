@@ -1,5 +1,5 @@
 Package: utim-cli
-Version: 2.4.3
+Version: 2.5.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, npm
