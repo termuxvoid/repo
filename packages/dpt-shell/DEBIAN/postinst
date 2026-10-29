@@ -5,7 +5,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-VERSION="2.21.0"
+VERSION="2.21.1"
 
 echo -e "${GREEN}Installing dpt-shell $VERSION...${NC}"
 
@@ -20,7 +20,7 @@ curl -L -o $TMPDIR/dpt-shell.zip $DOWNLOAD_URL || {
 }
 
 echo -e "${YELLOW}Extracting dpt-shell...${NC}"
-SHA256="11d07c39ab5061e361f8df1b0665defdb29cab8b5314781a1bdab383f48517f3"
+SHA256="eca2024d339e02968029e664073b8c22661380a8398bd088741d4ffd236a108d"
 if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/dpt-shell.zip" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMPDIR/dpt-shell.zip" >&2
     rm -f "$TMPDIR/dpt-shell.zip"

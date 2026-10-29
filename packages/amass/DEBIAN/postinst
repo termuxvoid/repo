@@ -5,30 +5,30 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-VERSION="5.1.1"
+VERSION="5.1.3"
 
 echo -e "${GREEN}Installing amass $VERSION...${NC}"
 
 ARCH=$(uname -m)
 case $ARCH in
     aarch64)
-        SHA256="d05aace46ca5216f91226ffd23eeb4ce8ad2aa2548efe3a2bd59e81e6b0765b5"
+        SHA256="02316f4e5703420cd86890c3c61f6d56ed10277d2bfea076d4e5cfd1a6b6099a"
         ARCH_TYPE="arm64"
         ;;
     armv7l)
-        SHA256="122e8701fe0311fc54218bf749df7375513bce0406818842b0f0a19a1b5962cb"
+        SHA256="deb40c5726c97916a978957ab43883eabb02e325f17c59e46a5d421a8bb6f4e3"
         ARCH_TYPE="armv7"
         ;;
     arm*)
-        SHA256="122e8701fe0311fc54218bf749df7375513bce0406818842b0f0a19a1b5962cb"
+        SHA256="deb40c5726c97916a978957ab43883eabb02e325f17c59e46a5d421a8bb6f4e3"
         ARCH_TYPE="armv7"
         ;;
     x86_64)
-        SHA256="5e22b5f0239e7eb79439d60d43d3cd20dca2478588bc2242e91ab0c4f8fa40dd"
+        SHA256="4c12b725e4ce4981ece93a5e1566bd7391be1f349468856a79d31a43012ae201"
         ARCH_TYPE="amd64"
         ;;
     i686)
-        SHA256="1d5920450728eebc8d2e63f69213e185173c96a13ce15c4fe184f1ffe0ee1311"
+        SHA256="313901b6800a28ecc16dc26a1752dd24335adc714f76c38a3b2dae89a4398505"
         ARCH_TYPE="386"
         ;;
     *)

@@ -1,5 +1,5 @@
 Package: archivebox
-Version: 0.9.73
+Version: 0.9.77
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip, python-yt-dlp, wget, chromium, python-psutil, python-bcrypt, python-lxml, python-pillow, python-greenlet, libpq, uv, rust, make, cmake, pkg-config, python-cryptography

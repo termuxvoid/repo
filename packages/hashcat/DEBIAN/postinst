@@ -3,7 +3,7 @@ set -e
 
 HASHCAT_DIR="$PREFIX/opt/hashcat"
 BUILD="$TMPDIR/hashcat-build"
-VERSION="7.1.2"
+VERSION="8.0.0"
 ARCHIVE="hashcat-${VERSION}.tar.gz"
 URL="https://github.com/hashcat/hashcat/archive/refs/tags/v${VERSION}.tar.gz"
 
@@ -17,7 +17,7 @@ mkdir -p "$BUILD"
 print_status "Downloading hashcat ${VERSION} source..."
 curl -sL -o "$TMPDIR/$ARCHIVE" "$URL" || print_error "Download failed"
 
-SHA256="9546a6326d747530b44fcc079babad40304a87f32d3c9080016d58b39cfc8b96"
+SHA256="6281721ef2bc57aed1ffa1a186aa39d01cee09899741cb58e027733a373c2ae3"
 if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/$ARCHIVE" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMPDIR/$ARCHIVE" >&2
     rm -f "$TMPDIR/$ARCHIVE"
@@ -30,58 +30,19 @@ cd "$BUILD"
 # 1) types.h: rename 'struct user' tag (conflicts with bionic <sys/user.h>)
 sed -i 's/^typedef struct user$/typedef struct user_hashcat/' include/types.h
 
-# 2) include/ext_lzma.h: fix LZMA include paths
-sed -i \
- -e 's|#include <LzmaDec.h>|#include "../deps/LZMA-SDK/C/LzmaDec.h"|' \
- -e 's|#include <Lzma2Dec.h>|#include "../deps/LZMA-SDK/C/Lzma2Dec.h"|' \
- -e 's|#include "minizip/unzip.h"|#include "../deps/zlib/contrib/minizip/unzip.h"|' \
- include/ext_lzma.h
-
-# 3) src/filehandling.c: fix LZMA include paths
-sed -i \
- -e 's|#include <Alloc.h>|#include "../deps/LZMA-SDK/C/Alloc.h"|' \
- -e 's|#include <7zCrc.h>|#include "../deps/LZMA-SDK/C/7zCrc.h"|' \
- -e 's|#include <7zFile.h>|#include "../deps/LZMA-SDK/C/7zFile.h"|' \
- -e 's|#include <Xz.h>|#include "../deps/LZMA-SDK/C/Xz.h"|' \
- -e 's|#include <XzCrc64.h>|#include "../deps/LZMA-SDK/C/XzCrc64.h"|' \
- src/filehandling.c
-
-# 4) deps/unrar/os.hpp: do not use lutimes on Android
-sed -i 's@#if defined(__linux) || defined(__FreeBSD__)@#if (defined(__linux) \&\& !defined(__ANDROID__)) || defined(__FreeBSD__)@' deps/unrar/os.hpp
-
-# 5) src/affinity.c: provide bionic implementations of pthread_{get,set}affinity_np
-if ! grep -q "__BIONIC__" src/affinity.c; then
-python3 - <<'PY'
-p='src/affinity.c'
-s=open(p).read()
-block=('''
-#include <assert.h>
-#include <sched.h>
-#include <pthread.h>
-#if defined(__BIONIC__)
-static inline int pthread_setaffinity_np(pthread_t thread, size_t cpusetsize,
-                                         cpu_set_t *cpuset) {
-  return sched_setaffinity(pthread_gettid_np(thread), cpusetsize, cpuset);
-}
-
-static inline int pthread_getaffinity_np(pthread_t thread, size_t cpusetsize,
-                                         cpu_set_t *cpuset) {
-  return sched_getaffinity(pthread_gettid_np(thread), cpusetsize, cpuset);
-}
-#endif
-''')
-s=s.replace('#include "affinity.h"\n', '#include "affinity.h"\n'+block, 1)
-open(p,'w').write(s)
-print("affinity.c patched")
-PY
-fi
+# 2) Hashcat 8 moved LZMA to a runtime-loaded library; the old LZMA,
+#    unrar and affinity patches target code that no longer exists.
 
 # --- Build ---
+MAKE_ARCH=
+case "$(uname -m)" in aarch64) MAKE_ARCH="IS_AARCH64=1";; esac
+
 print_status "Building hashcat (this may take several minutes)..."
 make CC=clang CXX=clang++ LDFLAGS="-liconv" \
      PREFIX="$PREFIX" \
      SHARED_FOLDER="$HASHCAT_DIR/share/hashcat" \
      INSTALL_FOLDER="$HASHCAT_DIR/bin" \
+     $MAKE_ARCH \
      -j"$(nproc --all)" hashcat modules || print_error "Build failed"
 
 # --- Install into $PREFIX/opt/hashcat ---
@@ -91,6 +52,7 @@ make CC=clang CXX=clang++ LDFLAGS="-liconv" \
      PREFIX="$PREFIX" \
      SHARED_FOLDER="$HASHCAT_DIR/share/hashcat" \
      INSTALL_FOLDER="$HASHCAT_DIR/bin" \
+     $MAKE_ARCH \
      install_hashcat install_shared install_kernels install_modules install_tunings install_tools || print_error "Install failed"
 
 [ -x "$HASHCAT_DIR/bin/hashcat" ] || print_error "hashcat binary not found after install"

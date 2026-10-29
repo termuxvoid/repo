@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="0.1.26"
+VERSION="0.1.28"
 URL="https://github.com/mesamirh/MovieBox-Tui/archive/refs/tags/v${VERSION}.tar.gz"
 TMP_DIR="$TMPDIR/moviebox-tui-build"
 BIN_DIR="$PREFIX/bin"
@@ -11,7 +11,7 @@ mkdir -p "$TMP_DIR"
 cd "$TMP_DIR"
 
 curl -fsSL -o source.tar.gz "$URL"
-SHA256="82f7a79d3af6b0f17f6e7cc5a4a3ccac6b1c93cbc770eb4bfe8f206effcedcdd"
+SHA256="645676d33f3c7bdbbdb5265a74c46e7c2cfa576f12cf91b052ee5c48b6430365"
 if ! printf '%s  %s\n' "$SHA256" "source.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: source.tar.gz" >&2
     rm -f "source.tar.gz"

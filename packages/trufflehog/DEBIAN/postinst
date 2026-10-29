@@ -1,14 +1,14 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="v3.99.4"
+VERSION="v3.99.7"
 BUILD_DIR="$TMPDIR/trufflehog-build"
 
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
-curl -fsSL -o src.tar.gz "https://github.com/trufflesecurity/trufflehog/archive/refs/tags/v3.99.4.tar.gz"
-SHA256="2003b23e35751bed50bdd8fbef6ee9333c42145d489d97ecd7f14227f1de8b44"
+curl -fsSL -o src.tar.gz "https://github.com/trufflesecurity/trufflehog/archive/refs/tags/v3.99.7.tar.gz"
+SHA256="f284d50caa6e32e6625e396363bdf7946eb10b9311171f0db1fe2e0e83ace1de"
 if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: src.tar.gz" >&2
     rm -f "src.tar.gz"

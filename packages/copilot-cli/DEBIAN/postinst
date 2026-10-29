@@ -2,16 +2,16 @@
 set -e
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="1.0.104"
+VERSION="1.0.105"
 ARCH=$(uname -m)
 case "$ARCH" in
     aarch64)
-        SHA256="29b3978051df684109e2343b2fccd733f971f8ebe472732fa3e07cfc2093f8e7"
+        SHA256="e7b488cc04ac3e2ed800e1bf0aace33ada42dcf167529b3d2f48a61e1535a847"
         TARFILE="copilot-linux-arm64.tar.gz"
         LD_SO="ld-linux-aarch64.so.1"
         ;;
     x86_64)
-        SHA256="fa9722665f2c670aa6ce26f1eb30fbfe7ed0177606bf61c21125855345c9c447"
+        SHA256="aba1f06f27bc0447656647f76e0a4cf58b4b2a341c75ff04a750982b6aeb6bd2"
         TARFILE="copilot-linux-x64.tar.gz"
         LD_SO="ld-linux-x86-64.so.2"
         ;;

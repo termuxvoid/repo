@@ -1,5 +1,5 @@
 Package: ngrok
-Version: 3.39.1
+Version: 3.39.13
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: wget, proot, openssl

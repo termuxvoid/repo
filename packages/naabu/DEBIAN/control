@@ -1,5 +1,5 @@
 Package: naabu
-Version: 2.6.1
+Version: 2.7.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip, libcap

@@ -1,5 +1,5 @@
 Package: trufflehog
-Version: 3.99.4
+Version: 3.99.7
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip

@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="2.6.1"
+VERSION="2.7.0"
 BUILD_DIR="$TMPDIR/naabu-build"
 
 rm -rf "$BUILD_DIR"
@@ -9,7 +9,7 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/projectdiscovery/naabu/archive/refs/tags/v${VERSION}.tar.gz"
-SHA256="2bf03345fd3d640624a07c6e255470a342d1e6a7c071d748c57eeb0d40955a8c"
+SHA256="6eee1b4b4c9b4b5eb19f175c2ac67e04babc6290f937b9c72fca0b1183e3fe47"
 if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: src.tar.gz" >&2
     rm -f "src.tar.gz"

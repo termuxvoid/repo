@@ -7,7 +7,7 @@ NC='\033[0m'
 
 
 # Install sqlmap using pip
-pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary sqlmap==1.10.8 || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary sqlmap==1.10.10 || {
     echo -e "${RED}Error: Failed to install sqlmap.${NC}"
     echo -e "${YELLOW}Make sure dependencies (python, python-pip) are installed.${NC}"
     exit 1

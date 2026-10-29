@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="0.22.0"
+VERSION="0.25.1"
 BUILD_DIR="$TMPDIR/wacli-build"
 
 rm -rf "$BUILD_DIR"
@@ -9,7 +9,7 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/steipete/wacli/archive/refs/tags/v${VERSION}.tar.gz"
-SHA256="8f13537b24f78a18c87e494e743f5c80d22546b5df6626de07de4d523342c7a2"
+SHA256="23d65dcd6d66f30dbb1e8a94c6a0e22fa0ae266a6bbd8ba5d2a619a6ff734191"
 if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: src.tar.gz" >&2
     rm -f "src.tar.gz"

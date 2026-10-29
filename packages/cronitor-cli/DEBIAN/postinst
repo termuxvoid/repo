@@ -5,7 +5,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-VERSION="33.4"
+VERSION="33.11"
 
 echo -e "${GREEN}Installing CronitorCLI $VERSION...${NC}"
 
@@ -13,15 +13,15 @@ ARCH=$(uname -m)
 case $ARCH in
     aarch64)
         ARCH_TYPE="arm64"
-        SHA256="29fb3a82f07b1d8a3b82ad1ddb66b326e26a85887dc903fb4b5233d06f5372ed"
+        SHA256="0a87eb4fb91412dd6badb65882871b043343709c39ecf4545f14d0808b22475e"
         ;;
     arm*)
         ARCH_TYPE="arm"
-        SHA256="2ab0513f2cc0f2aa4263658dcfa0c4b4b20d09de03331c52ebfdda732411eaa4"
+        SHA256="6c8bf34e2dc2e742f4cbc0356c354658afe694c0b51750a1922c177a7feab9b1"
         ;;
     x86_64)
         ARCH_TYPE="amd64"
-        SHA256="3482a6a7eed8a4a97af0d732dd5a42799063b025600aaded2624c6a5b355fab7"
+        SHA256="a4feac0dc639afd555ea4c88cb554a1651dd2ea19ff3555c83efef0cda37f934"
         ;;
     *)
         echo -e "${RED}Error: Unsupported architecture: $ARCH${NC}"

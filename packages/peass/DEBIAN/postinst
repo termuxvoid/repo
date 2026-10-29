@@ -1,14 +1,14 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-BASE="https://github.com/peass-ng/PEASS-ng/releases/download/20260919-fca1e2b0"
+BASE="https://github.com/peass-ng/PEASS-ng/releases/download/20261029-a596a9f3"
 
 rm -rf "$TMPDIR/peass-download"
 mkdir -p "$TMPDIR/peass-download" $PREFIX/share/peass/linPEAS $PREFIX/share/peass/winPEAS
 
 curl -fsSL -o "$TMPDIR/peass-download/linpeas.sh" \
     "$BASE/linpeas.sh"
-SHA256="79039caa84d97528dda49a71ec7df9deb8a2ee1ba9b25f8c79616d10f3175cbb"
+SHA256="685b6a2ebbf1e5185a28f3ae23b6fcfa9ad9270a47b46fb8ad6947f0a0d87a5a"
 if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/peass-download/linpeas.sh" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMPDIR/peass-download/linpeas.sh" >&2
     rm -f "$TMPDIR/peass-download/linpeas.sh"
@@ -16,7 +16,7 @@ if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/peass-download/linpeas.sh" | sha256sum
 fi
 curl -fsSL -o "$TMPDIR/peass-download/linpeas_fat.sh" \
     "$BASE/linpeas_fat.sh"
-SHA256="de3ca195b89aa25f16a42ce2f4c4701416666728bef5d516e7364f4d7c7d0982"
+SHA256="2cc351be7a24732d6b83a3a6b179af30129a285b1d4254c3f122bc4dd62eb5e1"
 if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/peass-download/linpeas_fat.sh" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMPDIR/peass-download/linpeas_fat.sh" >&2
     rm -f "$TMPDIR/peass-download/linpeas_fat.sh"
@@ -24,7 +24,7 @@ if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/peass-download/linpeas_fat.sh" | sha25
 fi
 curl -fsSL -o "$TMPDIR/peass-download/winPEAS.bat" \
     "$BASE/winPEAS.bat"
-SHA256="11e4ea92ce2465f3d30c5a56fd4aeba2aecaf4d1c2670ac42bd61c4db2becf87"
+SHA256="cd45a0db52a7a887e34622c0af501cfcd67b65267517fe9964bd2d5af2e9d1a2"
 if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/peass-download/winPEAS.bat" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMPDIR/peass-download/winPEAS.bat" >&2
     rm -f "$TMPDIR/peass-download/winPEAS.bat"

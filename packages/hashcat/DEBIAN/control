@@ -1,5 +1,5 @@
 Package: hashcat
-Version: 7.1.2
+Version: 8.0.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: clang, make, binutils, curl, libc++, libiconv, opencl-vendor-driver, python

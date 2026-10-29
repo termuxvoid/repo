@@ -2,17 +2,17 @@
 set -e
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="0.2.34"
+VERSION="0.2.35"
 ARCH=$(uname -m)
 
 case "$ARCH" in
     aarch64)
-        SHA256="a34ef364933496ab6eec21e22355df9c84ad81b847f51a883b19b2e4866f0dd9"
+        SHA256="d199e7c4922babc003a09f860297ba19b2fe463b0389b261fc1729496ce21f46"
         ARCH_TARGET="arm64"
         LD_SO="ld-linux-aarch64.so.1"
         ;;
     x86_64)
-        SHA256="5d9f18b5a56ac80e457547ca3859766a28fd8ddd32c396492f2cdb28b92507e2"
+        SHA256="41b1e82659cd5c9185ebb201b1e4ddaff0a2fc1c68e14a2d18577b0de6e29335"
         ARCH_TARGET="x64"
         LD_SO="ld-linux-x86-64.so.2"
         ;;

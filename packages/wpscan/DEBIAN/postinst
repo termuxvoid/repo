@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-gem install wpscan -v 4.0.0
+gem install wpscan -v 4.2.0
 
 echo "WPScan installed successfully."
 echo ""

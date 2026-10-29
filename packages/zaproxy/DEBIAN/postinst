@@ -3,7 +3,7 @@ set -e
 
 ZAP_DIR="$PREFIX/share/zaproxy"
 DESKTOP_DIR="$PREFIX/share/applications"
-DOWNLOAD_URL="https://github.com/zaproxy/zaproxy/releases/download/w2026-08-11/ZAP_WEEKLY_D-2026-08-11.zip"
+DOWNLOAD_URL="https://github.com/zaproxy/zaproxy/releases/download/w2026-10-29/ZAP_WEEKLY_D-2026-10-29.zip"
 
 echo "[*] Downloading OWASP ZAP Weekly..."
 mkdir -p "$TMPDIR"
@@ -13,15 +13,15 @@ wget --show-progress -q --progress=bar:force:noscroll \
 echo "[*] Installing to $ZAP_DIR..."
 [ -d "$ZAP_DIR" ] && rm -rf "$ZAP_DIR"
 
-# Extract and move the specific folder (ZAP_D-2026-08-11) to ZAP_DIR
-SHA256="853360b7d246c2e8465a2f66c9cac99be19e7518a2194200a115df65c9156b2a"
+# Extract and move the specific folder (ZAP_D-2026-10-29) to ZAP_DIR
+SHA256="b084c368d3b9a5d6af662d52a62af12f34a8544f6d34fe9bbdeccb106559a8a9"
 if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/zap.zip" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMPDIR/zap.zip" >&2
     rm -f "$TMPDIR/zap.zip"
     exit 1
 fi
 unzip -q "$TMPDIR/zap.zip" -d "$TMPDIR"
-mv "$TMPDIR/ZAP_D-2026-08-11" "$ZAP_DIR"
+mv "$TMPDIR/ZAP_D-2026-10-29" "$ZAP_DIR"
 
 echo "[*] Creating launcher..."
 cat > "$PREFIX/bin/zaproxy" <<EOF

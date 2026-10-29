@@ -1,5 +1,5 @@
 Package: wpscan
-Version: 4.0.0
+Version: 4.2.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: ruby, ruby-nokogiri, ruby-ethon, libcurl, libffi, sed, findutils

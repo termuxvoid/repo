@@ -1,5 +1,5 @@
 Package: peass
-Version: 20260919.fca1e2b0
+Version: 20261029.a596a9f3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl

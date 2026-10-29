@@ -1,5 +1,5 @@
 Package: moviebox-tui
-Version: 0.1.26
+Version: 0.1.28
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: rust, termux-tools, termux-api, curl, tar

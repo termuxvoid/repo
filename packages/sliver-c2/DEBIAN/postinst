@@ -1,17 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-TAG="v1.7.8"
+TAG="v1.7.9"
 TMP_DIR="$TMPDIR/sliver-build"
 BIN_DIR="$PREFIX/bin"
 ARCHIVE_URL="https://github.com/BishopFox/sliver/archive/refs/tags/${TAG}.tar.gz"
 
-LDFLAGS="-s -w -X github.com/bishopfox/sliver/client/command/update.SliverPublicKey=RWTZPg959v3b7tLG7VzKHRB1/QT+d3c71Uzetfa44qAoX5rH7mGoQTTR -X github.com/bishopfox/sliver/client/assets.DefaultArmoryPublicKey=RWSBpxpRWDrD7Fe+VvRE3c2VEDC2NK80rlNCj+BX0gz44Xw07r6KQD9L -X github.com/bishopfox/sliver/client/assets.DefaultArmoryRepoURL=https://api.github.com/repos/sliverarmory/armory/releases -X github.com/bishopfox/sliver/server/version.Version=${TAG} -X github.com/bishopfox/sliver/server/version.GitCommit=422044af0dbfd75e4588756f9c7a4e3536eba376 -X github.com/bishopfox/sliver/client/version.Version=${TAG} -X github.com/bishopfox/sliver/client/version.GitCommit=422044af0dbfd75e4588756f9c7a4e3536eba376"
+LDFLAGS="-s -w -X github.com/bishopfox/sliver/client/command/update.SliverPublicKey=RWTZPg959v3b7tLG7VzKHRB1/QT+d3c71Uzetfa44qAoX5rH7mGoQTTR -X github.com/bishopfox/sliver/client/assets.DefaultArmoryPublicKey=RWSBpxpRWDrD7Fe+VvRE3c2VEDC2NK80rlNCj+BX0gz44Xw07r6KQD9L -X github.com/bishopfox/sliver/client/assets.DefaultArmoryRepoURL=https://api.github.com/repos/sliverarmory/armory/releases -X github.com/bishopfox/sliver/server/version.Version=${TAG} -X github.com/bishopfox/sliver/server/version.GitCommit=6cf3ad78bdc6eed799186194e6f4e6fd662dcd8c -X github.com/bishopfox/sliver/client/version.Version=${TAG} -X github.com/bishopfox/sliver/client/version.GitCommit=6cf3ad78bdc6eed799186194e6f4e6fd662dcd8c"
 
 rm -rf "$TMP_DIR" 2>/dev/null || true
 mkdir -p "$TMP_DIR"
 curl -fsSL "$ARCHIVE_URL" -o "$TMP_DIR/sliver.tar.gz"
-SHA256="3e8105447fa893cc35d7a25ba3b631a1fcfd23be3a3c52a46e6ba6d6ab13d87f"
+SHA256="608f27eaa693ffa2bb00a1ae049ebeb3ab28b344cf7ae41eb0ae70176393d7cb"
 if ! printf '%s  %s\n' "$SHA256" "$TMP_DIR/sliver.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMP_DIR/sliver.tar.gz" >&2
     rm -f "$TMP_DIR/sliver.tar.gz"
@@ -40,7 +40,8 @@ base = os.environ["SLIVER_DIR"]
 # --- server/gogo/go.go ---
 p = base + "/server/gogo/go.go"
 s = open(p).read()
-s = s.replace('\t"os/exec"\n', '\t"os/exec"\n\t"runtime"\n', 1)
+if '"runtime"' not in s:
+    s = s.replace('\t"os/exec"\n', '\t"os/exec"\n\t"runtime"\n', 1)
 
 old = '''func GetGoRootDir(appDir string) string {
 \treturn filepath.Join(appDir, goDirName)
@@ -70,8 +71,8 @@ newm = 'func GetGoModCache(appDir string) string {\n\tcachePath := filepath.Join
 assert oldm in s, "GetGoModCache not found"
 s = s.replace(oldm, newm)
 
-oldg = 'garbleBinPath := filepath.Join(config.GOROOT, "bin", "garble")\n\tgarbleFlags'
-newg = 'garbleBinPath := filepath.Join(config.GOROOT, "bin", "garble")\n\tif _, err := os.Stat(garbleBinPath); err != nil {\n\t\tgogoLog.Warnf("garble not found at %s, falling back to non-obfuscated build", garbleBinPath)\n\t\treturn GoCmd(config, cwd, command)\n\t}\n\tgarbleFlags'
+oldg = 'garbleBinPath := goToolPath(config.GOROOT, "garble")\n\tgarbleFlags'
+newg = 'garbleBinPath := goToolPath(config.GOROOT, "garble")\n\tif _, err := os.Stat(garbleBinPath); err != nil {\n\t\tgogoLog.Warnf("garble not found at %s, falling back to non-obfuscated build", garbleBinPath)\n\t\treturn GoCmd(config, cwd, command)\n\t}\n\tgarbleFlags'
 assert oldg in s, "garbleBinPath not found"
 s = s.replace(oldg, newg)
 open(p, "w").write(s)
@@ -86,6 +87,29 @@ a = a.replace(olda, newa)
 # bring in the "runtime" import used by the patched setupGo
 if '"runtime"' not in a:
     a = a.replace('\t"os"\n', '\t"os"\n\t"runtime"\n', 1)
+
+# Use Termux's Zig for CGO/shared implant builds instead of the missing
+# Android embedded toolchain.
+oldz = 'func setupZig(appDir string) error {\n\tsetupLog.Infof("Unpacking to \'%s\'", appDir)'
+newz = '''func setupZig(appDir string) error {
+\tif runtime.GOOS == "android" {
+\t\tzigRootPath := filepath.Join(appDir, zigDirName)
+\t\tif _, err := os.Stat(filepath.Join(zigRootPath, "zig")); err == nil {
+\t\t\treturn nil
+\t\t}
+\t\tos.MkdirAll(zigRootPath, 0700)
+\t\tzigPath, err := exec.LookPath("zig")
+\t\tif err != nil {
+\t\t\treturn err
+\t\t}
+\t\tos.Remove(filepath.Join(zigRootPath, "zig"))
+\t\treturn os.Symlink(zigPath, filepath.Join(zigRootPath, "zig"))
+\t}
+\tsetupLog.Infof("Unpacking to \'%s\'", appDir)'''
+assert oldz in a, "setupZig not found"
+a = a.replace(oldz, newz)
+if '"os/exec"' not in a:
+    a = a.replace('\t"os"\n', '\t"os"\n\t"os/exec"\n', 1)
 open(ap, "w").write(a)
 PYEOF
 SLIVER_DIR="$TMP_DIR" python3 "$TMP_DIR/patch_gogo.py"

@@ -3,23 +3,23 @@ set -e
 
 GHIDRA_DIR="$PREFIX/share/ghidra"
 DESKTOP_DIR="$PREFIX/share/applications"
-DOWNLOAD_URL="https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.3_build/ghidra_12.1.3_PUBLIC_20260817.zip"
+DOWNLOAD_URL="https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.2_build/ghidra_12.2_PUBLIC_20261016.zip"
 
-echo "[*] Downloading Ghidra 12.1.3..."
+echo "[*] Downloading Ghidra 12.2..."
 mkdir -p "$TMPDIR"
 wget --show-progress -q --progress=bar:force:noscroll \
      "$DOWNLOAD_URL" -O "$TMPDIR/ghidra.zip"
 
 echo "[*] Installing to $GHIDRA_DIR..."
 [ -d "$GHIDRA_DIR" ] && rm -rf "$GHIDRA_DIR"
-SHA256="93a5d11a9ad510622acaaf908c556a7b9b764d338e78a7567f3689bf5081fd54"
+SHA256="2c2cd776db3c1f6a097ba418922378ac3649cadd5e844a6f5f088ae628a7be67"
 if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/ghidra.zip" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMPDIR/ghidra.zip" >&2
     rm -f "$TMPDIR/ghidra.zip"
     exit 1
 fi
 unzip -q "$TMPDIR/ghidra.zip" -d "$PREFIX/share"
-mv "$PREFIX/share/ghidra_12.1.3_PUBLIC" "$GHIDRA_DIR"
+mv "$PREFIX/share/ghidra_12.2_PUBLIC" "$GHIDRA_DIR"
 
 echo "[*] Creating launcher..."
 cat > "$PREFIX/bin/ghidra" <<EOF

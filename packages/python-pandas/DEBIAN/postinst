@@ -3,7 +3,7 @@ set -e
 
 # TUR community wheel index: prebuilt Android pandas wheel,
 # no on-device source build needed.
-pip install --extra-index-url https://termux-user-repository.github.io/pypi/ pandas==3.0.5 || {
+pip install --extra-index-url https://termux-user-repository.github.io/pypi/ pandas==3.1.0 || {
     echo "Error: Failed to install pandas." >&2
     exit 1
 }

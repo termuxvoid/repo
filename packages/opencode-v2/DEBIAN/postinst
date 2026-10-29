@@ -2,17 +2,17 @@
 set -euo pipefail
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="2.2.0"
+VERSION="2.2.2"
 ARCH=$(uname -m)
 case "$ARCH" in
     aarch64)
         NPM_ARCH="arm64"
-        SHA256="6a40643c0dca3aff9d37c87c26c0ee003c46abb810e1c6ddde094ffbf7460b8b"
+        SHA512="732a7a97548b14657b3715dde458012094fc5799908418ecf85f6f878a5149a9bd9111a6bff9d412f80f31729f36b65db2595394ba0fbf38075b3419cf67dfd4"
         LD_SO="ld-linux-aarch64.so.1"
         ;;
     x86_64)
         NPM_ARCH="x64"
-        SHA256="fe3046b86872e624f62268058f4801a1f1efffc193103a9988238c891b8ca028"
+        SHA512="c1ad289751d468a3434ea8dfa89c2a9aade7e2d95e8c1cb6513e3cc15442ca94541b2f566c8a5778bf719479a58c0a1d403e8771947676a8896054e50cca8854"
         LD_SO="ld-linux-x86-64.so.2"
         ;;
     *)
@@ -41,7 +41,7 @@ trap 'rm -rf "$STAGE"' EXIT
 
 echo "Downloading OpenCode 2 ${VERSION}..."
 curl -fL --retry 3 --max-time 600 -o "$STAGE/$TARFILE" "$DOWNLOAD_URL"
-printf '%s  %s\n' "$SHA256" "$STAGE/$TARFILE" | sha256sum -c - >/dev/null ||
+printf '%s  %s\n' "$SHA512" "$STAGE/$TARFILE" | sha512sum -c - >/dev/null ||
     die "checksum mismatch"
 tar -xzf "$STAGE/$TARFILE" -C "$STAGE"
 [ -f "$STAGE/package/bin/opencode" ] ||

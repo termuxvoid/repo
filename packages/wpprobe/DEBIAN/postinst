@@ -1,15 +1,15 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="v0.12.12"
+VERSION="v0.12.13"
 BUILD_DIR="$TMPDIR/wpprobe-build"
 
 rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
-curl -fsSL -o src.tar.gz "https://github.com/Chocapikk/wpprobe/archive/refs/tags/v0.12.12.tar.gz"
-SHA256="56cf87338cd157ff7a15705031f858b007d761eace719e57c4ac63e34e8f2557"
+curl -fsSL -o src.tar.gz "https://github.com/Chocapikk/wpprobe/archive/refs/tags/v0.12.13.tar.gz"
+SHA256="927d0aa2dd7bdcdcc5f2c4328462a52dcbe007d0334d2a414a3665f570f0ecb1"
 if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: src.tar.gz" >&2
     rm -f "src.tar.gz"

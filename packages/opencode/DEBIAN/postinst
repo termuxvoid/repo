@@ -2,16 +2,16 @@
 set -e
  
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="1.19.4"
+VERSION="1.19.5"
 ARCH=$(uname -m)
 case "$ARCH" in
     aarch64)
-        SHA256="8568230ccd847dc93e95b9f6894379077d3e014a16b48040743573e77c23e85f"
+        SHA256="fae5be262d693b7c5e562856cc473e59e741772936db0c0600ac0d5ed5bd088b"
         TARFILE="opencode-linux-arm64.tar.gz"
         LD_SO="ld-linux-aarch64.so.1"
         ;;
     x86_64)
-        SHA256="849bd6b3d959a1d2ef200ed1634a51c79a45ca236aa26665d75debd694805cce"
+        SHA256="588310a336fa3b9df36b3f0225b26f679d453efaad0cf3d66c3651ef3ec1647a"
         TARFILE="opencode-linux-x64.tar.gz"
         LD_SO="ld-linux-x86-64.so.2"
         ;;
