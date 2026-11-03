@@ -1,0 +1,14 @@
+Package: craft-anything
+Version: 0.3.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: glibc, curl, tar
+Section: security
+Priority: optional
+Homepage: https://github.com/storytold/craft-anything
+Description: Reverse-engineering engine and AI-assisted rebuild CLI
+ Craft Anything is a pure-Rust reverse-engineering engine with tools for
+ websites, native apps, games, and more. It can inspect a target and use a
+ coding agent to rebuild it. This package installs the prebuilt
+ craft-anything-cli command and MCP server using Termux's glibc environment.
+ The native desktop GUI is not included.
