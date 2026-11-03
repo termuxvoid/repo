@@ -995,11 +995,11 @@ Description: Reverse-engineering engine and AI-assisted rebuild CLI
  craft-anything-cli command and MCP server using Termux's glibc environment.
  The native desktop GUI is not included.
 Filename: dists/termuxvoid/main/binary-all/craft-anything_0.3.0_all.deb
-Size: 1916
-MD5Sum: ceb01607a8222577b3d58cf1507c46e8
-SHA1: 78e775e13bed1e5100e050b929a728779ca64ae1
-SHA256: b21db9be5aabdcbf08fc8b661ef978f8f43c40b90fff137e16fc5876a2095e98
-SHA512: ff55a58e41f50f70691a37a0247c7fbf7220bae23310ddccda00ba1f64e1a25709aaf5f8b2acac899eda3a2ae747811580a0757940ea851ce8c02084321c0775
+Size: 1980
+MD5Sum: 22d39f725230ef46eb6bf5c9088dd685
+SHA1: 146efd7b2bd9dc7285b59aaefafe48eb8455de67
+SHA256: d8684b5cbea7c257168cecdbdcf2f9d3d5ec1c2bf25250d32c91fc33c1b60677
+SHA512: 230cd9d8921fd5ed439c7787eb91ffc725889f7b0dace28a44a0fe9b1346bf2867165a2c186c805cc46fe52b0227d2bc9335db8e58387825719bfdee8211ca03
 
 Package: cronitor-cli
 Version: 33.11
