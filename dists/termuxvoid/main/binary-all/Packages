@@ -980,6 +980,27 @@ SHA1: 99a783737f23259876163860c01eb3d8eef31669
 SHA256: f89c9398abac2776390b4f80b745a904d56ef61fe99d8bcd9faf0973e430a87d
 SHA512: e17e97b00d75b89a49092245da8df9ed4be2afcdcb3fd8d31b3d2a48866e3658892443918ffa214d3e57c2ab9c9b2a37860de90a503eb17605042d86dedeaf4d
 
+Package: craft-anything
+Version: 0.3.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: glibc, curl, tar
+Section: security
+Priority: optional
+Homepage: https://github.com/storytold/craft-anything
+Description: Reverse-engineering engine and AI-assisted rebuild CLI
+ Craft Anything is a pure-Rust reverse-engineering engine with tools for
+ websites, native apps, games, and more. It can inspect a target and use a
+ coding agent to rebuild it. This package installs the prebuilt
+ craft-anything-cli command and MCP server using Termux's glibc environment.
+ The native desktop GUI is not included.
+Filename: dists/termuxvoid/main/binary-all/craft-anything_0.3.0_all.deb
+Size: 1916
+MD5Sum: ceb01607a8222577b3d58cf1507c46e8
+SHA1: 78e775e13bed1e5100e050b929a728779ca64ae1
+SHA256: b21db9be5aabdcbf08fc8b661ef978f8f43c40b90fff137e16fc5876a2095e98
+SHA512: ff55a58e41f50f70691a37a0247c7fbf7220bae23310ddccda00ba1f64e1a25709aaf5f8b2acac899eda3a2ae747811580a0757940ea851ce8c02084321c0775
+
 Package: cronitor-cli
 Version: 33.11
 Architecture: all
