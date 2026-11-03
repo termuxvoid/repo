@@ -1,0 +1,15 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+ARCH=$(uname -m)
+case "$ARCH" in
+    aarch64|x86_64)
+        ;;
+    *)
+        echo "Error: craft-anything supports only aarch64 and x86_64." >&2
+        echo "Your architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+
+exit 0
