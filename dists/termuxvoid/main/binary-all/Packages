@@ -2024,7 +2024,7 @@ SHA256: de8bfe6af1f29e8c527c513c67ba0a05bfa25d7714125ee63bcb386cbaebe2bd
 SHA512: b6e8e22b265c7d7e68a2790416e1f4f0e1b5e826346d56500470df573e74f8e51971b4b884db98ec9fabe6a6f317436844eb38efd5b018ba102dc40ccfc7a215
 
 Package: hbctool
-Version: 0.1.7
+Version: 0.1.7-1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip, curl
@@ -2035,12 +2035,12 @@ Description: Hermes Bytecode Disassembler and Assembler
  A command-line interface for disassembling and assembling the
  Hermes Bytecode. Provides tools for working with Hermes bytecode
  files used in React Native applications and JavaScript engines.
-Filename: dists/termuxvoid/main/binary-all/hbctool_0.1.7_all.deb
-Size: 1416
-MD5Sum: f75e2e40e94c116110cda1642002135e
-SHA1: b45cf27ae82e785531774b1439390d3fa5b7669a
-SHA256: d7d3288d906899a5c1689276429f569d66923df1823a9b69ab6a566d36cc096e
-SHA512: 4e3eedc02df78218e88e71548989a39d2803836481bfd12f841ce2d9aa2ffb5514bcd3d0d822de114bb04aeff74a5d6ee040d84216c0b7d68688f27081520410
+Filename: dists/termuxvoid/main/binary-all/hbctool_0.1.7-1_all.deb
+Size: 1424
+MD5Sum: 0e18e1be1c215644b54101128b0d5144
+SHA1: 857b96708f8cf006f9e2b03b1e1168bd48cb87f1
+SHA256: c54c2da103b2edb19ef37edc169c874443bebfe6290c3b3416a1b3e9d2e1098a
+SHA512: f83d09e929a26b9511fc88e8e019ecdfb01a7b177e78ecfcadf5517a9ad9a0b4bd2798852d7942f4ecf80fe3869488133ccf70972713e01ee17f1a3ab9a08e84
 
 Package: hermes-agent
 Version: 0.19.0-2
