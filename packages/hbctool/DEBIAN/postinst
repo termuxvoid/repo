@@ -1,4 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -e
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -8,24 +9,24 @@ NC='\033[0m'
 echo -e "${GREEN}Installing hbctool 0.1.7...${NC}"
 
 echo -e "${YELLOW}Downloading hbctool...${NC}"
-curl -sL -o $TMPDIR/hbctool-0.1.7-py3-none-any.whl "https://github.com/Kirlif/HBC-Tool/releases/download/100/hbctool-0.1.7-py3-none-any.whl" || {
+curl -fsSL -o "$TMPDIR/hbctool-0.1.7-py3-none-any.whl" "https://github.com/Kirlif/HBC-Tool/releases/download/100/hbctool-0.1.7-py3-none-any.whl" || {
     echo -e "${RED}Error: Failed to download hbctool.${NC}"
     exit 1
 }
 
 echo -e "${YELLOW}Installing hbctool...${NC}"
-SHA256="37e9e09f5525672a6449696d4ec8a9174620374940b9789524effd9636f00ab8"
+SHA256="f61cee8d6564e215d4642f60e7b17daef3204a24805809c7d45425a0a385f4f9"
 if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/hbctool-0.1.7-py3-none-any.whl" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMPDIR/hbctool-0.1.7-py3-none-any.whl" >&2
     rm -f "$TMPDIR/hbctool-0.1.7-py3-none-any.whl"
     exit 1
 fi
-pip install --quiet --force-reinstall $TMPDIR/hbctool-0.1.7-py3-none-any.whl || {
+pip install --quiet --force-reinstall "$TMPDIR/hbctool-0.1.7-py3-none-any.whl" || {
     echo -e "${RED}Error: Failed to install hbctool.${NC}"
     exit 1
 }
 
-rm -f $TMPDIR/hbctool-0.1.7-py3-none-any.whl
+rm -f "$TMPDIR/hbctool-0.1.7-py3-none-any.whl"
 
 echo -e "${GREEN}hbctool installed successfully!${NC}"
 exit 0
