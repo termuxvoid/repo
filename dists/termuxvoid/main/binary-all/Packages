@@ -1186,6 +1186,25 @@ SHA1: a537a27ad680597e8ce7a22da9b9b46871eeca42
 SHA256: d83aac2c976c3fff9e72a0e9771fb2cf7c1d38a516db2f833898fad67d36ae53
 SHA512: f70ec17af34cbf4871aa1b486a9cab79773c7624586c8b0064159205742b30a6927f1536051f2ecf3ea5d4c9c721de2c546f60e08a2139238146f189bdd16002
 
+Package: dex2c
+Version: 0.1.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: android-sdk, android-ndk, android-cmake, openjdk-21, wget
+Section: android
+Priority: optional
+Homepage: https://github.com/Anon4You/dex2c
+Description: Dalvik-to-C++ JNI compiler for Termux
+ Compiles selected Java/Kotlin methods from an APK's Dalvik bytecode
+ into C++ JNI functions and repacks the APK with a generated libdex2c.so.
+ Single runnable jar with automatic SDK, NDK, and CMake discovery.
+Filename: dists/termuxvoid/main/binary-all/dex2c_0.1.0_all.deb
+Size: 1520
+MD5Sum: b2e4d73eca68acdf87b4dff0a4d1687e
+SHA1: e8cf06b0a172b71a9ea00d68e9e890554d06ba07
+SHA256: 542a9524c11bfded5678a003ef7336525f7f7583e282aeaf8eed8b74d5556707
+SHA512: 1f0eaa485f7a7d52104ed902fa5228cdc321cc7f6251dae27c9db518da711714ccbee4b9667ae5ab2cda31bc65299b3361758f139acbd1214b95d5900d8f8492
+
 Package: dirsearch
 Version: 0.5.0
 Architecture: all
