@@ -72,7 +72,7 @@ SHA256: 08a39d60090aae3c8c174384b7091c0fdf768bdf32cae9bfb15d4f3d4bcf2352
 SHA512: dbc806dd6be72e3903cd38f4414ddf9eb6be42cb3c78b14470a5e604493984a8905d937d5e39bc8a8399b6849155e9fe7c37e629db80502a8c2523308fdc1907
 
 Package: afrog
-Version: 3.5.9
+Version: 3.5.10
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
@@ -83,12 +83,12 @@ Description: Fast vulnerability scanner with custom PoCs (afrog)
  frog is a high‑performance web vulnerability scanner that supports
  custom proof‑of‑concept templates. This version includes a required
  patch for certain architectures.
-Filename: dists/termuxvoid/main/binary-all/afrog_3.5.9_all.deb
-Size: 1636
-MD5Sum: f658bbcbd4c180308ad8457dd43d50e5
-SHA1: eebad0e8e041b854173c29163c80120793e95043
-SHA256: 5e2e3ebc1cb54597ecb0ef8ae912f9e43a5c89805701b49ed17e1310414bba6f
-SHA512: 8ed61f7baaa4d5856c66a14562b022e7fa0505201a685197c1834c04e415749a5568e66c61d46b1a52b72495b4c654d3594867d8e5f468d057441d03b231cae8
+Filename: dists/termuxvoid/main/binary-all/afrog_3.5.10_all.deb
+Size: 1744
+MD5Sum: 715dc647717cecd0efba8ebd2c665b05
+SHA1: 9e60afb706b5cb58b2585e079c14826fd40ce1c0
+SHA256: f5866aa6efeedb52d6adffdb304e2d36bcb36e98c2a769485a6db8797c81c1e4
+SHA512: 809b92b161bc53b351e0b5b34ef5ac4c2e7fb2fd352873d8e3342084847a7ecea0af710270c1e6f26b7f9cd138ba762b7f101b4fb1249d5f286c7e0682508966
 
 Package: aircrack-ng
 Version: 1.7
@@ -882,7 +882,7 @@ SHA256: a2c6a90e169595b763a854cbc8bd8a9edcdece93718ac9a3e82aabd14787cd7a
 SHA512: 182982d3e4ccb136d298565bd1058686815500b75a7790128b598cc8e52837021be0cfd1721d6f48fcd334acc440a2390a8f39d6d7b7f624da4ef9174ac25e5b
 
 Package: claude-code
-Version: 2.1.312
+Version: 2.1.319
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, curl, tar
@@ -893,12 +893,12 @@ Description: Claude Code - AI coding assistant by Anthropic
  Claude Code is an AI-powered coding assistant from Anthropic.
  This package downloads and installs the official binary release
  with a glibc wrapper for Termux compatibility.
-Filename: dists/termuxvoid/main/binary-all/claude-code_2.1.312_all.deb
+Filename: dists/termuxvoid/main/binary-all/claude-code_2.1.319_all.deb
 Size: 2300
-MD5Sum: a13cb2cfeecee1e6c707e45e5839ee12
-SHA1: cb41e87cfa5107a963f145575148e4a7bd767063
-SHA256: 22c9c3f304d91a471e4c3a5100a5c5af22af0ee6ce6e014ebbba2c64df337e90
-SHA512: d91dad2fd3b6c7cf70ea064f697d29117fb489ab5aa51be6ec4819e6e6a2813831386027e96bca69e8f947ad27ab48651744402b6eb93348b826e0270a28ab5a
+MD5Sum: 13197daca296d7fda0287ee9cf97e8e5
+SHA1: f53c04ef22f8ffe5ee4252b5ca403cb47388cbd9
+SHA256: c42f22426dfa9b2a0413b9b6c672acb8495dee3867cde251c4c1ec5d9c44202c
+SHA512: 57d25c8ceb6945d24b1743043debf954b1119bcb14492e395e0bc7358e1162b3e6af06d892210fde4ec051f51e7461951419422d929c7216a03c17f46332df8b
 
 Package: cloudflare-gui
 Version: 1.0
@@ -962,7 +962,7 @@ SHA256: eda34d1f39d26e65398201cefb4cb7749b99cf7337520fe9a5ecfdf93b72099c
 SHA512: 6f85fefbf33be76aa95834f2654441d66b533b23cc046d77864e8c4015e34e1feb499e38d1f02d9bbeba99e6608a27777d45ddc525e00a23cb956d6762dee7b4
 
 Package: copilot-cli
-Version: 1.0.105
+Version: 1.0.107
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, gh, glibc, clang, python, curl, tar
@@ -973,15 +973,15 @@ Description: GitHub Copilot CLI (glibc version)
  GitHub Copilot CLI brings AI-powered assistance to your terminal.
  This package uses the glibc build and includes a wrapper to run
  inside Termux's glibc environment.
-Filename: dists/termuxvoid/main/binary-all/copilot-cli_1.0.105_all.deb
-Size: 2176
-MD5Sum: 8a1039a38c41c9daf529d8b4677fb3fe
-SHA1: 99a783737f23259876163860c01eb3d8eef31669
-SHA256: f89c9398abac2776390b4f80b745a904d56ef61fe99d8bcd9faf0973e430a87d
-SHA512: e17e97b00d75b89a49092245da8df9ed4be2afcdcb3fd8d31b3d2a48866e3658892443918ffa214d3e57c2ab9c9b2a37860de90a503eb17605042d86dedeaf4d
+Filename: dists/termuxvoid/main/binary-all/copilot-cli_1.0.107_all.deb
+Size: 2172
+MD5Sum: 60256dc3e70487ba89ff5a15f80d125d
+SHA1: 991a1e633b430f3bc06d3f1779483e3965999e5a
+SHA256: 3021125edccaae00dbc1ca227c8aa168fabe42b88b2d19ee232f44bc52e7875f
+SHA512: a17ce32ee623a53d0185e711fb7b486d21c931f7d13176d677b2d37ddcc17f94631e30ab3d7aad9682b215d5a69f5921fea07a72d6919d8b20b560da605669c8
 
 Package: craft-anything
-Version: 0.3.0
+Version: 0.5.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, curl, tar
@@ -994,12 +994,12 @@ Description: Reverse-engineering engine and AI-assisted rebuild CLI
  coding agent to rebuild it. This package installs the prebuilt
  craft-anything-cli command and MCP server using Termux's glibc environment.
  The native desktop GUI is not included.
-Filename: dists/termuxvoid/main/binary-all/craft-anything_0.3.0_all.deb
+Filename: dists/termuxvoid/main/binary-all/craft-anything_0.5.0_all.deb
 Size: 1980
-MD5Sum: 22d39f725230ef46eb6bf5c9088dd685
-SHA1: 146efd7b2bd9dc7285b59aaefafe48eb8455de67
-SHA256: d8684b5cbea7c257168cecdbdcf2f9d3d5ec1c2bf25250d32c91fc33c1b60677
-SHA512: 230cd9d8921fd5ed439c7787eb91ffc725889f7b0dace28a44a0fe9b1346bf2867165a2c186c805cc46fe52b0227d2bc9335db8e58387825719bfdee8211ca03
+MD5Sum: 0572a8156923b6f9fb0af66bdc485892
+SHA1: 4367adebeff7a7b795b86658b65c7324890dbf9c
+SHA256: 323a31a674bf0503c4d02abeffbf0fa6ee2b4be8a21f3cf41ff8828d3c8adefc
+SHA512: 3f85004c6d659394fb6c50f09e4f6363ebc0961a5e58c9aae64158fe436d025f06564ed238638b0c4021d36492257a6bd6f24f1a31997ededa98ab25f17c857a
 
 Package: cronitor-cli
 Version: 33.11
@@ -2722,7 +2722,7 @@ SHA256: d058a19c668e31de52e9d95b3591158c5d37b02030f8843e5bc87d8ccba8cc5f
 SHA512: 4e8ba617bf3bcfd3564bf0ca626fdffb54672a74f55db9848939c9c34c3ccc053ec41adc57cf586f37f71662f2a8c153ceaaf35145000c077482cf7bb2649a45
 
 Package: metagoofil
-Version: 1.4.0
+Version: 1.5.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: python, python-pip, git
@@ -2735,12 +2735,12 @@ Description: Search Google and download specific file types
  local machine. Useful for OSINT gathering and penetration tests to
  determine what files an organization is leaking to search indexers.
  It defers metadata analysis to tools like exiftool.
-Filename: dists/termuxvoid/main/binary-all/metagoofil_1.4.0_all.deb
-Size: 1320
-MD5Sum: 5d8628793b2a24e825fb582077e849c0
-SHA1: 2cd30dbfdce486e5f99c8cd38d7e0919609f34ce
-SHA256: e1123d1e9e1d6787b0adce22f53254cc6fe002be2a5b4cb9a16c62d421cfea72
-SHA512: ee48b83bcc3ca232304c4bf2ab85919193327d1c19b96ba07e66bc3694d65557439d959182a9c94ab185267b2a75cc91af81b254d8804366cf87b29cae2f7e65
+Filename: dists/termuxvoid/main/binary-all/metagoofil_1.5.0_all.deb
+Size: 1324
+MD5Sum: f10781d6cce6a788ef97e5abcafa8bc7
+SHA1: 256902ccf828dcd1a5b4fe917d108cf4c72a48d9
+SHA256: e21cacd186574069ecb9368a97bccbe36b481cf890e5a9a63caf76a951f6be79
+SHA512: 5bf05c96e02619c4aeaa5a532eaccadd442c39946de019b26ba1c7c40c672d9377edbca6ca66333771e4ce4655dfe24ecb10a1fe13fb77c3c0f09e4077caeac6
 
 Package: metasploit-framework
 Version: 6.4.142-dev-4
@@ -2858,7 +2858,7 @@ SHA256: f8463b6a0d59d1f44b00a65af29087aae1c6a15e9d687c674df1c8b2f949a896
 SHA512: b94e1ed1b48918299fd7136cb630a8fbb1fb4e0d98026f6e88da1ce6462df42be4d02aa610971e9924d228d9698d8fc351e11c40f55b7a0820bac7de87bfb09d
 
 Package: moviebox-tui
-Version: 0.1.28
+Version: 0.1.29
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: rust, termux-tools, termux-api, curl, tar
@@ -2868,12 +2868,12 @@ Homepage: https://github.com/mesamirh/MovieBox-Tui
 Description: Terminal UI for MovieBox
  MovieBox-Tui is a terminal user interface for browsing and
  streaming movies from MovieBox.
-Filename: dists/termuxvoid/main/binary-all/moviebox-tui_0.1.28_all.deb
+Filename: dists/termuxvoid/main/binary-all/moviebox-tui_0.1.29_all.deb
 Size: 1348
-MD5Sum: c4b2f8f913bc280f975f8f6ad90c590e
-SHA1: dbab835375405d977f45d3924d39424860942724
-SHA256: b0366156396be4b83b1cb8925732f36e5a57efa1f512c4609675425da0ac7de0
-SHA512: 37015ed0965b40c5e27367cfde9275c672272dfdc99eb3a2d042438034f033058644fc3aed422dc8a4c2ece5f4a78b56733c4864c021e49a07a5288148c154e3
+MD5Sum: b75aa778cc5aed2b66038032da203522
+SHA1: 96e611901952f979c90845075d2824ebe2dc6f81
+SHA256: 31f462d6afbade2cd16726d5bba5d0db20e08a1a6e05321e30c8c8589345a547
+SHA512: 494eccabac9c528c3b0433f7f976cc985606e720f90c659c20e7833891e16effd25cd6644b9ef895d4c0ec3c177f96519aa5140d19ae3672c12325794494ab68
 
 Package: mtcr-apply
 Version: 1.1.0
@@ -3694,7 +3694,7 @@ SHA256: 7f100baf70449c613081da4cbcaa377142f0776d1bc1aa1e0b13ade19546a2f6
 SHA512: ae074bd923d5d080c1a73268f19154cfd9240f4cd164378cc23ab4802ca56df151fae7dbb395d532ff3c6f6df1b4c1d55bf88a29f41c5e05406589f1249b74ed
 
 Package: qrylz
-Version: 1.0.4
+Version: 1.0.5
 Architecture: all
 Maintainer: Anon4You
 Depends: openjdk-21, wget
@@ -3706,12 +3706,12 @@ Description: APK signature-verification patcher
  re-signed with a different key. Merges split APKs, reads the original
  signing certificate and injects a tiny payload - output stays unsigned,
  sign it yourself afterwards.
-Filename: dists/termuxvoid/main/binary-all/qrylz_1.0.4_all.deb
-Size: 1516
-MD5Sum: e16a268f865f45a8b4dfe8db79029915
-SHA1: 027ef719b32997247f186cd70b1ff39e1f1f4fb5
-SHA256: dbe97fa6381e820b26960568296a6cb49dd2d7bbf1fef570b675546f0b3df4de
-SHA512: 60757ffd78204ef7a240a1ddb4788d3d7d9dfc8e06d536ade15e7535057cbb07ee67f38fabe98bc722d6af42fb2d02abd793c6fbc544dea3ecb6f9e860c1f383
+Filename: dists/termuxvoid/main/binary-all/qrylz_1.0.5_all.deb
+Size: 1520
+MD5Sum: bc255e757d3eb0b8e77ea41ac2109044
+SHA1: 72274f1d674e6e0db47097470a199d8f4c360e69
+SHA256: c0e1a604671bc1022afa22af70d05327a7c8e24d5f874bd4b15ba0a47f31d3d4
+SHA512: c27a10949febfa31081d538ddbe5720974de279656de47f71f1fa2756a19de8a965ca05814901d04650306e83435387a26b55518910f4bcdfb263ba240bf4564
 
 Package: qsreplace
 Version: 0.0.3
@@ -4711,7 +4711,7 @@ SHA256: f57e7fccc4b1ee3fe5e7ba64b7be9d98d3031652522da72d03663a53eed04f78
 SHA512: 3ec86d98cbdd9a2ba31e699e8a8df3176f9164589346aca12376817bfbc03563b18365d320ba6e669348ad659e70a8f7957c68017daad780f34a4f86197ad1e9
 
 Package: trufflehog
-Version: 3.99.7
+Version: 3.99.8
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
@@ -4722,12 +4722,12 @@ Description: Find leaked credentials and secrets in code and data
  TruffleHog scans Git repositories, file systems, and other sources
  to detect accidentally exposed secrets, API keys, passwords, and
  other sensitive data using entropy analysis and regex patterns.
-Filename: dists/termuxvoid/main/binary-all/trufflehog_3.99.7_all.deb
-Size: 1352
-MD5Sum: 8edc59b9ce9717f66d64955c9ac3aaa4
-SHA1: 0dc776b2d60bef3952ecd4ab5f74d4cb9122fe52
-SHA256: 323ccf0516e42b6358a2dfa934dd456cfe778accc85529cf3ac61a80de0277df
-SHA512: 0864a3dc32486363937a28a47946205fa3993572ab6d5e6c00cf63fca67f5f277ccc08adccd52fa7256fa7445748ce25d6338c8be15c136bbfd2aac0a532bd43
+Filename: dists/termuxvoid/main/binary-all/trufflehog_3.99.8_all.deb
+Size: 1348
+MD5Sum: a902053f3171c0957d5bc44f8491f7ca
+SHA1: 3f65542ed31ca8ac9f5370b9d72b207a81c232de
+SHA256: 4087409458562eb3314a8680360995a7013ef5c343304e1f0f28363cea15a878
+SHA512: d8681ad0a82d4a1fab2c68c44576931f52324afe4e112b80ba0db9959e420bdb35e47d5dfc695bef4e659551248f2a7177d9d2a175786bb972204977efa38e64
 
 Package: tte
 Version: 0.15.0
