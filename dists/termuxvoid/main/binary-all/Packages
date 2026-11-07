@@ -4563,20 +4563,20 @@ SHA256: cd896bf6597a65a8800b2392c84f352c4b528071da2c08f5c2ae9b0fa29cf0b3
 SHA512: b2ccff1394493c94e4bd416cd079392d5b4338bc148408e85253765d3423c4370cfc4a2f1767339a5baffa966c6c8b485158c32454522be4a6871a97e9589262
 
 Package: termux-penv
-Version: 2.0.1
+Version: 3.0.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Section: utils
 Homepage: https://github.com/Anon4You/termux-penv.git
 Installed-Size: 103
-Depends: wget, proot, figlet
+Depends: wget, proot, figlet, curl, unzip, tar, gzip
 Description: Termux Penv - Simplify Chroot Environments in Termux
-Filename: dists/termuxvoid/main/binary-all/termux-penv_2.0.1_all.deb
-Size: 5736
-MD5Sum: 313cef4d68f0d34ce540a985bfaaac4d
-SHA1: d40e65c5caf32cbe3a736016ec69762ec1893f37
-SHA256: 3486e047d47810833fcba4c002ccfb421659c55c9eb4dc2bae007ade9088ca9e
-SHA512: 6883ff1b6c6b17571a93634a685c25f2802fe142848c6aa2a8525052fdeb93a46849ccf77aa8a77427fcdc85ede66438266d179305c2119d1de5c3b2471610ec
+Filename: dists/termuxvoid/main/binary-all/termux-penv_3.0.0_all.deb
+Size: 1364
+MD5Sum: 1e1eb06aed112a5b53483f769c5043e1
+SHA1: 77bd70abb079e992ad63dbbeee60d04febbd6944
+SHA256: 44b211e7c8bf343c31479d846310c4b3dc960e89190492fa5c235f34d2ce4f62
+SHA512: a9614838e1a819114d6d60fe3aa8d7f0af1cdef55f440d11bff5b3a8a8b5e82ad3b09377c26b6de48ddfe2be0bf8a9bd45be43993210b7e15a0e998bdf1fdf18
 
 Package: termuxfetch
 Version: 2.0
