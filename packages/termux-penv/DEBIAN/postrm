@@ -1,2 +1,13 @@
-#!/usr/bin/env bash
-rm -rf $PREFIX/var/lib/termux_penv
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+
+case "${1:-}" in
+    remove|purge)
+        rm -f "$PREFIX/bin/termux-penv" "$PREFIX/bin/tp"
+        rm -rf "$PREFIX/share/termux-penv" "$PREFIX/var/lib/termux_penv"
+        ;;
+esac
+
+exit 0
