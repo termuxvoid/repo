@@ -5,7 +5,7 @@ SHARE_DIR="$PREFIX/share/metagoofil"
 LAUNCHER="$PREFIX/bin/metagoofil"
 
 rm -rf "$SHARE_DIR" 2>/dev/null || true
-git clone -q --depth 1 --branch v1.4.0 --config advice.detachedHead=false "https://github.com/opsdisk/metagoofil.git" "$SHARE_DIR"
+git clone -q --depth 1 --branch v1.5.0 --config advice.detachedHead=false "https://github.com/opsdisk/metagoofil.git" "$SHARE_DIR"
 pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary -r "$SHARE_DIR/requirements.txt"
 
 cat > "$LAUNCHER" <<'EOF'
