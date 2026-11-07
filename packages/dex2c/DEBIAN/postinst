@@ -1,0 +1,35 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+INSTALL_DIR="$PREFIX/share/dex2c"
+LAUNCHER="$PREFIX/bin/dex2c"
+JAR_URL="https://github.com/Anon4You/dex2c/releases/download/v0.1.0/dex2c.jar"
+
+echo "[*] Setting up dex2c..."
+mkdir -p "$INSTALL_DIR"
+cd "$INSTALL_DIR"
+
+echo "[*] Downloading dex2c.jar..."
+wget -q --show-progress "$JAR_URL" -O dex2c.jar || {
+    echo -e "\n[!] Download failed. Possible fixes:"
+    echo "    1. Check internet connection"
+    echo "    2. Run: pkg install wget"
+    echo "    3. Try manual download: $JAR_URL"
+    exit 1
+}
+
+SHA256="0b0bfff1e7f2bb7cbfa13ea17d7db15407902b52c684f284cc5a00d6d5d420bf"
+if ! printf '%s  %s\n' "$SHA256" "dex2c.jar" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: dex2c.jar" >&2
+    rm -f "dex2c.jar"
+    exit 1
+fi
+
+echo "[*] Creating launcher..."
+mkdir -p "$PREFIX/bin"
+printf '%s\n' \
+'#!/data/data/com.termux/files/usr/bin/bash' \
+"exec java -jar \"$INSTALL_DIR/dex2c.jar\" \"\$@\"" > "$LAUNCHER"
+chmod +x "$LAUNCHER"
+
+echo -e "\n[+] dex2c ready! Usage:\n  dex2c --help"

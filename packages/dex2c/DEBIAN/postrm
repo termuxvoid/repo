@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f "$PREFIX/bin/dex2c"
+rm -rf "$PREFIX/share/dex2c"
+echo "dex2c removed."
+exit 0

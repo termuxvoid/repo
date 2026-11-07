@@ -1,0 +1,12 @@
+Package: dex2c
+Version: 0.1.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: android-sdk, android-ndk, android-cmake, openjdk-21, wget
+Section: android
+Priority: optional
+Homepage: https://github.com/Anon4You/dex2c
+Description: Dalvik-to-C++ JNI compiler for Termux
+ Compiles selected Java/Kotlin methods from an APK's Dalvik bytecode
+ into C++ JNI functions and repacks the APK with a generated libdex2c.so.
+ Single runnable jar with automatic SDK, NDK, and CMake discovery.

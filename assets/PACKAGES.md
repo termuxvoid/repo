@@ -55,6 +55,7 @@ The complete catalog of packages in the TermuxVoid APT repository, grouped by th
 | [apksearch](https://termuxvoid.github.io/tool.html?name=apksearch) | APK Search Tool for Multiple APK Websites |
 | [apkstat](https://termuxvoid.github.io/tool.html?name=apkstat) | APK file statistics and analysis tool |
 | [blutter](https://termuxvoid.github.io/tool.html?name=blutter) | Flutter/Dart Binary Analysis and Reverse Engineering |
+| [dex2c](https://termuxvoid.github.io/tool.html?name=dex2c) | Dalvik-to-C++ JNI compiler for Termux |
 | [dpt-shell](https://termuxvoid.github.io/tool.html?name=dpt-shell) | Android Dex protection shell implementation |
 | [hbctool](https://termuxvoid.github.io/tool.html?name=hbctool) | Hermes Bytecode Disassembler and Assembler |
 | [keysigner](https://termuxvoid.github.io/tool.html?name=keysigner) | APK signing tool for Termux |
