@@ -94,6 +94,24 @@ if [ "$WD" = / ]; then
     WD=/home
 fi
 
+# Android has no working bwrap; keep shell tools usable.
+has_sandbox=
+for arg in "$@"; do
+    case "$arg" in
+        --disable-sandbox|--disable-sandbox=*|--yolo) has_sandbox=1 ;;
+    esac
+done
+if [ -z "$has_sandbox" ]; then
+    case "${1:-}" in
+        exec) set -- exec --disable-sandbox "${@:2}" ;;
+        resume|config|export|trace|model-profile|skills|voice|plugins|sandbox|schema|serve|mxp|attach|session-message|sessions|mcp|auth|login|logout|usage|init|help)
+            ;;
+        -h|--help|-V|--version)
+            ;;
+        *) set -- --disable-sandbox "$@" ;;
+    esac
+fi
+
 unset LD_PRELOAD
 : "${MUSE_NO_AUTO_UPDATE:=1}"
 export MUSE_NO_AUTO_UPDATE
@@ -107,5 +125,5 @@ chmod 755 "$PREFIX/bin/muse"
 
 echo "Muse Code $VERSION installed successfully."
 echo "Run 'muse login' once, then 'muse'."
-echo "On Android, use 'muse --yolo' or 'muse --disable-sandbox' for shell tools."
+echo "Shell sandboxing is disabled automatically on Android."
 exit 0
