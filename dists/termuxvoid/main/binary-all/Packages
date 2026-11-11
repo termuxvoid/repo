@@ -2913,6 +2913,26 @@ SHA1: 4c36ffd84dd4c4f471452feda813ae9bac845e08
 SHA256: 4585f1aac146b844cbdf1535173db195d513265f19e474b9ec922b354e88c9fb
 SHA512: d899a3402fd1ed986891b29bbc1e05876d2b6184d824f37c85922b97d7a71bbd0a336810412c63b564f66c12210abe3ab1d84c04bc49f272d1cceced0e777ab0
 
+Package: muse-cli
+Version: 1.4.15-R8339.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl, ca-certificates, git
+Section: ai
+Priority: optional
+Homepage: https://dev.meta.ai/
+Description: Meta's terminal coding agent powered by Muse Spark
+ Muse Code plans, edits, and runs commands to complete coding tasks,
+ with approvals, an OS sandbox, multi-agent worktrees, session
+ messaging, and MCP support. This package installs the official
+ statically linked Linux binary and provides the muse command.
+Filename: dists/termuxvoid/main/binary-all/muse-cli_1.4.15-R8339.1_all.deb
+Size: 1664
+MD5Sum: 9ebe8209e7a4b1ce85a6ee7ef81cfed5
+SHA1: 526927640a6df7a0907b033b26cfd3b99e1a20a4
+SHA256: d1365c8e058b1287d5aa0abb5673810a10f8c3b40c1188dd2680fd90d62f3280
+SHA512: 2026782726d4e239457d9df729287e9cd2cc8ce497ae363d1f12ac499c89bcf495651c0803dd0e32a9e23d79668aaf0ccc8e5a4996e25a12b6d76807cf4d6f5b
+
 Package: naabu
 Version: 2.7.0
 Architecture: all
