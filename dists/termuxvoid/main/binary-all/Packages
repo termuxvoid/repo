@@ -2914,7 +2914,7 @@ SHA256: 4585f1aac146b844cbdf1535173db195d513265f19e474b9ec922b354e88c9fb
 SHA512: d899a3402fd1ed986891b29bbc1e05876d2b6184d824f37c85922b97d7a71bbd0a336810412c63b564f66c12210abe3ab1d84c04bc49f272d1cceced0e777ab0
 
 Package: muse-cli
-Version: 1.4.15-R8339.1-1
+Version: 1.4.15-R8339.1-2
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, ca-certificates, git, proot
@@ -2926,12 +2926,12 @@ Description: Meta's terminal coding agent powered by Muse Spark
  with approvals, an OS sandbox, multi-agent worktrees, session
  messaging, and MCP support. This package installs the official
  statically linked Linux binary and provides the muse command.
-Filename: dists/termuxvoid/main/binary-all/muse-cli_1.4.15-R8339.1-1_all.deb
-Size: 2400
-MD5Sum: 02dca34c440c3d542f663ab83f5a5f92
-SHA1: 536851ddff9afea5da9ff80538e4ab8e85188c8a
-SHA256: 25fcf80f5ba4afcf35cc53affa6647616710cbeedb6081e79aa81742895284e5
-SHA512: 0a4efe1ab35aefb33875ed4849b6ff6391012a60479ae708c9bd98b864aef7ec1debd72bb476402f626700dd51111cefac65e28a48becd84d98ea08677c2b613
+Filename: dists/termuxvoid/main/binary-all/muse-cli_1.4.15-R8339.1-2_all.deb
+Size: 2624
+MD5Sum: 25bd4d20556477dd7243031f4c55e6a2
+SHA1: 2f504c4ebf82f005529607a593675ea36427e1bf
+SHA256: e7466c0bc20af93121ba3e296369b095bfedf7d98e2102a9ed5a91ac032b5f6f
+SHA512: 8c17f0e4a83853a0977c9b12d83bdff15294a0fe700a9c402a1aa4819999b695b8cf043ddad3a9f38b1e7188c729307dcf0dea2cc534b64432279ee002b24b52
 
 Package: naabu
 Version: 2.7.0
