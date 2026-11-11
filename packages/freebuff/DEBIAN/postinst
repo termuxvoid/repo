@@ -33,7 +33,7 @@ LIB_PATH="$PREFIX/glibc/lib"
 mkdir -p "$SHARE_DIR" "$BIN_DIR"
 
 echo "Downloading freebuff ${VERSION}..."
-curl -fsSL -o "$TMPDIR/freebuff.tar.gz" "$DOWNLOAD_URL"
+curl -fL --progress-bar --show-error -C - -o "$TMPDIR/freebuff.tar.gz" "$DOWNLOAD_URL"
 if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/freebuff.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMPDIR/freebuff.tar.gz" >&2
     rm -f "$TMPDIR/freebuff.tar.gz"
