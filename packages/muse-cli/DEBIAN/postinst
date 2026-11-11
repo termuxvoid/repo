@@ -1,0 +1,43 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+VERSION="1.4.15-R8339.1"
+ARCH=$(uname -m)
+
+case "$ARCH" in
+    aarch64)
+        SHA256="d0760247116f75f3cbd15e85f978b0e010d4846161d110df871bcaf346bbf60e"
+        ASSET="muse-aarch64-linux"
+        ;;
+    x86_64)
+        SHA256="abe0a72878c62b570c6eed6c17c5fc3c520a990ecf040511741c00092312a3d5"
+        ASSET="muse-x86-linux"
+        ;;
+    *)
+        echo "Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+
+URL="https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=${VERSION}&file=${ASSET}"
+PART="$PREFIX/bin/.muse-cli.part"
+
+mkdir -p "$PREFIX/bin"
+trap 'rm -f "$PART"' EXIT
+
+echo "Downloading Muse Code ${VERSION} for ${ARCH} (~400 MB)..."
+curl -fL --retry 3 --progress-bar -o "$PART" "$URL"
+
+if ! printf '%s  %s\n' "$SHA256" "$PART" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $PART" >&2
+    exit 1
+fi
+
+chmod +x "$PART"
+mv -f "$PART" "$PREFIX/bin/muse"
+trap - EXIT
+
+echo "Muse Code $VERSION installed successfully."
+echo "Run 'muse' to start."
+exit 0

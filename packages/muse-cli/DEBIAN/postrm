@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+
+rm -f "$PREFIX/bin/muse" "$PREFIX/bin/.muse-cli.part"
+
+exit 0

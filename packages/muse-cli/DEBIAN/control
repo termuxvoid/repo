@@ -1,0 +1,13 @@
+Package: muse-cli
+Version: 1.4.15-R8339.1
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: curl, ca-certificates, git
+Section: ai
+Priority: optional
+Homepage: https://dev.meta.ai/
+Description: Meta's terminal coding agent powered by Muse Spark
+ Muse Code plans, edits, and runs commands to complete coding tasks,
+ with approvals, an OS sandbox, multi-agent worktrees, session
+ messaging, and MCP support. This package installs the official
+ statically linked Linux binary and provides the muse command.

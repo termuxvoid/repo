@@ -1,0 +1,13 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+ARCH=$(uname -m)
+case "$ARCH" in
+    aarch64|x86_64)
+        exit 0
+        ;;
+    *)
+        echo "Error: muse-cli supports only aarch64 and x86_64." >&2
+        echo "Your architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
