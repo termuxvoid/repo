@@ -1577,11 +1577,11 @@ Description: Free, subscription-less AI coding agent for the terminal
  This package uses the glibc build and includes a wrapper to run
  inside Termux's glibc environment.
 Filename: dists/termuxvoid/main/binary-all/freebuff_0.2.35_all.deb
-Size: 2212
-MD5Sum: f76a3db691e7f3dd6c89dbb03c443f71
-SHA1: 9c071960aef70c18608168b2eca6d134837859fd
-SHA256: f17ac875aa089e5180accb8237e2a03c32eaef26c985486305ab99c188afc564
-SHA512: 49fa46adf04a9a981d6083a0187dcc0db5bab2deadc94493f05f65496ff110dd0fd6f5bee8c60beeddf193f5f13006103bd57308b8c32d560224cc9857ef7662
+Size: 2224
+MD5Sum: 007dacb4f3afa9c4d7ef3eff5b0bef8e
+SHA1: 7b4aca8a340783e24f478513bc1d1dbdf861e84a
+SHA256: ab8789feb6f5bd25853514f149d697399e1392824aebe8e9f8294164df326f35
+SHA512: bbb7dd7fe65b070a8edb9a3693c3fbffdadb9297df016d2071121cfb4fff9472798ad8b6e467dcabf129542fe13e3067f0c5b02f913c07fd9ad6311fa8799d86
 
 Package: fscan
 Version: 2.2.2
