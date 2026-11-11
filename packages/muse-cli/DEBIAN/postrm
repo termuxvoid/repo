@@ -2,6 +2,8 @@
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
 
-rm -f "$PREFIX/bin/muse" "$PREFIX/bin/.muse-cli.part"
+rm -f "$PREFIX/bin/muse" "$PREFIX/libexec/muse/.muse.part"
+rm -rf "$PREFIX/libexec/muse" "$PREFIX/share/muse/root"
+rmdir "$PREFIX/share/muse" 2>/dev/null || true
 
 exit 0

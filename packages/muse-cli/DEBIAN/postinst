@@ -21,23 +21,91 @@ case "$ARCH" in
 esac
 
 URL="https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=${VERSION}&file=${ASSET}"
-PART="$PREFIX/bin/.muse-cli.part"
+BIN="$PREFIX/libexec/muse/muse"
+PART="$PREFIX/libexec/muse/.muse.part"
+OLD="$PREFIX/bin/muse"
 
-mkdir -p "$PREFIX/bin"
+mkdir -p "$PREFIX/bin" "$PREFIX/libexec/muse"
 trap 'rm -f "$PART"' EXIT
 
-echo "Downloading Muse Code ${VERSION} for ${ARCH} (~400 MB)..."
-curl -fL --retry 3 --progress-bar -o "$PART" "$URL"
+if [ -x "$BIN" ] && printf '%s  %s\n' "$SHA256" "$BIN" | sha256sum -c - >/dev/null 2>&1; then
+    echo "Muse Code binary is already installed."
+elif [ -x "$OLD" ] && printf '%s  %s\n' "$SHA256" "$OLD" | sha256sum -c - >/dev/null 2>&1; then
+    echo "Reusing existing Muse Code binary..."
+    mv -f "$OLD" "$BIN"
+else
+    echo "Downloading Muse Code ${VERSION} for ${ARCH} (~400 MB)..."
+    curl -fL --retry 3 --progress-bar -o "$PART" "$URL"
+    if ! printf '%s  %s\n' "$SHA256" "$PART" | sha256sum -c - >/dev/null; then
+        echo "checksum mismatch: $PART" >&2
+        exit 1
+    fi
+    chmod +x "$PART"
+    mv -f "$PART" "$BIN"
+fi
+chmod 755 "$BIN"
+trap - EXIT
 
-if ! printf '%s  %s\n' "$SHA256" "$PART" | sha256sum -c - >/dev/null; then
-    echo "checksum mismatch: $PART" >&2
+ROOT="$PREFIX/share/muse/root"
+mkdir -p "$ROOT"/{home,tmp,dev,proc,sys,data,usr,etc,var,bin,run,system,vendor,apex,storage,sdcard}
+
+cat > "$PREFIX/bin/muse" <<'WRAPPER'
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+ROOT="$PREFIX/share/muse/root"
+BIN="$PREFIX/libexec/muse/muse"
+HOST_HOME=${HOME:-/data/data/com.termux/files/home}
+HOST_TMP=${TMPDIR:-$PREFIX/tmp}
+
+if [ ! -x "$BIN" ]; then
+    echo "muse: binary not found: $BIN" >&2
+    exit 1
+fi
+if [ ! -x "$PREFIX/bin/proot" ]; then
+    echo "muse: proot is required; run 'pkg install proot'" >&2
     exit 1
 fi
 
-chmod +x "$PART"
-mv -f "$PART" "$PREFIX/bin/muse"
-trap - EXIT
+mkdir -p "$ROOT"/{home,tmp,dev,proc,sys,data,usr,etc,var,bin,run,system,vendor,apex,storage,sdcard}
+mkdir -p "$HOST_TMP"
+
+BINDS=()
+for d in /data /system /vendor /apex /product /odm /system_ext /storage /sdcard /dev /proc /sys; do
+    if [ -e "$d" ]; then
+        BINDS+=(-b "$d:$d")
+    fi
+done
+BINDS+=(-b "$HOST_HOME:/home" -b "$HOST_TMP:/tmp" -b "$PREFIX:/usr" -b "$PREFIX/bin:/bin")
+if [ -d "$PREFIX/etc" ]; then
+    BINDS+=(-b "$PREFIX/etc:/etc")
+fi
+if [ -f "$PREFIX/etc/tls/cert.pem" ]; then
+    BINDS+=(-b "$PREFIX/etc/tls/cert.pem:/etc/ssl/certs/ca-certificates.crt")
+    BINDS+=(-b "$PREFIX/etc/tls/cert.pem:/etc/ssl/cert.pem")
+fi
+
+case "$PWD" in
+    "$HOST_HOME"|"$HOST_HOME"/*) WD="/home${PWD#"$HOST_HOME"}" ;;
+    *) WD="$PWD" ;;
+esac
+if [ "$WD" = / ]; then
+    WD=/home
+fi
+
+unset LD_PRELOAD
+: "${MUSE_NO_AUTO_UPDATE:=1}"
+export MUSE_NO_AUTO_UPDATE
+export HOME=/home
+export TMPDIR=/tmp
+export PATH="/usr/bin:/bin${PATH:+:$PATH}"
+
+exec "$PREFIX/bin/proot" -r "$ROOT" "${BINDS[@]}" -w "$WD" "$BIN" "$@"
+WRAPPER
+chmod 755 "$PREFIX/bin/muse"
 
 echo "Muse Code $VERSION installed successfully."
-echo "Run 'muse' to start."
+echo "Run 'muse login' once, then 'muse'."
+echo "On Android, use 'muse --yolo' or 'muse --disable-sandbox' for shell tools."
 exit 0
