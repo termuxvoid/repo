@@ -2914,10 +2914,10 @@ SHA256: 4585f1aac146b844cbdf1535173db195d513265f19e474b9ec922b354e88c9fb
 SHA512: d899a3402fd1ed986891b29bbc1e05876d2b6184d824f37c85922b97d7a71bbd0a336810412c63b564f66c12210abe3ab1d84c04bc49f272d1cceced0e777ab0
 
 Package: muse-cli
-Version: 1.4.15-R8339.1-2
+Version: 1.4.15
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: curl, ca-certificates, git, proot
+Depends: curl, ca-certificates, git
 Section: ai
 Priority: optional
 Homepage: https://dev.meta.ai/
@@ -2925,13 +2925,14 @@ Description: Meta's terminal coding agent powered by Muse Spark
  Muse Code plans, edits, and runs commands to complete coding tasks,
  with approvals, an OS sandbox, multi-agent worktrees, session
  messaging, and MCP support. This package installs the official
- statically linked Linux binary and provides the muse command.
-Filename: dists/termuxvoid/main/binary-all/muse-cli_1.4.15-R8339.1-2_all.deb
-Size: 2624
-MD5Sum: 25bd4d20556477dd7243031f4c55e6a2
-SHA1: 2f504c4ebf82f005529607a593675ea36427e1bf
-SHA256: e7466c0bc20af93121ba3e296369b095bfedf7d98e2102a9ed5a91ac032b5f6f
-SHA512: 8c17f0e4a83853a0977c9b12d83bdff15294a0fe700a9c402a1aa4819999b695b8cf043ddad3a9f38b1e7188c729307dcf0dea2cc534b64432279ee002b24b52
+ statically linked Linux binary and runs it natively through a sysfix
+ shim on aarch64, without proot. x86_64 is not supported yet.
+Filename: dists/termuxvoid/main/binary-all/muse-cli_1.4.15_all.deb
+Size: 9892
+MD5Sum: ea31bff3150d0b197cf14d733381990c
+SHA1: f3f4c9418656f5e76931c7011034f7ef2b2713bc
+SHA256: c3ea77f4e884cc390773e2a8d219efe2f12c16fd991e69b4aa18cb2b2d396918
+SHA512: 8f13ffe14034eb02c772fc3a11e8eb304b749a04364e5b1ded00c9e876b23f972e0f47bd9bd71569842ec4fe05959fb64555d3193eca74dbb7b0711401058cf0
 
 Package: naabu
 Version: 2.7.0
