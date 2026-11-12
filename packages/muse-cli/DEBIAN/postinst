@@ -6,16 +6,12 @@ VERSION="1.4.15-R8339.1"
 ARCH=$(uname -m)
 
 case "$ARCH" in
-    aarch64)
+    aarch64|arm64)
         SHA256="d0760247116f75f3cbd15e85f978b0e010d4846161d110df871bcaf346bbf60e"
         ASSET="muse-aarch64-linux"
         ;;
-    x86_64)
-        SHA256="abe0a72878c62b570c6eed6c17c5fc3c520a990ecf040511741c00092312a3d5"
-        ASSET="muse-x86-linux"
-        ;;
     *)
-        echo "Unsupported architecture: $ARCH" >&2
+        echo "Unsupported architecture: $ARCH (aarch64 only)" >&2
         exit 1
         ;;
 esac
@@ -24,9 +20,13 @@ URL="https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&versio
 BIN="$PREFIX/libexec/muse/muse"
 PART="$PREFIX/libexec/muse/.muse.part"
 OLD="$PREFIX/bin/muse"
+SYSFIX="$PREFIX/libexec/muse/sysfix"
+SYSFIX_PART="$PREFIX/libexec/muse/.sysfix.part"
+SYSFIX_URL="https://raw.githubusercontent.com/termuxvoid/repo/main/packages/muse-cli/sysfix-aarch64"
+SYSFIX_SHA256="3bb8814bfb7420a34dd04b7095ab119f0f1d7926df74339c347ad2289d8c38e1"
 
 mkdir -p "$PREFIX/bin" "$PREFIX/libexec/muse"
-trap 'rm -f "$PART"' EXIT
+trap 'rm -f "$PART" "$SYSFIX_PART"' EXIT
 
 if [ -x "$BIN" ] && printf '%s  %s\n' "$SHA256" "$BIN" | sha256sum -c - >/dev/null 2>&1; then
     echo "Muse Code binary is already installed."
@@ -44,54 +44,39 @@ else
     mv -f "$PART" "$BIN"
 fi
 chmod 755 "$BIN"
+
+if [ -x "$SYSFIX" ] && printf '%s  %s\n' "$SYSFIX_SHA256" "$SYSFIX" | sha256sum -c - >/dev/null 2>&1; then
+    echo "Native sysfix is already installed."
+else
+    echo "Downloading native sysfix..."
+    curl -fL --retry 3 -o "$SYSFIX_PART" "$SYSFIX_URL"
+    if ! printf '%s  %s\n' "$SYSFIX_SHA256" "$SYSFIX_PART" | sha256sum -c - >/dev/null; then
+        echo "sysfix checksum mismatch: $SYSFIX_PART" >&2
+        exit 1
+    fi
+    chmod 755 "$SYSFIX_PART"
+    mv -f "$SYSFIX_PART" "$SYSFIX"
+fi
 trap - EXIT
 
-ROOT="$PREFIX/share/muse/root"
-mkdir -p "$ROOT"/{home,tmp,dev,proc,sys,data,usr,etc,var,bin,run,system,vendor,apex,storage,sdcard}
+rm -rf "$PREFIX/share/muse/root"
+rmdir "$PREFIX/share/muse" 2>/dev/null || true
 
 cat > "$PREFIX/bin/muse" <<'WRAPPER'
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-ROOT="$PREFIX/share/muse/root"
 BIN="$PREFIX/libexec/muse/muse"
-HOST_HOME=${HOME:-/data/data/com.termux/files/home}
-HOST_TMP=${TMPDIR:-$PREFIX/tmp}
+SYSFIX="$PREFIX/libexec/muse/sysfix"
 
 if [ ! -x "$BIN" ]; then
     echo "muse: binary not found: $BIN" >&2
     exit 1
 fi
-if [ ! -x "$PREFIX/bin/proot" ]; then
-    echo "muse: proot is required; run 'pkg install proot'" >&2
+if [ ! -x "$SYSFIX" ]; then
+    echo "muse: native sysfix is missing; reinstall muse-cli" >&2
     exit 1
-fi
-
-mkdir -p "$ROOT"/{home,tmp,dev,proc,sys,data,usr,etc,var,bin,run,system,vendor,apex,storage,sdcard}
-mkdir -p "$HOST_TMP"
-
-BINDS=()
-for d in /data /system /vendor /apex /product /odm /system_ext /storage /sdcard /dev /proc /sys; do
-    if [ -e "$d" ]; then
-        BINDS+=(-b "$d:$d")
-    fi
-done
-BINDS+=(-b "$HOST_HOME:/home" -b "$HOST_TMP:/tmp" -b "$PREFIX:/usr" -b "$PREFIX/bin:/bin")
-if [ -d "$PREFIX/etc" ]; then
-    BINDS+=(-b "$PREFIX/etc:/etc")
-fi
-if [ -f "$PREFIX/etc/tls/cert.pem" ]; then
-    BINDS+=(-b "$PREFIX/etc/tls/cert.pem:/etc/ssl/certs/ca-certificates.crt")
-    BINDS+=(-b "$PREFIX/etc/tls/cert.pem:/etc/ssl/cert.pem")
-fi
-
-case "$PWD" in
-    "$HOST_HOME"|"$HOST_HOME"/*) WD="/home${PWD#"$HOST_HOME"}" ;;
-    *) WD="$PWD" ;;
-esac
-if [ "$WD" = / ]; then
-    WD=/home
 fi
 
 # Android has no working bwrap; keep shell tools usable.
@@ -115,15 +100,12 @@ fi
 unset LD_PRELOAD
 : "${MUSE_NO_AUTO_UPDATE:=1}"
 export MUSE_NO_AUTO_UPDATE
-export HOME=/home
-export TMPDIR=/tmp
-export PATH="/usr/bin:/bin${PATH:+:$PATH}"
 
-exec "$PREFIX/bin/proot" -r "$ROOT" "${BINDS[@]}" -w "$WD" "$BIN" "$@"
+exec "$SYSFIX" "$BIN" "$@"
 WRAPPER
 chmod 755 "$PREFIX/bin/muse"
 
 echo "Muse Code $VERSION installed successfully."
 echo "Run 'muse login' once, then 'muse'."
-echo "Shell sandboxing is disabled automatically on Android."
+echo "Native aarch64 mode; proot is not required."
 exit 0
