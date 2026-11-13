@@ -1,4 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-npm uninstall -g @gitlawb/openclaude 2>/dev/null && echo "OpenClaude removed." || echo "OpenClaude not found."
+npm uninstall -g @twigpine/openclaude 2>/dev/null && echo "OpenClaude removed." || echo "OpenClaude not found."
 exit 0

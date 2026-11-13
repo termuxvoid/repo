@@ -6,18 +6,18 @@ ARCH=$(uname -m)
 case "$ARCH" in
     aarch64)
         ASSET_ARCH="aarch64"
-        SHA256="2b43d84c3b4db89492b935d10f1eb0354475a96a51fa5c541bb4d218a128d14a"
+        SHA256="0c61e80f09db8a3bc8c35f7c99085347cdf5110bdb95645b2faa31a26b77f145"
         ;;
     x86_64)
         ASSET_ARCH="x86_64"
-        SHA256="2b56f4de3d68fb68c51740e277cfb5bcec00580837724f516bc3a177c6820cca"
+        SHA256="50e2ed5466d87202962bc96217ae4005bc1a40a908e7210534efb889abd8b25f"
         ;;
     *)
         echo "[!] Unsupported architecture: $ARCH" >&2
         exit 1
         ;;
 esac
-DOWNLOAD_URL="https://github.com/termuxvoid/flutter-termux/releases/download/3.47.9/flutter_3.47.9_${ASSET_ARCH}.tar.gz"
+DOWNLOAD_URL="https://github.com/termuxvoid/flutter-termux/releases/download/3.50.0/flutter_3.50.0_${ASSET_ARCH}.tar.gz"
 TMP_ARCHIVE="$TMPDIR/flutter.tar.gz"
 
 echo "[*] Setting up Flutter..."

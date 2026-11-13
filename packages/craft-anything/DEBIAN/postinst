@@ -2,18 +2,18 @@
 set -e
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="0.5.0"
+VERSION="0.6.1"
 ARCH=$(uname -m)
 
 case "$ARCH" in
     aarch64)
-        SHA256="5fbbf8de469e9ec07355c5a5686412ac4775ed341a4f2a09d7ff61ff53c15805"
+        SHA256="b4255ac806e2a598b9fc6dba4e8ed2190e49baafd2f68dd7e037f3294e472941"
         ASSET="craft-anything-${VERSION}-linux-aarch64.tar.gz"
         DIR="craft-anything-${VERSION}-linux-aarch64"
         LD_SO="ld-linux-aarch64.so.1"
         ;;
     x86_64)
-        SHA256="d18c54ef05e5c7ef50f8c4959fee8983c0a4a1f141edc488d11f7029973c885b"
+        SHA256="83ec0730c9117f399122b315c63ed4c3a8d31ac55bddd74cb8b33cd2f76ef704"
         ASSET="craft-anything-${VERSION}-linux-x86_64.tar.gz"
         DIR="craft-anything-${VERSION}-linux-x86_64"
         LD_SO="ld-linux-x86-64.so.2"
