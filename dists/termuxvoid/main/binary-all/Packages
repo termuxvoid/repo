@@ -224,23 +224,24 @@ SHA256: a2fb29a01f76631ee94ab26afc6a39f14a7ae00050bd123f4e6fc1b19a3db0d4
 SHA512: 2d89bc00eae3f8d9c14a6ba7e6328e05143615a2caec4e5945fbc1ccb2f8816ee498772094895929bddc1a5bd8ec0e34ea59ce7d5a2030de8ec237e8394da8b7
 
 Package: android-sdk
-Version: 37.0.0
+Version: 37.0.0-1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: openjdk-21, axel, xz-utils, ca-certificates
+Depends: openjdk-21, axel, xz-utils, ca-certificates, termux-tools
 Section: android
 Priority: optional
 Homepage: https://github.com/HomuHomu833/android-sdk-custom
 Description: Android SDK 37.0.0 for Termux (aarch64 and x86_64)
  Custom-built Android SDK with platform-tools, build-tools 37.0.0,
  and cmdline-tools 19.0. Downloads the matching Termux build and
- extracts it to $PREFIX/opt/android-sdk.
-Filename: dists/termuxvoid/main/binary-all/android-sdk_37.0.0_all.deb
-Size: 1620
-MD5Sum: 3245576a31a9f0be91cf44df4c004e3e
-SHA1: 073de900ed3cbc742b7b50c163cd62b3108252f7
-SHA256: 0a8f9c98ab6d8dfe628cde0fe5e42d754a1eea3a74648ebface7edb86e8e09ce
-SHA512: e06974d9f0263a625906268ead913703224e75ec6ecb3fbb1c1bddd0b6da462230fa78212d2ff2a43ea0826b851603b0f49d39f68ceabb95961aa406b79e8633
+ extracts it to $PREFIX/opt/android-sdk. Install platforms on demand
+ with sdkmanager, e.g. sdkmanager "platforms;android-36".
+Filename: dists/termuxvoid/main/binary-all/android-sdk_37.0.0-1_all.deb
+Size: 1928
+MD5Sum: b0fc651dcd446372b2b04cff8b7c22f8
+SHA1: f59e3963dabc89630a65a90589b2e5243bc291fd
+SHA256: 29f78c2562a25a054bcfa9b049f490b3fd1443732c10850295a608ad0f7a7532
+SHA512: bc1cea13ee58052d83198389b4270380ba771ed83756285489ee95400fc568c702a1e30ae9dbeb1322f6a596aa4701e3da36e60d4dc843bd40d630c1e77da3af
 
 Package: androvirus
 Version: 3.0
