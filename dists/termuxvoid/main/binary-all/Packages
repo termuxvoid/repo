@@ -112,7 +112,7 @@ SHA256: 86a3af4235e77692abae6a94e23744208dc56193026c06ab7341f9aefb042fb6
 SHA512: a8b36875e85ce4ad3558cd9d4bda2a890464c603dfdd4d48fc07aac91c9a4ca4253f226c3e26e361716ea291a9cd19bd8d92276ea49b8a4a1c9350e3918932ba
 
 Package: aliens-eye
-Version: 2.7.5
+Version: 2.10.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Pre-Depends: x11-repo
@@ -124,12 +124,12 @@ Homepage: https://github.com/arxhr007/Aliens_eye
 Description: AI-powered OSINT username scanner
  Scans 800+ social media and web platforms for a username using
  AI-assisted correlation, with optional Playwright browser support.
-Filename: dists/termuxvoid/main/binary-all/aliens-eye_2.7.5_all.deb
-Size: 1088
-MD5Sum: b9e6f7e68ccc2682c123ebba4ffbd4d6
-SHA1: 2ad92c06853b63b1ea46917e69df425ce56fc751
-SHA256: 61d597b6f173afabc61771cdc8982c07108d1cb4cdc6be29968ad78c2379283b
-SHA512: c3603953f2ae17751f5f8b9c2e5549be4798de0744e40e61bae0a6712958712e6cb9fe03942732e15966ef6c1025d60b01c28058eda4b665a6f9b146db26e1fc
+Filename: dists/termuxvoid/main/binary-all/aliens-eye_2.10.1_all.deb
+Size: 1084
+MD5Sum: b9beb576b35582d38e928ea063547c4d
+SHA1: 7b9bd5a99fe8a00664a6e0f692acf37db9cbbd32
+SHA256: 22ae21c058f9ea6e881b9332496c114e820836ba3d3a95091382d2580cd14439
+SHA512: 2dbbf269dd110b2ceee16de67928f9c7be8dcdb7f3b7d42df1a8e264377b300552f57f00b3a83741b6569c123797215b0a65565a52286be4f10936acb0e4a3af
 
 Package: amass
 Version: 5.1.3
@@ -683,7 +683,7 @@ SHA256: 3b3cc200a54033071a934a366b9e62b4969cdb304e3d2e658ac42e0e8dc4ef78
 SHA512: 29e5c9863dbd0ed7234c03a1a624fce344e94314bf70dec89cb8e2b52791d3e56a503cb393e71931f25b76568688767bb35f54a92f6ea7da46961b1749dc9ff8
 
 Package: brutespray
-Version: 2.7.2
+Version: 2.7.3
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
@@ -696,12 +696,12 @@ Description: Brute-force attacks from Nmap output
  - Multiple service support
  - Parallel attacks
  - Custom credential lists
-Filename: dists/termuxvoid/main/binary-all/brutespray_2.7.2_all.deb
-Size: 1316
-MD5Sum: 0b00a17290ac067fc4db3914117b1af3
-SHA1: b8fd1bdc9d1793703040bf0581e7a8a98ec338fc
-SHA256: 1e1059b29282a351429241a7322e1f2ceb3f9a31055918bea7fb5c4c197d773e
-SHA512: 4d7f2b8db9fc13b387a25dea4abbaac5b6d27a6025fa21b6ca009cfc1c270fe6f5ff3991f4013bd44a89ccd03c8afd5e3bc94bdc22fd12d8b3078820a117645f
+Filename: dists/termuxvoid/main/binary-all/brutespray_2.7.3_all.deb
+Size: 1312
+MD5Sum: 1a103859c0c1b9aa1ee3f2cd8e27111a
+SHA1: f8ee8ee8719ed2d03e3bc1c6c35d2608797dc933
+SHA256: 83bfe83ace0be50f655076e58ce3dbc1de521db0a4a43b2c6e29b8fd18929169
+SHA512: 203a26fe334713f6e0e248fc9e909f8ebf9c48be5e4caa998218a5060313a121966692c925fed061489927799f8064861e784df057c8ccbfdcb7f62b269d5061
 
 Package: bun
 Version: 1.4.4
@@ -882,7 +882,7 @@ SHA256: a2c6a90e169595b763a854cbc8bd8a9edcdece93718ac9a3e82aabd14787cd7a
 SHA512: 182982d3e4ccb136d298565bd1058686815500b75a7790128b598cc8e52837021be0cfd1721d6f48fcd334acc440a2390a8f39d6d7b7f624da4ef9174ac25e5b
 
 Package: claude-code
-Version: 2.1.319
+Version: 2.1.323
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, curl, tar
@@ -893,12 +893,12 @@ Description: Claude Code - AI coding assistant by Anthropic
  Claude Code is an AI-powered coding assistant from Anthropic.
  This package downloads and installs the official binary release
  with a glibc wrapper for Termux compatibility.
-Filename: dists/termuxvoid/main/binary-all/claude-code_2.1.319_all.deb
-Size: 2300
-MD5Sum: 13197daca296d7fda0287ee9cf97e8e5
-SHA1: f53c04ef22f8ffe5ee4252b5ca403cb47388cbd9
-SHA256: c42f22426dfa9b2a0413b9b6c672acb8495dee3867cde251c4c1ec5d9c44202c
-SHA512: 57d25c8ceb6945d24b1743043debf954b1119bcb14492e395e0bc7358e1162b3e6af06d892210fde4ec051f51e7461951419422d929c7216a03c17f46332df8b
+Filename: dists/termuxvoid/main/binary-all/claude-code_2.1.323_all.deb
+Size: 2296
+MD5Sum: 881bf64262b6a54245cefdb9cc459d49
+SHA1: 37b2ac560bb9307dc390e451b10718812d3df051
+SHA256: b66c4c0013690aa3558d32eeea70c5fb87cbcbaab353bfe35c9167f68136a295
+SHA512: 3cea1bce3b86fd6ff53c36337a99ace3d3d8ae82bd94aabb8f24ecd1a890f5e8096fdc53717aba6686c1f083f4dd860b20bf89d2a588ad628e7e94fd23c2d9c6
 
 Package: cloudflare-gui
 Version: 1.0
@@ -962,7 +962,7 @@ SHA256: eda34d1f39d26e65398201cefb4cb7749b99cf7337520fe9a5ecfdf93b72099c
 SHA512: 6f85fefbf33be76aa95834f2654441d66b533b23cc046d77864e8c4015e34e1feb499e38d1f02d9bbeba99e6608a27777d45ddc525e00a23cb956d6762dee7b4
 
 Package: copilot-cli
-Version: 1.0.107
+Version: 1.0.110
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, gh, glibc, clang, python, curl, tar
@@ -973,15 +973,15 @@ Description: GitHub Copilot CLI (glibc version)
  GitHub Copilot CLI brings AI-powered assistance to your terminal.
  This package uses the glibc build and includes a wrapper to run
  inside Termux's glibc environment.
-Filename: dists/termuxvoid/main/binary-all/copilot-cli_1.0.107_all.deb
+Filename: dists/termuxvoid/main/binary-all/copilot-cli_1.0.110_all.deb
 Size: 2172
-MD5Sum: 60256dc3e70487ba89ff5a15f80d125d
-SHA1: 991a1e633b430f3bc06d3f1779483e3965999e5a
-SHA256: 3021125edccaae00dbc1ca227c8aa168fabe42b88b2d19ee232f44bc52e7875f
-SHA512: a17ce32ee623a53d0185e711fb7b486d21c931f7d13176d677b2d37ddcc17f94631e30ab3d7aad9682b215d5a69f5921fea07a72d6919d8b20b560da605669c8
+MD5Sum: 706c9e83403148fa218d23b59b12cc6d
+SHA1: 86bac8500afaad33216f86150e88eca3324c28ff
+SHA256: 35508e7e74a4efbf1c4d55afa6a9b0192dc76d85857dc0cbf2e8adfef203363f
+SHA512: bb81684655576951cada6ebba18b04effe82b01de3a47020c31973c050d477b198d46754bee9f53a23c576878f4e8082e4d1cedabc92cda83aaf75e23547bc16
 
 Package: craft-anything
-Version: 0.5.0
+Version: 0.6.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, curl, tar
@@ -994,12 +994,12 @@ Description: Reverse-engineering engine and AI-assisted rebuild CLI
  coding agent to rebuild it. This package installs the prebuilt
  craft-anything-cli command and MCP server using Termux's glibc environment.
  The native desktop GUI is not included.
-Filename: dists/termuxvoid/main/binary-all/craft-anything_0.5.0_all.deb
-Size: 1980
-MD5Sum: 0572a8156923b6f9fb0af66bdc485892
-SHA1: 4367adebeff7a7b795b86658b65c7324890dbf9c
-SHA256: 323a31a674bf0503c4d02abeffbf0fa6ee2b4be8a21f3cf41ff8828d3c8adefc
-SHA512: 3f85004c6d659394fb6c50f09e4f6363ebc0961a5e58c9aae64158fe436d025f06564ed238638b0c4021d36492257a6bd6f24f1a31997ededa98ab25f17c857a
+Filename: dists/termuxvoid/main/binary-all/craft-anything_0.6.1_all.deb
+Size: 1976
+MD5Sum: 0827eb6ed23b6c714d20b03d4273719c
+SHA1: 5afcb2d04f72177c39fcfc18dfbf148e06333cc0
+SHA256: 5cdd5840850437d02d120da27f2fe6ddb6116eae09ffb15121a965163f624088
+SHA512: 75ebd41584fa62423eadb311105843b284e8b3ddc6763c3040f5fc89c87943f94be060edd6f25cc5e4264b5106d9e8c0c834164fca785ee4429347adc1866ae5
 
 Package: cronitor-cli
 Version: 33.11
@@ -1055,7 +1055,7 @@ SHA256: 524ac20a5c65baacc98ff893b59684886b15912b253d259a50a824271084095e
 SHA512: 46390ce9adb4dc07a6266a3b9c59c4e0cc49d5b674d888096e59e7a5ef0c707955b4e90dbc7b356c277892dbbc8cfd11dee37dacb9affd509a9157e1e9897ea6
 
 Package: dalfox
-Version: 3.2.4
+Version: 3.3.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: rust, clang, pkg-config, openssl, openssl-tool
@@ -1065,12 +1065,12 @@ Homepage: https://github.com/hahwul/dalfox
 Description: Fast parameter analysis and XSS scanning tool (v3 in Rust)
  Dalfox v3 is a complete rewrite in Rust. This package builds the exact
  version from official source code during installation.
-Filename: dists/termuxvoid/main/binary-all/dalfox_3.2.4_all.deb
-Size: 1360
-MD5Sum: 60eb71f1f0a6a271edca966d965de34a
-SHA1: 068ae1f28345842586df0bcc845d3be62ca16645
-SHA256: 5eafb69f3361faa2c5b73dc9d8d1e74c6820f7e11374d409b712518e87e7bbfb
-SHA512: e86409d95056884c278a20726eab63ebffcc435b88bd368a351ec8611c696bac2d624471f3a8543dd442b0f36cf0b819f4c05d1b08ff2379e09595c6c98356f8
+Filename: dists/termuxvoid/main/binary-all/dalfox_3.3.0_all.deb
+Size: 1352
+MD5Sum: cf38d874ba2da1f9991d2903208ecc78
+SHA1: 36dd2fd74d9f62f914121874122ad6cefac16cd3
+SHA256: b2c2400b254bced3ac03f451dd51a512d267f29989a5dc30d1aeac0fc12368c6
+SHA512: 8da3793fc810cee3587f9657b8bcd304d76ead286d5f834e05b89daebda2215d514d255bc26c667db1c9f3377f030853a28ac69cd3ff20575ce11aa051e22120
 
 Package: dark-phish
 Version: 2.3.0
@@ -1540,7 +1540,7 @@ SHA256: e2e38ec915db726798ae7c54f322dd1ce55962b44176afcf970212f8c0e49139
 SHA512: 53a943b5aeaf40565b656d478a958b5824928c331895a9c95b8a697062836a87fb8074ad3d184bb722609260d3cc7b54668782f9f97893e754d9ab32bc7ee849
 
 Package: flutter
-Version: 3.47.9
+Version: 3.50.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Pre-Depends: x11-repo
@@ -1555,12 +1555,12 @@ Description: Google's UI toolkit for building native apps
  - Native ARM64/x86_64 performance
  - Material/Cupertino widgets
  - Android/iOS/Linux support
-Filename: dists/termuxvoid/main/binary-all/flutter_3.47.9_all.deb
+Filename: dists/termuxvoid/main/binary-all/flutter_3.50.0_all.deb
 Size: 1828
-MD5Sum: 13b1b42e1f0515324bc18b3624fb1acb
-SHA1: 10821bf67beca616bc8e435e9f9b5e5af9f124f0
-SHA256: 32c3354519c47f7b3a914d318a98e9ee26ada1a783461613f4c9fff04155207d
-SHA512: b6db73530aa285ab09b1f3017e119ad1d04f319bc15cfe1885b1fd9bc8335d9255bbfd251fbc7896a181717290d511bfe7d0009c728f39a2a0336fb1c3097e90
+MD5Sum: 94398106bf9b18469a4eeefb8e794c07
+SHA1: 43fe08983c3d5d8824a15d1e07e4d17b60665667
+SHA256: 875ee3352f3861967c9a879ae6cabe2af38fe8ca7a76f79c169d3fbc52d7a7b0
+SHA512: 6cbadef77894f84bac7a304db89213d2b8b35d2c3b4d24de08000be47210ede44e102a470088c01534a7752c2a5c6a924b8767911b8a8a47949d0c616140835a
 
 Package: freebuff
 Version: 0.2.35
@@ -2839,7 +2839,7 @@ SHA256: aaecbe5610374afbaf9fbe4f3491d0bc151f9b36066c176ec7394b4914ebf123
 SHA512: 9a50ec88f28e9ca86bb4095f524dad41e5d237a52865ff73b6657129f342eae62ba5c1a95ac0ad2ed421f0fef32e80702f6b7592d2734a1e59b52826bb412950
 
 Package: mmx-cli
-Version: 1.0.28
+Version: 1.0.29
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: npm
@@ -2849,12 +2849,12 @@ Homepage: https://github.com/MiniMax-AI/cli
 Description: CLI tool for MiniMax AI
  Command-line interface for interacting with MiniMax AI models,
  including chat, completion, and image generation features.
-Filename: dists/termuxvoid/main/binary-all/mmx-cli_1.0.28_all.deb
+Filename: dists/termuxvoid/main/binary-all/mmx-cli_1.0.29_all.deb
 Size: 972
-MD5Sum: 512911c99d0d87ef55e63ea56bfde617
-SHA1: 97749f93d0cb1864a829f52597c4a4fcc310b9aa
-SHA256: 8b3a0cf1380b420d8a6907084b183079fbaba2fe21b519de5d1c15c93312eeca
-SHA512: 377c0122f6a2f47fb0089638001d8be411fc3f93db8a41761a3246c661ac772502f0f2c7cc8be43897bcdbcf03ed782e17e2cb7c6616af3dec8fc2e7fca88d85
+MD5Sum: 2cc073cd5eb61d34e4cf24c5e0d9e7eb
+SHA1: cf775827d1155a70428508e355d70c2e45aacaa9
+SHA256: 23def485bd2dc737642938911c402963d7f5c266c73bb41d835f688f17e7c6aa
+SHA512: 6f0e9c35babeaa2ecad9a95c3fcbf3aa54da954492ef6cc473a3170d0a5e1b6b9ad83099d8dae826cfe1eea799a9033677afa2ccc9d3914a41df14543decb0c2
 
 Package: morphshell
 Version: 2.0.1
@@ -3166,7 +3166,7 @@ SHA256: 88634036f3c8b3a33e5ea1416db7b4209a145076a5946ec739e7817b69e70f31
 SHA512: 6b703df19194b8d1f77aab3b50f66e44a2e3a2add557b482e59a7110465a783c4fbfc23858c7c44c4624d6063efc9e1661f3de0c136a4c584bc39066f4af8f65
 
 Package: openclaude
-Version: 0.33.0
+Version: 0.36.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: npm, ripgrep, proot
@@ -3177,12 +3177,12 @@ Description: Open‑source coding‑agent CLI for cloud and local LLMs
  OpenClaude provides a command‑line interface for interacting with
  large language models from multiple providers (cloud or local),
  with features tailored for coding assistance and automation.
-Filename: dists/termuxvoid/main/binary-all/openclaude_0.33.0_all.deb
-Size: 1076
-MD5Sum: 3d4f91b558db6b21516086b8d2e8b3e1
-SHA1: a9b7ff24080e9300e96f7df4a3f268490cb9e2a1
-SHA256: 6f3cd9d7ec038117c3390340bbcbea4968f3661a8c52174d6ec3c9b25e26ef9d
-SHA512: 5d715abd4dfdfe809678894a4060cb36ed0746d6dc5257f8e98f4fa5874a7fb460f9e0dadebf990bd55303fb6465a0887445c4c64f730731bc940d211896f6f7
+Filename: dists/termuxvoid/main/binary-all/openclaude_0.36.0_all.deb
+Size: 1080
+MD5Sum: 5258e71b4985d0e51d13a33a017c45cf
+SHA1: 414558df18e920bebd430ca5fd5a29cd2c9e6e66
+SHA256: 0dda06b577ebe6f5dbc0082abd749ce0d2604f9f1d775230631ac52bc6fd7e33
+SHA512: 65f6894a4345da2d079a2f0ded7e8cbad68b6e8e72781745a4530505214069969cdefa23973712385b37943ecdde08427e555d5bd303733920a6d40812db80e2
 
 Package: opencode-v2
 Version: 2.2.2
@@ -4751,7 +4751,7 @@ SHA256: f57e7fccc4b1ee3fe5e7ba64b7be9d98d3031652522da72d03663a53eed04f78
 SHA512: 3ec86d98cbdd9a2ba31e699e8a8df3176f9164589346aca12376817bfbc03563b18365d320ba6e669348ad659e70a8f7957c68017daad780f34a4f86197ad1e9
 
 Package: trufflehog
-Version: 3.99.8
+Version: 3.99.9
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
@@ -4762,12 +4762,12 @@ Description: Find leaked credentials and secrets in code and data
  TruffleHog scans Git repositories, file systems, and other sources
  to detect accidentally exposed secrets, API keys, passwords, and
  other sensitive data using entropy analysis and regex patterns.
-Filename: dists/termuxvoid/main/binary-all/trufflehog_3.99.8_all.deb
+Filename: dists/termuxvoid/main/binary-all/trufflehog_3.99.9_all.deb
 Size: 1348
-MD5Sum: a902053f3171c0957d5bc44f8491f7ca
-SHA1: 3f65542ed31ca8ac9f5370b9d72b207a81c232de
-SHA256: 4087409458562eb3314a8680360995a7013ef5c343304e1f0f28363cea15a878
-SHA512: d8681ad0a82d4a1fab2c68c44576931f52324afe4e112b80ba0db9959e420bdb35e47d5dfc695bef4e659551248f2a7177d9d2a175786bb972204977efa38e64
+MD5Sum: d059bca69ea90bfadc8ba00eb385f80b
+SHA1: 036a8ba5d667d771e45ed551c5c52d9d89e77151
+SHA256: 9c5b06142e32616523108ddfc62eb139a8db8c2fd2bb4a4df5d63a715435498d
+SHA512: 362353e9b0e5c2ab525abb1d5fdd8f396efea02b3a9a52007352d61cbf55a022d3f6d94bbf97d0b4de29fda2e2aa4f68187642dd3e0d19fc3c003b1498d37765
 
 Package: tte
 Version: 0.15.0
