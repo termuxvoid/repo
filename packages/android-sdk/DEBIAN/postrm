@@ -2,4 +2,10 @@
 set -e
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+for f in "$PREFIX/bin/"*; do
+    [ -L "$f" ] || continue
+    case "$(readlink "$f")" in
+        "$PREFIX/opt/android-sdk/"*) rm -f "$f" ;;
+    esac
+done
 rm -rf "$PREFIX/opt/android-sdk"

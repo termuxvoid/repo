@@ -39,6 +39,22 @@ echo "[*] Extracting Android SDK..."
 tar -xJf "$TMP_ARCHIVE" -C "$SDK_DIR" --strip-components=1
 rm -f "$TMP_ARCHIVE"
 
+# sdkmanager only accepts the <sdk>/cmdline-tools/latest layout
+if [ -d "$SDK_DIR/cmdline-tools/bin" ]; then
+    mkdir -p "$SDK_DIR/cmdline-tools/latest"
+    for f in "$SDK_DIR"/cmdline-tools/*; do
+        [ "$(basename "$f")" = latest ] || mv "$f" "$SDK_DIR/cmdline-tools/latest/"
+    done
+fi
+
+# Termux has no /usr/bin/env
+termux-fix-shebang "$SDK_DIR"/cmdline-tools/latest/bin/*
+
+ln -sf "$SDK_DIR/cmdline-tools/latest/bin/sdkmanager" "$PREFIX/bin/sdkmanager"
+
 [ -x "$SDK_DIR/platform-tools/adb" ] || { echo "[!] adb not found" >&2; exit 1; }
-[ -x "$SDK_DIR/cmdline-tools/bin/sdkmanager" ] || { echo "[!] sdkmanager not found" >&2; exit 1; }
+[ -x "$SDK_DIR/cmdline-tools/latest/bin/sdkmanager" ] || { echo "[!] sdkmanager not found" >&2; exit 1; }
+[ -x "$PREFIX/bin/sdkmanager" ] || { echo "[!] sdkmanager not linked" >&2; exit 1; }
 echo "[√] Android SDK installed at $SDK_DIR"
+echo "    Install what you need, e.g.: sdkmanager \"platforms;android-36\""
+echo "    Flutter: flutter config --android-sdk \"$SDK_DIR\""
