@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="3.5.10"
+VERSION="3.5.11"
 BUILD_DIR="$TMPDIR/afrog-build"
 
 rm -rf "$BUILD_DIR"
@@ -9,7 +9,7 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/zan8in/afrog/archive/refs/tags/v${VERSION}.tar.gz"
-SHA256="76cef5f297e6d7cb50ba1d0ce5b002f01f24a7088cc1678b97c16983bf5e5b0c"
+SHA256="da9a73b3fd828f0f937e7cf911c4655407cf77d0310c89db7a6bbf4a43038ba0"
 if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: src.tar.gz" >&2
     rm -f "src.tar.gz"
