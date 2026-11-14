@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-pip uninstall -y hermes-agent 2>/dev/null || true
+command -v uv >/dev/null && uv pip uninstall --system hermes-agent 2>/dev/null || true
 rm -rf "$PREFIX/share/hermes-agent"
 
 echo "Hermes Agent completely removed."

@@ -2,7 +2,7 @@
 set -e
 
 REPO="https://github.com/NousResearch/hermes-agent"
-VERSION="2026.7.20"
+VERSION="0.23.1"
 TAG="v${VERSION}"
 
 INSTALL_DIR="$PREFIX/share/hermes-agent"
@@ -15,7 +15,7 @@ curl -Lf "https://codeload.github.com/NousResearch/hermes-agent/tar.gz/refs/tags
     exit 1
 }
 
-SHA256="285f3fc134ff466a90065e1517801a68993733b807158ee8f32aa01613786990"
+SHA256="52a8eb321f368576034f40595491abf9646b60c3861eee0cf45f610e5faa9bb6"
 if ! printf '%s  %s\n' "$SHA256" "$TMPDIR/hermes-agent.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: $TMPDIR/hermes-agent.tar.gz" >&2
     rm -f "$TMPDIR/hermes-agent.tar.gz"
@@ -33,10 +33,20 @@ rm -f "$TMPDIR/hermes-agent.tar.gz"
 
 cd "$INSTALL_DIR"
 
-pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary setuptools wheel
+# upstream blocks wheel builds; editable install is the supported source path
+# android_24 matches the wheel tags of Termux's Python
+export ANDROID_API_LEVEL=24
+uv pip install --system --index-strategy unsafe-best-match \
+    --extra-index-url https://termux-user-repository.github.io/pypi/ \
+    'maturin>=1.9,<2' setuptools wheel
 
-export ANDROID_API_LEVEL="$(getprop ro.build.version.sdk)"
-python -m pip install --extra-index-url https://termux-user-repository.github.io/pypi/ --prefer-binary '.[termux]' -c constraints-termux.txt --ignore-requires-python 2>/dev/null || python -m pip install '.[termux]' --ignore-requires-python
+# upstream uv override: browser-harness pins Pillow 12, hermes needs 13
+printf 'Pillow==13.0.0\n' > "$TMPDIR/hermes-overrides.txt"
+uv pip install --system --no-build-isolation -e '.[termux]' \
+    --overrides "$TMPDIR/hermes-overrides.txt" \
+    --index-strategy unsafe-best-match \
+    --extra-index-url https://termux-user-repository.github.io/pypi/
+rm -f "$TMPDIR/hermes-overrides.txt"
 
 echo "Hermes Agent installed successfully."
 echo "Run 'hermes setup' to configure."
