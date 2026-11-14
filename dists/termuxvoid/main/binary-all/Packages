@@ -72,7 +72,7 @@ SHA256: 08a39d60090aae3c8c174384b7091c0fdf768bdf32cae9bfb15d4f3d4bcf2352
 SHA512: dbc806dd6be72e3903cd38f4414ddf9eb6be42cb3c78b14470a5e604493984a8905d937d5e39bc8a8399b6849155e9fe7c37e629db80502a8c2523308fdc1907
 
 Package: afrog
-Version: 3.5.10
+Version: 3.5.11
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
@@ -83,12 +83,12 @@ Description: Fast vulnerability scanner with custom PoCs (afrog)
  frog is a high‑performance web vulnerability scanner that supports
  custom proof‑of‑concept templates. This version includes a required
  patch for certain architectures.
-Filename: dists/termuxvoid/main/binary-all/afrog_3.5.10_all.deb
+Filename: dists/termuxvoid/main/binary-all/afrog_3.5.11_all.deb
 Size: 1744
-MD5Sum: 715dc647717cecd0efba8ebd2c665b05
-SHA1: 9e60afb706b5cb58b2585e079c14826fd40ce1c0
-SHA256: f5866aa6efeedb52d6adffdb304e2d36bcb36e98c2a769485a6db8797c81c1e4
-SHA512: 809b92b161bc53b351e0b5b34ef5ac4c2e7fb2fd352873d8e3342084847a7ecea0af710270c1e6f26b7f9cd138ba762b7f101b4fb1249d5f286c7e0682508966
+MD5Sum: 35e750efa4c68285de84d188b3cf7a63
+SHA1: 3b52eb6d14380a22e374e2d24f937660bcec40cc
+SHA256: 27396ba67ada7f15d6ae41be3c589f48561789fd502a67dce5a9de15758df272
+SHA512: 1901f8526717ebaa0aa0cba97cf73ebc37216ae1fef7b512fd40fbfa787bd9f19f71601b93d6b95b19dab530eae9e0ff4746337ff5e3eff544857f771765d399
 
 Package: aircrack-ng
 Version: 1.7
