@@ -1,17 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="2.1.323"
+VERSION="2.1.325"
 ARCH=$(uname -m)
 case "$ARCH" in
     aarch64)
         TARFILE="claude-linux-arm64.tar.gz"
-        SHA256="808fa9c71caf7ebed9383d3e38bee6e7dd2fa80877ac12c6c27438786295099e"
+        SHA256="2abe2bea8b802190a303f335b0fd09f95eb775457e99df5a4778b09dfab6bbd6"
         LD_SO="ld-linux-aarch64.so.1"
         ;;
     x86_64)
         TARFILE="claude-linux-x64.tar.gz"
-        SHA256="522255678548859b9799b7b098c03a3aa286c9a9ede01957e35f4713ccc43631"
+        SHA256="9686b0fb1eefbd7f2cc1f53f932516c29cd605e9d976223323a6c6e9a4c9c7fe"
         LD_SO="ld-linux-x86-64.so.2"
         ;;
     *)

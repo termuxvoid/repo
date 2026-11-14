@@ -1,5 +1,5 @@
 Package: claude-code
-Version: 2.1.323
+Version: 2.1.325
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, curl, tar

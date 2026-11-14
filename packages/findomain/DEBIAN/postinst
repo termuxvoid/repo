@@ -4,7 +4,7 @@ set -e
 
 echo "Building Findomain..."
 
-git clone https://github.com/Findomain/Findomain.git "$TMPDIR/findomain" || exit 1
+git clone --depth 1 --branch 11.0.0 https://github.com/Findomain/Findomain.git "$TMPDIR/findomain" || exit 1
 cd "$TMPDIR/findomain"
 
 RUSTFLAGS="-C opt-level=z" cargo build --release || exit 1
