@@ -2063,22 +2063,22 @@ SHA256: c54c2da103b2edb19ef37edc169c874443bebfe6290c3b3416a1b3e9d2e1098a
 SHA512: f83d09e929a26b9511fc88e8e019ecdfb01a7b177e78ecfcadf5517a9ad9a0b4bd2798852d7942f4ecf80fe3869488133ccf70972713e01ee17f1a3ab9a08e84
 
 Package: hermes-agent
-Version: 0.19.0-2
+Version: 0.23.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: python, curl, clang, rust, make, pkg-config, libffi, openssl, python-psutil, python-pillow, python-cryptography, file, termux-tools
+Depends: python, curl, clang, rust, make, pkg-config, libffi, openssl, python-psutil, python-pillow, python-cryptography, file, termux-tools, uv, libheif
 Section: ai
 Priority: optional
 Homepage: https://github.com/NousResearch/hermes-agent
 Description: AI-powered coding assistant and workflow automation tool
  Hermes Agent is an autonomous AI agent designed to assist with coding,
  research, and complex task automation through natural language commands.
-Filename: dists/termuxvoid/main/binary-all/hermes-agent_0.19.0-2_all.deb
-Size: 1688
-MD5Sum: 11dd14263f3a141f28ba3bf2b1169977
-SHA1: e47a3db8d9abeba1ddaeb1334ea850a223f7a044
-SHA256: 3061f25c7022202eaff4d896366239cad373320dc196f52f1c2d7e93e2b943c7
-SHA512: fd78b9bc2e8b119b462e6e65c36b5bf3e2c16431592a0afe818246c3ddb8706b10ec3b70b89888002583987b6b5354772a4fd135b0c3907ab9595a0348f0c421
+Filename: dists/termuxvoid/main/binary-all/hermes-agent_0.23.1_all.deb
+Size: 1840
+MD5Sum: de822f00e66b9431a655d024a09172bb
+SHA1: cd784fa127487d14d8524066aa5286b803b81bb6
+SHA256: 04adc60e1d0f8ec5d4a2d23bf7d93ad2e8bc57a94fbc286a7713ef05da103c35
+SHA512: f134109ca7502620af60600fdcd82dcda709c7125ba5a720f3e8f52156155554f3235798666f570526fe6538330c1f3ec79b109df7b8407787358636c23d7c5f
 
 Package: holehe
 Version: 1.61
