@@ -883,7 +883,7 @@ SHA256: a2c6a90e169595b763a854cbc8bd8a9edcdece93718ac9a3e82aabd14787cd7a
 SHA512: 182982d3e4ccb136d298565bd1058686815500b75a7790128b598cc8e52837021be0cfd1721d6f48fcd334acc440a2390a8f39d6d7b7f624da4ef9174ac25e5b
 
 Package: claude-code
-Version: 2.1.323
+Version: 2.1.325
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, curl, tar
@@ -894,12 +894,12 @@ Description: Claude Code - AI coding assistant by Anthropic
  Claude Code is an AI-powered coding assistant from Anthropic.
  This package downloads and installs the official binary release
  with a glibc wrapper for Termux compatibility.
-Filename: dists/termuxvoid/main/binary-all/claude-code_2.1.323_all.deb
-Size: 2296
-MD5Sum: 881bf64262b6a54245cefdb9cc459d49
-SHA1: 37b2ac560bb9307dc390e451b10718812d3df051
-SHA256: b66c4c0013690aa3558d32eeea70c5fb87cbcbaab353bfe35c9167f68136a295
-SHA512: 3cea1bce3b86fd6ff53c36337a99ace3d3d8ae82bd94aabb8f24ecd1a890f5e8096fdc53717aba6686c1f083f4dd860b20bf89d2a588ad628e7e94fd23c2d9c6
+Filename: dists/termuxvoid/main/binary-all/claude-code_2.1.325_all.deb
+Size: 2300
+MD5Sum: 8fdac77ab60c503fb5b17de096e02b6d
+SHA1: b6af54184803c0f1b52d3142a4c1e4d9a94849fe
+SHA256: c4f2d8b000bcff082c50c26f22c461a71ed30551a50e6f7fdd06c83182741017
+SHA512: be3c9f8e7cb58e86a35b40cdb07314914cbdda64e338146e6f04f948084aae8958b8b4c729afd214dbc5c3fdcf1bd7f4821c678d21e4b361d607236a3d018539
 
 Package: cloudflare-gui
 Version: 1.0
@@ -963,7 +963,7 @@ SHA256: eda34d1f39d26e65398201cefb4cb7749b99cf7337520fe9a5ecfdf93b72099c
 SHA512: 6f85fefbf33be76aa95834f2654441d66b533b23cc046d77864e8c4015e34e1feb499e38d1f02d9bbeba99e6608a27777d45ddc525e00a23cb956d6762dee7b4
 
 Package: copilot-cli
-Version: 1.0.110
+Version: 1.0.112
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, gh, glibc, clang, python, curl, tar
@@ -974,12 +974,12 @@ Description: GitHub Copilot CLI (glibc version)
  GitHub Copilot CLI brings AI-powered assistance to your terminal.
  This package uses the glibc build and includes a wrapper to run
  inside Termux's glibc environment.
-Filename: dists/termuxvoid/main/binary-all/copilot-cli_1.0.110_all.deb
+Filename: dists/termuxvoid/main/binary-all/copilot-cli_1.0.112_all.deb
 Size: 2172
-MD5Sum: 706c9e83403148fa218d23b59b12cc6d
-SHA1: 86bac8500afaad33216f86150e88eca3324c28ff
-SHA256: 35508e7e74a4efbf1c4d55afa6a9b0192dc76d85857dc0cbf2e8adfef203363f
-SHA512: bb81684655576951cada6ebba18b04effe82b01de3a47020c31973c050d477b198d46754bee9f53a23c576878f4e8082e4d1cedabc92cda83aaf75e23547bc16
+MD5Sum: e5c5235fc42146c406c8adefa8173120
+SHA1: e9dbd09fde8320ff6f8c448692d16b5ddb6fcd71
+SHA256: 407ef3f7106d77dd7e271eb9fdca0aa29ae72b3158fdde0e2da3fa7df3eac6ec
+SHA512: 0b4a6e9f1ce6bbe801c7052c57bf37bdb1fa7960e161787182fd9229155ee466ca85c2a3bffad441e88a40a05904da75414bc490ad0a643fac6bd92d6d14028a
 
 Package: craft-anything
 Version: 0.6.1
@@ -1520,7 +1520,7 @@ SHA256: 949224f405e0eb0d32f033e4bc2d4e787d386466cf8646f7d5a969bb1fce51fd
 SHA512: d9da0fba62786251371a4478040b32e5408a0b21a4f46d5374f5777c64668007c7cb1cddc4386e4088a6866c288db0e0f71f23792061a71dd1ebf1de708dbef0
 
 Package: findomain
-Version: 10.0.1
+Version: 11.0.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, rust, make, cmake
@@ -1533,12 +1533,12 @@ Description: The fastest and complete solution for domain recognition
  It includes subdomain monitoring, alerts via Discord/Slack/Telegram,
  port scanning, HTTP checks, data import from other tools, and full
  support for configuration files.
-Filename: dists/termuxvoid/main/binary-all/findomain_10.0.1_all.deb
-Size: 1244
-MD5Sum: 94b7af1a2900e7ce02c4dd5759d6eb52
-SHA1: 0e30f637b861f3a19db36b383425ce39cc21d74f
-SHA256: e2e38ec915db726798ae7c54f322dd1ce55962b44176afcf970212f8c0e49139
-SHA512: 53a943b5aeaf40565b656d478a958b5824928c331895a9c95b8a697062836a87fb8074ad3d184bb722609260d3cc7b54668782f9f97893e754d9ab32bc7ee849
+Filename: dists/termuxvoid/main/binary-all/findomain_11.0.0_all.deb
+Size: 1260
+MD5Sum: f8e61ad2f684a07ff5fcf624c9f9559b
+SHA1: 32b47aa6297a9ca68b34401d1a41ee8b2ea62698
+SHA256: 8b65fc72f103d3b95b905e8fb86695fb344de2746e11a9828a652a219724d835
+SHA512: ee0f0ddd9a9850ee941e7f4e1305fe482dbd8d03a8ff507207561ddbf92dfe24a6ad49875148e4e8a33a327564262c66bce91278f05e0b7dd5e046545284cdc8
 
 Package: flutter
 Version: 3.50.0
@@ -2781,7 +2781,7 @@ SHA256: 10b6d5d899fed0bc7c699b6b37d9773bdc5c0d5bb6cb780dec858dc83ce37c98
 SHA512: a630092b2794b68f5972a4dd2701cea3d6ba4720a4566b384562db5de9886da5d9fd452a06f723fd053dc8c77e445cf2d46a109cde8a4c6f96c8fd33b3253860
 
 Package: mimocode
-Version: 0.1.16
+Version: 0.1.17
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, clang, glibc, tar
@@ -2792,12 +2792,12 @@ Description: AI‑powered coding assistant (glibc wrapper for Termux)
  MiMo‑Code is an intelligent code completion and generation tool.
  This package downloads the official Linux ARM64 or x86_64 binary
  and runs it inside the Termux glibc environment.
-Filename: dists/termuxvoid/main/binary-all/mimocode_0.1.16_all.deb
-Size: 2248
-MD5Sum: 837aec84f212168b1b5368dd6ab42564
-SHA1: 28205f01c88c86b94ad5044435687a6e2bbf3514
-SHA256: b275a86b21cb52c453e6a5da14655c6d86b9479a8fd6aa477530c741ad9500a2
-SHA512: a17f737556b4eb0d4aedc3172553d9d344ec7397482839fb55cfd6cc8db514beca1d86c5a527fdc23c5cc6c2eb165db1bd7b1013385aaf93d96f9c74bcb6049e
+Filename: dists/termuxvoid/main/binary-all/mimocode_0.1.17_all.deb
+Size: 2252
+MD5Sum: 10ce8eba26b31f25ade780882380c069
+SHA1: 8df15fe38d9fb569fb1ca2eb38109e1063802d43
+SHA256: 879ad71eb300215d4aa7410a602117cffd79704111152718a2d038276fb9a6c0
+SHA512: 7a9fba149a6ce46538ddf2039bb7de6d8d8c4c9707e363cfa9f04b7a946641fbfafabdec466be6d72463ebaa690ece57390140bb2f41d64689917e5d7c38e3fc
 
 Package: mitmproxy
 Version: 12.3.1
