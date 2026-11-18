@@ -8,7 +8,7 @@ NC='\033[0m'
 echo -e "${GREEN}Installing ia-get ...${NC}"
 
 echo -e "${YELLOW}Cloning repository...${NC}"
-git clone https://github.com/wimpysworld/ia-get.git $TMPDIR/ia-get || {
+git clone --depth 1 --branch 0.2.0 https://github.com/wimpysworld/ia-get.git $TMPDIR/ia-get || {
     echo -e "${RED}Error: Failed to clone repository.${NC}"
     exit 1
 }

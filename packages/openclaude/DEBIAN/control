@@ -1,11 +1,11 @@
 Package: openclaude
-Version: 0.36.0
+Version: 0.37.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: npm, ripgrep, proot
 Section: ai
 Priority: optional
-Homepage: https://github.com/Gitlawb/openclaude
+Homepage: https://github.com/Twigpine/openclaude
 Description: Open‑source coding‑agent CLI for cloud and local LLMs
  OpenClaude provides a command‑line interface for interacting with
  large language models from multiple providers (cloud or local),
