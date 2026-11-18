@@ -112,7 +112,7 @@ SHA256: 86a3af4235e77692abae6a94e23744208dc56193026c06ab7341f9aefb042fb6
 SHA512: a8b36875e85ce4ad3558cd9d4bda2a890464c603dfdd4d48fc07aac91c9a4ca4253f226c3e26e361716ea291a9cd19bd8d92276ea49b8a4a1c9350e3918932ba
 
 Package: aliens-eye
-Version: 2.10.1
+Version: 2.11.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Pre-Depends: x11-repo
@@ -124,12 +124,12 @@ Homepage: https://github.com/arxhr007/Aliens_eye
 Description: AI-powered OSINT username scanner
  Scans 800+ social media and web platforms for a username using
  AI-assisted correlation, with optional Playwright browser support.
-Filename: dists/termuxvoid/main/binary-all/aliens-eye_2.10.1_all.deb
-Size: 1084
-MD5Sum: b9beb576b35582d38e928ea063547c4d
-SHA1: 7b9bd5a99fe8a00664a6e0f692acf37db9cbbd32
-SHA256: 22ae21c058f9ea6e881b9332496c114e820836ba3d3a95091382d2580cd14439
-SHA512: 2dbbf269dd110b2ceee16de67928f9c7be8dcdb7f3b7d42df1a8e264377b300552f57f00b3a83741b6569c123797215b0a65565a52286be4f10936acb0e4a3af
+Filename: dists/termuxvoid/main/binary-all/aliens-eye_2.11.0_all.deb
+Size: 1088
+MD5Sum: 3cee3ce3956e9428ffa9a4ab3e278ed1
+SHA1: d8a6e8d3a67b802faf1ca2382aca2011501c930f
+SHA256: 0f69ee957dea5447555ab0767f580d32338b9e950ba5b8ebe3ceb494e82a2a42
+SHA512: 06e7356b11260503c01c7fe00f105cdb8171e59d763cc38d073c79f991c6f86b4634ffbb4c6f944fb4d4d8252db81c778145860ef938bbcf924e0d52f83a21a2
 
 Package: amass
 Version: 5.1.3
@@ -684,7 +684,7 @@ SHA256: 3b3cc200a54033071a934a366b9e62b4969cdb304e3d2e658ac42e0e8dc4ef78
 SHA512: 29e5c9863dbd0ed7234c03a1a624fce344e94314bf70dec89cb8e2b52791d3e56a503cb393e71931f25b76568688767bb35f54a92f6ea7da46961b1749dc9ff8
 
 Package: brutespray
-Version: 2.7.3
+Version: 2.7.6
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
@@ -697,12 +697,12 @@ Description: Brute-force attacks from Nmap output
  - Multiple service support
  - Parallel attacks
  - Custom credential lists
-Filename: dists/termuxvoid/main/binary-all/brutespray_2.7.3_all.deb
-Size: 1312
-MD5Sum: 1a103859c0c1b9aa1ee3f2cd8e27111a
-SHA1: f8ee8ee8719ed2d03e3bc1c6c35d2608797dc933
-SHA256: 83bfe83ace0be50f655076e58ce3dbc1de521db0a4a43b2c6e29b8fd18929169
-SHA512: 203a26fe334713f6e0e248fc9e909f8ebf9c48be5e4caa998218a5060313a121966692c925fed061489927799f8064861e784df057c8ccbfdcb7f62b269d5061
+Filename: dists/termuxvoid/main/binary-all/brutespray_2.7.6_all.deb
+Size: 1316
+MD5Sum: 024a4b0214923fb99198b3b23e0ffc3e
+SHA1: 81c631d8ca9a55050f554492f8b4360b9dd10aab
+SHA256: 583c8282adafc8778d843d1a0cbdf07fd358125cd91ec53c654b4f89b3358711
+SHA512: 994fb4f966d3d67078ac44cfcf7798d7df14833270013ea8ca3a50941317888633c08f8ea192f8636de3694b55302d8461e1d64561a04559e52351c676854cdd
 
 Package: bun
 Version: 1.4.4
@@ -883,7 +883,7 @@ SHA256: a2c6a90e169595b763a854cbc8bd8a9edcdece93718ac9a3e82aabd14787cd7a
 SHA512: 182982d3e4ccb136d298565bd1058686815500b75a7790128b598cc8e52837021be0cfd1721d6f48fcd334acc440a2390a8f39d6d7b7f624da4ef9174ac25e5b
 
 Package: claude-code
-Version: 2.1.325
+Version: 2.1.327
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, curl, tar
@@ -894,12 +894,12 @@ Description: Claude Code - AI coding assistant by Anthropic
  Claude Code is an AI-powered coding assistant from Anthropic.
  This package downloads and installs the official binary release
  with a glibc wrapper for Termux compatibility.
-Filename: dists/termuxvoid/main/binary-all/claude-code_2.1.325_all.deb
-Size: 2300
-MD5Sum: 8fdac77ab60c503fb5b17de096e02b6d
-SHA1: b6af54184803c0f1b52d3142a4c1e4d9a94849fe
-SHA256: c4f2d8b000bcff082c50c26f22c461a71ed30551a50e6f7fdd06c83182741017
-SHA512: be3c9f8e7cb58e86a35b40cdb07314914cbdda64e338146e6f04f948084aae8958b8b4c729afd214dbc5c3fdcf1bd7f4821c678d21e4b361d607236a3d018539
+Filename: dists/termuxvoid/main/binary-all/claude-code_2.1.327_all.deb
+Size: 2304
+MD5Sum: bbda4a4764355924308cfe5f692af86f
+SHA1: 5ea234a3687184ac3eba950701046b47735dc443
+SHA256: 4f940ad6578655dd8dc2fb112315b43f77d2724809d51f31809a62f6f44e419e
+SHA512: d395e1ecfa7937c6971d76c68a0ad2a2a8ab7acc8ff02b6f6126b64a16b2075d96503fbfb7ebe16ade6ca1bf0f82e0019ae586812047bb65bacf63b28250a28a
 
 Package: cloudflare-gui
 Version: 1.0
@@ -963,7 +963,7 @@ SHA256: eda34d1f39d26e65398201cefb4cb7749b99cf7337520fe9a5ecfdf93b72099c
 SHA512: 6f85fefbf33be76aa95834f2654441d66b533b23cc046d77864e8c4015e34e1feb499e38d1f02d9bbeba99e6608a27777d45ddc525e00a23cb956d6762dee7b4
 
 Package: copilot-cli
-Version: 1.0.112
+Version: 1.0.114
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, gh, glibc, clang, python, curl, tar
@@ -974,12 +974,12 @@ Description: GitHub Copilot CLI (glibc version)
  GitHub Copilot CLI brings AI-powered assistance to your terminal.
  This package uses the glibc build and includes a wrapper to run
  inside Termux's glibc environment.
-Filename: dists/termuxvoid/main/binary-all/copilot-cli_1.0.112_all.deb
-Size: 2172
-MD5Sum: e5c5235fc42146c406c8adefa8173120
-SHA1: e9dbd09fde8320ff6f8c448692d16b5ddb6fcd71
-SHA256: 407ef3f7106d77dd7e271eb9fdca0aa29ae72b3158fdde0e2da3fa7df3eac6ec
-SHA512: 0b4a6e9f1ce6bbe801c7052c57bf37bdb1fa7960e161787182fd9229155ee466ca85c2a3bffad441e88a40a05904da75414bc490ad0a643fac6bd92d6d14028a
+Filename: dists/termuxvoid/main/binary-all/copilot-cli_1.0.114_all.deb
+Size: 2176
+MD5Sum: 99ef15135965904895e650a7d7ad5595
+SHA1: 248301e218d291cc876370949f0e37c7f9df75d0
+SHA256: 57b79831e795442f10df4f1bb6f5c394ffdd2fed4f048066525677e1d07ecf33
+SHA512: ae7cbf9e60b7b3499b038f7fd2868ff1fc8e807a7e48907abba6008fab0d399a3c18d53ab939a209b2916c24d68dcb260882c7bb2d98fd185e4472dfe52439b1
 
 Package: craft-anything
 Version: 0.6.1
@@ -1302,7 +1302,7 @@ SHA256: 70c737d68ae3373837c4a33c6bc6b0e7c0ba2670e854d739841045576cc3b66e
 SHA512: 863942874dc33f8f3b44c80b1a6b49f4a320eacdc10d5e3fcf737f5570b0cf72358e8b5b677eedb177bc3adec700de4d3ade54407fc5c5284979d0b81d0e1e7b
 
 Package: dpt-shell
-Version: 2.21.1
+Version: 2.22.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, openjdk-21
@@ -1310,12 +1310,12 @@ Section: android
 Priority: optional
 Homepage: https://github.com/luoyesiqiu/dpt-shell
 Description: DPT Shell - Dex Protection Tool Shell dpt-shell is an Android Dex protection shell that hollows out Dex method implementations and reconstructs them at runtime.
-Filename: dists/termuxvoid/main/binary-all/dpt-shell_2.21.1_all.deb
+Filename: dists/termuxvoid/main/binary-all/dpt-shell_2.22.1_all.deb
 Size: 1552
-MD5Sum: 6cdf457fd7ecb9e8608fd627a13db952
-SHA1: a32cb19a6be55a7139fd089558083686dce6addd
-SHA256: 90b2d7e2fe6813a54a78a3d9bd5b51ed2d3e56a937f63205816ba2b71182a711
-SHA512: 9c71b14f4ba4d6e30184f2d845d388adfbf27d16bc1a592e8bad4dddc6eb2c8c5f28d649b811e00d87cb3ef5056460dd257ea06ba0d70b13cafa4cb20e0a40ee
+MD5Sum: 89137631c2f3af6a88e50b33c3ba63d6
+SHA1: c9b505df3ba817487d18a07a7815c1eba7aa6d7d
+SHA256: 1795ede42c314721fb7894821490f71c55d0ae0b113a5cd7a0fc210c9f8c449d
+SHA512: d5d45cad08a3add2bf609383ffbe6c20602a5ab2c70a9e887fce66c237e331b9a7032aec3e5efc6a2fcd9c9bc2f541607750d5b4c9b75dadef2fc04ca9063a6d
 
 Package: droopescan
 Version: 1.45.1
@@ -2180,7 +2180,7 @@ SHA256: 619c469a16faa606743d72d95fb67e9ecab1bf3370507d9ac1c122ea1870c080
 SHA512: 06a8eb1546741d14235abdc06137ceaa9ea650f134df3afe776404f250b2da56b9fd62ea6f42f0e8788ae300afc22d356990ac748e8034e90d91e01e9570f972
 
 Package: ia-get
-Version: 0.1.4
+Version: 0.2.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, rust
@@ -2190,12 +2190,12 @@ Homepage: https://github.com/wimpysworld/ia-get
 Description: Internet Archive Downloader Tool
  ia-get is a command-line utility for downloading files from the
  Internet Archive. Built with Rust for speed and reliability.
-Filename: dists/termuxvoid/main/binary-all/ia-get_0.1.4_all.deb
-Size: 1244
-MD5Sum: 0b3fe5ecd6d2ab833b8c3f3506b91397
-SHA1: 3d7e3e51a0278dd13591d60de0b9917ce40107a1
-SHA256: 4515537e581f73b4930a6a1a4496273f98b062c6579a5f2bf5180e3d1f788303
-SHA512: c020d38dca1ebbac60c10140978fb33fe2335a29b63d8cb95045b0eb513158c21780dba4a55d3602458aeb6dd8ff58bd276682d9de424c01d2ea37bd2eea5428
+Filename: dists/termuxvoid/main/binary-all/ia-get_0.2.0_all.deb
+Size: 1260
+MD5Sum: b36732656aeb173ab9c232489fa8d860
+SHA1: 34896a8d708fb0e12bbe37676bec0a919ac62d4d
+SHA256: 003f9b9a76063b8737159cad4d42a4e4daa7c40a6e01f45fb89a8c86c9bb5849
+SHA512: 13ee8f0502be8efaf91d6c7e675d4df3a830d067959e1f8fd6094fe013de83b5584a3226b0d02f018c7247db6b06117fc2f9f6ec24a79fafc9c60846ee4b6cd8
 
 Package: infect
 Version: 1.03
@@ -2312,7 +2312,7 @@ SHA256: 6f47f9957c73f54335182b9a6c000efd5ddd75b3071ba44a916d20ddf3193856
 SHA512: 27d2b5f54f9fab593bb01e0a92d68724d6fc47366c6b5b6feaf2265ff3fe98a7926e05884264db509830f9856c7e22c94de9f49520821967e937391aa13bd8e3
 
 Package: jcode
-Version: 0.99.1
+Version: 1.0.1
 Architecture: all
 Pre-Depends: glibc-repo
 Maintainer: Alienkrishn [Anon4You]
@@ -2325,12 +2325,12 @@ Description: Terminal coding agent harness
  persistent memory, and MCP support. This package downloads the
  official Linux binary and patches it to run inside Termux's glibc
  environment.
-Filename: dists/termuxvoid/main/binary-all/jcode_0.99.1_all.deb
-Size: 1824
-MD5Sum: 9c03c02f812ff26e589c1367bc770b67
-SHA1: 2fa303e5b6a5d16c76b72cbab8fe45bb6a29ec81
-SHA256: e8df08bfd4ba05e009a22c0200a391c5fd09f242b1690b169a66c894ea1ef2ac
-SHA512: e92e9871976a81919d1a6599a91dd97a5e6949ecc4d7f533b85ad5e3a0579acd7ae394e894e5d0c73bad899664cc3ee8303a88ee556fb95531d26f1ccfaa625d
+Filename: dists/termuxvoid/main/binary-all/jcode_1.0.1_all.deb
+Size: 1828
+MD5Sum: 7186de48afd35a87486f8945f5eeb3e1
+SHA1: 0014c7161ceed7df0ddf791a3e1f16134df22c01
+SHA256: 91a9073346cdc8ba15cd7545a0f1f6aa78e30652eb9a278f6c8e1f5ee2cfee4a
+SHA512: 8c2ea8401907ebb6c0dafae6c4cac632c7c1627f9a86f6a58a5b3daea2a1036ce0d4f6148faba67576db86482e4c889444151caa3cec40830e62720b6d46c91d
 
 Package: john
 Version: 1.9.0
@@ -2878,7 +2878,7 @@ SHA256: f8463b6a0d59d1f44b00a65af29087aae1c6a15e9d687c674df1c8b2f949a896
 SHA512: b94e1ed1b48918299fd7136cb630a8fbb1fb4e0d98026f6e88da1ce6462df42be4d02aa610971e9924d228d9698d8fc351e11c40f55b7a0820bac7de87bfb09d
 
 Package: moviebox-tui
-Version: 0.1.29
+Version: 0.1.30
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: rust, termux-tools, termux-api, curl, tar
@@ -2888,12 +2888,12 @@ Homepage: https://github.com/mesamirh/MovieBox-Tui
 Description: Terminal UI for MovieBox
  MovieBox-Tui is a terminal user interface for browsing and
  streaming movies from MovieBox.
-Filename: dists/termuxvoid/main/binary-all/moviebox-tui_0.1.29_all.deb
+Filename: dists/termuxvoid/main/binary-all/moviebox-tui_0.1.30_all.deb
 Size: 1348
-MD5Sum: b75aa778cc5aed2b66038032da203522
-SHA1: 96e611901952f979c90845075d2824ebe2dc6f81
-SHA256: 31f462d6afbade2cd16726d5bba5d0db20e08a1a6e05321e30c8c8589345a547
-SHA512: 494eccabac9c528c3b0433f7f976cc985606e720f90c659c20e7833891e16effd25cd6644b9ef895d4c0ec3c177f96519aa5140d19ae3672c12325794494ab68
+MD5Sum: b5fbee4156fef3eafe59f53c0f9f59a9
+SHA1: 700eb379d556b6796865b8456607e33bf6945bb5
+SHA256: f301c0944e289599e8de496f5c378ced1cbd844a3796436a47389ea1654ef9f2
+SHA512: 9feb3f9fd37936a4a873bb058422afb1210e1e33cc977cfb63467c94df31f40fa29332fbce34f0e08ce1413693a67dd8a6fcff407d2aa6847803b8fa33359100
 
 Package: mtcr-apply
 Version: 1.1.0
@@ -3167,23 +3167,23 @@ SHA256: 88634036f3c8b3a33e5ea1416db7b4209a145076a5946ec739e7817b69e70f31
 SHA512: 6b703df19194b8d1f77aab3b50f66e44a2e3a2add557b482e59a7110465a783c4fbfc23858c7c44c4624d6063efc9e1661f3de0c136a4c584bc39066f4af8f65
 
 Package: openclaude
-Version: 0.36.0
+Version: 0.37.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: npm, ripgrep, proot
 Section: ai
 Priority: optional
-Homepage: https://github.com/Gitlawb/openclaude
+Homepage: https://github.com/Twigpine/openclaude
 Description: Open‑source coding‑agent CLI for cloud and local LLMs
  OpenClaude provides a command‑line interface for interacting with
  large language models from multiple providers (cloud or local),
  with features tailored for coding assistance and automation.
-Filename: dists/termuxvoid/main/binary-all/openclaude_0.36.0_all.deb
+Filename: dists/termuxvoid/main/binary-all/openclaude_0.37.0_all.deb
 Size: 1080
-MD5Sum: 5258e71b4985d0e51d13a33a017c45cf
-SHA1: 414558df18e920bebd430ca5fd5a29cd2c9e6e66
-SHA256: 0dda06b577ebe6f5dbc0082abd749ce0d2604f9f1d775230631ac52bc6fd7e33
-SHA512: 65f6894a4345da2d079a2f0ded7e8cbad68b6e8e72781745a4530505214069969cdefa23973712385b37943ecdde08427e555d5bd303733920a6d40812db80e2
+MD5Sum: 0af394e9889b3d2d9d35ac1d97dc55a3
+SHA1: 340969178d314f104fe3e85efbc4eb8a23101f0a
+SHA256: bca063011bfb7d1ccc983f4e3151bcc79be20247374f8adb1d423a37b1065729
+SHA512: 2b07908769cc00eb7a5217328f480f779b8461c028564bd960cd4c9b47030dc450c734113d9de8a4345d6ea0dc46351e11eb8d9a3b7528eb9fbcdf853747e488
 
 Package: opencode-v2
 Version: 2.2.2
