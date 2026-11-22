@@ -112,7 +112,7 @@ SHA256: 86a3af4235e77692abae6a94e23744208dc56193026c06ab7341f9aefb042fb6
 SHA512: a8b36875e85ce4ad3558cd9d4bda2a890464c603dfdd4d48fc07aac91c9a4ca4253f226c3e26e361716ea291a9cd19bd8d92276ea49b8a4a1c9350e3918932ba
 
 Package: aliens-eye
-Version: 2.11.0
+Version: 2.12.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Pre-Depends: x11-repo
@@ -124,12 +124,12 @@ Homepage: https://github.com/arxhr007/Aliens_eye
 Description: AI-powered OSINT username scanner
  Scans 800+ social media and web platforms for a username using
  AI-assisted correlation, with optional Playwright browser support.
-Filename: dists/termuxvoid/main/binary-all/aliens-eye_2.11.0_all.deb
-Size: 1088
-MD5Sum: 3cee3ce3956e9428ffa9a4ab3e278ed1
-SHA1: d8a6e8d3a67b802faf1ca2382aca2011501c930f
-SHA256: 0f69ee957dea5447555ab0767f580d32338b9e950ba5b8ebe3ceb494e82a2a42
-SHA512: 06e7356b11260503c01c7fe00f105cdb8171e59d763cc38d073c79f991c6f86b4634ffbb4c6f944fb4d4d8252db81c778145860ef938bbcf924e0d52f83a21a2
+Filename: dists/termuxvoid/main/binary-all/aliens-eye_2.12.0_all.deb
+Size: 1084
+MD5Sum: 98848dc16f075f9fa9deea7b490e7ee9
+SHA1: 7a62585c01409be491cf23c3490e9ac78d9f3f25
+SHA256: 6046620f477d0c9136ff8e5592c69281b3fdafe323e0b759895e07fbec16efbc
+SHA512: 6d08c37312e4f9ee40dffd731eafcc793c9307605fe85e395309d41ec2251dab17e9eb2c4368809fb2366bb7bba4483ac1ba1ab8cbc692b79f7bb92cb238909e
 
 Package: amass
 Version: 5.1.3
@@ -883,7 +883,7 @@ SHA256: a2c6a90e169595b763a854cbc8bd8a9edcdece93718ac9a3e82aabd14787cd7a
 SHA512: 182982d3e4ccb136d298565bd1058686815500b75a7790128b598cc8e52837021be0cfd1721d6f48fcd334acc440a2390a8f39d6d7b7f624da4ef9174ac25e5b
 
 Package: claude-code
-Version: 2.1.327
+Version: 2.1.330
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: glibc, clang, curl, tar
@@ -894,12 +894,12 @@ Description: Claude Code - AI coding assistant by Anthropic
  Claude Code is an AI-powered coding assistant from Anthropic.
  This package downloads and installs the official binary release
  with a glibc wrapper for Termux compatibility.
-Filename: dists/termuxvoid/main/binary-all/claude-code_2.1.327_all.deb
-Size: 2304
-MD5Sum: bbda4a4764355924308cfe5f692af86f
-SHA1: 5ea234a3687184ac3eba950701046b47735dc443
-SHA256: 4f940ad6578655dd8dc2fb112315b43f77d2724809d51f31809a62f6f44e419e
-SHA512: d395e1ecfa7937c6971d76c68a0ad2a2a8ab7acc8ff02b6f6126b64a16b2075d96503fbfb7ebe16ade6ca1bf0f82e0019ae586812047bb65bacf63b28250a28a
+Filename: dists/termuxvoid/main/binary-all/claude-code_2.1.330_all.deb
+Size: 2300
+MD5Sum: 517dd24e79b9dc12fc3830b460f9c7af
+SHA1: 6b8d4168c3f16de6b289173343691ec9cf34cffc
+SHA256: f793eea7fc29c084ed0405888bfc858008c5b6db95f11dfce7af013ae79c5a23
+SHA512: 9106aa4baf880605e1b160c26fdd3ffdd283352537318a10d1b54d68e7a2b9241e6b696bb1add8debbc5de73a0fc408b72f27070423a57d3d6450400bf744346
 
 Package: cloudflare-gui
 Version: 1.0
@@ -2312,7 +2312,7 @@ SHA256: 6f47f9957c73f54335182b9a6c000efd5ddd75b3071ba44a916d20ddf3193856
 SHA512: 27d2b5f54f9fab593bb01e0a92d68724d6fc47366c6b5b6feaf2265ff3fe98a7926e05884264db509830f9856c7e22c94de9f49520821967e937391aa13bd8e3
 
 Package: jcode
-Version: 1.0.1
+Version: 1.0.3
 Architecture: all
 Pre-Depends: glibc-repo
 Maintainer: Alienkrishn [Anon4You]
@@ -2325,12 +2325,12 @@ Description: Terminal coding agent harness
  persistent memory, and MCP support. This package downloads the
  official Linux binary and patches it to run inside Termux's glibc
  environment.
-Filename: dists/termuxvoid/main/binary-all/jcode_1.0.1_all.deb
+Filename: dists/termuxvoid/main/binary-all/jcode_1.0.3_all.deb
 Size: 1828
-MD5Sum: 7186de48afd35a87486f8945f5eeb3e1
-SHA1: 0014c7161ceed7df0ddf791a3e1f16134df22c01
-SHA256: 91a9073346cdc8ba15cd7545a0f1f6aa78e30652eb9a278f6c8e1f5ee2cfee4a
-SHA512: 8c2ea8401907ebb6c0dafae6c4cac632c7c1627f9a86f6a58a5b3daea2a1036ce0d4f6148faba67576db86482e4c889444151caa3cec40830e62720b6d46c91d
+MD5Sum: d0425a6438f73ea77a7b27eb271f65d3
+SHA1: 3aadfdcc246066e15acb353dd4d26f0c1dae2644
+SHA256: 763e0f85a7e91e443df724e17c0ea0fb7e1a14fa0f1a9dfa3114358d469a7560
+SHA512: 58f0432bb4ea3db6fcbdc244a78e0d451bd4e84385eff59ae87023f3cee56155c0498a49a670bfffb07b3bf30c383349c5328e85004b48e7882148aafe43202b
 
 Package: john
 Version: 1.9.0
@@ -4471,7 +4471,7 @@ SHA256: ee3eb72616bbd78385cd576e43c3ebb88b3674f4b5c5a01cab49141b0906f6e7
 SHA512: a538ee590a05aa198b08034516a52669e6eb58c0ca8c51f8e903923c963785a523145636c1daebc4324df07f52c9cd1dfa710619ac936fe2a66e27eaea52eea2
 
 Package: superfile
-Version: 1.6.0
+Version: 1.6.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
@@ -4481,12 +4481,12 @@ Homepage: https://github.com/yorukot/superfile
 Description: Terminal file manager with modern features
  Superfile is a fast and feature-rich terminal file manager
  with customizable keybindings, previews, and themes.
-Filename: dists/termuxvoid/main/binary-all/superfile_1.6.0_all.deb
+Filename: dists/termuxvoid/main/binary-all/superfile_1.6.1_all.deb
 Size: 1280
-MD5Sum: b052423c326e5393cb5c0a3feb4d51a1
-SHA1: 3134b620ec451967da1257d1074c64e702c1d6f4
-SHA256: 56111f1ac72495aed11e925932926db47d0c3f2d7c21f030be81ee85b7edeb57
-SHA512: 6bdd7d7ffc07083286a1482bcae58002519406707374f8acb6ecd92354b556479c246318abd03aa8d0413e1adf2caaaf647adddccac52b282a2e573125cbd3eb
+MD5Sum: 83bb3975c3d458965d79fff88d8c4fff
+SHA1: ae09eacf8b781e1a3fc584fdf274c1787665a003
+SHA256: 3e12357078636e21bc7559d307bbd074319138c8962e1719d8cbd92ef51cfaef
+SHA512: 020bca96ad1807ce0591bc8ba8c69b14d6da803b9186addf063d058b6031330b9c6d3ded46930d3f08c16069757cb3a771bbea21e8f282269ea3387ad32d2e94
 
 Package: takeover
 Version: 0.2
@@ -4604,7 +4604,7 @@ SHA256: cd896bf6597a65a8800b2392c84f352c4b528071da2c08f5c2ae9b0fa29cf0b3
 SHA512: b2ccff1394493c94e4bd416cd079392d5b4338bc148408e85253765d3423c4370cfc4a2f1767339a5baffa966c6c8b485158c32454522be4a6871a97e9589262
 
 Package: termux-penv
-Version: 3.0.0
+Version: 3.1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Section: utils
@@ -4612,12 +4612,12 @@ Homepage: https://github.com/Anon4You/termux-penv.git
 Installed-Size: 103
 Depends: wget, proot, figlet, curl, unzip, tar, gzip
 Description: Termux Penv - Simplify Chroot Environments in Termux
-Filename: dists/termuxvoid/main/binary-all/termux-penv_3.0.0_all.deb
-Size: 1364
-MD5Sum: 1e1eb06aed112a5b53483f769c5043e1
-SHA1: 77bd70abb079e992ad63dbbeee60d04febbd6944
-SHA256: 44b211e7c8bf343c31479d846310c4b3dc960e89190492fa5c235f34d2ce4f62
-SHA512: a9614838e1a819114d6d60fe3aa8d7f0af1cdef55f440d11bff5b3a8a8b5e82ad3b09377c26b6de48ddfe2be0bf8a9bd45be43993210b7e15a0e998bdf1fdf18
+Filename: dists/termuxvoid/main/binary-all/termux-penv_3.1.0_all.deb
+Size: 1360
+MD5Sum: f61e685b6b43f1efe21c5674e899bcc3
+SHA1: 291b59881b1f5a8cf033b95a4eda7945936ff154
+SHA256: 579e0733572d2f8b9809cd9c5fafea17515fe2ff592cc68ddcf9739c720db928
+SHA512: b55b8ca48e6c06a54e27c03d705a3870a7a846e8ef5b0db2756bef649d6027e226a2b254b8d329bc1269bc98e072931daa654aa9bd7815586c875b08a5c1c9e1
 
 Package: termuxfetch
 Version: 2.0
@@ -4752,7 +4752,7 @@ SHA256: f57e7fccc4b1ee3fe5e7ba64b7be9d98d3031652522da72d03663a53eed04f78
 SHA512: 3ec86d98cbdd9a2ba31e699e8a8df3176f9164589346aca12376817bfbc03563b18365d320ba6e669348ad659e70a8f7957c68017daad780f34a4f86197ad1e9
 
 Package: trufflehog
-Version: 3.99.9
+Version: 3.100.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, golang, tar, gzip
@@ -4763,12 +4763,12 @@ Description: Find leaked credentials and secrets in code and data
  TruffleHog scans Git repositories, file systems, and other sources
  to detect accidentally exposed secrets, API keys, passwords, and
  other sensitive data using entropy analysis and regex patterns.
-Filename: dists/termuxvoid/main/binary-all/trufflehog_3.99.9_all.deb
-Size: 1348
-MD5Sum: d059bca69ea90bfadc8ba00eb385f80b
-SHA1: 036a8ba5d667d771e45ed551c5c52d9d89e77151
-SHA256: 9c5b06142e32616523108ddfc62eb139a8db8c2fd2bb4a4df5d63a715435498d
-SHA512: 362353e9b0e5c2ab525abb1d5fdd8f396efea02b3a9a52007352d61cbf55a022d3f6d94bbf97d0b4de29fda2e2aa4f68187642dd3e0d19fc3c003b1498d37765
+Filename: dists/termuxvoid/main/binary-all/trufflehog_3.100.0_all.deb
+Size: 1352
+MD5Sum: ae495c71f35ad09bce0459924beb7d90
+SHA1: d39c847309db63dbaff6919d752cfb5f49c59c09
+SHA256: 5175ad25f917465f87f55c661af085ba3c4eb824e3a9d422a3aa68aad8c43bc1
+SHA512: d3263048f75df9056cd32bf4f3d8fffcd12b7f3e97ee1f2dd90c0a58d3bb57724b71a9017e0177604de5707d69bbb52a36d4284bcd9dc56de471af56ab6cb48d
 
 Package: tte
 Version: 0.15.0
