@@ -2,9 +2,9 @@
 set -e
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="3.0.0"
+VERSION="3.1.0"
 URL="https://github.com/Anon4You/termux-penv/archive/refs/tags/v${VERSION}.tar.gz"
-SHA256="0d38aead0cb39d4821e3127b9808b71ed0b9b54a4be8e76c1624ae450c8ff670"
+SHA256="91054555ee9ca258a83dc64f98ffdc00308acf7a0560923d036b025054b505c3"
 BUILD_DIR="${TMPDIR:-$PREFIX/tmp}/termux-penv-build"
 
 rm -rf "$BUILD_DIR"

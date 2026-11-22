@@ -1,14 +1,14 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="v1.6.0"
+VERSION="v1.6.1"
 BUILD_DIR="$TMPDIR/superfile-build"
 
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
-curl -fsSL -o src.tar.gz "https://github.com/yorukot/superfile/archive/refs/tags/v1.6.0.tar.gz"
-SHA256="7340ce9e3e7db401164310dd5d2d1dfa3ccf76118ac49d192b0fac2a292c5b0d"
+curl -fsSL -o src.tar.gz "https://github.com/yorukot/superfile/archive/refs/tags/v1.6.1.tar.gz"
+SHA256="cdca43cebee4b302104274084d67de31e244b4add39a247a76ab2ae3b255e7d6"
 if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: src.tar.gz" >&2
     rm -f "src.tar.gz"
