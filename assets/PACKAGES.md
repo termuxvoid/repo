@@ -326,7 +326,7 @@ The complete catalog of packages in the TermuxVoid APT repository, grouped by th
 | Tool | Description |
 |------|-------------|
 | [5luser](https://termuxvoid.github.io/tool.html?name=5luser) | Find unused 5-letter Instagram usernames |
-| [instaghost](https://termuxvoid.github.io/tool.html?name=instaghost) | Instagram OSINT tool |
+| [instaghost](https://termuxvoid.github.io/tool.html?name=instaghost) | Advanced Instagram OSINT and intelligence tool |
 | [instajack](https://termuxvoid.github.io/tool.html?name=instajack) | Instagram account takeover tool (may violate platform terms) |
 | [osintgram](https://termuxvoid.github.io/tool.html?name=osintgram) | OSINT tool for Instagram account analysis |
 | [silverinstaeye](https://termuxvoid.github.io/tool.html?name=silverinstaeye) | Instagram information gathering tool |

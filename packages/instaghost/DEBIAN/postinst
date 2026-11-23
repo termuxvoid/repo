@@ -5,7 +5,16 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-echo -e "${GREEN}Installing InstaGhost 2.0.0...${NC}"
+VERSION="2.1.0"
+SHA256="983cb3ae96bc9b64c0107894b6a3dacc6aae9d1e4ee725293524e946eb706e1e"
+URL="https://github.com/Anon4You/InstaGhost/archive/refs/tags/v${VERSION}.tar.gz"
+BUILD_DIR="${TMPDIR:-$PREFIX/tmp}/instaghost-build"
+TARBALL="$BUILD_DIR/instaghost.tar.gz"
+
+echo -e "${GREEN}Installing InstaGhost ${VERSION}...${NC}"
+
+rm -rf "$BUILD_DIR"
+mkdir -p "$BUILD_DIR"
 
 # instagrapi needs the community wheel index on Termux
 python -m pip install -U pip setuptools wheel || {
@@ -18,17 +27,40 @@ python -m pip install --extra-index-url https://termux-user-repository.github.io
     exit 1
 }
 
-# Install InstaGhost directly from GitHub
-pip install git+https://github.com/Anon4You/InstaGhost.git || {
-    echo -e "${RED}Error: Failed to install InstaGhost.${NC}"
-    echo -e "${YELLOW}Make sure dependencies (git, python) are installed.${NC}"
+echo "Downloading InstaGhost ${VERSION}..."
+curl -fsSL -o "$TARBALL" "$URL" || {
+    echo -e "${RED}Error: Failed to download InstaGhost ${VERSION}.${NC}"
+    rm -rf "$BUILD_DIR"
     exit 1
 }
 
-echo -e "${GREEN}InstaGhost installed successfully!${NC}"
-echo -e "${YELLOW}Usage examples:${NC}"
-echo "  instaghost username -i        # Interactive mode"
-echo "  instaghost target -p -P 5     # Download profile + 5 posts"
-echo "  instaghost user -a            # Grab all available data"
-echo "  instaghost --help             # Show all options"
+if ! printf '%s  %s\n' "$SHA256" "$TARBALL" | sha256sum -c - >/dev/null; then
+    echo -e "${RED}Error: Checksum mismatch for InstaGhost ${VERSION}.${NC}"
+    rm -rf "$BUILD_DIR"
+    exit 1
+fi
+
+python -m pip install --upgrade --force-reinstall --no-deps --no-build-isolation "$TARBALL" || {
+    echo -e "${RED}Error: Failed to install InstaGhost.${NC}"
+    rm -rf "$BUILD_DIR"
+    exit 1
+}
+
+rm -rf "$BUILD_DIR"
+
+for cmd in instaghost instaghost-web instaghost-bot; do
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        echo -e "${RED}Error: $cmd was not installed.${NC}"
+        exit 1
+    fi
+done
+
+echo -e "${GREEN}InstaGhost ${VERSION} installed successfully!${NC}"
+echo -e "${YELLOW}Getting started:${NC}"
+echo "  instaghost --login --login-user USER --login-pass PASS"
+echo "  instaghost TARGET_USERNAME"
+echo "  instaghost TARGET_USERNAME -P 10     # Download 10 posts"
+echo "  instaghost-web                       # Local web gateway"
+echo "  instaghost-bot                       # Telegram bot"
+echo "  instaghost --help                    # Show all options"
 exit 0
