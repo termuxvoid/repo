@@ -2214,22 +2214,22 @@ SHA256: bebb79a1032bc5be7e091388ec210ff7021109b1091cdde12f69497c2216a1ce
 SHA512: da7e9319114f84e61ebd1ed21c66e115ceaf6e7b286ecb084d114a641ba7527e9af561d2380a7770fd9b466b90894e6a3a94e4df0a5739d6cbb9a6ccd59dfb4a
 
 Package: instaghost
-Version: 2.0.0
+Version: 2.1.0
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
-Depends: git, python, python-pip, python-pillow
+Depends: python, python-pip, python-pillow, curl
 Section: social
 Priority: optional
 Homepage: https://github.com/Anon4You/InstaGhost
-Description: Professional Instagram OSINT Tool
- Simple and efficient Instagram data gathering tool for security research.
- Provides profile analysis and information extraction capabilities.
-Filename: dists/termuxvoid/main/binary-all/instaghost_2.0.0_all.deb
-Size: 1444
-MD5Sum: 56291f9f044abf7031f8ed69a1373707
-SHA1: 78804e548f3d9ca64a0dfbfd4a5a0006eea0460b
-SHA256: 8c05580ac21eb608d7ef4fc4926c6dc36bd289131fd0bfccd38acd2c65636d03
-SHA512: 081c33b71c4b75775032bc9086e3d240e72ecc51512824615b1eb1963a34c82d25f8b049a781f93452c87e822983533d5afdcfe6fb8c4eeb838f25fda82e1020
+Description: Advanced Instagram OSINT and intelligence tool
+ InstaGhost gathers Instagram profile data through instagrapi and ships
+ a CLI, an optional local web gateway, and a Telegram bot.
+Filename: dists/termuxvoid/main/binary-all/instaghost_2.1.0_all.deb
+Size: 1796
+MD5Sum: b169f4659b78a54ee9296147e34c7e3e
+SHA1: 1495ba64fdb037d6c4c60f1b78bf8b188f30fa5c
+SHA256: ab5553b14cc6c574a79de6c5651ad16ed76d231890b325b0c4f9c06b3e98f6ef
+SHA512: 4f59e0f5b6024a0879a6f0cbd40da21a83099b5dbf80d9d82cc843b7ecaadfcabd5f7d1d1a3f73a207563e024ce1a81a00aaaf7340bab44d35ff0bee72deec19
 
 Package: instajack
 Version: 1.0
