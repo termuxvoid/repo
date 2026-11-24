@@ -3,7 +3,7 @@
     <img alt="TermuxVoid" height="170" src="img/termuxvoid_logo.png">
     <h1>TermuxVoid APT Repository</h1>
   </a>
-  <p><b>An unofficial APT repository with 250+ security, Android, AI, and utility tools for Termux</b></p>
+  <p><b>An independent third-party Termux software ecosystem with 250+ security, Android, AI, and utility tools</b></p>
 
   <div>
     <a href="https://termuxvoid.github.io/">
@@ -24,7 +24,7 @@
   </div>
 </div>
 
-**TermuxVoid** is an unofficial APT repository for Termux. It packages **250+ security, Android, AI, and utility tools** that are missing from, or deliberately excluded by, the official Termux repositories.
+**TermuxVoid** is an independent third-party Termux software ecosystem. The APT side packages **250+ security, Android, AI, and utility tools** that are missing from, or deliberately excluded by, the official Termux repositories.
 
 - **One command to set up** — add the repository, key, and package manager in a single step.
 - **Native Termux packaging** — tools are exposed through `$PREFIX/bin`; no root required unless a tool explicitly asks for it.
@@ -174,7 +174,7 @@ Read the relevant [`DEBIAN/postinst`](packages/) before installing a package you
 
 ## Security
 
-This is an unofficial, independently maintained project. Package scripts run with your permissions, so read the script before installing. Some packages compile on device; others download prebuilt upstream binaries. Stable fixed-version downloads use pinned SHA-256 hashes, but git clones, mutable URLs, `pip`/`gem` installs, and upstream installers are not hash-pinned. A checksum reduces download-tampering risk, not the risk of a malicious package.
+This is an independent, third-party project, not affiliated with or endorsed by the Termux project. Package scripts run with your permissions, so read the script before installing. Some packages compile on device; others download prebuilt upstream binaries. Stable fixed-version downloads use pinned SHA-256 hashes, but git clones, mutable URLs, `pip`/`gem` installs, and upstream installers are not hash-pinned. A checksum reduces download-tampering risk, not the risk of a malicious package.
 
 APT repository metadata is GPG-signed (`InRelease`), and `install.sh` installs the TermuxVoid key. Package contents themselves are not individually signed.
 
@@ -217,5 +217,5 @@ Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before openin
 Released under the [BSD 3-Clause License](LICENSE). TermuxVoid is not affiliated with the Termux project or its maintainers.
 
 <div align="center">
-  <sub>Unofficial project by <a href="https://github.com/Anon4You">Alienkrishn</a>. Review package scripts before installing.</sub>
+  <sub>Independent third-party project by <a href="https://github.com/Anon4You">Alienkrishn</a>. Review package scripts before installing.</sub>
 </div>

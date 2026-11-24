@@ -2,7 +2,7 @@
 
 ## Overview
 
-The complete catalog of packages in the TermuxVoid APT repository, grouped by the category recorded in each package's metadata. Each entry links to its documentation page.
+The complete catalog of packages in TermuxVoid, an independent third-party Termux software ecosystem (APT repository), grouped by the category recorded in each package's metadata. Each entry links to its documentation page.
 
 > [!WARNING]
 > This repository includes dual-use security tools. Use them only on devices, accounts, and networks you own or are explicitly authorized to test. Review each package's install script and upstream source before use.
