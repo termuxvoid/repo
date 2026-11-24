@@ -6,19 +6,19 @@ ARCH=$(uname -m)
 case "$ARCH" in
     aarch64)
         ASSET_ARCH="aarch64"
-        SHA256="d82e5ad172edd4cbe532120eb252d9267fa776462e5132d4dd37eec7bfa544d3"
+        SHA256="be1ce61254a3abe8ffc4ac318b32d1775fd0a442f983d4b5b077ed42c91217b8"
         ;;
     x86_64)
         ASSET_ARCH="x86_64"
-        SHA256="09eedb3680bf9a951f5e5c68e823a10f1cb4624827ab3b390207cbb1a44b1994"
+        SHA256="fcedfcb2cde0dd80e59abe73797921e0abbb71d1c38c421c137cff5170c6eabc"
         ;;
     *)
         echo "[!] Unsupported architecture: $ARCH" >&2
         exit 1
         ;;
 esac
-DOWNLOAD_URL="https://github.com/termuxvoid/flutter-termux/releases/download/3.50.1/flutter_3.50.1_${ASSET_ARCH}.tar.gz"
-TMP_ARCHIVE="$TMPDIR/flutter.tar.gz"
+DOWNLOAD_URL="https://github.com/termuxvoid/flutter-termux/releases/download/3.51.0-0.2.pre/flutter_3.51.0-0.2.pre_${ASSET_ARCH}.tar.xz"
+TMP_ARCHIVE="$TMPDIR/flutter.tar.xz"
 
 echo "[*] Setting up Flutter..."
 [ -d "$FLUTTER_DIR" ] && { echo "[*] Removing existing installation..."; rm -rf "$FLUTTER_DIR"; }
@@ -35,7 +35,7 @@ if ! printf '%s  %s\n' "$SHA256" "$TMP_ARCHIVE" | sha256sum -c - >/dev/null; the
     rm -f "$TMP_ARCHIVE"
     exit 1
 fi
-tar -xzf "$TMP_ARCHIVE" -C "$PREFIX/opt" || { echo "[!] Extraction failed"; exit 1; }
+tar -xJf "$TMP_ARCHIVE" -C "$PREFIX/opt" || { echo "[!] Extraction failed"; exit 1; }
 
 echo "[*] Creating launcher..."
 cat > "$PREFIX/bin/flutter" << EOF
