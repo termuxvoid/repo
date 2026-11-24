@@ -1541,7 +1541,7 @@ SHA256: 8b65fc72f103d3b95b905e8fb86695fb344de2746e11a9828a652a219724d835
 SHA512: ee0f0ddd9a9850ee941e7f4e1305fe482dbd8d03a8ff507207561ddbf92dfe24a6ad49875148e4e8a33a327564262c66bce91278f05e0b7dd5e046545284cdc8
 
 Package: flutter
-Version: 3.50.0
+Version: 3.50.1
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Pre-Depends: x11-repo
@@ -1556,12 +1556,12 @@ Description: Google's UI toolkit for building native apps
  - Native ARM64/x86_64 performance
  - Material/Cupertino widgets
  - Android/iOS/Linux support
-Filename: dists/termuxvoid/main/binary-all/flutter_3.50.0_all.deb
-Size: 1828
-MD5Sum: 94398106bf9b18469a4eeefb8e794c07
-SHA1: 43fe08983c3d5d8824a15d1e07e4d17b60665667
-SHA256: 875ee3352f3861967c9a879ae6cabe2af38fe8ca7a76f79c169d3fbc52d7a7b0
-SHA512: 6cbadef77894f84bac7a304db89213d2b8b35d2c3b4d24de08000be47210ede44e102a470088c01534a7752c2a5c6a924b8767911b8a8a47949d0c616140835a
+Filename: dists/termuxvoid/main/binary-all/flutter_3.50.1_all.deb
+Size: 1836
+MD5Sum: ffb0f03f1eb8462a7099342697686688
+SHA1: 91f671e210a7e7848960f3f4e552ef27da159526
+SHA256: c3feeb4dd8e70d2c099b9f365c41e25c0a543ac88a7b3ccbe38ec7f053dc15f9
+SHA512: 851914195eb69645de4b28107155249a2ec8ac703c944986d9806b52e23c324a236ad1995ae44da477dcdc5ab32fb609ef5a4021035c63371a5665810f5250f1
 
 Package: freebuff
 Version: 0.2.35
