@@ -1,24 +1,24 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="0.13.1"
+VERSION="0.13.2"
 ARCH=$(uname -m)
 
 case "$ARCH" in
     aarch64)
-        SHA256="667484d4e0d859829e73cd292c29b48d167a482cee5f90b6593567abd6861817"
+        SHA256="eedae391cd77e9d566faa4317421e9af6459201f9b33c2336a846ac611d716c8"
         TARGET="aarch64-linux-android"
         ;;
     armv7l|armv8l)
-        SHA256="be4a7dfc1f2c2a0e281fd70ed5a6a63fb1193cc76cbdf35aa8e2c7b5f1e859c8"
+        SHA256="4d0236839a4570a78c784dab4be8c9ad340a425c08f602252f30a45499bfe474"
         TARGET="armv7-linux-androideabi"
         ;;
     i686)
-        SHA256="839d84c823621b49620bac941587992eec051fb4e13823e3aaa56f342e47b8dc"
+        SHA256="cad444453f98f36890ecc6ec5a8ef2615178617e9d7b528679746942a828dfc8"
         TARGET="i686-linux-android"
         ;;
     x86_64)
-        SHA256="f8fcee1b95742c6a6dd1f4d199284a954b40c2bd129bad5d428f39e14d0f253a"
+        SHA256="d8786f10e887714f7d4876578672a0673e79db147f1a9c78394029118b8e5b40"
         TARGET="x86_64-linux-android"
         ;;
     *)

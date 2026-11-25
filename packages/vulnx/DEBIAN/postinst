@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="2.0.2"
+VERSION="2.1.0"
 BUILD_DIR="$TMPDIR/vulnx-build"
 
 rm -rf "$BUILD_DIR"
@@ -9,7 +9,7 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/projectdiscovery/vulnx/archive/refs/tags/v${VERSION}.tar.gz"
-SHA256="d3954dbcbee35fc7ff5417d3314949d7f7e1cf4939082a153515ce58b51ab7a6"
+SHA256="10255d08ee85fec2eac021508734302648fbdf375152689356367947dc366ab1"
 if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: src.tar.gz" >&2
     rm -f "src.tar.gz"

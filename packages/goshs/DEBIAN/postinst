@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="2.1.7"
+VERSION="2.1.8"
 BUILD_DIR="$TMPDIR/goshs-build"
 
 rm -rf "$BUILD_DIR"
@@ -9,7 +9,7 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/goshs-labs/goshs/archive/refs/tags/v${VERSION}.tar.gz"
-SHA256="7426eb37f6b5e773c1c256c30d76b797c61ee4ba7fd9bd7781f5e3b464af3fdd"
+SHA256="3d1e4ab15d7b6f5fba7d1e793fbb803dc085f6cc66d3c39d9f8a818ae4d55346"
 if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: src.tar.gz" >&2
     rm -f "src.tar.gz"

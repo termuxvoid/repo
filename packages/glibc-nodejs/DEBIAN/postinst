@@ -6,19 +6,19 @@ SHARE="$PREFIX/share/glibc-nodejs"
 BIN="$PREFIX/bin"
 TMPDIR=${TMPDIR:-$PREFIX/tmp}
 STAGE="$TMPDIR/glibc-nodejs-stage"
-NODE_VERSION="26.12.1"
+NODE_VERSION="26.13.1"
 ARCH=$(uname -m)
 case "$ARCH" in
     aarch64)
         NODE_ARCH="arm64"
         NPM_CPU="arm64"
-        NODE_HASH="42aa04922591ee5d4dbc7740d452621acf28508239daa512f5ee8c47ee224fdb"
+        NODE_HASH="89e1853138db51e8b82d3e98ba9c0d3f2956a28e5e55ea1b7e12d25aae92d5dd"
         LD_SO="ld-linux-aarch64.so.1"
         ;;
     x86_64)
         NODE_ARCH="x64"
         NPM_CPU="x64"
-        NODE_HASH="6170b2d474e1c626f43cff3adc118df9fe3b573258a4fc3d850c8dbc6b079bbd"
+        NODE_HASH="5c063e46bab0fbc1c17cc445d7ff129cbdcd0471be6ed83b6ab864f8143bc864"
         LD_SO="ld-linux-x86-64.so.2"
         ;;
     *)

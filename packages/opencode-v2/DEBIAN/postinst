@@ -2,17 +2,17 @@
 set -euo pipefail
 
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-VERSION="2.2.2"
+VERSION="2.4.1"
 ARCH=$(uname -m)
 case "$ARCH" in
     aarch64)
         NPM_ARCH="arm64"
-        SHA512="732a7a97548b14657b3715dde458012094fc5799908418ecf85f6f878a5149a9bd9111a6bff9d412f80f31729f36b65db2595394ba0fbf38075b3419cf67dfd4"
+        SHA512="a2534a7e802e1da0ed1eb5ab96ac61d913d2a2749f0193c6265aeeeed30d78d4e51f22d2ad36c37bff8727abdd611a7b838c8a2d243c486dbae14fc80bb3e0b7"
         LD_SO="ld-linux-aarch64.so.1"
         ;;
     x86_64)
         NPM_ARCH="x64"
-        SHA512="c1ad289751d468a3434ea8dfa89c2a9aade7e2d95e8c1cb6513e3cc15442ca94541b2f566c8a5778bf719479a58c0a1d403e8771947676a8896054e50cca8854"
+        SHA512="1584009e779594b9aacbceb6ebbe2fbd15648fcc87b990051c9195dd4086431a3c68a1b9f081cf2abb296f1aee55a8e7204a5bd2df0f78eeb71ffa16e2f246e4"
         LD_SO="ld-linux-x86-64.so.2"
         ;;
     *)

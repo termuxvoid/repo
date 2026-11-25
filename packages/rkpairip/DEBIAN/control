@@ -1,5 +1,5 @@
 Package: rkpairip
-Version: 5.3
+Version: 5.4
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: git, python, openjdk-17, apksigner

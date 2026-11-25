@@ -7,7 +7,7 @@ APP="$SHARE/app"
 BIN="$PREFIX/bin"
 NODE="$PREFIX/bin/node"
 NPM="$PREFIX/bin/npm"
-VERSION="3.8.52"
+VERSION="3.8.54"
 ENTRY="$APP/node_modules/omniroute/bin/omniroute.mjs"
 RESET="$APP/node_modules/omniroute/bin/reset-password.mjs"
 

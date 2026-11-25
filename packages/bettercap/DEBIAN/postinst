@@ -2,7 +2,7 @@
 set -e
 
 REPO="https://github.com/bettercap/bettercap.git"
-VERSION="2.41.7"
+VERSION="2.42.0"
 TMP_DIR="$TMPDIR/bettercap-build"
 
 echo "[*] Installing bettercap ${VERSION}..."

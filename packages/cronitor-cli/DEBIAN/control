@@ -1,5 +1,5 @@
 Package: cronitor-cli
-Version: 33.11
+Version: 33.16
 Architecture: all
 Maintainer: Alienkrishn [Anon4You]
 Depends: curl, tar

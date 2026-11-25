@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-VERSION="2.7.6"
+VERSION="2.7.8"
 BUILD_DIR="$TMPDIR/brutespray-build"
 
 rm -rf "$BUILD_DIR"
@@ -9,7 +9,7 @@ mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 curl -fsSL -o src.tar.gz "https://github.com/x90skysn3k/brutespray/archive/refs/tags/v${VERSION}.tar.gz"
-SHA256="3541e1fd691a429989747556b37c354e45aeeb6776fb14ce825e6db90b958191"
+SHA256="aa65a26d3ee3822df467eaefeda953f708fc9fa58fcc6704e6ab41307580af46"
 if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
     echo "checksum mismatch: src.tar.gz" >&2
     rm -f "src.tar.gz"
