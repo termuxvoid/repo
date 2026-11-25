@@ -102,6 +102,7 @@ The complete catalog of packages in TermuxVoid, an independent third-party Termu
 | [lazyvim](https://termuxvoid.github.io/tool.html?name=lazyvim) | Modern Neovim configuration framework |
 | [lunarvim](https://termuxvoid.github.io/tool.html?name=lunarvim) | An IDE layer for Neovim with sane defaults |
 | [nvchad](https://termuxvoid.github.io/tool.html?name=nvchad) | Neovim configuration framework |
+| [ttt](https://termuxvoid.github.io/tool.html?name=ttt) | Terminal-based code editor with syntax highlighting, LSP, Git, and Lua plugins |
 
 ### Games
 

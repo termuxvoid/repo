@@ -1,0 +1,13 @@
+Package: ttt
+Version: 1.13.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, ripgrep, curl, tar, gzip
+Section: editors
+Priority: optional
+Homepage: https://github.com/termuxvoid/ttt-termux
+Description: Terminal-based code editor with syntax highlighting
+ TTT (Terminal Text Tool) is a single-binary terminal editor with
+ multi-cursor editing, file explorer, workspace search, Git integration,
+ LSP support, themes, and Lua plugins. TermuxVoid builds it for every
+ Termux architecture.

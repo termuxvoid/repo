@@ -1,0 +1,12 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+ARCH=$(uname -m)
+case "$ARCH" in
+    aarch64|armv7l|armv8l|arm|x86_64|i686|i386)
+        ;;
+    *)
+        echo "ttt is not available for this architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac

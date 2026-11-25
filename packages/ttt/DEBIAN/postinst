@@ -1,0 +1,57 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="1.13.0"
+BASE="https://github.com/termuxvoid/ttt-termux/releases/download/v${VERSION}"
+TMP_DIR="${TMPDIR:-$PREFIX/tmp}/ttt-build"
+ARCH=$(uname -m)
+
+case "$ARCH" in
+    aarch64)
+        ASSET_ARCH="aarch64"
+        SHA256="4525be14248d7a58987b2f53dae9ea52622aa2290ac727167560add51ca7abd6"
+        ;;
+    armv7l|armv8l|arm)
+        ASSET_ARCH="arm"
+        SHA256="0f2163fe0f37c5197aedcd1dc48d79fbe684625e70203d1489aaffad0c472597"
+        ;;
+    x86_64)
+        ASSET_ARCH="x86_64"
+        SHA256="24fb95c583f1f833f245c6a167090fe3fadecfb765ce4a257a6eb3a6d964b7b0"
+        ;;
+    i686|i386)
+        ASSET_ARCH="i686"
+        SHA256="52c78fc40bf140eb4c2b2318cc381d724143ae4b7cb9f7898300124df1782deb"
+        ;;
+    *)
+        echo "Unsupported architecture: $ARCH" >&2
+        exit 1
+        ;;
+esac
+
+TGZ="ttt-${VERSION}-${ASSET_ARCH}.tar.gz"
+
+rm -rf "$TMP_DIR"
+mkdir -p "$TMP_DIR"
+
+echo "Downloading TTT ${VERSION} for ${ASSET_ARCH}..."
+curl -fsSL -o "$TMP_DIR/$TGZ" "$BASE/$TGZ"
+
+if ! printf '%s  %s\n' "$SHA256" "$TMP_DIR/$TGZ" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: $TMP_DIR/$TGZ" >&2
+    rm -rf "$TMP_DIR"
+    exit 1
+fi
+
+tar -xzf "$TMP_DIR/$TGZ" -C "$TMP_DIR"
+install -Dm755 "$TMP_DIR/ttt" "$PREFIX/bin/ttt"
+if [ -f "$TMP_DIR/LICENSE" ]; then
+    install -Dm644 "$TMP_DIR/LICENSE" "$PREFIX/share/doc/ttt/LICENSE"
+fi
+
+rm -rf "$TMP_DIR"
+
+echo "TTT ${VERSION} installed successfully."
+echo "Run: ttt --version"
+echo "Run: ttt [file|directory]"
+exit 0

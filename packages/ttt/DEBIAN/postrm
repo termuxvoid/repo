@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+rm -f "$PREFIX/bin/ttt"
+rm -rf "$PREFIX/share/doc/ttt"
+
+echo "TTT removed."
+exit 0
