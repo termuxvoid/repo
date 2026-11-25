@@ -4789,6 +4789,26 @@ SHA1: 1ccc06734caf45974962332aebf5137aece903b0
 SHA256: 92c312ad4d7f87aacaaf5bd1d58a75a76399f825cfa914fc3177a6f3c1b62d62
 SHA512: 39170ec8ea5dce5429f469ef1ddb7f3d8fe967bccb4a7fc57fa28e649d2ef89fd737c3d2493ba56254cf0f1ff6da96c5157202758f02302a655cdabfc8147d4f
 
+Package: ttt
+Version: 1.13.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: git, ripgrep, curl, tar, gzip
+Section: editors
+Priority: optional
+Homepage: https://github.com/termuxvoid/ttt-termux
+Description: Terminal-based code editor with syntax highlighting
+ TTT (Terminal Text Tool) is a single-binary terminal editor with
+ multi-cursor editing, file explorer, workspace search, Git integration,
+ LSP support, themes, and Lua plugins. TermuxVoid builds it for every
+ Termux architecture.
+Filename: dists/termuxvoid/main/binary-all/ttt_1.13.0_all.deb
+Size: 1788
+MD5Sum: 87d15ed54a9ecc381e4f7a2cb6c18007
+SHA1: e87b7e6f216ce993b2cb3deb4c70afe6b1e41ac1
+SHA256: 3f731441e58180571f127298dac8a492d067b24cf0598fbb36aa4923ec7fab23
+SHA512: a88b511f59cd2589ad30da3e94f5c219ed8bee0dd56bedb5bc8aad46d7311bb2d0f375c67e859e196b79668418595643eeeabde140daca2b36e2b00c8575a80b
+
 Package: tvpkg
 Version: 0.2.0
 Architecture: all
