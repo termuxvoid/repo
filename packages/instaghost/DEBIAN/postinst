@@ -5,8 +5,8 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-VERSION="2.1.0"
-SHA256="983cb3ae96bc9b64c0107894b6a3dacc6aae9d1e4ee725293524e946eb706e1e"
+VERSION="2.2.0"
+SHA256="994680999cdc587262e773ba8a2364cc0c82fae63f594b67aab71ae9f42ffe8b"
 URL="https://github.com/Anon4You/InstaGhost/archive/refs/tags/v${VERSION}.tar.gz"
 BUILD_DIR="${TMPDIR:-$PREFIX/tmp}/instaghost-build"
 TARBALL="$BUILD_DIR/instaghost.tar.gz"
