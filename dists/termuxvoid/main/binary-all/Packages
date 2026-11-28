@@ -3774,6 +3774,26 @@ SHA1: a4bbac1a34f561bf0215550e17d122dadba88989
 SHA256: 6eff315d49f29038eb8e8aa76bb46c1793a10d37faa1ed976a2bea096b32d441
 SHA512: 79038865cb22da7be69710f5881c92f7059a78716e83db497b3388c27e8a26da69c76dacec255a4080bd8885a9700fd31414f0f50554c289ba32ec422a04db8d
 
+Package: quichash
+Version: 0.1.2
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: rust, curl, tar
+Section: crypto
+Priority: optional
+Homepage: https://github.com/vyrti/quichash
+Description: High-performance cryptographic hash utility with SIMD optimization
+ QuicHash hashes files, directories, stdin, and text with MD5, SHA-1,
+ SHA-2/3, BLAKE2/3, and xxHash, using parallel processing by default.
+ It also verifies checksum databases, finds duplicates, and writes
+ QuicHash, hashdeep, and JSON reports.
+Filename: dists/termuxvoid/main/binary-all/quichash_0.1.2_all.deb
+Size: 1500
+MD5Sum: 6881ba508f966e8c15f703dc9f5a1453
+SHA1: 7debfc44b9b35bab754fb521cd013559d58b0f76
+SHA256: 70e1599ebe061a3666e5459396f975cdfcd34382d9205c0e999b78c674cecb7f
+SHA512: a1ddfd501589ae0e650d5c51a67de7578603c6598ff9efe7fd68242c4ee9cfe015ff2a00965dd706a7dcf80d3ee1f853c3d0d740bac7ad0acf753a86b0060f3d
+
 Package: random-banner
 Architecture: all
 Version: 1
