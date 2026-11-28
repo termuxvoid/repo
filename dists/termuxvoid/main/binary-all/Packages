@@ -1036,6 +1036,25 @@ SHA1: e8554eb75a766c0de961621101c6727ac0cf62ae
 SHA256: 9bc96d2b618ed8c76c868a907908aa009b678e5a9120ee3076007d51cba1f353
 SHA512: 138e16d0ae0f092812dcaf58820cfdddaf2845280f571b0d638f06b7da7c2f66ce87e2163a7f2801bf3d380ebeb934b14366ff08cacb8d6884e25fb3cfe54123
 
+Package: cutter
+Version: 2.5.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: rizin, qt5-qtbase, qt5-qtsvg, qt5-qttools, cmake, ninja, clang, pkg-config, curl, tar
+Section: security
+Priority: optional
+Homepage: https://cutter.re
+Description: Free and open-source reverse engineering platform powered by rizin
+ Cutter is a Qt GUI for the rizin reverse engineering framework. It
+ provides graph view, disassembly, debugging, and scripting in a desktop
+ interface. Requires Termux:X11 to display the GUI.
+Filename: dists/termuxvoid/main/binary-all/cutter_2.5.0_all.deb
+Size: 1760
+MD5Sum: 3918ed886dd913dd4698650b32b9bbe2
+SHA1: b3a07ccbab96c388fbc4a6a029fed5d3e4957941
+SHA256: 7181f17c9bf8371beb6e8c4a69296bb8eb8a578e89b9b5fab4c73ab7732f0e2f
+SHA512: 1d6c946b6477fe3a64f4751a9b5fcca4b35e3356866135c9ee63aca770ff57e275fccb7d22d5de098d456c85957d6e3bd51659bae0fb702cc452e5a27c833ee4
+
 Package: d-tect
 Version: 1.0
 Architecture: all
