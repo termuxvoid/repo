@@ -1,0 +1,13 @@
+Package: quichash
+Version: 0.1.2
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: rust, curl, tar
+Section: crypto
+Priority: optional
+Homepage: https://github.com/vyrti/quichash
+Description: High-performance cryptographic hash utility with SIMD optimization
+ QuicHash hashes files, directories, stdin, and text with MD5, SHA-1,
+ SHA-2/3, BLAKE2/3, and xxHash, using parallel processing by default.
+ It also verifies checksum databases, finds duplicates, and writes
+ QuicHash, hashdeep, and JSON reports.

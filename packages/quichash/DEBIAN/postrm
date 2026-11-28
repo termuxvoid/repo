@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f "$PREFIX/bin/quichash" "$PREFIX/bin/hash"
+
+exit 0

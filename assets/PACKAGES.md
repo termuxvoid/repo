@@ -78,6 +78,7 @@ The complete catalog of packages in TermuxVoid, an independent third-party Termu
 | [enctool](https://termuxvoid.github.io/tool.html?name=enctool) | Encrypt or decrypt bash files and marshal Python scripts |
 | [hashrat](https://termuxvoid.github.io/tool.html?name=hashrat) | Cryptographic hash-generation command-line utility |
 | [outguess](https://termuxvoid.github.io/tool.html?name=outguess) | Universal steganographic tool – hide secrets inside JPEG images |
+| [quichash](https://termuxvoid.github.io/tool.html?name=quichash) | High-performance cryptographic hash utility with SIMD optimization |
 | [shellcrypt](https://termuxvoid.github.io/tool.html?name=shellcrypt) | Code obfuscation for Bash and Python |
 | [snow](https://termuxvoid.github.io/tool.html?name=snow) | Hide secret messages in plain text files using invisible whitespace, with optional compression and encryption |
 | [stegseek](https://termuxvoid.github.io/tool.html?name=stegseek) | Fast steghide password cracker for JPEG stego files |

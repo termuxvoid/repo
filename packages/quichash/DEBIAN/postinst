@@ -1,0 +1,29 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="0.1.2"
+BUILD_DIR="$TMPDIR/quichash-build"
+
+rm -rf "$BUILD_DIR"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
+
+curl -fsSL -o src.tar.gz "https://github.com/vyrti/quichash/archive/refs/tags/v${VERSION}.tar.gz"
+SHA256="3ed9dc303cb1f009b755b681906324a7301d81c9bcd6dddcd9fe8ff76ffe3bc3"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    rm -rf "$BUILD_DIR"
+    exit 1
+fi
+tar -xzf src.tar.gz --strip-components=1
+
+# shortcut: upstream tag has no Cargo.lock; dependencies resolve at install time
+cargo build --release -p quichash -j"$(nproc --all)"
+
+install -Dm755 target/release/hash "$PREFIX/bin/quichash"
+ln -sf quichash "$PREFIX/bin/hash"
+
+cd / && rm -rf "$BUILD_DIR"
+
+echo "quichash installed. Run 'quichash' (the shell's 'hash' builtin shadows the upstream name)."
+exit 0
