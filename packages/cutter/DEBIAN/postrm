@@ -1,0 +1,12 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+rm -f "$PREFIX/bin/cutter"
+rm -rf "$PREFIX/share/rizin/cutter"
+rm -f "$PREFIX/share/icons/hicolor/scalable/apps/cutter.svg"
+rm -f "$PREFIX/share/applications/re.rizin.cutter.desktop"
+rm -f "$PREFIX/share/metainfo/re.rizin.cutter.appdata.xml"
+rm -rf "$PREFIX/include/cutter"
+rm -rf "$PREFIX/lib/cmake/Cutter"
+
+exit 0

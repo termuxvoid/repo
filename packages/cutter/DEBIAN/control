@@ -1,0 +1,12 @@
+Package: cutter
+Version: 2.5.0
+Architecture: all
+Maintainer: Alienkrishn [Anon4You]
+Depends: rizin, qt5-qtbase, qt5-qtsvg, qt5-qttools, cmake, ninja, clang, pkg-config, curl, tar
+Section: security
+Priority: optional
+Homepage: https://cutter.re
+Description: Free and open-source reverse engineering platform powered by rizin
+ Cutter is a Qt GUI for the rizin reverse engineering framework. It
+ provides graph view, disassembly, debugging, and scripting in a desktop
+ interface. Requires Termux:X11 to display the GUI.

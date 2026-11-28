@@ -1,0 +1,49 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+VERSION="2.5.0"
+BUILD_DIR="$TMPDIR/cutter-build"
+SRC_DIR="$BUILD_DIR/Cutter-v${VERSION}"
+QMAKE_STUB=""
+
+cleanup() {
+    [ -n "$QMAKE_STUB" ] && rm -f "$QMAKE_STUB"
+    cd /
+    rm -rf "$BUILD_DIR"
+}
+trap cleanup EXIT
+
+rm -rf "$BUILD_DIR"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
+
+curl -fsSL -o src.tar.gz "https://github.com/rizinorg/cutter/releases/download/v${VERSION}/Cutter-v${VERSION}-src.tar.gz"
+SHA256="b524208f2b09fa5edb6720db007f2f8013089d64bebd87aabd147f79bf5f40b9"
+if ! printf '%s  %s\n' "$SHA256" "src.tar.gz" | sha256sum -c - >/dev/null; then
+    echo "checksum mismatch: src.tar.gz" >&2
+    exit 1
+fi
+tar -xzf src.tar.gz
+
+# shortcut: Termux qt5-qtbase has no native qmake; CMake only checks that it exists
+if [ ! -e "$PREFIX/bin/qmake" ]; then
+    printf '#!/data/data/com.termux/files/usr/bin/bash\nexit 0\n' > "$PREFIX/bin/qmake"
+    chmod 755 "$PREFIX/bin/qmake"
+    QMAKE_STUB="$PREFIX/bin/qmake"
+fi
+
+cd "$SRC_DIR"
+cmake -S . -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="$PREFIX" \
+    -DCMAKE_PREFIX_PATH="$PREFIX" \
+    -DCUTTER_USE_BUNDLED_RIZIN=OFF \
+    -DCUTTER_QT=5 \
+    -DCUTTER_ENABLE_GRAPHVIZ=OFF \
+    -DCUTTER_ENABLE_KSYNTAXHIGHLIGHTING=OFF \
+    -DCUTTER_ENABLE_PYTHON=OFF
+cmake --build build -j"$(nproc --all)"
+cmake --install build
+
+echo "cutter installed. Run 'cutter' inside Termux:X11."
+exit 0

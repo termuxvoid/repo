@@ -265,6 +265,7 @@ The complete catalog of packages in TermuxVoid, an independent third-party Termu
 | [bitb-framework](https://termuxvoid.github.io/tool.html?name=bitb-framework) | Browser‑in‑the‑Browser attack framework |
 | [blackbox-framework](https://termuxvoid.github.io/tool.html?name=blackbox-framework) | Python‑based network analysis and exploitation toolkit |
 | [craft-anything](https://termuxvoid.github.io/tool.html?name=craft-anything) | Reverse-engineering engine and AI-assisted rebuild CLI |
+| [cutter](https://termuxvoid.github.io/tool.html?name=cutter) | Free and open-source reverse engineering platform powered by rizin |
 | [dark-phish](https://termuxvoid.github.io/tool.html?name=dark-phish) | Phishing toolkit with 50+ templates (authorized testing only) |
 | [darksploit-framework](https://termuxvoid.github.io/tool.html?name=darksploit-framework) | Tool to run and create exploits |
 | [darkterm](https://termuxvoid.github.io/tool.html?name=darkterm) | Advanced Ethical Hacking Framework with 60+ tools across 9 modules |
